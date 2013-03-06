@@ -1,4 +1,6 @@
 SGfM::Application.routes.draw do
+  devise_for :logins, :controllers => {:registrations => 'registrations'}
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
