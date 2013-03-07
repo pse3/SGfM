@@ -1,5 +1,5 @@
 class User
   include Mongoid::Document
-  #has also a login
-  has_one :login, as: :loginable
+
+  has_one :login, :as => :account
 end

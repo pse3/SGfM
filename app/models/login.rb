@@ -46,6 +46,7 @@ class Login
   #define how to construct a new Login
   attr_accessible :name, :email, :password, :password_confirmation
 
-  #add the actual user or admin
-  belongs_to :loginable, :polymorphic => true
+  #has an connected account
+  belongs_to :account, :polymorphic=> true
+
 end
