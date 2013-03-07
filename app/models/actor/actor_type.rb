@@ -1,3 +1,9 @@
 class ActorType
-  # To change this template use File | Settings | File Templates.
+
+  include Mongoid::Document
+
+  field :name, type :String
+
+  has_many :actors, class_name => 'Actor::Actor', inverse_of => :actor_type             #referenced
+  has_and_belongs_to :information_type, class_name => 'Information::InformationType'    #referenced
 end

@@ -35,3 +35,5 @@ doc/
 # By Kenneth
 .idea/*
 *.iml
+
+.DS_Store
