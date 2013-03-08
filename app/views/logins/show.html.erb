@@ -1,2 +1,7 @@
 <h3>Your Profile page</h3>
-<%= link_to('sign out', 'logins/sign_out', :method => :delete) %>
+<p>Account emial: <%= current_login.email %></p>
+<p>Account type: <%= current_login.account_type %></p>
+<% if current_login.account_type == 'User' %>
+    <p>current_login.account.test</p>
+<% end %>
+<%= link_to('sign out', destroy_login_session_path, :method => :delete) %>

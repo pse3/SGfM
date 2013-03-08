@@ -3,5 +3,5 @@
     <p> Login: <%= login.email%></p>
 <% end %>
 <% if login_signed_in? %>
-    <%= link_to('sign out', 'logins/sign_out', :method => :delete) %>
+    <%= link_to('sign out', destroy_login_session_path, :method => :delete) %>
 <% end %>
