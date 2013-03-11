@@ -3,7 +3,7 @@ class Actor
 
   include Mongoid::Document
 
-  field :name, type :String
+  field :name, :type => String
 
   belongs_to :actor_type, class_name: 'ActorType'                                        #referenced
   embeds_many :informations, class_name: 'Information', inverse_of: :actor               #embedded

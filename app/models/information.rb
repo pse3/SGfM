@@ -3,8 +3,8 @@ class Information
 
   include Mongoid::Document
 
-  field :value, type :String
-  field :created, type :Timestamps
+  field :value, :type => String
+  field :created, :type => DateTime
 
   belongs_to :creator, class_name: 'User'                               #referenced
   embedded_in :actor, class_name: 'Actor'                              #embedded                                                                                                                                                                                                                                                      #embedded

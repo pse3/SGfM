@@ -3,7 +3,7 @@ class Scope
 
   include Mongoid::Document
 
-  field :name, type :String
+  field :name, :type => String
 
   has_many :informations, class_name: 'Information', inverse_of: :scope  #referenced
 
