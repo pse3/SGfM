@@ -44,7 +44,7 @@ class Login
   validates_presence_of :email
 
   #define how to construct a new Login
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation
 
   #has an connected account
   belongs_to :account, :polymorphic=> true
