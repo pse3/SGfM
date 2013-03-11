@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>SGfM</title>
-
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -13,14 +12,15 @@
     <div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">SGfM</a>
+
+          <!-- nav-bar title -->
+          <a class="brand" href="<%= home_path %>">SGfM</a>
+
+          <!-- nav-bar menu left -->
           <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Disclaimer</a></li>
+            <li class="active"><a href="<%= home_path %>">Home</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dummy Dropdown<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li>Option1</li>
                 <li>Option2</li>
@@ -28,25 +28,41 @@
               </ul>
             </li>
           </ul>
-          <form class="navbar-form form-inline pull-right">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
-            <button type="submit" class="btn">Sign in</button>
-          </form>
+
+          <% if login_signed_in? %>
+            <ul class="nav pull-right">
+              <li><a>Logged in as: <%= current_login.email %></a></li>
+            </ul>
+          <% else %>
+            <!-- nav-bar menu right -->
+            <ul class="nav pull-right">
+              <li><a href="<%= new_login_registration_path %>">Sign Up</a></li>
+              <li class="divider-vertical"></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                  <%= form_for("login", :url => login_session_path, :html => { :class => 'navbar-form form-inline pull-right'}) do |f| %>
+                    <%= f.text_field(:email, :placeholder => 'Email') %>
+                    <%= f.password_field(:password, :placeholder => 'Password') %>
+                    <%= f.label(:remember_me) do %>
+                      <%= f.check_box(:remember_me) %>
+                      Remember me
+                    <% end %>
+                    <%= f.submit("Sign in", :class => 'btn btn-primary btn-block') %>
+                    <%= link_to("Forgot your password?", new_login_password_path('login')) %>
+                  <% end %>
+                </div>
+              </li>
+            </ul>
+          <% end %>
+
         </div>
       </div>
-
     </div>
+
     <div class="container">
       <div class="container">
         <h1><%= @page_title %></h1>
-        <p class='lead'><%= @page_lead_text %></p>
-        <p class="pull-right">
-          <%= link_to('de', '#') %>
-          <%= link_to('fr', '#') %>
-          <%= link_to('it', '#') %>
-          <%= link_to('en', '#') %>
-        </p>
       </div>
 
       <%= yield %>
@@ -54,8 +70,27 @@
       <hr>
       <footer>
         <p>&copy; by SGfM</p>
+        <p class="pull-right">
+          <%= link_to('de', '#') %>
+          <%= link_to('fr', '#') %>
+          <%= link_to('it', '#') %>
+          <%= link_to('en', '#') %>
+        </p>
       </footer>
     </div>
 
   </body>
 </html>
+
+
+<script>
+  $(function() {
+    // Setup drop down menu
+    $('.dropdown-toggle').dropdown();
+
+    // Fix input element click problem
+    $('.dropdown input, .dropdown label').click(function(e) {
+      e.stopPropagation();
+    });
+  });
+</script>
