@@ -14,7 +14,7 @@
         <div class="container">
 
           <!-- nav-bar title -->
-          <a class="brand" href="<%= home_path %>">SGfM</a>
+          <a class="brand" href="<%= home_path %>"><%= image_tag('logo/qm_schriftzug.png', :width => '15', :height => '20') %> SGfM</a>
 
           <!-- nav-bar menu left -->
           <ul class="nav">
@@ -31,7 +31,9 @@
 
           <% if login_signed_in? %>
             <ul class="nav pull-right">
-              <li><a>Logged in as: <%= current_login.email %></a></li>
+              <li><a href="<%= edit_login_registration_path %>"><%= current_login.email %></a></li>
+              <li class="divider-vertical"></li>
+              <li><%= link_to('Sign out', destroy_login_session_path, :method => :delete) %></li>
             </ul>
           <% else %>
             <!-- nav-bar menu right -->
@@ -62,6 +64,14 @@
 
     <div class="container">
       <div class="container">
+        <%= image_tag('logo/qualitätsmedizin_schriftzug.png') %>
+        <p class="pull-right">
+          <%= link_to('de', '#') %>
+          <%= link_to('fr', '#') %>
+          <%= link_to('it', '#') %>
+          <%= link_to('en', '#') %>
+        </p>
+        <hr>
         <h1><%= @page_title %></h1>
       </div>
 
@@ -70,12 +80,7 @@
       <hr>
       <footer>
         <p>&copy; by SGfM</p>
-        <p class="pull-right">
-          <%= link_to('de', '#') %>
-          <%= link_to('fr', '#') %>
-          <%= link_to('it', '#') %>
-          <%= link_to('en', '#') %>
-        </p>
+
       </footer>
     </div>
 

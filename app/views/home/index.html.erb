@@ -1,9 +1,8 @@
 <% @page_title = 'Home' %>
 
-<% @logins.each do |login| %>
-    <p> Login: <%= login.email%></p>
-<% end %>
-
-<% if login_signed_in? %>
-    <%= link_to('sign out', destroy_login_session_path, :method => :delete) %>
-<% end %>
+<p>All Logins:</p>
+<ul>
+  <% @logins.each do |login| %>
+    <li><p> Login: <%= login.email%></p></li>
+  <% end %>
+</ul>
