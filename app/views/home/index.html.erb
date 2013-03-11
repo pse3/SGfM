@@ -1,0 +1,7 @@
+<h3>Home</h3>
+<% @logins.each do |login| %>
+    <p> Login: <%= login.email%></p>
+<% end %>
+<% if login_signed_in? %>
+    <%= link_to('sign out', destroy_login_session_path, :method => :delete) %>
+<% end %>

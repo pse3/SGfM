@@ -2,9 +2,9 @@ class User
 
   include Mongoid::Document
 
-  #todo (Kenneth)
+  has_one :login, :as => :account
 
-  embeds_many :actors, class_name => 'Actor::Actor', inverse_of => :owner             #embedded
-  has_many :created, class_name => 'Information::Information', inverse_of => :creator #referenced
+  embeds_many :actors, class_name: 'Actor', inverse_of: :owner             #embedded
+  has_many :created, class_name: 'Information', inverse_of: :creator #referenced
 
 end

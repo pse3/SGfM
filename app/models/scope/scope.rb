@@ -5,6 +5,6 @@ class Scope
 
   field :name, type :String
 
-  has_many :informations, class_name => 'Information::Information', inverse_of => :scope  #referenced
+  has_many :informations, class_name: 'Information', inverse_of: :scope  #referenced
 
 end
