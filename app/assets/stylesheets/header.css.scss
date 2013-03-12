@@ -4,8 +4,8 @@
   background-image: image-url("logo/qm.png");
   height: 100px;
   background-repeat:no-repeat;
-  background-attachment:fixed;
   background-position: 2px 2px;
+  z-index:10;
 }
 
 .header-right{
