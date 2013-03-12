@@ -4,6 +4,7 @@ class Information
   include Mongoid::Document
 
   field :value, :type => String
+
   field :created_at, :type => DateTime
   field :changed_a, :type => DateTime
 
@@ -15,5 +16,6 @@ class Information
     super
     self.created_at = DateTime.now
   end
+
 
 end

@@ -1,5 +1,6 @@
 class Actor
   # base class for hospitals, doctors etc.
+
   include Mongoid::Document
 
   field :name, :type => String
@@ -13,4 +14,5 @@ class Actor
     super
     self.created_at = DateTime.now
   end
+
 end
