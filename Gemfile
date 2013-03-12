@@ -4,6 +4,9 @@ gem 'rails', '3.2.12'
 gem 'mongoid', '~> 3.0.0'
 gem 'devise'
 gem 'bootstrap-sass'
+gem 'mocha', :require => false
+gem 'minitest-reporters', :require => false
+gem 'rspec-rails', :require => false
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
