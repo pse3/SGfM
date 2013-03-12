@@ -1,0 +1,4 @@
+<h3>Actors of User</h3>
+<% for actor in @actors %>
+<p><%=  actor.name %> (<%= actor.actor_type.name %>) created: <%= actor.created_at %> </p>
+<% end %>

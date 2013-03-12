@@ -4,7 +4,6 @@ class User
 
     has_one :login, :as => :account
 
-    embeds_many :actors, class_name: 'Actor', inverse_of: :owner             #embedded
-    has_many :created, class_name: 'Information', inverse_of: :creator #referenced
+    has_many :actors, class_name: 'Actor', inverse_of: :owner             #referenced
 
 end

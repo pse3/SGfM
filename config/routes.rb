@@ -5,6 +5,10 @@ SGfM::Application.routes.draw do
   root :to => 'home#index', as: 'home'
   get 'logins/show' => 'logins#show'
 
+  post 'actors' => 'actor#create'
+  get 'actors' => 'actor#list'
+  get 'actortype/reset' => 'actor_type#reset_default_types'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

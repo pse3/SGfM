@@ -4,11 +4,16 @@ class Information
   include Mongoid::Document
 
   field :value, :type => String
-  field :created, :type => DateTime
+  field :created_at, :type => DateTime
+  field :changed_a, :type => DateTime
 
-  belongs_to :creator, class_name: 'User'                               #referenced
-  embedded_in :actor, class_name: 'Actor'                              #embedded                                                                                                                                                                                                                                                      #embedded
-  belongs_to :information_type, class_name: 'InformationType'    #referenced
-  belongs_to :scope, class_name: 'Scope'                               #referenced
+  belongs_to :creator, class_name: 'User', inverse_of: nil          #referenced  / one way relationship                                                                                                                                                                                                                                                 #embedded
+  has_one :information_type, class_name: 'InformationType'          #referenced
+  has_one :scope, class_name: 'Scope'                               #referenced
+
+  def initialize
+    super
+    self.created_at = DateTime.now
+  end
 
 end
