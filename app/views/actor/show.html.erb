@@ -3,12 +3,7 @@
 Name: <%= @actor %><br>
 Type: <%= @actor.actor_type.name %>
 
-
-<!-- just for you my arun'li -->
-
-<%= @actor.actor_type.information_type %>
-
-
+<%=  @actor.informations.any? %>
 
 
 <% for info in @actor.informations %>

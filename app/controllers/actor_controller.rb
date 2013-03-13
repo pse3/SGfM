@@ -21,6 +21,7 @@ class ActorController < ApplicationController
     end
 
 
+    current_actor.save
     user.save
   end
 
