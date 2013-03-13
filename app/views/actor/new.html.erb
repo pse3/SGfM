@@ -1,14 +1,7 @@
 <% @page_title = 'New Actor' %>
 
 
-<%= form_for(:actor, url: create_actor_path, html: {class: 'form-horizontal'}) do |f| %>
-
-  <div class="control-group">
-    <%= f.label(:name, class: 'control-label') %>
-    <div class="controls">
-      <%= f.text_field(:name, placeholder: 'name') %>
-    </div>
-  </div>
+<%= form_for(:actor, html: {class: 'form-horizontal'}) do |f| %>
 
   <div class="control-group">
     <%= f.label(:actor_type, class: 'control-label') %>
