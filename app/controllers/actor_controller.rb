@@ -41,10 +41,4 @@ class ActorController < ApplicationController
     @actor = Actor.find(params[:id])
   end
 
-
-  # Resets 'Actor' in DataBase
-  def reset_default_types
-    Actor.delete_all
-  end
-
 end

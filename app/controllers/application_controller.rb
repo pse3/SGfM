@@ -7,19 +7,9 @@ class ApplicationController < ActionController::Base
     '/logins/show'
   end
 
-  helper_method :current_actor, :current_actor=
-
-  private
-  def current_actor=(actor)
-    @current_actor =actor
-  end
-
-  def current_actor
-    @current_actor
-  end
-
-  def reset_default_types
+  def reset_all
     #reset all types
+    Actor.delete_all
     InformationType.delete_all
     ActorType.delete_all
 
@@ -56,5 +46,16 @@ class ApplicationController < ActionController::Base
     type_hospital.save
   end
 
+
+  helper_method :current_actor, :current_actor=
+
+  private
+  def current_actor=(actor)
+    @current_actor =actor
+  end
+
+  def current_actor
+    @current_actor
+  end
 
 end
