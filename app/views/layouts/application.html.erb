@@ -8,16 +8,23 @@
   </head>
 
   <body>
-    <div class="row-fluid header hidden-phone hidden-tablet">
+    <div class="row-fluid header hidden-phone hidden-tablet collapse in" id="header" data-toggle="collapse" data-target="#header">
       <div class="span9 header-logo"></div>
       <div class="span3 header-right"></div>
     </div>
     <div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="row-fluid">
-          <div class="span8 offset2">
+          <div class="span2">
+            <ul class="nav">
+              <li>
+                <a href="#" data-toggle="collapse" data-target="#header"><i class="icon-search icon-white"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="span8">
             <!-- nav-bar title -->
-            <a class="brand" href="<%= home_path %>"><%= image_tag('logo/qm_schriftzug.png', :width => '15', :height => '20') %></a>
+            <a class="brand hidden-phone" href="<%= home_path %>"><%= image_tag('logo/qm_schriftzug.png', :width => '15', :height => '20') %></a>
 
             <!-- nav-bar menu left -->
             <ul class="nav">
