@@ -1,4 +1,4 @@
-class InformationController < ActionController::Base
+class InformationController < ApplicationController
   before_filter :authenticate_login!
 
   def create

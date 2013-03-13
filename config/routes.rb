@@ -1,13 +1,18 @@
 SGfM::Application.routes.draw do
+
+
   devise_for :logins, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => {:sign_up => 'signup',
                                                                                                         :sign_in => 'login',
                                                                                                         :sign_out => 'logout'}
   root :to => 'home#index', as: 'home'
+
   get 'logins/show' => 'logins#show'
 
-  post 'actors' => 'actor#create'
+
   get 'actors' => 'actor#list', as: 'actors'
-  get 'actors/create' => 'actor#new', as: 'new_actor'
+
+  get 'actors/create' => 'actor#new', as: 'create_actor'
+  post 'actors/create' => 'actor#create'
 
   get 'actors/:id' => 'actor#show', as: 'show_actor'
 

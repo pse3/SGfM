@@ -1,7 +1,10 @@
-<h3>Actors of User</h3>
+<% @page_title = 'Your Actors' %>
+
 
 <% for actor in @actors %>
   <p>
     <a href="<%= show_actor_path(actor) %>"><%=  actor.name %> (<%= actor.actor_type.name %>) created: <%= actor.created_at %></a>
   </p>
 <% end %>
+
+<%= link_to('new actor', create_actor_path) %>

@@ -1,10 +1,24 @@
-<h3>New Actor</h3>
+<% @page_title = 'New Actor' %>
 
-actor type
-<%= form_for(:actor) do |f| %>
 
-  <%= f.collection_select(:actor_type, list_actor_types, :key, :name) %>
+<%= form_for(:actor, url: create_actor_path, html: {class: 'form-horizontal'}) do |f| %>
 
-  <%= f.submit(:weiter, class: 'btn btn-primary') %>
+  <div class="control-group">
+    <%= f.label(:name, class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:name, placeholder: 'name') %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:actor_type, class: 'control-label') %>
+    <div class="controls">
+      <%= f.collection_select(:actor_type, list_actor_types, :key, :name) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit(:create, class: 'btn btn-primary') %>
+  </div>
 
 <% end %>
