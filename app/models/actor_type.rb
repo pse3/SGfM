@@ -5,7 +5,7 @@ class ActorType
   field :name, :type => String
   field :key, :type => Symbol
 
-  has_many :information_type, class_name: 'InformationType'    #referenced
+  has_and_belongs_to_many :information_type, class_name: 'InformationType'    #referenced
 
   def self.find_by_key(key)
     ActorType.find_by(key: key)
