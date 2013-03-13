@@ -13,4 +13,5 @@ class ActorTypeController < ActionController::Base
     type_hospital.save
  end
 
+
 end

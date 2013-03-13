@@ -18,6 +18,7 @@ SGfM::Application.routes.draw do
 
   get 'actortype/reset' => 'actor_type#reset_default_types', as: 'reset_actortype'
   get 'informationtype/reset' => 'information_type#reset_default_types', as: 'reset_informationtype'
+	match "/information_types_for_actor_type" => "actor_#information_types_for_actor_type"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
