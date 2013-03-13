@@ -12,4 +12,9 @@ class ActorTypeController < ActionController::Base
     type_hospital.key = :hospital
     type_hospital.save
  end
+
+ def list_information_types
+
+ end
+
 end

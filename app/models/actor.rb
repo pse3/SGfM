@@ -1,7 +1,6 @@
 class Actor
   # base class for hospitals, doctors etc.
 
-
   include Mongoid::Document
 
   field :name, :type => String
