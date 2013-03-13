@@ -14,6 +14,7 @@ class ActorController < ApplicationController
 			information = Information.new
 			information.value = value
 			information.information_type = InformationType.find_by_key(key.to_sym)
+			user.informations.push(information)
 		end
 
     user.save
