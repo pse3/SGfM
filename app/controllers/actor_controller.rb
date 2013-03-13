@@ -16,7 +16,7 @@ class ActorController < ApplicationController
       info = Information.new()
       info.value = params[:actor][info_type.key]
       info.information_type = InformationType.find_by_key(info_type.key)
-      info.save
+      info.actor = current_actor
       current_actor.informations.push(info)
     end
 
