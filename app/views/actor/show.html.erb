@@ -1,12 +1,11 @@
 <% @page_title = 'show actor' %>
 
-Name: <%= @actor %><br>
+Object: <%= @actor %><br>
 Type: <%= @actor.actor_type.name %>
-
-<%=  @actor.informations.any? %>
+</br>
 
 
 <% for info in @actor.informations %>
-  <%= info.information_type.key %>
-  <%= info.value %>
+  <%= info.information_type.name %>:
+  <%= info.value %></br>
 <%end %>
