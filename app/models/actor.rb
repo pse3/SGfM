@@ -3,7 +3,6 @@ class Actor
 
   include Mongoid::Document
 
-  field :name, :type => String
   field :created_at, :type => DateTime
 
   belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced

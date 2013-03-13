@@ -16,36 +16,43 @@ class ApplicationController < ActionController::Base
     Information.delete_all
 
     #create some information_types
-    type_phone = InformationType.new
-    type_phone.name = "Telefon"
-    type_phone.key = :phone
-    type_phone.save
+    itype_name = InformationType.new
+    itype_name.name = "Name"
+    itype_name.key = :name
+    itype_name.save
 
-    type_address = InformationType.new
-    type_address.name = "Adresse"
-    type_address.key = :address
-    type_address.save
+    itype_phone = InformationType.new
+    itype_phone.name = "Telefon"
+    itype_phone.key = :phone
+    itype_phone.save
 
-    type_email = InformationType.new
-    type_email.name = "email"
-    type_email.key = :email
-    type_email.save
+    itype_address = InformationType.new
+    itype_address.name = "Adresse"
+    itype_address.key = :address
+    itype_address.save
+
+    itype_email = InformationType.new
+    itype_email.name = "email"
+    itype_email.key = :email
+    itype_email.save
 
     #create some actor_types
-    type_doctor = ActorType.new
-    type_doctor.name = "Arzt"
-    type_doctor.key = :doctor
-    type_doctor.information_type.push(InformationType.find_by_key(:phone))
-    type_doctor.information_type.push(InformationType.find_by_key(:address))
-    type_doctor.information_type.push(InformationType.find_by_key(:email))
-    type_doctor.save
+    atype_doctor = ActorType.new
+    atype_doctor.name = "Arzt"
+    atype_doctor.key = :doctor
+    atype_doctor.information_type.push(InformationType.find_by_key(:name))
+    atype_doctor.information_type.push(InformationType.find_by_key(:phone))
+    atype_doctor.information_type.push(InformationType.find_by_key(:address))
+    atype_doctor.information_type.push(InformationType.find_by_key(:email))
+    atype_doctor.save
 
-    type_hospital = ActorType.new
-    type_hospital.name = "Spital"
-    type_hospital.key = :hospital
-    type_hospital.information_type.push(InformationType.find_by_key(:phone))
-    type_hospital.information_type.push(InformationType.find_by_key(:address))
-    type_hospital.save
+    atype_hospital = ActorType.new
+    atype_hospital.name = "Spital"
+    atype_hospital.key = :hospital
+    atype_hospital.information_type.push(InformationType.find_by_key(:names))
+    atype_hospital.information_type.push(InformationType.find_by_key(:phone))
+    atype_hospital.information_type.push(InformationType.find_by_key(:address))
+    atype_hospital.save
   end
 
 
