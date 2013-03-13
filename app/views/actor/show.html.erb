@@ -10,5 +10,5 @@ Type: <%= @actor.actor_type.name %>
 
 
 <% for info in @actor.actor_type.information_type do %>
-  <%= info %>
+  <%= info.key %>
 <% end %>
