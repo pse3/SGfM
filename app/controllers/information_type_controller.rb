@@ -8,9 +8,4 @@ class InformationTypeController < ActionController::Base
     type_phone.save
   end
 
-
-  def list_information_types
-    @information_types = InformationType.each
-  end
-
 end

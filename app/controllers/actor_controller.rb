@@ -11,13 +11,11 @@ class ActorController < ActionController::Base
     user.save
   end
 
-  def list_actors
+  def list
     @actors = current_login.account.actors
   end
 
-  def find_actor_by_id(id)
-    @current_actor = actor.find(id)
-    @current_actor
+  def new
   end
 
 end

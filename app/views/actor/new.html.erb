@@ -1,0 +1,6 @@
+<h3>New Actor</h3>
+
+<%= form_for(:actor) do |f| %>
+  <%= f.collection_select(:actor_type, list_actor_types, :key, :name) %>
+
+<% end %>

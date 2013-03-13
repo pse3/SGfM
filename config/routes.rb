@@ -6,7 +6,11 @@ SGfM::Application.routes.draw do
   get 'logins/show' => 'logins#show'
 
   post 'actors' => 'actor#create'
-  get 'actors' => 'actor#list'
+  get 'actors' => 'actor#list', as: 'actors'
+  get 'actors/create' => 'actor#new', as: 'new_actor'
+
+  get 'actors/:id' => 'actor#show', as: 'show_actor'
+
   get 'actortype/reset' => 'actor_type#reset_default_types'
 
   # The priority is based upon order of creation:

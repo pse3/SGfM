@@ -1,4 +1,7 @@
 <h3>Actors of User</h3>
+
 <% for actor in @actors %>
-<p><%=  actor.name %> (<%= actor.actor_type.name %>) created: <%= actor.created_at %> </p>
+  <p>
+    <a href="<%= show_actor_path(actor) %>"><%=  actor.name %> (<%= actor.actor_type.name %>) created: <%= actor.created_at %></a>
+  </p>
 <% end %>
