@@ -1,14 +1,106 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>SGfM</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>SGfM</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<%= yield %>
+  <body>
+    <div class="row-fluid header hidden-phone hidden-tablet collapse in" id="header" data-toggle="collapse" data-target="#header">
+      <div class="span9 header-logo"></div>
+      <div class="span3 header-right"></div>
+    </div>
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="row-fluid">
+          <div class="span2">
+            <ul class="nav">
+              <li>
+                <a href="#" data-toggle="collapse" data-target="#header"><i class="icon-search icon-white"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="span8">
+            <!-- nav-bar title -->
+            <a class="brand hidden-phone" href="<%= home_path %>"><%= image_tag('logo/qm_schriftzug.png', :width => '15', :height => '20') %></a>
 
-</body>
+            <!-- nav-bar menu left -->
+            <ul class="nav">
+              <li class="active"><a href="<%= home_path %>">Home</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dummy Dropdown<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>Option1</li>
+                  <li>Option2</li>
+                  <li>Option3</li>
+                </ul>
+              </li>
+            </ul>
+
+            <% if login_signed_in? %>
+              <ul class="nav pull-right">
+                <li><a href="<%= edit_login_registration_path %>"><%= current_login.email %></a></li>
+                <li class="divider-vertical"></li>
+                <li><%= link_to('Sign out', destroy_login_session_path, :method => :delete) %></li>
+              </ul>
+            <% else %>
+              <!-- nav-bar menu right -->
+              <ul class="nav pull-right">
+                <li><a href="<%= new_login_registration_path %>">Sign Up</a></li>
+                <li class="divider-vertical"></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                  <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                    <%= form_for("login", :url => login_session_path, :html => { :class => 'navbar-form form-inline pull-right'}) do |f| %>
+                      <%= f.text_field(:email, :placeholder => 'Email') %>
+                      <%= f.password_field(:password, :placeholder => 'Password') %>
+                      <%= f.label(:remember_me) do %>
+                        <%= f.check_box(:remember_me) %>
+                        Remember me
+                      <% end %>
+                      <%= f.submit("Sign in", :class => 'btn btn-primary btn-block') %>
+                      <%= link_to("Forgot your password?", new_login_password_path('login')) %>
+                    <% end %>
+                  </div>
+                </li>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span8 offset2">
+        <%= render partial: "shared/flashes", flash: flash %>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span8 offset2">
+        <p class="pull-right">
+          <%= link_to('de', '#') %>
+          <%= link_to('fr', '#') %>
+          <%= link_to('it', '#') %>
+          <%= link_to('en', '#') %>
+        </p>
+        <h1><%= @page_title %></h1>
+        <%= yield %>
+      </div>
+    </div>
+
+  </body>
 </html>
+
+
+<script>
+  $(function() {
+    // Setup drop down menu
+    $('.dropdown-toggle').dropdown();
+
+    // Fix input element click problem
+    $('.dropdown input, .dropdown label').click(function(e) {
+      e.stopPropagation();
+    });
+  });
+</script>

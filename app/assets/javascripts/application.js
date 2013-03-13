@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery-1.9.1
+//= require bootstrap
