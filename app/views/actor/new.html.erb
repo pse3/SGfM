@@ -13,7 +13,7 @@
   <div class="control-group">
     <%= f.label(:actor_type, class: 'control-label') %>
     <div class="controls">
-      <%= f.collection_select(:actor_type, list_actor_types, :key, :name) %>
+      <%= f.collection_select(:actor_type, list_actor_types, :key, :name,{}, {:onchange => 'render_matching_form(this.value);'}) %>
     </div>
   </div>
 
@@ -22,3 +22,10 @@
   </div>
 
 <% end %>
+
+<script>
+  //Send an AJAX Request to the server and render the matching form
+  function render_matching_form(actor_type_key){
+    alert(actor_type_key);
+  }
+</script>
