@@ -15,9 +15,4 @@ class InformationController < ApplicationController
     @informations = current_actor.informations
   end
 
-  # Resets 'Information' in DataBase
-  def reset_default_types
-    Information.delete_all
-  end
-
 end

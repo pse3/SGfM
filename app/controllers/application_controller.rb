@@ -8,10 +8,12 @@ class ApplicationController < ActionController::Base
   end
 
   def reset_all
-    #reset all types
+    #reset all objects and types
     Actor.delete_all
+    Information.delete_all
     InformationType.delete_all
     ActorType.delete_all
+    Information.delete_all
 
     #create some information_types
     type_phone = InformationType.new
