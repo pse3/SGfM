@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
     atype_hospital = ActorType.new
     atype_hospital.name = "Spital"
     atype_hospital.key = :hospital
-    atype_hospital.information_type.push(InformationType.find_by_key(:names))
+    atype_hospital.information_type.push(InformationType.find_by_key(:name))
     atype_hospital.information_type.push(InformationType.find_by_key(:phone))
     atype_hospital.information_type.push(InformationType.find_by_key(:address))
     atype_hospital.save
