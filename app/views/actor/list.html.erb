@@ -3,7 +3,7 @@
 
 <% for actor in @actors %>
   <p>
-    <a href="<%= show_actor_path(actor) %>"><%=  actor.name %> (<%= actor.actor_type %>) created: <%= actor.created_at %></a>
+    <a href="<%= show_actor_path(actor) %>"><%=  actor %> (<%= actor.actor_type %>) created: <%= actor.created_at %></a>
   </p>
 <% end %>
 

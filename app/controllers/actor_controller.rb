@@ -6,10 +6,20 @@ class ActorController < ApplicationController
   def create
     user = current_login.account
     @actor = Actor.new
-    @actor.name = params[:actor][:name]
     @actor.actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
+    @actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
+
     user.actors.push @actor
     current_actor = @actor
+
+    for info_type in @actor_type.information_type do
+      info = Information.new()
+      info.value = params[:actor][info_type.key]
+      info.save
+      current_actor.informations.push(info)
+    end
+
+
     user.save
   end
 

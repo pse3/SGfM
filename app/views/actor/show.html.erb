@@ -1,6 +1,6 @@
 <% @page_title = 'show actor' %>
 
-Name: <%= @actor.name %><br>
+Name: <%= @actor %><br>
 Type: <%= @actor.actor_type.name %>
 
 
@@ -9,6 +9,9 @@ Type: <%= @actor.actor_type.name %>
 <%= @actor.actor_type.information_type %>
 
 
-<% for info in @actor.actor_type.information_type do %>
-  <%= info.key %>
-<% end %>
+
+
+<% for info in @actor.informations %>
+  <%= info.information_type.key %>
+  <%= info.value %>
+<%end %>
