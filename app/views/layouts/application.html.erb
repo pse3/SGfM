@@ -18,7 +18,7 @@
           <div class="span2">
             <ul class="nav">
               <li>
-                <a href="#" data-toggle="collapse" data-target="#header"><i class="icon-search icon-white"></i></a>
+                <a href="#" data-toggle="collapse" data-target="#header"><i class="icon icon-chevron-up icon-white" id="header_arrow"></i></a>
               </li>
             </ul>
           </div>
@@ -103,4 +103,25 @@
       e.stopPropagation();
     });
   });
+
+
+  $('document').ready(
+    function(){
+      var header_arrow_up = true;
+      $('#header_arrow').click(
+        function(){
+          if (header_arrow_up) {
+            $('#header_arrow').removeClass('icon-chevron-up');
+            $('#header_arrow').addClass('icon-chevron-down');
+            header_arrow_up = false;
+          } else {
+            $('#header_arrow').removeClass('icon-chevron-down');
+            $('#header_arrow').addClass('icon-chevron-up');
+          }
+        }
+      )
+    }
+  )
+
+
 </script>
