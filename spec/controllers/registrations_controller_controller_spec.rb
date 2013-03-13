@@ -9,8 +9,8 @@ describe RegistrationsController, 'Create a new Login' do
   end
 
   it 'should pass arguments' do
-    post 'create', :login => {:email => 'test@myTest.ch', :password => 'test1234', :password_confirmation => 'test1234'}
-    assigns[:login].should be_new_record
+    post 'create', {:login => {:email => 'test@myTest.ch', :password => 'test1234', :password_confirmation => 'test1234'}}
+    subject.current_login.account_type.should eql 'User'
   end
 end
 
