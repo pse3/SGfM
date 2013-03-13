@@ -3,4 +3,12 @@
 Name: <%= @actor.name %><br>
 Type: <%= @actor.actor_type.name %>
 
-<%= list_information_types_of_actor_type(@actor.actor_type) %>
+
+<!-- just for you my arun'li -->
+
+<%= @actor.actor_type.information_type %>
+
+
+<% for info in @actor.actor_type.information_type do %>
+  <%= info %>
+<% end %>
