@@ -13,9 +13,21 @@ class ActorController < ApplicationController
 
   def list
     @actors = current_login.account.actors
+    if @actors.nil?
+      return Array.new
+    end
   end
 
   def new
+  end
+
+  def show
+    @actor = Actor.find(params[:id])
+  end
+
+
+  def reset_default_types
+    Actor.delete_all
   end
 
 end

@@ -13,4 +13,8 @@ class InformationController < ApplicationController
     @informations = current_actor.informations
   end
 
+  def reset_default_types
+    Information.delete_all
+  end
+
 end
