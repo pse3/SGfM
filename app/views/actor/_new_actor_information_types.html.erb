@@ -1,7 +1,15 @@
-Loaded this per ajay. Yay! :) Your key is: <%= actor_type_key %>. Use it wisely!:)
+<%= form_for(:actor, html: {class: 'form-horizontal'}) do |f| %>
+  <% for info in information_types do %>
+    <div class="control-group">
+      <%= f.label(info.key, class: 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(info.key, placeholder: info.name) %>
+      </div>
+    </div>
+  <% end %>
 
-The object itself <%= actor_type %>
-
-<% for info in information_types do %>
-  <%= info.key %>
+  <div class="form-actions">
+    <%= f.submit(:create, class: 'btn btn-primary') %>
+  </div>
 <% end %>
+
