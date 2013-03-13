@@ -7,3 +7,4 @@ describe Actor, 'test creation' do
     actor.name.should eql 'Patrick Suter'
   end
 end
+
