@@ -30,11 +30,12 @@
             <ul class="nav">
               <li class="active"><a href="<%= home_path %>">Home</a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dummy Dropdown<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Development<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li>Option1</li>
-                  <li>Option2</li>
-                  <li>Option3</li>
+                  <li><a href="<%= actors_path %>">Your Actors</a></li>
+                  <li><a href="<%= new_actor_path %>">New Actor</a></li>
+                  <li><a href="<%= reset_actortype_path %>">Reset ActorTypes</a></li>
+                  <li><a href="<%= reset_informationtype_path %>">Reset InformationTypes</a></li>
                 </ul>
               </li>
             </ul>
