@@ -1,0 +1,6 @@
+<% @page_title = 'show actor' %>
+
+Name: <%= @actor.name %><br>
+Type: <%= @actor.actor_type.name %>
+
+<%= list_information_types_of_actor_type(@actor.actor_type) %>

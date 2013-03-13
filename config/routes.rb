@@ -17,6 +17,8 @@ SGfM::Application.routes.draw do
   get 'actors/:id' => 'actor#show', as: 'show_actor'
 
   get 'actortype/reset' => 'actor_type#reset_default_types', as: 'reset_actortype'
+  get 'actor/reset' => 'actor#reset_default_types', as: 'reset_actor'
+  get 'information/reset' => 'information#reset_default_types', as: 'reset_information'
   get 'informationtype/reset' => 'information_type#reset_default_types', as: 'reset_informationtype'
 	match "/information_types_for_actor_type" => "actor_#information_types_for_actor_type"
 

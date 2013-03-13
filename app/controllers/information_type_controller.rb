@@ -1,5 +1,6 @@
 class InformationTypeController < ActionController::Base
 
+  # Resets all InformationTypes
   def reset_default_types
     InformationType.delete_all
     type_phone = InformationType.new
