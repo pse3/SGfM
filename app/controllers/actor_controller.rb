@@ -28,9 +28,12 @@ class ActorController < ApplicationController
 
 	def information_types_for_actor_type
     key = params[:actor_type_key]
-    @actor_type = ActorType.find_by_key(key)
+    actor_type = ActorType.find_by_key(key)
+		information_types = @actor_type.information_type_ids
     render :partial => 'actor/new_actor_information_types', :locals => {:actor_type_key => key,
-                                                                        :actor_type => @actor_type}
+                                                                        :actor_type => actor_type,
+																																				:information_types => information_types
+		}
 	end
 
   # Find actor with given id
