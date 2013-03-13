@@ -18,4 +18,43 @@ class ApplicationController < ActionController::Base
     @current_actor
   end
 
+  def reset_default_types
+    #reset all types
+    InformationType.delete_all
+    ActorType.delete_all
+
+    #create some information_types
+    type_phone = InformationType.new
+    type_phone.name = "Telefon"
+    type_phone.key = :phone
+    type_phone.save
+
+    type_address = InformationType.new
+    type_address.name = "Adresse"
+    type_address.key = :address
+    type_address.save
+
+    type_email = InformationType.new
+    type_email.name = "email"
+    type_email.key = :email
+    type_email.save
+
+    #create some actor_types
+    type_doctor = ActorType.new
+    type_doctor.name = "Arzt"
+    type_doctor.key = :doctor
+    type_doctor.information_type.push(InformationType.find_by_key(:phone))
+    type_doctor.information_type.push(InformationType.find_by_key(:address))
+    type_doctor.information_type.push(InformationType.find_by_key(:email))
+    type_doctor.save
+
+    type_hospital = ActorType.new
+    type_hospital.name = "Spital"
+    type_hospital.key = :hospital
+    type_hospital.information_type.push(InformationType.find_by_key(:phone))
+    type_hospital.information_type.push(InformationType.find_by_key(:address))
+    type_hospital.save
+  end
+
+
 end

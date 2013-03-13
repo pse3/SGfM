@@ -7,4 +7,8 @@ class InformationType
 
   #no mappings needed!
 
+  def self.find_by_key(key)
+    InformationType.find_by(key: key)
+  end
+
 end
