@@ -1,5 +1,7 @@
 class InformationController < ApplicationController
+
   before_filter :authenticate_login!
+
 
   def create
     @information = Information.new
@@ -13,6 +15,7 @@ class InformationController < ApplicationController
     @informations = current_actor.informations
   end
 
+  # Resets 'Information' in DataBase
   def reset_default_types
     Information.delete_all
   end

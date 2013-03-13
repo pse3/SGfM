@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
-  # To change this template use File | Settings | File Templates.
+
   after_filter :set_account, :only => [:create]
+
 
   def new
     super
@@ -23,4 +24,5 @@ class RegistrationsController < Devise::RegistrationsController
       current_login.save
     end
   end
+
 end
