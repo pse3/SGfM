@@ -17,8 +17,9 @@
 
 //SGfM Namespace
 var SGfM = {}
+SGfM.actor= {}
 //Sends an AJAX Request to the actors controller and renders the matching form. I will generalize it later.
-SGfM.render_matching_form= function(controller_path, actor_type_key){
+SGfM.actor.render_matching_form= function(controller_path, actor_type_key){
   jQuery.ajax({
     url: controller_path,
     type: 'GET',
