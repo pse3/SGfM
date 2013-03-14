@@ -9,3 +9,5 @@ Type: <%= @actor.actor_type.name %>
   <%= info.information_type.name %>:
   <%= info.value %></br>
 <%end %>
+
+<%=  link_to('bearbeiten', edit_actor_path(@actor)) %>

@@ -3,8 +3,8 @@
 
 <% for actor in @actors %>
   <p>
-    <a href="<%= show_actor_path(actor) %>"><%=  actor.find_information_by_key(:name) %> (<%= actor.actor_type %>) created: <%= actor.created_at %></a>
+    <%= link_to("#{actor.find_information_by_key(:name)} (#{actor.actor_type})", show_actor_path(actor)) %>
   </p>
 <% end %>
 
-<%= link_to('new actor', create_actor_path) %>
+<%= link_to('neuer Akteur', create_actor_path) %>

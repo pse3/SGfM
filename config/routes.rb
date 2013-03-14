@@ -15,6 +15,7 @@ SGfM::Application.routes.draw do
   post 'actors/create' => 'actor#create'
 
   get 'actors/:id' => 'actor#show', as: 'show_actor'
+  get 'actors/edit/:id' => 'actor#edit', as: 'edit_actor'
 
   get 'actortype/reset' => 'actor_type#reset_default_types', as: 'reset_actortype'
   get 'types/reset' => 'application#reset_all', as: 'reset_all'

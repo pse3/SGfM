@@ -34,6 +34,10 @@ class ActorController < ApplicationController
     end
   end
 
+  def edit
+    @actor = Actor.find(params[:id])
+  end
+
   # Doesn't do anything
   def new
 	end
