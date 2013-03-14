@@ -8,17 +8,33 @@ SGfM::Application.routes.draw do
 
   get 'logins/show' => 'logins#show'
 
-
+  #actor
   get 'actors' => 'actor#list', as: 'actors'
-
   get 'actors/create' => 'actor#new', as: 'create_actor'
   post 'actors/create' => 'actor#create'
-
   get 'actors/:id' => 'actor#show', as: 'show_actor'
   get 'actors/edit/:id' => 'actor#edit', as: 'edit_actor'
 
-  get 'actortype/reset' => 'actor_type#reset_default_types', as: 'reset_actortype'
-  get 'types/reset' => 'application#reset_all', as: 'reset_all'
+  #information
+
+  #information_type
+  get 'information' => 'information_type#list', as: 'list_information_types'
+  get 'information_type/create' => 'information_type#new', as: 'create_information_types'
+  post 'information_type/create' => 'information_type#create'
+  get 'information_types/:id' => 'information_type#show', as: 'show_information_type'
+  get 'information_types/edit/:id' => 'information_type#edit', as: 'edit_information_type'
+
+  #actor_type
+  get 'actor' => 'actor_type#list', as: 'list_actor_types'
+  get 'actor_types/create' => 'actor_type#new', as: 'create_actor_types'
+  post 'actor_types/create' => 'actor_type#create'
+  get 'actor_types/:id' => 'actor_type#show', as: 'show_actor_type'
+  get 'actor_types/edit/:id' => 'actor_type#edit', as: 'edit_actor_type'
+
+
+
+
+  get 'all/reset' => 'application#reset_all', as: 'reset_all'
 
   match "/information_types_for_actor_type" => "actor#information_types_for_actor_type"
 

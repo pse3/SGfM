@@ -13,9 +13,8 @@ class ApplicationController < ActionController::Base
     Information.delete_all
     InformationType.delete_all
     ActorType.delete_all
-    Information.delete_all
 
-    #create some information_types
+    #create some information_type
     itype_name = InformationType.new
     itype_name.name = "Name"
     itype_name.key = :name

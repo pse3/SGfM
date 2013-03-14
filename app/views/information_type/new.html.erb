@@ -1,0 +1,20 @@
+<% @page_title = 'New InformationType' %>
+
+<%= form_for(:information_type, url: create_information_types_path, html: {class: 'form-horizontal'}) do |f| %>
+    <div class="control-group">
+      <%= f.label(:name, class: 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(:name, placeholder: :name) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label(:key, class: 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(:key, placeholder: :key) %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit(:create, class: 'btn btn-primary') %>
+    </div>
+<% end %>
