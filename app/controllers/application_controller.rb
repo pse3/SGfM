@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
   end
 
   def reset_all
+
     load './config/initializers/mongoid.rb'
+
     redirect_to '/'
   end
 

@@ -23,6 +23,8 @@ class ActorController < ApplicationController
 
     current_actor.save
     user.save
+
+    redirect_to '/actors'
   end
 
   # Gets all actors of the current logged in user
@@ -40,7 +42,11 @@ class ActorController < ApplicationController
 
   # Doesn't do anything
   def new
-	end
+  end
+
+  def update
+    @actor = Actor.find(params[:id])
+  end
 
 	def information_types_for_actor_type
     key = params[:actor_type_key]

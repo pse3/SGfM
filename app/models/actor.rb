@@ -22,4 +22,8 @@ class Actor
     infos_by_type.first unless infos_by_type.empty?
   end
 
+  def name
+    self.find_information_by_key(:name)
+  end
+
 end

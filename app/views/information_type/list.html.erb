@@ -1,0 +1,10 @@
+<% @page_title = 'Your InformationTypes' %>
+
+
+<% for information_type in @information_types %>
+    <p>
+      <%= link_to("#{} #{information_type.name}", show_information_type_path(information_type)) %>
+    </p>
+<% end %>
+
+<%= link_to('neuer InformationType', create_information_types_path) %>

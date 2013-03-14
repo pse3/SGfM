@@ -22,5 +22,13 @@ class Information
     self.value
   end
 
+  def name
+    self.information_type.name
+  end
+
+  def key
+    self.information_type.key
+  end
+
 
 end
