@@ -4,7 +4,7 @@ SGfM::Application.routes.draw do
   devise_for :logins, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => {:sign_up => 'signup',
                                                                                                         :sign_in => 'login',
                                                                                                         :sign_out => 'logout'}
-  root :to => 'home#index', as: 'home'
+  root :to => 'actor#list', as: 'home'
 
   get 'logins/show' => 'logins#show'
 
@@ -14,6 +14,7 @@ SGfM::Application.routes.draw do
   post 'actors/create' => 'actor#create'
   get 'actors/:id' => 'actor#show', as: 'show_actor'
   get 'actors/edit/:id' => 'actor#edit', as: 'edit_actor'
+  post 'actors/edit/:id' => 'actor#update', as: 'update_actor'
 
   #information
 

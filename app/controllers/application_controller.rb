@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     itype_address.save
 
     itype_email = InformationType.new
-    itype_email.name = "email"
+    itype_email.name = "Email"
     itype_email.key = :email
     itype_email.save
 

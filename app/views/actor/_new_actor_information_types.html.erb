@@ -1,7 +1,7 @@
 <%= form_for(:actor, url: create_actor_path, html: {class: 'form-horizontal'}) do |f| %>
   <% for info in information_types do %>
     <div class="control-group">
-      <%= f.label(info.key, class: 'control-label') %>
+      <%= f.label(info.key, info.name, class: 'control-label') %>
       <div class="controls">
         <%= f.text_field(info.key, placeholder: info.name) %>
       </div>
@@ -9,9 +9,5 @@
   <% end %>
 
   <%= f.hidden_field(:actor_type_key, value: actor_type_key) %>
-
-  <div class="form-actions">
-    <%= f.submit(:create, class: 'btn btn-primary') %>
-  </div>
 <% end %>
 
