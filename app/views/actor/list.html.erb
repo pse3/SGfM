@@ -1,4 +1,4 @@
-<% @page_title = 'Akteure' %>
+<% @page_title = t('actor.list.title') %>
 
 
 <% for actor in @actors %>
@@ -7,4 +7,4 @@
   </p>
 <% end %>
 
-<%= link_to('neuer Akteur', create_actor_path) %>
+<%= link_to(t('actor.list.new_actor'), create_actor_path) %>

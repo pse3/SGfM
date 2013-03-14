@@ -21,7 +21,7 @@ en:
 
 
 
-  actors:
+  actor:
     list:
       title: 'Your actors'
       new_actor: 'Create new actor'
