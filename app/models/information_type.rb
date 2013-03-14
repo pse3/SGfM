@@ -5,6 +5,8 @@ class InformationType
   field :name, :type => String
   field :key, :type => Symbol
 
+  validates_uniqueness_of :key
+
   #no mappings needed!
 
   def self.find_by_key(key)

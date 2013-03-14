@@ -18,6 +18,7 @@ describe "Application Pages" do
       page.should have_selector('a', text: 'en')
     end
   end
+
   describe "Sign up" do
     before {visit '/signup'}
 
@@ -33,6 +34,7 @@ describe "Application Pages" do
       page.should have_selector('a', text: 'en')
     end
   end
+
   describe "Login" do
     before {visit '/login'}
 
