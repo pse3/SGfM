@@ -14,4 +14,12 @@ class Actor
     self.created_at = DateTime.now
   end
 
+  #TODO refactor...
+  def find_information_by_key(key)
+    infos_by_type = self.informations.select { |info|
+      info.information_type.key == key
+    }
+    infos_by_type.first unless infos_by_type.empty?
+  end
+
 end

@@ -53,6 +53,8 @@ class ApplicationController < ActionController::Base
     atype_hospital.information_type.push(InformationType.find_by_key(:phone))
     atype_hospital.information_type.push(InformationType.find_by_key(:address))
     atype_hospital.save
+
+    redirect_to '/'
   end
 
 

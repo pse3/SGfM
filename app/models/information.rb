@@ -18,5 +18,9 @@ class Information
     self.created_at = DateTime.now
   end
 
+  def to_s
+    self.value
+  end
+
 
 end
