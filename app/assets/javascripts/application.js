@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require jquery-1.9.1
 //= require bootstrap
+
+//SGfM Namespace
+var SGfM = {}
+
+//Sends an AJAX Request to the server and renders the matching form
+SGfM.render_matching_form= function(actor_type_key){
+  jQuery.ajax({
+    url: '/information_types_for_actor_type',
+    type: 'GET',
+    data: {"actor_type_key" : actor_type_key},
+    dataType: 'html',
+    success: function(data) {
+      jQuery('#information-types-form').html(data);
+    }
+  });
+}
