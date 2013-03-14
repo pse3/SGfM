@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(login)
-    '/logins/show'
+    '/' + I18n.locale.to_s + '/logins/show'
   end
 
   def reset_all
