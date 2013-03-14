@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-# refactoring!
+# TODO: refactoring:
 # page.should have_selector with different languages to Test Helper!
 
-describe "Application Pages" do
+describe "Static Pages" do
 
   describe "Home Page" do
     before { visit '/'}
