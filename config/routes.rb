@@ -36,7 +36,7 @@ SGfM::Application.routes.draw do
 
     get 'all/reset' => 'application#reset_all', as: 'reset_all'
 
-    match "/information_types_for_actor_type" => "actor#information_types_for_actor_type"
+    get "/information_types_for_actor_type" => "actor#information_types_for_actor_type", as: 'information_types_for_actor_type'
 
     #root
     root :to => 'home#index', as: 'home'
