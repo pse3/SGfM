@@ -25,7 +25,7 @@
         <div class="control-group">
           <%= it_form.label(:key, info_type.name, class: 'control-label') %>
           <div class="controls">
-            <%= it_form.check_box(:key, info_type.name) %>
+            <%= check_box_tag info_type.key, '1' %>
           </div>
         </div>
         <% end %>
