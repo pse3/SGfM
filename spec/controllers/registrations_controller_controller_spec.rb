@@ -11,6 +11,8 @@ describe RegistrationsController, 'Create a new Login' do
   it 'should pass arguments' do
     post 'create', {:login => {:email => 'test@myTest.ch', :password => 'test1234', :password_confirmation => 'test1234'}}
     subject.current_login.account_type.should eql 'User'
+    subject.current_login.account.should_not be_nil
+    subject.current_login.account.should be_kind_of(User)
   end
 end
 
