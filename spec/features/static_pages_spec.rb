@@ -5,23 +5,11 @@ require 'spec_helper'
 
 describe "Static Pages" do
 
-  describe "Home Page" do
-    before { visit '/'}
-
-    it "should have the content 'Home'" do
-      page.should have_selector('h1', text: 'Home')
-    end
-    it "should have links to every language" do
-      page.should have_selector('a', text: 'de')
-      page.should have_selector('a', text: 'fr')
-      page.should have_selector('a', text: 'it')
-      page.should have_selector('a', text: 'en')
-    end
-  end
-
   describe "Sign up" do
     before {visit '/signup'}
-
+    it "should have title Sign up" do
+      page.should have_selector('h1', text: 'Sign up')
+    end
     it "should have Email, PW and confirmation" do
       page.should have_selector('label', text: 'Email')
       page.should have_selector('label', text: 'Password')

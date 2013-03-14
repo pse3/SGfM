@@ -34,6 +34,10 @@
                 <ul class="dropdown-menu">
                   <li><a href="<%= actors_path %>">Your Actors</a></li>
                   <li><a href="<%= create_actor_path %>">New Actor</a></li>
+                  <li><a href="<%= list_actor_types_path %>">All ActorTypes</a></li>
+                  <li><a href="<%= list_information_types_path %>">All InformationTypes</a></li>
+                  <li><a href="<%= create_actor_types_path %>">New ActorType</a></li>
+                  <li><a href="<%= create_information_types_path %>">New InformationType</a></li>
                   <li><a href="<%= reset_all_path %>">Reset All</a></li>
                 </ul>
               </li>
@@ -43,15 +47,16 @@
               <ul class="nav pull-right">
                 <li><a href="<%= edit_login_registration_path %>"><%= current_login.email %></a></li>
                 <li class="divider-vertical"></li>
-                <li><%= link_to('Sign out', destroy_login_session_path, :method => :delete) %></li>
+                <li><%= link_to(t('layout.sign_out'), destroy_login_session_path, :method => :delete) %></li>
               </ul>
             <% else %>
               <!-- nav-bar menu right -->
               <ul class="nav pull-right">
-                <li><a href="<%= new_login_registration_path %>">Sign Up</a></li>
+                <li><%= link_to(t('layout.sign_up'), new_login_registration_path) %></li>
                 <li class="divider-vertical"></li>
                 <li class="dropdown">
-                  <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                  <%= link_to(raw(t('layout.sign_in') + '<strong class="caret"></strong>'), '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown') %>
+                  </a>
                   <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
                     <%= form_for("login", :url => login_session_path, :html => { :class => 'navbar-form form-inline pull-right'}) do |f| %>
                       <%= f.text_field(:email, :placeholder => 'Email') %>
