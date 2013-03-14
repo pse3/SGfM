@@ -84,10 +84,10 @@
     <div class="row-fluid">
       <div class="span8 offset2">
         <p class="pull-right">
-          <%= link_to('de', '#') %>
-          <%= link_to('fr', '#') %>
-          <%= link_to('it', '#') %>
-          <%= link_to('en', '#') %>
+          <%= link_to('de', :locale => 'de') %>
+          <%= link_to('fr', :locale => 'fr') %>
+          <%= link_to('it', :locale => 'it') %>
+          <%= link_to('en', :locale => 'en') %>
         </p>
         <h1><%= @page_title %></h1>
         <%= yield %>
