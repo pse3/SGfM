@@ -7,4 +7,27 @@ en:
     sign_in: 'Sign in'
     sign_out: 'Sign out'
     sign_up: 'Sign up'
+    forgot_password: 'Forgot your password?'
+    remember_me: 'Remember me?'
+    email: 'email'
+    password: 'password'
     home: 'Home'
+
+
+
+  actors:
+    list:
+      title: 'Your actors'
+      new_actor: 'Create new actor'
+
+
+    show:
+      edit_actor:
+      delete_actor:
+
+
+  logins:
+    show:
+      title: 'Your profile'
+      email: 'Email'
+      type: 'Account-type'

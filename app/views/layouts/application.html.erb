@@ -28,29 +28,29 @@
 
             <!-- nav-bar menu left -->
             <ul class="nav">
-              <li class="active"><a href="<%= home_path %>">Home</a></li>
+              <li><%= link_to('Home', home_path) %></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Development<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<%= actors_path %>">Your Actors</a></li>
-                  <li><a href="<%= create_actor_path %>">New Actor</a></li>
-                  <li><a href="<%= list_actor_types_path %>">All ActorTypes</a></li>
-                  <li><a href="<%= list_information_types_path %>">All InformationTypes</a></li>
-                  <li><a href="<%= create_actor_types_path %>">New ActorType</a></li>
-                  <li><a href="<%= create_information_types_path %>">New InformationType</a></li>
-                  <li><a href="<%= reset_all_path %>">Reset All</a></li>
+                  <li><%= link_to('Your Actors', actors_path) %></li>
+                  <li><%= link_to('New Actor', create_actor_path) %></li>
+                  <li><%= link_to('All ActorTypes', list_actor_types_path) %></li>
+                  <li><%= link_to('All InformationTypes', list_information_types_path) %></li>
+                  <li><%= link_to('New ActorType', create_actor_types_path) %></li>
+                  <li><%= link_to('New InformationType', create_information_types_path) %></li>
+                  <li><%= link_to('Reset All', reset_all_path) %></li>
                 </ul>
               </li>
             </ul>
 
+            <!-- nav-bar menu right -->
             <% if login_signed_in? %>
               <ul class="nav pull-right">
-                <li><a href="<%= edit_login_registration_path %>"><%= current_login.email %></a></li>
+                <li><%= link_to(current_login.email, edit_login_registration_path) %></a></li>
                 <li class="divider-vertical"></li>
                 <li><%= link_to(t('layout.sign_out'), destroy_login_session_path, :method => :delete) %></li>
               </ul>
             <% else %>
-              <!-- nav-bar menu right -->
               <ul class="nav pull-right">
                 <li><%= link_to(t('layout.sign_up'), new_login_registration_path) %></li>
                 <li class="divider-vertical"></li>
@@ -59,28 +59,33 @@
                   </a>
                   <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
                     <%= form_for("login", :url => login_session_path, :html => { :class => 'navbar-form form-inline pull-right'}) do |f| %>
-                      <%= f.text_field(:email, :placeholder => 'Email') %>
-                      <%= f.password_field(:password, :placeholder => 'Password') %>
+                      <%= f.text_field(:email, :placeholder => t('layout.email')) %>
+                      <%= f.password_field(:password, :placeholder => t('layout.password')) %>
                       <%= f.label(:remember_me) do %>
                         <%= f.check_box(:remember_me) %>
-                        Remember me
+                        <%= t('layout.remember_me') %>
                       <% end %>
-                      <%= f.submit("Sign in", :class => 'btn btn-primary btn-block') %>
-                      <%= link_to("Forgot your password?", new_login_password_path('login')) %>
+                      <%= f.submit(t('layout.sign_in'), :class => 'btn btn-primary btn-block') %>
+                      <%= link_to(t('layout.forgot_password'), new_login_password_path('login')) %>
                     <% end %>
                   </div>
                 </li>
               </ul>
             <% end %>
+
           </div>
         </div>
       </div>
     </div>
+
+    <!-- flash-messages -->
     <div class="row-fluid">
       <div class="span8 offset2">
         <%= render partial: "shared/flashes", flash: flash %>
       </div>
     </div>
+
+    <!-- main div -->
     <div class="row-fluid">
       <div class="span8 offset2">
         <p class="pull-right">
