@@ -8,10 +8,12 @@ class ActorValidator < ActiveModel::Validator
 	private
 	def validate_infos(record)
 		valid=true
-		for info_type in record.actor_type.information_type do
+		record.actor_type.information_type.each do |info_type|
 			info = record.informations.first{|info| info.information_type == info_type}
-			valid &= info && !info.value.empty?
+			valid = valid && ( !info.nil? && !info.value.empty? )
+			puts info_type.key.to_s+"====================>"+valid.to_s+" "+info.to_s
 		end
+
 		valid
 	end
 end

@@ -20,10 +20,9 @@ class ActorController < ApplicationController
       current_actor.informations.push(info)
     end
 
-		if(current_actor.valid?)
-    	current_actor.save
-    	user.save
-		end
+		current_actor.save
+		user.save
+
 
   end
 
