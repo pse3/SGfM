@@ -1,7 +1,8 @@
 <% @page_title = t('actor.list.title') %>
 
+
 <div class="row pull-right">
-  <%= button_to(t('actor.list.new_actor'), create_actor_path, :class => 'btn btn-primary') %>
+  <%= link_to(t('actor.list.new_actor'), create_actor_path, :class => 'btn btn-primary') %>
 </div>
 
 <table class="table table-hover">
