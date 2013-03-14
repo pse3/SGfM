@@ -3,15 +3,21 @@
 
 en:
 
-  layout:
+  form:
+    email: 'email11'
+    password: 'password11'
+    password_confirm: 'password confirm11'
+    current_password: 'current password11'
+    remember: 'remember me11'
+    submit: 'submit11'
+    update: 'update'
+    cancel: 'cancel11'
+
+  basic:
     sign_in: 'Sign in'
     sign_out: 'Sign out'
     sign_up: 'Sign up'
     forgot_password: 'Forgot your password?'
-    remember_me: 'Remember me?'
-    email: 'email'
-    password: 'password'
-    home: 'Home'
 
 
 
@@ -20,8 +26,8 @@ en:
       title: 'Your actors'
       new_actor: 'Create new actor'
 
-
     show:
+      title:
       edit_actor:
       delete_actor:
 
@@ -31,3 +37,37 @@ en:
       title: 'Your profile'
       email: 'Email'
       type: 'Account-type'
+
+
+  home:
+    index:
+      title: 'Home'
+
+
+  devise:
+    sessions:
+      new:
+        title: 'Sign in'
+
+    registration:
+      edit:
+        title: 'Edit %{profile}'
+        cancel_account: 'Cancel my account'
+      new:
+        title: 'Sign up'
+
+    passwords:
+      edit:
+        title:
+      new:
+        title:
+
+    unlocks:
+      new:
+        title: 'Resend unlock instructions'
+        submit: 'Resend unlock instructions'
+
+    links:
+      confirmation_inst: "Didn't receive confirmation instructions?"
+      unlock_inst: "Didn't receive unlock instructions?"
+      sign_in_with: 'Sign in with %{provider}'

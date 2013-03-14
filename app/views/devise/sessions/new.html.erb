@@ -1,24 +1,25 @@
-<% @page_title = 'Sign in' %>
+<% @page_title = t('devise.sessions.new.title') %>
+
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-horizontal' }) do |f| %>
 
   <div class="control-group">
-    <%= f.label(:email, :class => 'control-label') %>
+    <%= f.label(:email, t('form.email'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.email_field(:email, :placeholder => 'Email', :autofocus => true) %>
+      <%= f.email_field(:email, :placeholder => t('form.email'), :autofocus => true) %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label(:password, :class => 'control-label') %>
+    <%= f.label(:password, t('form.password'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.password_field(:password, :placeholder => 'Password') %>
+      <%= f.password_field(:password, :placeholder => t('form.password')) %>
     </div>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="control-group">
-      <%= f.label(:remember_me, :class => 'control-label') %>
+      <%= f.label(:remember_me, t('form.remember'), :class => 'control-label') %>
       <div class="controls">
         <%= f.check_box(:remember_me) %>
       </div>
@@ -26,7 +27,7 @@
   <% end -%>
 
   <div class="form-actions">
-    <%= f.submit(t('devise.sessions.signed_in'), :class => 'btn btn-large btn-primary') %>
+    <%= f.submit(t('basic.sign_in'), :class => 'btn btn-large btn-primary') %>
   </div>
 
 <% end %>

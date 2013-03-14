@@ -28,7 +28,7 @@
 
             <!-- nav-bar menu left -->
             <ul class="nav">
-              <li><%= link_to('Home', home_path) %></li>
+              <li><%= link_to(t('home.index.title'), home_path) %></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Development<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -48,25 +48,25 @@
               <ul class="nav pull-right">
                 <li><%= link_to(current_login.email, edit_login_registration_path) %></a></li>
                 <li class="divider-vertical"></li>
-                <li><%= link_to(t('layout.sign_out'), destroy_login_session_path, :method => :delete) %></li>
+                <li><%= link_to(t('basic.sign_out'), destroy_login_session_path, :method => :delete) %></li>
               </ul>
             <% else %>
               <ul class="nav pull-right">
                 <li><%= link_to(t('layout.sign_up'), new_login_registration_path) %></li>
                 <li class="divider-vertical"></li>
                 <li class="dropdown">
-                  <%= link_to(raw(t('layout.sign_in') + '<strong class="caret"></strong>'), '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown') %>
+                  <%= link_to(raw(t('basic.sign_in') + '<strong class="caret"></strong>'), '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown') %>
                   </a>
                   <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
                     <%= form_for("login", :url => login_session_path, :html => { :class => 'navbar-form form-inline pull-right'}) do |f| %>
-                      <%= f.text_field(:email, :placeholder => t('layout.email')) %>
-                      <%= f.password_field(:password, :placeholder => t('layout.password')) %>
+                      <%= f.text_field(:email, :placeholder => t('form.email')) %>
+                      <%= f.password_field(:password, :placeholder => t('form.password')) %>
                       <%= f.label(:remember_me) do %>
                         <%= f.check_box(:remember_me) %>
-                        <%= t('layout.remember_me') %>
+                        <%= t('form.remember') %>
                       <% end %>
-                      <%= f.submit(t('layout.sign_in'), :class => 'btn btn-primary btn-block') %>
-                      <%= link_to(t('layout.forgot_password'), new_login_password_path('login')) %>
+                      <%= f.submit(t('basic.sign_in'), :class => 'btn btn-primary btn-block') %>
+                      <%= link_to(t('basic.forgot_password'), new_login_password_path('login')) %>
                     <% end %>
                   </div>
                 </li>
