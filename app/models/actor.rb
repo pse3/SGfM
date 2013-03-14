@@ -2,6 +2,7 @@ class Actor
   # base class for hospitals, doctors etc.
 
   include Mongoid::Document
+	include ActiveModel::Validations
 
   field :created_at, :type => DateTime
 
@@ -9,6 +10,7 @@ class Actor
   embeds_many :informations, class_name: 'Information'                                  #embedded
   belongs_to :owner, class_name: 'User'                                                 #embedded
 
+	validates_with	ActorValidator
   def initialize
     super
     self.created_at = DateTime.now

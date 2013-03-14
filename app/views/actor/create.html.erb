@@ -2,3 +2,7 @@
 
 You have created an actor.
 <p><%= @actor %></p>
+
+<%if !@actor.valid? %>
+  invalid!
+<% end %>
