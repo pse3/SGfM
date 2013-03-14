@@ -1,10 +1,18 @@
 <% @page_title = t('actor.list.title') %>
 
+<div class="row pull-right">
+  <%= button_to(t('actor.list.new_actor'), create_actor_path, :class => 'btn btn-primary') %>
+</div>
 
-<% for actor in @actors %>
-  <p>
-    <%= link_to("#{actor.find_information_by_key(:name)} #{actor.actor_type}", show_actor_path(actor)) %>
-  </p>
-<% end %>
-
-<%= link_to(t('actor.list.new_actor'), create_actor_path) %>
+<table class="table table-hover">
+  <tr>
+    <th><%= t('actor.list.name_table') %></th>
+    <th><%= t('actor.list.type_table') %></th>
+  </tr>
+  <% for actor in @actors %>
+    <tr>
+      <td><%= link_to(actor.find_information_by_key(:name), show_actor_path(actor)) %></td>
+      <td><%= actor.actor_type %></td>
+    </tr>
+  <% end %>
+</table>

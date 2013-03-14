@@ -9,5 +9,10 @@
   <% end %>
 
   <%= f.hidden_field(:actor_type_key, value: actor_type_key) %>
+
+  <div class="form-actions">
+    <%= f.submit(:create, class: 'btn btn-primary') %>
+  </div>
+
 <% end %>
 

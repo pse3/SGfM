@@ -23,8 +23,6 @@ class ActorController < ApplicationController
 
     current_actor.save
     user.save
-
-    redirect_to '/actors'
   end
 
   # Gets all actors of the current logged in user

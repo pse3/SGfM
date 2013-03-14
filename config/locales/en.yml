@@ -25,11 +25,17 @@ en:
     list:
       title: 'Your actors'
       new_actor: 'Create new actor'
+      name_table: 'Name'
+      type_table: 'Type'
 
     show:
       title:
       edit_actor:
       delete_actor:
+
+    new:
+      title: 'Create new actor'
+      select_type: 'Select a type'
 
 
   logins:
