@@ -1,0 +1,17 @@
+# Sample localization file for German. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+
+  layout:
+    sign_in: 'Anmelden'
+    sign_out: 'Abmelden'
+    sign_up: 'Registrieren'
+    home: 'Home'
+
+  actor:
+
+    new:
+
+
+    create:

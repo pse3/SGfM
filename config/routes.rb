@@ -1,26 +1,35 @@
 SGfM::Application.routes.draw do
 
-
-  devise_for :logins, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => {:sign_up => 'signup',
-                                                                                                        :sign_in => 'login',
-                                                                                                        :sign_out => 'logout'}
-  root :to => 'home#index', as: 'home'
-
-  get 'logins/show' => 'logins#show'
+  scope "/:locale" do
 
 
-  get 'actors' => 'actor#list', as: 'actors'
 
-  get 'actors/create' => 'actor#new', as: 'create_actor'
-  post 'actors/create' => 'actor#create'
+    devise_for :logins, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => {:sign_up => 'signup',
+                                                                                                          :sign_in => 'login',
+                                                                                                          :sign_out => 'logout'}
 
-  get 'actors/:id' => 'actor#show', as: 'show_actor'
-  get 'actors/edit/:id' => 'actor#edit', as: 'edit_actor'
 
-  get 'actortype/reset' => 'actor_type#reset_default_types', as: 'reset_actortype'
-  get 'types/reset' => 'application#reset_all', as: 'reset_all'
+    get 'logins/show' => 'logins#show'
 
-  match "/information_types_for_actor_type" => "actor#information_types_for_actor_type"
+    get 'actors' => 'actor#list', as: 'actors'
+
+    get 'actors/create' => 'actor#new', as: 'create_actor'
+    post 'actors/create' => 'actor#create'
+
+    get 'actors/:id' => 'actor#show', as: 'show_actor'
+    get 'actors/edit/:id' => 'actor#edit', as: 'edit_actor'
+
+    get 'actortype/reset' => 'actor_type#reset_default_types', as: 'reset_actortype'
+    get 'types/reset' => 'application#reset_all', as: 'reset_all'
+
+    match "/information_types_for_actor_type" => "actor#information_types_for_actor_type"
+
+    root :to => 'home#index', as: 'home'
+
+  end
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
