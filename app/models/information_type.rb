@@ -13,4 +13,5 @@ class InformationType
     InformationType.find_by(key: key)
   end
 
+
 end

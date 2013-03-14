@@ -1,37 +1,37 @@
-<% @page_title = 'New Actor' %>
-
-
+<% @page_title = 'Neuen Akteur erfassen' %>
 <%= form_for(:actor, html: {class: 'form-horizontal'}) do |f| %>
 
-  <div class="control-group">
-    <%= f.label(:actor_type, class: 'control-label') %>
-    <div class="controls">
-      <%= f.collection_select(:actor_type, list_actor_types, :key, :name,{}, {:id => 'actor-type-select', :onchange => 'render_matching_form(this.value);'}) %>
+    <div class="control-group">
+        <%= f.label(:actor_type, 'Typ', class: 'control-label') %>
+        <div class="controls">
+            <%= f.collection_select(:actor_type, list_actor_types, :key, :name,{}, {:id => 'actor-type-select', :onchange => 'render_matching_form(this.value);'}) %>
+        </div>
     </div>
-  </div>
 
-  <div id="information-types-form"></div>
+    <div id="information-types-form"></div>
+
+    <div class="form-actions">
+        <%= f.submit(:create, class: 'btn btn-primary') %>
+    </div>
 
 <% end %>
 
-
-
 <script>
-  //Send an AJAX Request to the server and render the matching form
-  function render_matching_form(actor_type_key){
-    jQuery.ajax({
-      url: '/information_types_for_actor_type',
-      type: 'GET',
-      data: {"actor_type_key" : actor_type_key},
-      dataType: 'html',
-      success: function(data) {
-        jQuery('#information-types-form').html(data);
-      }
-    });
-  }
+    //Send an AJAX Request to the server and render the matching form
+    function render_matching_form(actor_type_key){
+        jQuery.ajax({
+            url: '/information_types_for_actor_type',
+            type: 'GET',
+            data: {"actor_type_key" : actor_type_key},
+            dataType: 'html',
+            success: function(data) {
+                jQuery('#information-types-form').html(data);
+            }
+        });
+    }
 
-  //Set default form
-  $('document').ready(function(){
-     render_matching_form($('#actor-type-select').val());
-  });
+    //Set default form
+    $('document').ready(function(){
+        render_matching_form($('#actor-type-select').val());
+    });
 </script>

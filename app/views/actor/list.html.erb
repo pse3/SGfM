@@ -1,9 +1,9 @@
-<% @page_title = 'Your Actors' %>
+<% @page_title = 'Akteure' %>
 
 
 <% for actor in @actors %>
   <p>
-    <%= link_to("#{actor.find_information_by_key(:name)} (#{actor.actor_type})", show_actor_path(actor)) %>
+    <%= link_to("#{actor.find_information_by_key(:name)} #{actor.actor_type}", show_actor_path(actor)) %>
   </p>
 <% end %>
 
