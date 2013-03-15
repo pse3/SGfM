@@ -41,10 +41,8 @@
                     <li><%= link_to(t('application.menu.actors'), actors_path) %></li>
                     <% if current_login.is_admin? %>
                       <li class="divider"></li>
-                      <li><%= link_to('All ActorTypes', list_actor_types_path) %></li>
-                      <li><%= link_to('All InformationTypes', list_information_types_path) %></li>
-                      <li><%= link_to('New ActorType', create_actor_types_path) %></li>
-                      <li><%= link_to('New InformationType', create_information_types_path) %></li>
+                      <li><%= link_to('ActorTypes', list_actor_types_path) %></li>
+                      <li><%= link_to('InformationTypes', list_information_types_path) %></li>
                       <li><%= link_to('Reset All', reset_all_path) %></li>
                     <% end %>
                   </ul>

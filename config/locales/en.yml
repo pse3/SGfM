@@ -80,6 +80,31 @@ en:
       title: 'Created actor type'
 
 
+# Translations for all actor_type-pages, sorted by page structure
+  information_type:
+    list:
+     title: 'InformationTypes'
+     new_information_type: 'Create new information type'
+     name_table: 'Name'
+     key_table: 'Key'
+
+    show:
+      title: '%{information_type}'
+      edit_information_type: 'Edit information type'
+      name: 'Name'
+      field_table: 'Data field'
+      value_table: 'Vaule'
+
+    new:
+      title: 'Create new information type'
+      name: 'Name'
+      key: 'Key'
+      create_information_type: 'Create'
+
+    create:
+      title: 'Created information type'
+
+
 # Translations for all login-pages, sorted by page structure
   logins:
     show:

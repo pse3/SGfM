@@ -1,7 +1,17 @@
-<% @page_title = 'show information_type' %>
+<% @page_title = t('information_type.show.title', :information_type => @information_type.name) %>
 
-Object: <%= @information_type %><br>
-Name: <%= @information_type.name %>
-</br>
 
-<%=  link_to('bearbeiten', edit_information_type_path(@information_type)) %>
+<table class="table table-hover">
+  <tr>
+    <th><%= t('information_type.show.field_table') %></th>
+    <th><%= t('information_type.show.value_table') %></th>
+  </tr>
+  <tr>
+    <td><%= t('information_type.show.name') %></td>
+    <td><%= @information_type.name %></td>
+  </tr>
+
+</table>
+
+
+<%=  link_to(t('information_type.show.edit_information_type'), edit_information_type_path(@information_type)) %>

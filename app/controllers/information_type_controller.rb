@@ -22,4 +22,8 @@ class InformationTypeController < ApplicationController
     @information_type = InformationType.find(params[:id])
   end
 
+  # Does nothing
+  def new
+  end
+
 end
