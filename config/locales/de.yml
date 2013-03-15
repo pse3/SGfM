@@ -3,8 +3,147 @@
 
 de:
 
-  layout:
-    sign_in: 'Anmelden'
-    sign_out: 'Abmelden'
+  form:
+    email: 'Email'
+    password: 'Passwort'
+    password_confirm: 'Passwort wiederholen'
+    current_password: 'Aktuelles Passwort'
+    remember: 'Automatisch einloggen'
+    submit: 'Absenden'
+    update: 'Aktualisieren'
+    cancel: 'Abbrechen'
+
+  basic:
+    sign_in: 'Einloggen'
+    sign_out: 'Ausloggen'
     sign_up: 'Registrieren'
-    home: 'Home'
+    forgot_password: 'Passwort vergessen?'
+
+
+  application:
+    menu:
+      profile: 'Profil'
+      actors: 'Your Actors'
+      settings: 'Einstellungen'
+
+
+# Translations for all actor-pages, sorted by page structure
+  actor:
+    list:
+      title: 'Your actors'
+      new_actor: 'Create new actor'
+      name_table: 'Name'
+      type_table: 'Typ'
+
+    show:
+      title: '%{actor}'
+      type: 'Typ'
+      edit_actor: 'Bearbeiten'
+      field_table: 'Feldname'
+      value_table: 'Wert'
+
+    new:
+      title: 'Create new actor'
+      select_type: 'Typ auswählen'
+      create_actor: 'erstellen'
+
+    edit:
+      title: 'Bearbeiten'
+      type: 'Typ'
+
+    create:
+      title: 'Created Actor'
+
+
+# Translations for all actor_type-pages, sorted by page structure
+  actor_type:
+    list:
+      title: 'All actor types'
+      new_actor_type: 'Create new actor type'
+      name_table: 'Name'
+      key_table: 'Schlüssel'
+
+    show:
+      title: '%{actor_type}'
+      name: 'Name'
+      edit_actor_type: 'Typ bearbeiten'
+      field_table: 'Datenfeld'
+      value_table: 'Wert'
+
+    new:
+      title: 'Create new actor type'
+      create_actor_type: 'Erstellen'
+      key: 'Schlüssel'
+      name: 'Name'
+
+    create:
+      title: 'Created actor type'
+
+
+# Translations for all actor_type-pages, sorted by page structure
+  information_type:
+    list:
+     title: 'Informationstypen'
+     new_information_type: 'neuen Informationstyp erstellen'
+     name_table: 'Name'
+     key_table: 'Schlüssel'
+
+    show:
+      title: '%{information_type}'
+      edit_information_type: 'Informationstyp bearbeiten'
+      name: 'Name'
+      field_table: 'Datenfeld'
+      value_table: 'Wert'
+
+    new:
+      title: 'neuen Informationstyp erstellen'
+      name: 'Name'
+      key: 'Schlüssel'
+      create_information_type: 'Erstellen'
+
+    create:
+      title: 'Informationstyp erstellt'
+
+
+# Translations for all login-pages, sorted by page structure
+  logins:
+    show:
+      title: 'Ihr Profil'
+      email: 'Email'
+      type: 'Account-Typ'
+
+
+# Translations for all home-pages, sorted by page structure
+  home:
+    index:
+      title: 'Home'
+
+
+# Translations for all devise-pages, sorted by page structure
+  devise:
+    sessions:
+      new:
+        title: 'Einloggen'
+
+    registration:
+      edit:
+        title: 'Bearbeiten %{profile}'
+        cancel_account: 'Account löschen'
+      new:
+        title: 'Registrieren'
+
+    passwords:
+      edit:
+        title:
+      new:
+        title:
+
+    unlocks:
+      new:
+        title: 'Resend unlock instructions'
+        submit: 'Resend unlock instructions'
+
+    links:
+      confirmation_inst: "Didn't receive confirmation instructions?"
+      unlock_inst: "Didn't receive unlock instructions?"
+      sign_in_with: 'Sign in with %{provider}'
