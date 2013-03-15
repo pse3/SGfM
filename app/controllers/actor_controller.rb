@@ -17,11 +17,10 @@ class ActorController < ApplicationController
       info.value = params[:actor][info_type.key]
       info.information_type = InformationType.find_by_key(info_type.key)
       info.actor = current_actor
-      current_actor.informations.push(info)
     end
 
-		current_actor.save
-		user.save
+    current_actor.save
+    user.save
   end
 
   # Gets all actors of the current logged in user
