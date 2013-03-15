@@ -9,8 +9,7 @@ class Actor
   belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced
   embeds_many :informations, class_name: 'Information'                                  #embedded
   belongs_to :owner, class_name: 'User'                                                 #embedded
-
-	validates_with	ActorValidator
+	validates :informations, informations_not_empty: true
   def initialize
     super
     self.created_at = DateTime.now
