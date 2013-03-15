@@ -3,7 +3,7 @@
 
 <% for actor_type in @actor_types %>
     <p>
-      <%= link_to("#{} #{actor_type.name}", show_actor_type_path(actor_type)) %>
+      <%= link_to(actor_type.name, show_actor_type_path(actor_type)) %>
     </p>
 <% end %>
 

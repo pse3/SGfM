@@ -28,59 +28,68 @@
 
             <!-- nav-bar menu left -->
             <ul class="nav">
-              <li class="active"><a href="<%= home_path %>">Home</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Development<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="<%= actors_path %>">Your Actors</a></li>
-                  <li><a href="<%= create_actor_path %>">New Actor</a></li>
-                  <li><a href="<%= list_actor_types_path %>">All ActorTypes</a></li>
-                  <li><a href="<%= list_information_types_path %>">All InformationTypes</a></li>
-                  <li><a href="<%= create_actor_types_path %>">New ActorType</a></li>
-                  <li><a href="<%= create_information_types_path %>">New InformationType</a></li>
-                  <li><a href="<%= reset_all_path %>">Reset All</a></li>
-                </ul>
-              </li>
+              <li><%= link_to(t('home.index.title'), home_path) %></li>
             </ul>
 
+            <!-- nav-bar menu right -->
             <% if login_signed_in? %>
               <ul class="nav pull-right">
-                <li><a href="<%= edit_login_registration_path %>"><%= current_login.email %></a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="#"><%= current_login.email %><b class="caret"></b></a>
+                  <ul id="menu1" class="dropdown-menu">
+                    <li><%= link_to(t('application.menu.profile'), logins_show_path) %></li>
+                    <li><%= link_to(t('application.menu.actors'), actors_path) %></li>
+                    <!-- check if user is a admin -->
+                    <li class="divider"></li>
+                    <li><%= link_to('All ActorTypes', list_actor_types_path) %></li>
+                    <li><%= link_to('All InformationTypes', list_information_types_path) %></li>
+                    <li><%= link_to('New ActorType', create_actor_types_path) %></li>
+                    <li><%= link_to('New InformationType', create_information_types_path) %></li>
+                    <li><%= link_to('Reset All', reset_all_path) %></li>
+                  </ul>
+                </li>
+
                 <li class="divider-vertical"></li>
-                <li><%= link_to(t('layout.sign_out'), destroy_login_session_path, :method => :delete) %></li>
+                <li><%= link_to(t('application.menu.settings'), edit_login_registration_path) %></li>
+                <li class="divider-vertical"></li>
+                <li><%= link_to(t('basic.sign_out'), destroy_login_session_path, :method => :delete) %></li>
               </ul>
             <% else %>
-              <!-- nav-bar menu right -->
               <ul class="nav pull-right">
                 <li><%= link_to(t('layout.sign_up'), new_login_registration_path) %></li>
                 <li class="divider-vertical"></li>
                 <li class="dropdown">
-                  <%= link_to(raw(t('layout.sign_in') + '<strong class="caret"></strong>'), '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown') %>
+                  <%= link_to(raw(t('basic.sign_in') + '<strong class="caret"></strong>'), '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown') %>
                   </a>
                   <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
                     <%= form_for("login", :url => login_session_path, :html => { :class => 'navbar-form form-inline pull-right'}) do |f| %>
-                      <%= f.text_field(:email, :placeholder => 'Email') %>
-                      <%= f.password_field(:password, :placeholder => 'Password') %>
+                      <%= f.text_field(:email, :placeholder => t('form.email')) %>
+                      <%= f.password_field(:password, :placeholder => t('form.password')) %>
                       <%= f.label(:remember_me) do %>
                         <%= f.check_box(:remember_me) %>
-                        Remember me
+                        <%= t('form.remember') %>
                       <% end %>
-                      <%= f.submit("Sign in", :class => 'btn btn-primary btn-block') %>
-                      <%= link_to("Forgot your password?", new_login_password_path('login')) %>
+                      <%= f.submit(t('basic.sign_in'), :class => 'btn btn-primary btn-block') %>
+                      <%= link_to(t('basic.forgot_password'), new_login_password_path('login')) %>
                     <% end %>
                   </div>
                 </li>
               </ul>
             <% end %>
+
           </div>
         </div>
       </div>
     </div>
+
+    <!-- flash-messages -->
     <div class="row-fluid">
       <div class="span8 offset2">
         <%= render partial: "shared/flashes", flash: flash %>
       </div>
     </div>
+
+    <!-- main div -->
     <div class="row-fluid">
       <div class="span8 offset2">
         <p class="pull-right">

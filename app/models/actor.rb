@@ -2,13 +2,14 @@ class Actor
   # base class for hospitals, doctors etc.
 
   include Mongoid::Document
+	include ActiveModel::Validations
 
   field :created_at, :type => DateTime
 
   belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced
   embeds_many :informations, class_name: 'Information'                                  #embedded
   belongs_to :owner, class_name: 'User'                                                 #embedded
-
+	validates :informations, informations_not_empty: true
   def initialize
     super
     self.created_at = DateTime.now

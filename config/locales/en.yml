@@ -3,8 +3,87 @@
 
 en:
 
-  layout:
+  form:
+    email: 'email'
+    password: 'password'
+    password_confirm: 'password confirm'
+    current_password: 'current password'
+    remember: 'remember me'
+    submit: 'submit'
+    update: 'update'
+    cancel: 'cancel'
+
+  basic:
     sign_in: 'Sign in'
     sign_out: 'Sign out'
     sign_up: 'Sign up'
-    home: 'Home'
+    forgot_password: 'Forgot your password?'
+
+
+  application:
+    menu:
+      profile: 'Profile'
+      actors: 'Your Actors'
+      settings: 'Settings'
+
+  actor:
+    list:
+      title: 'Your actors'
+      new_actor: 'Create new actor'
+      name_table: 'Name'
+      type_table: 'Type'
+
+    show:
+      title: '%{actor}'
+      edit_actor: 'Edit actor'
+      field_table: 'Data field'
+      value_table: 'Vaule'
+
+    new:
+      title: 'Create new actor'
+      select_type: 'Select a type'
+
+    edit:
+      title: 'Edit actor'
+      type: 'Type'
+
+
+  logins:
+    show:
+      title: 'Your profile'
+      email: 'Email'
+      type: 'Account-type'
+
+
+  home:
+    index:
+      title: 'Home'
+
+
+  devise:
+    sessions:
+      new:
+        title: 'Sign in'
+
+    registration:
+      edit:
+        title: 'Edit %{profile}'
+        cancel_account: 'Cancel my account'
+      new:
+        title: 'Sign up'
+
+    passwords:
+      edit:
+        title:
+      new:
+        title:
+
+    unlocks:
+      new:
+        title: 'Resend unlock instructions'
+        submit: 'Resend unlock instructions'
+
+    links:
+      confirmation_inst: "Didn't receive confirmation instructions?"
+      unlock_inst: "Didn't receive unlock instructions?"
+      sign_in_with: 'Sign in with %{provider}'

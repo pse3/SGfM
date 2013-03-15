@@ -5,6 +5,7 @@ class ActorController < ApplicationController
   # Creates a Actor with chosen name and type
   def create
     user = current_login.account
+    #todo check if user is a admin, if yes, pass all actors or so
     @actor = Actor.new
     @actor.actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
     @actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
@@ -20,11 +21,8 @@ class ActorController < ApplicationController
       current_actor.informations.push(info)
     end
 
-
-    current_actor.save
-    user.save
-
-    redirect_to '/actors'
+		current_actor.save
+		user.save
   end
 
   # Gets all actors of the current logged in user
@@ -45,7 +43,7 @@ class ActorController < ApplicationController
   end
 
   def update
-    @actor = Actor.find(params[:id])
+    #todo update actor!
   end
 
 	def information_types_for_actor_type
