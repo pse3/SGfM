@@ -1,26 +1,28 @@
-<% @page_title = 'Akteur bearbeiten' %>
+<% @page_title = t('actor.edit.title') %>
 
-<%= form_for(@actor, html: {class: 'form-horizontal'}) do |f| %>
 
-    <div class="control-group">
-        <%= f.label(:actor_type, 'Typ', class: 'control-label') %>
+<%= form_for(@actor, :url => update_actor_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
+
+  <div class="control-group">
+    <%= f.label(:actor_type, t('actor.edit.title'), :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:actor_type, :disabled => 'disabled') %>
+    </div>
+  </div>
+
+  <% @actor.informations.each do |i|%>
+    <%=  f.fields_for i do |info_form| %>
+      <div class="control-group">
+        <%= info_form.label(i.key, i.name, :class => 'control-label') %>
         <div class="controls">
-            <%= f.text_field(:actor_type, :disabled => 'disabled') %>
+          <%= info_form.text_field i.key, :value => i.value %>
         </div>
-    </div>
-
-    <% @actor.informations.each do |i|%>
-        <%=  f.fields_for i do |info_form| %>
-            <div class="control-group">
-            <%= info_form.label(i.key, i.name, class: 'control-label') %>
-                <div class="controls">
-            <%= info_form.text_field i.key, value: i.value %>
-                </div>
-            </div>
-        <% end %>
+      </div>
     <% end %>
+  <% end %>
 
-    <div class="form-actions">
-        <%= f.submit(:update, class: 'btn btn-primary') %>
-    </div>
+  <div class="form-actions">
+    <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>
+  </div>
+
 <% end %>
