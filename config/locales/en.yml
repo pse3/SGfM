@@ -4,14 +4,14 @@
 en:
 
   form:
-    email: 'email11'
-    password: 'password11'
-    password_confirm: 'password confirm11'
-    current_password: 'current password11'
-    remember: 'remember me11'
-    submit: 'submit11'
+    email: 'email'
+    password: 'password'
+    password_confirm: 'password confirm'
+    current_password: 'current password'
+    remember: 'remember me'
+    submit: 'submit'
     update: 'update'
-    cancel: 'cancel11'
+    cancel: 'cancel'
 
   basic:
     sign_in: 'Sign in'
@@ -20,6 +20,11 @@ en:
     forgot_password: 'Forgot your password?'
 
 
+  application:
+    menu:
+      profile: 'Profile'
+      actors: 'Your Actors'
+      settings: 'Settings'
 
   actor:
     list:
@@ -37,6 +42,10 @@ en:
     new:
       title: 'Create new actor'
       select_type: 'Select a type'
+
+    edit:
+      title: 'Edit actor'
+      type: 'Type'
 
 
   logins:

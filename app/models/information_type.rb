@@ -2,7 +2,7 @@ class InformationType
 
   include Mongoid::Document
 
-  field :name, :type => String
+  field :name, :type => String, :localize => true
   field :key, :type => Symbol
 
   validates_uniqueness_of :key
