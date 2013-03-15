@@ -30,4 +30,10 @@ class ActorTypeController < ApplicationController
   def show
     @actor_type = ActorType.find(params[:id])
   end
+
+  # Passes all information types in a list, that the user will be able to choose from
+  def new
+    @information_types = InformationType.all
+  end
+
 end

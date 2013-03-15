@@ -26,6 +26,8 @@ en:
       actors: 'Your Actors'
       settings: 'Settings'
 
+
+# Translations for all actor-pages, sorted by page structure
   actor:
     list:
       title: 'Your actors'
@@ -35,6 +37,7 @@ en:
 
     show:
       title: '%{actor}'
+      type: 'Type'
       edit_actor: 'Edit actor'
       field_table: 'Data field'
       value_table: 'Vaule'
@@ -42,12 +45,42 @@ en:
     new:
       title: 'Create new actor'
       select_type: 'Select a type'
+      create_actor: 'Create'
 
     edit:
       title: 'Edit actor'
       type: 'Type'
 
+    create:
+      title: 'Created Actor'
 
+
+# Translations for all actor_type-pages, sorted by page structure
+  actor_type:
+    list:
+      title: 'All actor types'
+      new_actor_type: 'Create new actor type'
+      name_table: 'Name'
+      key_table: 'Key'
+
+    show:
+      title: '%{actor_type}'
+      name: 'Name'
+      edit_actor_type: 'Edit actor type'
+      field_table: 'Data field'
+      value_table: 'Vaule'
+
+    new:
+      title: 'Create new actor type'
+      create_actor_type: 'Create'
+      key: 'Key'
+      name: 'Name'
+
+    create:
+      title: 'Created actor type'
+
+
+# Translations for all login-pages, sorted by page structure
   logins:
     show:
       title: 'Your profile'
@@ -55,11 +88,13 @@ en:
       type: 'Account-type'
 
 
+# Translations for all home-pages, sorted by page structure
   home:
     index:
       title: 'Home'
 
 
+# Translations for all devise-pages, sorted by page structure
   devise:
     sessions:
       new:

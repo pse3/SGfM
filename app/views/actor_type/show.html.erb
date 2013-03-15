@@ -1,7 +1,17 @@
-<% @page_title = 'show actor_type' %>
+<% @page_title = t('actor_type.show.title', :actor_type => @actor_type.name) %>
 
-Object: <%= @actors_type %><br>
-Name: <%= @actor_type.name %>
-</br>
 
-<%=  link_to('bearbeiten', edit_actor_type_path(@actor_type)) %>
+<table class="table table-hover">
+  <tr>
+    <th><%= t('actor_type.show.field_table') %></th>
+    <th><%= t('actor_type.show.value_table') %></th>
+  </tr>
+  <tr>
+    <td><%= t('actor_type.show.name') %></td>
+    <td><%= @actor_type.name %></td>
+  </tr>
+
+</table>
+
+
+<%=  link_to(t('actor_type.show.edit_actor_type'), edit_actor_type_path(@actor_type)) %>

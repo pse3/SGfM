@@ -5,7 +5,6 @@ class ActorController < ApplicationController
   # Creates a Actor with chosen name and type
   def create
     user = current_login.account
-    #todo check if user is a admin, if yes, pass all actors or so
     @actor = Actor.new
     @actor.actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
     @actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
@@ -28,9 +27,16 @@ class ActorController < ApplicationController
   # Gets all actors of the current logged in user
   # If there are none, return an empty array
   def list
-    @actors = current_login.account.actors
+    if current_login.is_admin?
+      @actors = Actor.all
+    else
+      @actors = current_login.account.actors
+    end
+
     if @actors.nil?
       return Array.new
+    else
+      return @actor
     end
   end
 
@@ -52,8 +58,7 @@ class ActorController < ApplicationController
 		information_types =  actor_type.information_type
     render :partial => 'actor/new_actor_information_types', :locals => {:actor_type_key => key,
                                                                         :actor_type => actor_type,
-																																				:information_types => information_types
-		}
+																																				:information_types => information_types}
 	end
 
   # Find actor with given id
