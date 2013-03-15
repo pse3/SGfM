@@ -41,8 +41,13 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-   # Clean/Reset Mongoid DB prior to running each test.
-   config.before(:each) do
-     Mongoid::Sessions.default.collections.select {|c| c.name !~ /system/ }.each(&:drop)
-   end
+  # Clean/Reset Mongoid DB prior to running each test.
+  config.before(:each) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.start
+  end
+
+  config.after do
+    DatabaseCleaner.clean
+  end
 end

@@ -51,6 +51,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.5.0)
+    database_cleaner (0.9.1)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -61,6 +62,7 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.4.0)
+    ffi (1.4.0-x86-mingw32)
     hashie (2.0.2)
     hike (1.2.1)
     i18n (0.6.4)
@@ -91,6 +93,7 @@ GEM
     moped (1.4.3)
     multi_json (1.6.1)
     nokogiri (1.5.6)
+    nokogiri (1.5.6-x86-mingw32)
     origin (1.0.11)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
@@ -172,6 +175,7 @@ DEPENDENCIES
   bootstrap-sass
   capybara
   coffee-rails (~> 3.2.1)
+  database_cleaner
   devise
   jquery-rails
   minitest-reporters
