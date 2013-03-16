@@ -1,6 +1,7 @@
 class InformationTypeController < ApplicationController
+	before_filter :authenticate_login!
 
-  # Creates an InformationType with chosen name
+	# Creates an InformationType with chosen name
   def create
     @information_type = InformationType.new
     @information_type.key = params[:information_type][:key]

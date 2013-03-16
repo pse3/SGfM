@@ -1,6 +1,7 @@
 class ActorTypeController < ApplicationController
+	before_filter :authenticate_login!
 
-  # Creates an ActorType with chosen name and InformationTypes
+	# Creates an ActorType with chosen name and InformationTypes
   def create
     @actor_type = ActorType.new
     @actor_type.key = params[:actor_type][:key]
