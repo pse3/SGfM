@@ -1,5 +1,5 @@
 class InformationTypeController < ApplicationController
-	before_filter :authenticate_login!
+	before_filter :authenticate_admin!
 
 	# Creates an InformationType with chosen name
   def create

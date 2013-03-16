@@ -53,6 +53,7 @@ de:
 
     create:
       title: 'Created Actor'
+      success: 'Sie haben einen Akteur erstellt!'
 
 
 # Translations for all actor_type-pages, sorted by page structure

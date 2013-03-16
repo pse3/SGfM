@@ -21,6 +21,11 @@ class ActorController < ApplicationController
 
     current_actor.save
     user.save
+		if(current_actor.valid?)
+			flash[:success]= t('actor.create.success')
+			redirect_to actors_path
+		end
+
   end
 
   # Gets all actors of the current logged in user
