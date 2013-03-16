@@ -54,6 +54,7 @@ class ActorController < ApplicationController
 
   def update
 		@actor = Actor.find(params[:id])
+
 		params[:actor][:information].each do |key,value|
       info = @actor.find_information_by_key(key.to_sym)
       info.value = value
