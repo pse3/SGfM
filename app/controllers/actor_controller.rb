@@ -53,10 +53,13 @@ class ActorController < ApplicationController
   end
 
   def update
-    #fails with: undefined method `inverse_of_field' for nil:NilClass - wtf?
-		@actor=Actor.find(params[:id])
-		@actor.update_attributes(params[:actor])
-		#todo redirect and stuff
+		@actor = Actor.find(params[:id])
+		params[:actor][:information].each do |key,value|
+      info = @actor.find_information_by_key(key.to_sym)
+      info.value = value
+    end
+    @actor.save
+    redirect_to actors_path
   end
 
 	def information_types_for_actor_type
