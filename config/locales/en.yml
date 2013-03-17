@@ -55,7 +55,7 @@ en:
 
     create:
       title: 'Created Actor'
-      success: 'You successfully created an actor!'
+      success: 'You have successfully created an actor!'
 
 
 # Translations for all actor_type-pages, sorted by page structure
@@ -81,6 +81,7 @@ en:
 
     create:
       title: 'Created actor type'
+      success: 'You have successfully created an actor type!'
 
 
 # Translations for all actor_type-pages, sorted by page structure
@@ -106,6 +107,7 @@ en:
 
     create:
       title: 'Created information type'
+      success: 'You have successfully created an information type!'
 
 
 # Translations for all login-pages, sorted by page structure

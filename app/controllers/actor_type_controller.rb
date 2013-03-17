@@ -16,6 +16,7 @@ class ActorTypeController < ApplicationController
 
     @actor_type.save
 
+    flash[:success] = t('actor_type.create.success')
     redirect_to actor_types_path
   end
 
@@ -37,5 +38,7 @@ class ActorTypeController < ApplicationController
   def new
     @information_types = InformationType.all
   end
+
+  #todo update
 
 end

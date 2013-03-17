@@ -62,6 +62,8 @@ class ActorController < ApplicationController
       info.value = value
     end
     @actor.save
+
+    #todo flash message
     redirect_to actors_path
   end
 

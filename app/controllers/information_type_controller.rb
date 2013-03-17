@@ -10,6 +10,7 @@ class InformationTypeController < ApplicationController
 
     @information_type.save
 
+    flash[:success] = t('information_type.create.success')
     redirect_to information_types_path
   end
 
@@ -30,5 +31,7 @@ class InformationTypeController < ApplicationController
   # Does nothing
   def new
   end
+
+  #todo update
 
 end

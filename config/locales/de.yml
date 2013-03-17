@@ -82,6 +82,7 @@ de:
 
     create:
       title: 'Akteurtyp erstellt'
+      success: 'Sie haben erfolgreich einen Akteurtyp erstellt!'
 
 
 # Translations for all actor_type-pages, sorted by page structure
@@ -107,6 +108,7 @@ de:
 
     create:
       title: 'Informationstyp erstellt'
+      success: 'Sie haben erfolgreich einen Informationstyp erstellt!'
 
 
 # Translations for all login-pages, sorted by page structure
