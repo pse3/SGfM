@@ -1,0 +1,19 @@
+<% @page_title = t('actor_type.edit.title') %>
+
+
+<%= form_for(@actor_type, :url => update_actor_type_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
+
+  <div class="control-group">
+    <%= f.label(:actor_type, t('actor_type.edit.type'), :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:actor_type, :disabled => 'disabled') %>
+    </div>
+  </div>
+
+  <!-- todo form -->
+
+  <div class="form-actions">
+    <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>
+  </div>
+
+<% end %>

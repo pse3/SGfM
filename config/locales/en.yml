@@ -58,7 +58,7 @@ en:
       success: 'You have successfully created an actor!'
 
     update:
-          success: 'Actor successfully updated!'
+      success: 'Actor successfully updated!'
 
 
 # Translations for all actor_type-pages, sorted by page structure
@@ -82,9 +82,15 @@ en:
       key: 'Key'
       name: 'Name'
 
+    edit:
+      title: 'Edit actor type'
+
     create:
       title: 'Created actor type'
       success: 'You have successfully created an actor type!'
+
+    update:
+      success: 'Actor type successfully updated!'
 
 
 # Translations for all actor_type-pages, sorted by page structure
@@ -111,6 +117,9 @@ en:
     create:
       title: 'Created information type'
       success: 'You have successfully created an information type!'
+
+    update:
+      success: 'Information type successfully updated!'
 
 
 # Translations for all login-pages, sorted by page structure

@@ -24,6 +24,7 @@ SGfM::Application.routes.draw do
     post  'information_types/create'    => 'information_type#create'
     get   'information_types/:id'       => 'information_type#show',   as: 'show_information_type'
     get   'information_types/edit/:id'  => 'information_type#edit',   as: 'edit_information_type'
+    post  'information_types/edit/:id'  => 'information_type#update', as: 'update_information_type'
 
     # ActorType routes
     get   'actor_types'           => 'actor_type#list',   as: 'actor_types'
@@ -31,6 +32,7 @@ SGfM::Application.routes.draw do
     post  'actor_types/create'    => 'actor_type#create'
     get   'actor_types/:id'       => 'actor_type#show',   as: 'show_actor_type'
     get   'actor_types/edit/:id'  => 'actor_type#edit',   as: 'edit_actor_type'
+    post  'actor_type/edit/:id'   => 'actor_type#update', as: 'update_actor_type'
 
     # Development routes
     get   'all/reset' => 'application#reset_all', as: 'reset_all'

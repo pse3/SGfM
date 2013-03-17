@@ -83,9 +83,15 @@ de:
       key: 'Schlüssel'
       name: 'Name'
 
+    edit:
+      title: 'Akteurtyp bearbeiten'
+
     create:
       title: 'Akteurtyp erstellt'
       success: 'Sie haben erfolgreich einen neuen Akteurtyp erstellt!'
+
+    update:
+      success: 'Akteurtyp wurde erfolgreich aktualisiert!'
 
 
 # Translations for all actor_type-pages, sorted by page structure
@@ -112,6 +118,9 @@ de:
     create:
       title: 'Informationstyp erstellt'
       success: 'Sie haben erfolgreich einen neuen Informationstyp erstellt!'
+
+    update:
+      success: 'Informationstyp wurde erfolgreich aktualisiert!'
 
 
 # Translations for all login-pages, sorted by page structure

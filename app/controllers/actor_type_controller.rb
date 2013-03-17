@@ -39,6 +39,19 @@ class ActorTypeController < ApplicationController
     @information_types = InformationType.all
   end
 
-  #todo update
+  def edit
+    @actor_type = ActorType.find(params[:id])
+  end
+
+  def update
+    @actor_type = ActorType.find(params[:id])
+
+    #todo update data
+
+    @actor_type.save
+
+    flash[:success] = t('actor_type.update.success')
+    redirect_to actor_types_path
+  end
 
 end
