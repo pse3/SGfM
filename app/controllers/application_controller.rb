@@ -34,4 +34,11 @@ class ApplicationController < ActionController::Base
     @current_actor
   end
 
+  def authenticate_admin!
+    unless current_login.account_type == 'Admin'
+      # set a flash message
+      # redirect to somewhere
+    end
+  end
+
 end
