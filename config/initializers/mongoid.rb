@@ -12,17 +12,41 @@ unless Rails.env == :production
   Admin.delete_all
 
   #create some information_types
-  info_name = InformationType.new
-  info_name.key = :name
+  info_company = InformationType.new
+  info_company.key = :company
   I18n.locale = :en
-  info_name.name = "Name"
+  info_company.name = "Company"
   I18n.locale = :de
-  info_name.name = "Name"
+  info_company.name = "Firma"
   I18n.locale = :it
-  info_name.name = "Nome"
+  info_company.name = "??"
   I18n.locale = :fr
-  info_name.name = "Nom"
-  info_name.save
+  info_company.name = "??"
+  info_company.save
+
+  info_first_name = InformationType.new
+  info_first_name.key = :first_name
+  I18n.locale = :en
+  info_first_name.name = "First name"
+  I18n.locale = :de
+  info_first_name.name = "Vorname"
+  I18n.locale = :it
+  info_first_name.name = "??"
+  I18n.locale = :fr
+  info_first_name.name = "??"
+  info_first_name.save
+
+  info_last_name = InformationType.new
+  info_last_name.key = :last_name
+  I18n.locale = :en
+  info_last_name.name = "Last name"
+  I18n.locale = :de
+  info_last_name.name = "Name"
+  I18n.locale = :it
+  info_last_name.name = "??"
+  I18n.locale = :fr
+  info_last_name.name = "??"
+  info_last_name.save
 
   info_phone = InformationType.new
   info_phone.key = :phone
@@ -36,17 +60,89 @@ unless Rails.env == :production
   info_phone.name = "Téléphone"
   info_phone.save
 
-  info_address = InformationType.new
-  info_address.key = :address
+  info_mobile = InformationType.new
+  info_mobile.key = :mobile
   I18n.locale = :en
-  info_address.name = "Address"
+  info_mobile.name = "Mobile"
   I18n.locale = :de
-  info_address.name = "Adresse"
+  info_mobile.name = "Mobil"
   I18n.locale = :it
-  info_address.name = "Indirizzo"
+  info_mobile.name = "??"
   I18n.locale = :fr
-  info_address.name = "Adresse"
-  info_address.save
+  info_mobile.name = "??"
+  info_mobile.save
+
+  info_fax = InformationType.new
+  info_fax.key = :fax
+  I18n.locale = :en
+  info_fax.name = "Fax"
+  I18n.locale = :de
+  info_fax.name = "Fax"
+  I18n.locale = :it
+  info_fax.name = "??"
+  I18n.locale = :fr
+  info_fax.name = "??"
+  info_fax.save
+
+  info_street = InformationType.new
+  info_street.key = :street
+  I18n.locale = :en
+  info_street.name = "Street"
+  I18n.locale = :de
+  info_street.name = "Strasse"
+  I18n.locale = :it
+  info_street.name = "??"
+  I18n.locale = :fr
+  info_street.name = "??"
+  info_street.save
+
+  info_street_number = InformationType.new
+  info_street_number.key = :street_number
+  I18n.locale = :en
+  info_street_number.name = "Street number"
+  I18n.locale = :de
+  info_street_number.name = "Strassennummer"
+  I18n.locale = :it
+  info_street_number.name = "??"
+  I18n.locale = :fr
+  info_street_number.name = "??"
+  info_street_number.save
+
+  info_zip_code = InformationType.new
+  info_zip_code.key = :zip_code
+  I18n.locale = :en
+  info_zip_code.name = "ZIP"
+  I18n.locale = :de
+  info_zip_code.name = "PLZ"
+  I18n.locale = :it
+  info_zip_code.name = "??"
+  I18n.locale = :fr
+  info_zip_code.name = "??"
+  info_zip_code.save
+
+  info_city = InformationType.new
+  info_city.key = :city
+  I18n.locale = :en
+  info_city.name = "City"
+  I18n.locale = :de
+  info_city.name = "Stadt"
+  I18n.locale = :it
+  info_city.name = "??"
+  I18n.locale = :fr
+  info_city.name = "??"
+  info_city.save
+
+  info_canton = InformationType.new
+  info_canton.key = :canton
+  I18n.locale = :en
+  info_canton.name = "Canton"
+  I18n.locale = :de
+  info_canton.name = "Kanton"
+  I18n.locale = :it
+  info_canton.name = "??"
+  I18n.locale = :fr
+  info_canton.name = "??"
+  info_canton.save
 
   info_email = InformationType.new
   info_email.key = :email
@@ -63,10 +159,15 @@ unless Rails.env == :production
   #create some actor_types
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
-  actor_doctor.information_type.push(InformationType.find_by_key(:name))
-  actor_doctor.information_type.push(InformationType.find_by_key(:phone))
-  actor_doctor.information_type.push(InformationType.find_by_key(:address))
-  actor_doctor.information_type.push(InformationType.find_by_key(:email))
+  actor_doctor.information_type.push(info_first_name)
+  actor_doctor.information_type.push(info_last_name)
+  actor_doctor.information_type.push(info_phone)
+  actor_doctor.information_type.push(info_email)
+  actor_doctor.information_type.push(info_street)
+  actor_doctor.information_type.push(info_street_number)
+  actor_doctor.information_type.push(info_zip_code)
+  actor_doctor.information_type.push(info_city)
+  actor_doctor.information_type.push(info_canton)
   I18n.locale = :en
   actor_doctor.name = "Doctor"
   I18n.locale = :de
@@ -79,9 +180,14 @@ unless Rails.env == :production
 
   actor_hospital = ActorType.new
   actor_hospital.key = :hospital
-  actor_hospital.information_type.push(InformationType.find_by_key(:name))
-  actor_hospital.information_type.push(InformationType.find_by_key(:phone))
-  actor_hospital.information_type.push(InformationType.find_by_key(:address))
+  actor_hospital.information_type.push(info_company)
+  actor_hospital.information_type.push(info_phone)
+  actor_hospital.information_type.push(info_email)
+  actor_hospital.information_type.push(info_street)
+  actor_hospital.information_type.push(info_street_number)
+  actor_hospital.information_type.push(info_zip_code)
+  actor_hospital.information_type.push(info_city)
+  actor_hospital.information_type.push(info_canton)
   I18n.locale = :en
   actor_hospital.name = "Hospital"
   I18n.locale = :de

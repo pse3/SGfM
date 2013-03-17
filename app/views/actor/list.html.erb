@@ -12,7 +12,7 @@
   </tr>
   <% for actor in @actors %>
     <tr>
-      <td><%= link_to(actor.find_information_by_key(:name), show_actor_path(actor)) %></td>
+      <td><%= link_to(actor, show_actor_path(actor)) %></td>
       <td><%= actor.actor_type %></td>
     </tr>
   <% end %>
