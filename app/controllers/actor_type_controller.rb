@@ -8,8 +8,6 @@ class ActorTypeController < ApplicationController
     @actor_type.key = params[:actor_type][:key]
     @actor_type.name = params[:actor_type][:name]
 
-    puts params
-
     for info_type in InformationType.each do
       if params[info_type.key].to_i == 1
         @actor_type.information_type.push(info_type)
@@ -17,6 +15,8 @@ class ActorTypeController < ApplicationController
     end
 
     @actor_type.save
+
+    redirect_to actor_types_path
   end
 
   # Gets all actor_types

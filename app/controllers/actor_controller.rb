@@ -21,8 +21,9 @@ class ActorController < ApplicationController
 
     current_actor.save
     user.save
-		if(current_actor.valid?)
-			flash[:success]= t('actor.create.success')
+
+		if current_actor.valid?
+			flash[:success] = t('actor.create.success')
 			redirect_to actors_path
 		end
 
