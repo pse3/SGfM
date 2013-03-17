@@ -35,8 +35,7 @@ en:
     list:
       title: 'Your actors'
       new_actor: 'Create new actor'
-      name_table: 'Name'
-      type_table: 'Type'
+      name_table: 'Who'
 
     show:
       title: '%{actor}'
