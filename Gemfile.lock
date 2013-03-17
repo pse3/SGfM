@@ -177,6 +177,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner
   devise
+  execjs
   jquery-rails
   minitest-reporters
   mocha
