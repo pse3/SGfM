@@ -63,7 +63,7 @@ class ActorController < ApplicationController
     end
     @actor.save
 
-    #todo flash message
+    flash[:success] = t('actor.update.success')
     redirect_to actors_path
   end
 

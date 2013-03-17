@@ -57,6 +57,9 @@ en:
       title: 'Created Actor'
       success: 'You have successfully created an actor!'
 
+    update:
+          success: 'Actor successfully updated!'
+
 
 # Translations for all actor_type-pages, sorted by page structure
   actor_type:
