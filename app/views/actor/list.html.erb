@@ -31,7 +31,7 @@
           </tr>
           <% for actor in @actors_hash[type] %>
             <tr>
-              <td><%= link_to(actor, show_actor_path(actor)) %></td>
+              <td><%= link_to(actor.to_s, show_actor_path(actor)) %></td>
               <td><%= actor.actor_type %></td>
             </tr>
           <% end %>
