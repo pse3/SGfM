@@ -53,4 +53,13 @@ class Login
   #has an connected account
   belongs_to :account, :polymorphic=> true
 
+
+  def is_user?
+    self.account_type == 'User'
+  end
+
+  def is_admin?
+    self.account_type == 'Admin'
+  end
+
 end

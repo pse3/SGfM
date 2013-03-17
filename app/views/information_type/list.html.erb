@@ -1,0 +1,19 @@
+<% @page_title = t('information_type.list.title') %>
+
+
+<div class="row pull-right">
+  <%= link_to(t('information_type.list.new_information_type'), create_information_type_path, :class => 'btn btn-primary') %>
+</div>
+
+<table class="table table-hover">
+  <tr>
+    <th><%= t('information_type.list.name_table') %></th>
+    <th><%= t('information_type.list.key_table') %></th>
+  </tr>
+  <% for information_type in @information_types %>
+    <tr>
+      <td><%= link_to(information_type.name, show_information_type_path(information_type)) %></td>
+      <td><%= information_type.key %></td>
+    </tr>
+  <% end %>
+</table>

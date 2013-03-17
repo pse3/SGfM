@@ -1,0 +1,15 @@
+.header {
+}
+.header-logo{
+  background-image: image-url("logo/qm.png");
+  height: 100px;
+  background-repeat:no-repeat;
+  background-position: 2px 2px;
+  z-index:10;
+}
+
+.header-right{
+  background-image: image-url("header-right.png");
+  background-repeat:no-repeat;
+  height: 100px;
+}

@@ -1,0 +1,10 @@
+# Sample localization file for French. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+fr:
+
+  layout:
+    sign_in: 'Baguette'
+    sign_out: 'Toi'
+    sign_up: 'Moi'
+    home: 'Home'

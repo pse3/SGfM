@@ -1,4 +1,12 @@
-<h3>Your Profile page</h3>
-<p>Account emial: <%= current_login.email %></p>
-<p>Account type: <%= current_login.account_type %></p>
-<%= link_to('sign out', destroy_login_session_path, :method => :delete) %>
+<% @page_title = t('logins.show.title') %>
+
+<table class="table table-bordered">
+  <tr>
+    <td><%= t('logins.show.type') + ':'%></td>
+    <td><%= current_login.account_type %></td>
+  </tr>
+  <tr>
+    <td><%= t('logins.show.email') + ':'%></td>
+    <td><%= current_login.email %></td>
+  </tr>
+</table>

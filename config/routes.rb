@@ -1,13 +1,52 @@
 SGfM::Application.routes.draw do
-  devise_for :logins, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => {:sign_up => 'signup',
-                                                                                                        :sign_in => 'login',
-                                                                                                        :sign_out => 'logout'}
-  root :to => 'home#index', as: 'home'
-  get 'logins/show' => 'logins#show'
 
-  post 'actors' => 'actor#create'
-  get 'actors' => 'actor#list'
-  get 'actortype/reset' => 'actor_type#reset_default_types'
+  scope '/:locale' do
+
+    # Devise routes
+    devise_for :logins, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => {:sign_up => 'signup',
+                                                                                                          :sign_in => 'login',
+                                                                                                          :sign_out => 'logout'}
+
+    get   'logins/show' => 'logins#show'
+
+    # Actor routes
+    get   'actors'          => 'actor#list',    as: 'actors'
+    get   'actors/create'   => 'actor#new',     as: 'create_actor'
+    post  'actors/create'   => 'actor#create'
+    get   'actors/:id'      => 'actor#show',    as: 'show_actor'
+    get   'actors/edit/:id' => 'actor#edit',    as: 'edit_actor'
+    post  'actors/edit/:id' => 'actor#update',  as: 'update_actor'
+
+
+    # InformationType routes
+    get   'information_types'           => 'information_type#list',   as: 'information_types'
+    get   'information_types/create'    => 'information_type#new',    as: 'create_information_type'
+    post  'information_types/create'    => 'information_type#create'
+    get   'information_types/:id'       => 'information_type#show',   as: 'show_information_type'
+    get   'information_types/edit/:id'  => 'information_type#edit',   as: 'edit_information_type'
+    post  'information_types/edit/:id'  => 'information_type#update', as: 'update_information_type'
+
+    # ActorType routes
+    get   'actor_types'           => 'actor_type#list',   as: 'actor_types'
+    get   'actor_types/create'    => 'actor_type#new',    as: 'create_actor_type'
+    post  'actor_types/create'    => 'actor_type#create'
+    get   'actor_types/:id'       => 'actor_type#show',   as: 'show_actor_type'
+    get   'actor_types/edit/:id'  => 'actor_type#edit',   as: 'edit_actor_type'
+    post  'actor_type/edit/:id'   => 'actor_type#update', as: 'update_actor_type'
+
+    # Development routes
+    get   'all/reset' => 'application#reset_all', as: 'reset_all'
+
+    # AJAX routes
+    get   '/information_types_for_actor_type' => 'actor#information_types_for_actor_type', as: 'information_types_for_actor_type'
+
+    # Root
+    root :to => 'home#index', as: 'home'
+
+  end
+
+  # Needed to route '/' without locale
+  match '/' => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

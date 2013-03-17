@@ -12,4 +12,22 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery-1.9.1
+//= require bootstrap
+
+var SGfM = {
+    actor : {
+        render_matching_form : function(controller_path, actor_type_key) {
+            jQuery.ajax({
+                url: controller_path,
+                type: 'GET',
+                data: {"actor_type_key" : actor_type_key},
+                dataType: 'html',
+                success: function(data) {
+                    jQuery('#information-types-form').html(data);
+                }
+        });
+    }
+  }
+}
+

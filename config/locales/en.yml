@@ -2,4 +2,165 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+
+  form:
+    email: 'email'
+    password: 'password'
+    password_confirm: 'password confirm'
+    current_password: 'current password'
+    remember: 'remember me'
+    submit: 'submit'
+    update: 'update'
+    cancel: 'cancel'
+
+  basic:
+    sign_in: 'Sign in'
+    sign_out: 'Sign out'
+    sign_up: 'Sign up'
+    forgot_password: 'Forgot your password?'
+
+  flash:
+    no_admin_rights: 'Access denied'
+
+
+  application:
+    menu:
+      profile: 'Profile'
+      actors: 'Your Actors'
+      settings: 'Settings'
+
+
+# Translations for all actor-pages, sorted by page structure
+  actor:
+    list:
+      title: 'Your actors'
+      new_actor: 'Create new actor'
+      name_table: 'Who'
+
+    show:
+      title: '%{actor}'
+      type: 'Type'
+      edit_actor: 'Edit actor'
+      field_table: 'Data field'
+      value_table: 'Vaule'
+
+    new:
+      title: 'Create new actor'
+      select_type: 'Select a type'
+      create_actor: 'Create'
+
+    edit:
+      title: 'Edit actor'
+      type: 'Type'
+
+    create:
+      title: 'Created Actor'
+      success: 'You have successfully created an actor!'
+
+    update:
+      success: 'Actor successfully updated!'
+
+
+# Translations for all actor_type-pages, sorted by page structure
+  actor_type:
+    list:
+      title: 'All actor types'
+      new_actor_type: 'Create new actor type'
+      name_table: 'Name'
+      key_table: 'Key'
+
+    show:
+      title: '%{actor_type}'
+      name: 'Name'
+      edit_actor_type: 'Edit actor type'
+      field_table: 'Data field'
+      value_table: 'Vaule'
+
+    new:
+      title: 'Create new actor type'
+      create_actor_type: 'Create'
+      key: 'Key'
+      name: 'Name'
+
+    edit:
+      title: 'Edit actor type'
+
+    create:
+      title: 'Created actor type'
+      success: 'You have successfully created an actor type!'
+
+    update:
+      success: 'Actor type successfully updated!'
+
+
+# Translations for all actor_type-pages, sorted by page structure
+  information_type:
+    list:
+     title: 'InformationTypes'
+     new_information_type: 'Create new information type'
+     name_table: 'Name'
+     key_table: 'Key'
+
+    show:
+      title: '%{information_type}'
+      edit_information_type: 'Edit information type'
+      name: 'Name'
+      field_table: 'Data field'
+      value_table: 'Vaule'
+
+    new:
+      title: 'Create new information type'
+      name: 'Name'
+      key: 'Key'
+      create_information_type: 'Create'
+
+    create:
+      title: 'Created information type'
+      success: 'You have successfully created an information type!'
+
+    update:
+      success: 'Information type successfully updated!'
+
+
+# Translations for all login-pages, sorted by page structure
+  logins:
+    show:
+      title: 'Your profile'
+      email: 'Email'
+      type: 'Account-type'
+
+
+# Translations for all home-pages, sorted by page structure
+  home:
+    index:
+      title: 'Home'
+
+
+# Translations for all devise-pages, sorted by page structure
+  devise:
+    sessions:
+      new:
+        title: 'Sign in'
+
+    registration:
+      edit:
+        title: 'Edit %{profile}'
+        cancel_account: 'Cancel my account'
+      new:
+        title: 'Sign up'
+
+    passwords:
+      edit:
+        title:
+      new:
+        title:
+
+    unlocks:
+      new:
+        title: 'Resend unlock instructions'
+        submit: 'Resend unlock instructions'
+
+    links:
+      confirmation_inst: "Didn't receive confirmation instructions?"
+      unlock_inst: "Didn't receive unlock instructions?"
+      sign_in_with: 'Sign in with %{provider}'
