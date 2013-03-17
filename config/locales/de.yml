@@ -19,19 +19,22 @@ de:
     sign_up: 'Registrieren'
     forgot_password: 'Passwort vergessen?'
 
+  flash:
+    no_admin_rights: 'Access denied'
+
 
   application:
     menu:
       profile: 'Profil'
-      actors: 'Your Actors'
+      actors: 'Ihre Akteure'
       settings: 'Einstellungen'
 
 
 # Translations for all actor-pages, sorted by page structure
   actor:
     list:
-      title: 'Your actors'
-      new_actor: 'Create new actor'
+      title: 'Ihre Akteure'
+      new_actor: 'Neuen Akteur erstellen'
       name_table: 'Name'
       type_table: 'Typ'
 
@@ -43,7 +46,7 @@ de:
       value_table: 'Wert'
 
     new:
-      title: 'Create new actor'
+      title: 'Neuen Akteur erstellen'
       select_type: 'Typ auswählen'
       create_actor: 'erstellen'
 
@@ -52,40 +55,40 @@ de:
       type: 'Typ'
 
     create:
-      title: 'Created Actor'
-      success: 'Sie haben einen Akteur erstellt!'
+      title: 'Akteur erstellt'
+      success: 'Sie haben erfolgreich einen Akteur erstellt!'
 
 
 # Translations for all actor_type-pages, sorted by page structure
   actor_type:
     list:
-      title: 'All actor types'
-      new_actor_type: 'Create new actor type'
+      title: 'Alle Akteurtypen'
+      new_actor_type: 'Neuen Akteurtyp erstellen'
       name_table: 'Name'
       key_table: 'Schlüssel'
 
     show:
       title: '%{actor_type}'
       name: 'Name'
-      edit_actor_type: 'Typ bearbeiten'
+      edit_actor_type: 'Akteurtyp bearbeiten'
       field_table: 'Datenfeld'
       value_table: 'Wert'
 
     new:
-      title: 'Create new actor type'
+      title: 'Neuen Akteurtyp erstellen'
       create_actor_type: 'Erstellen'
       key: 'Schlüssel'
       name: 'Name'
 
     create:
-      title: 'Created actor type'
+      title: 'Akteurtyp erstellt'
 
 
 # Translations for all actor_type-pages, sorted by page structure
   information_type:
     list:
      title: 'Informationstypen'
-     new_information_type: 'neuen Informationstyp erstellen'
+     new_information_type: 'Neuen Informationstyp erstellen'
      name_table: 'Name'
      key_table: 'Schlüssel'
 
@@ -97,7 +100,7 @@ de:
       value_table: 'Wert'
 
     new:
-      title: 'neuen Informationstyp erstellen'
+      title: 'Neuen Informationstyp erstellen'
       name: 'Name'
       key: 'Schlüssel'
       create_information_type: 'Erstellen'

@@ -28,20 +28,21 @@ class ActorController < ApplicationController
 
   end
 
-  # Gets all actors of the current logged in user
-  # If there are none, return an empty array
+  # Gets all actors of the current logged in user hashed by their actor type
+  # If the current user is a admin, show all
   def list
     if current_login.is_admin?
-      @actors = Actor.all
+      actors = Actor.all
     else
-      @actors = current_login.account.actors
+      actors = current_login.account.actors
     end
 
-    if @actors.nil?
-      return Array.new
-    else
-      return @actor
+    @actors_hash = Hash.new{|h, k| h[k] = []}
+    actors.each do |actor|
+      @actors_hash[actor.actor_type] << actor
     end
+
+    @actors_hash
   end
 
   def edit
