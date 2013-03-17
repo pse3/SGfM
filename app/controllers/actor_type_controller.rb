@@ -1,5 +1,6 @@
 class ActorTypeController < ApplicationController
-	before_filter :authenticate_login!
+
+	before_filter :authenticate_login!, :authenticate_admin!
 
 	# Creates an ActorType with chosen name and InformationTypes
   def create

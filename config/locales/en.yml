@@ -19,6 +19,9 @@ en:
     sign_up: 'Sign up'
     forgot_password: 'Forgot your password?'
 
+  flash:
+    no_admin_rights: 'Access denied'
+
 
   application:
     menu:
