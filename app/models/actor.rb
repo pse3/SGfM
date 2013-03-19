@@ -6,8 +6,9 @@ class Actor
 
   field :created_at, :type => DateTime
 
-  belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                   #referenced
+  belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced
   embeds_many :informations, class_name: 'Information'                                  #embedded
+  embeds_many :relationships, class_name: 'Relationship'                                #embedded
   belongs_to :owner, class_name: 'User'                                                 #embedded
 
 	validates :informations, informations_not_empty: true

@@ -8,7 +8,10 @@ class RelationshipTypeController < ApplicationController
   end
 
   def list
-
+    @relationship_types = RelationshipType.all
+    if @relationship_types.nil?
+      return Array.new
+    end
   end
 
   def show

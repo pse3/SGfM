@@ -8,5 +8,7 @@
 </div>
 
 <div class="tabbable tabs-left">
-
+  <% @relationship_types.each do |relationship_type| %>
+    <% relationship_type.name %>
+  <% end %>
 </div>

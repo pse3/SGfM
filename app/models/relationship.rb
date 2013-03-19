@@ -1,3 +1,6 @@
+# A relationship represents a relation between to actors, with one active actor :actor that owns the relationship and
+# a second actor that is only one-way referred in the relationship as :reference.
+# Every relationship must belong to a relationship_type and contain a comment(can be empty)
 class Relationship
 
   include Mongoid::Document
@@ -11,7 +14,7 @@ class Relationship
   belongs_to :relationship_type, class_name: 'RelationshipType', inverse_of: nil          #referenced  / one way relationship
   belongs_to :scope, class_name: 'Scope', inverse_of: nil                                 #referenced
   embedded_in :actor, class_name: 'Actor'                                                 #embedded
-  has_one :reference, class_name: 'Actor'
+  has_one :reference, class_name: 'Actor', inverse_of: nil                                #referenced  / one way relationship
 
   def initialize
     super

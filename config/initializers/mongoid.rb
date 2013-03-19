@@ -1,7 +1,8 @@
 # encoding: utf-8
+
 unless Rails.env == :production
 
-  #reset all objects and types
+  # Reset all objects and types
   Actor.delete_all
   Information.delete_all
   InformationType.delete_all
@@ -11,7 +12,7 @@ unless Rails.env == :production
   User.delete_all
   Admin.delete_all
 
-  #create some information_types
+  # Create some InformationTypes
   info_company = InformationType.new
   info_company.key = :company
   I18n.locale = :en
@@ -156,7 +157,8 @@ unless Rails.env == :production
   info_email.name = "Émail"
   info_email.save
 
-  #create some actor_types
+
+  # Create some ActorTypes
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
   actor_doctor.information_type.push(info_first_name)
@@ -199,13 +201,28 @@ unless Rails.env == :production
   actor_hospital.save
 
 
-  #create a User and Login
+  # Create some RelationshipTypes
+  relation_works_with = RelationshipType.new
+  relation_works_with.key = :works_with
+  I18n.locale = :en
+  relation_works_with.name = 'works with'
+  I18n.locale = :de
+  relation_works_with.name = 'arbeitet mit'
+  I18n.locale = :it
+  relation_works_with.name = '??'
+  I18n.locale = :fr
+  relation_works_with.name = '??'
+  relation_works_with.save
+
+
+  # Create a User and Admin
   user = User.new
   login = Login.new(:email => 'email@domain.ch',
                     :password => 'test1234',
                     :password_confirmation => 'test1234')
   login.account = user
   user.save
+
   login.save
   admin = Admin.new
   login = Login.new(:email => 'admin@domain.ch',
@@ -214,4 +231,120 @@ unless Rails.env == :production
   login.account = admin
   admin.save
   login.save
+
+
+  # Create some Actors
+
+  # Dummy actor 'Insel'
+  dummy_actor_insel = Actor.new
+  dummy_actor_insel.actor_type = ActorType.find_by_key(:hospital)
+
+  insel_name = Information.new
+  insel_name.value = 'Insel'
+  insel_name.information_type = InformationType.find_by_key(:company)
+  insel_name.actor = dummy_actor_insel
+
+  insel_phone = Information.new
+  insel_phone.value = '033 iwas'
+  insel_phone.information_type = InformationType.find_by_key(:phone)
+  insel_phone.actor = dummy_actor_insel
+
+  insel_email = Information.new
+  insel_email.value = 'insel@bern.ch'
+  insel_email.information_type = InformationType.find_by_key(:email)
+  insel_email.actor = dummy_actor_insel
+
+  insel_street = Information.new
+  insel_street.value = 'Inselstrasse'
+  insel_street.information_type = InformationType.find_by_key(:street)
+  insel_street.actor = dummy_actor_insel
+
+  insel_street_number = Information.new
+  insel_street_number.value = '666'
+  insel_street_number.information_type = InformationType.find_by_key(:street_number)
+  insel_street_number.actor = dummy_actor_insel
+
+  insel_zip_code = Information.new
+  insel_zip_code.value = '4000'
+  insel_zip_code.information_type = InformationType.find_by_key(:zip_code)
+  insel_zip_code.actor = dummy_actor_insel
+
+  insel_city = Information.new
+  insel_city.value = 'Bern'
+  insel_city.information_type = InformationType.find_by_key(:city)
+  insel_city.actor = dummy_actor_insel
+
+  insel_canton = Information.new
+  insel_canton.value = 'BE'
+  insel_canton.information_type = InformationType.find_by_key(:canton)
+  insel_canton.actor = dummy_actor_insel
+
+  user.actors.push(dummy_actor_insel)
+  dummy_actor_insel.save
+  user.save
+
+  # Dummy doctor 'Karl Schürch'
+  dummy_actor_karl = Actor.new
+  dummy_actor_karl.actor_type = ActorType.find_by_key(:doctor)
+
+  karl_fname = Information.new
+  karl_fname.value = 'Karl'
+  karl_fname.information_type = InformationType.find_by_key(:first_name)
+  karl_fname.actor = dummy_actor_karl
+
+  karl_lname = Information.new
+  karl_lname.value = 'Schürch'
+  karl_lname.information_type = InformationType.find_by_key(:last_name)
+  karl_lname.actor = dummy_actor_karl
+
+  karl_phone = Information.new
+  karl_phone.value = '078 888 77 66'
+  karl_phone.information_type = InformationType.find_by_key(:phone)
+  karl_phone.actor = dummy_actor_karl
+
+  karl_email = Information.new
+  karl_email.value = 'karl@schürch.ch'
+  karl_email.information_type = InformationType.find_by_key(:email)
+  karl_email.actor = dummy_actor_karl
+
+  karl_street = Information.new
+  karl_street.value = 'Karlstrasse'
+  karl_street.information_type = InformationType.find_by_key(:street)
+  karl_street.actor = dummy_actor_karl
+
+  karl_street_number = Information.new
+  karl_street_number.value = '999'
+  karl_street_number.information_type = InformationType.find_by_key(:street_number)
+  karl_street_number.actor = dummy_actor_karl
+
+  karl_zip_code = Information.new
+  karl_zip_code.value = '-2000'
+  karl_zip_code.information_type = InformationType.find_by_key(:zip_code)
+  karl_zip_code.actor = dummy_actor_karl
+
+  karl_city = Information.new
+  karl_city.value = 'Bösingen'
+  karl_city.information_type = InformationType.find_by_key(:city)
+  karl_city.actor = dummy_actor_karl
+
+  karl_canton = Information.new
+  karl_canton.value = 'FR'
+  karl_canton.information_type = InformationType.find_by_key(:canton)
+  karl_canton.actor = dummy_actor_karl
+
+  user.actors.push(dummy_actor_karl)
+  dummy_actor_karl.save
+  user.save
+
+
+  # Create some Relations
+  relationship_insel = Relationship.new
+  relationship_insel.relationship_type = RelationshipType.find_by_key(:works_with)
+  relationship_insel.comment = 'This is a comment. Made by god!'
+  relationship_insel.actor = dummy_actor_insel
+  relationship_insel.reference = dummy_actor_karl
+  relationship_insel.save
+
+
+
 end

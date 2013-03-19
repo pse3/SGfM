@@ -126,6 +126,7 @@ en:
   relationship_type:
     list:
       title: 'RelationshipTypes'
+      new_relationship_type: 'Create new RelationshipType'
 
     show:
       title: ''
