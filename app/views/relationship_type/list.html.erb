@@ -7,8 +7,15 @@
   </div>
 </div>
 
-<div class="tabbable tabs-left">
+<table class="table table-hover">
+  <tr>
+    <th><%= t('relationship_type.list.name_table') %></th>
+    <th><%= t('relationship_type.list.key_table') %></th>
+  </tr>
   <% @relationship_types.each do |relationship_type| %>
-    <% relationship_type.name %>
+    <tr>
+      <td><%= link_to(relationship_type, show_relationship_type_path(relationship_type)) %></td>
+      <td><%= relationship_type.key %></td>
+    </tr>
   <% end %>
-</div>
+</table>

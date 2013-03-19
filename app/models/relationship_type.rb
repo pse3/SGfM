@@ -13,4 +13,8 @@ class RelationshipType
     RelationshipType.find_by(key: key)
   end
 
+  def to_s
+    self.name
+  end
+
 end
