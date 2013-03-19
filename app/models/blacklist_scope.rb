@@ -1,6 +1,9 @@
 class BlacklistScope < Scope
 	def visible? (viewer, viewed)
 		list = self.list
+		if viewer.nil?
+			return !list.include?(:unauthorized)
+		end
 		visible = true
 		list.each do |disallowed_viewer|
 			if allowed_viewer == :self
@@ -13,7 +16,7 @@ class BlacklistScope < Scope
 			unless visible
 				break
 			end
-		end
+			return visible
 		end
 	end
 end
