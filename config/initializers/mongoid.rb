@@ -10,6 +10,7 @@ unless Rails.env == :production
   Login.delete_all
   User.delete_all
   Admin.delete_all
+	Scope.delete_all
 
   #create some information_types
   info_company = InformationType.new
@@ -198,6 +199,18 @@ unless Rails.env == :production
   actor_hospital.name = "Hôpital"
   actor_hospital.save
 
+	#create some scopes
+	scope_private = WhitelistScope.new
+	scope_private.key = :private
+	scope_private.name = 'private'
+	scope_private.list = [:self, :admin]
+	scope_private.save
+
+	scope_public = BlacklistScope.new
+	scope_public.key = :public
+	scope_public.name = 'public'
+	scope_public.list = []
+	scope_public.save
 
   #create a User and Login
   user = User.new

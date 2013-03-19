@@ -1,6 +1,6 @@
 class Scope
   # base class for scopes such as private, public etc
-	# TODO: This class is meant to be abstract (in means of Java terminology). The actual implementations are: WhitelistScope and BlacklistScope
+	# TODO: This class is meant to be abstract (in means of Java terminology). The actual implementations are: WhitelistScope and BlacklistScope.
 
   include Mongoid::Document
 
