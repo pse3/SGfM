@@ -14,7 +14,7 @@ class Relationship
   belongs_to :relationship_type, class_name: 'RelationshipType', inverse_of: nil          #referenced  / one way relationship
   belongs_to :scope, class_name: 'Scope', inverse_of: nil                                 #referenced
   embedded_in :actor, class_name: 'Actor'                                                 #embedded
-  has_one :reference, class_name: 'Actor', inverse_of: nil                                #referenced  / one way relationship
+  belongs_to :reference, class_name: 'Actor', inverse_of: nil                                #referenced  / one way relationship
 
   def initialize
     super
