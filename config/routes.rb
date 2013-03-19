@@ -48,6 +48,7 @@ SGfM::Application.routes.draw do
 
     # AJAX routes
     get   '/information_types_for_actor_type' => 'actor#information_types_for_actor_type', as: 'information_types_for_actor_type'
+    get   '/add_relationship_form' =>            'ajax#add_relationship_form',             as: 'add_relationship_form'
 
     # Root
     root :to => 'home#index', as: 'home'

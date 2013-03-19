@@ -1,0 +1,17 @@
+<%= fields_for(:actor) do |f| %>
+
+  <div class="control-group">
+    <%= f.label(:relationship_type, 'Relationship Type', class: 'control-label') %>
+    <div class="controls">
+      <%= f.collection_select(:relationship_type, relationship_types, :key, :name, {}, {:id => 'actor-type-select',:onchange => "SGfM.actor.render_matching_form('"+information_types_for_actor_type_path+"',this.value)"}) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:reference, 'Reference', class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:reference) %>
+    </div>
+  </div>
+
+<% end %>

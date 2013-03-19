@@ -11,6 +11,11 @@
   </div>
 
   <div id="information-types-form"></div>
+  <div id="relationship-form"></div>
+
+  <div>
+    <%= button_to_function(:add_relationship, 'WTF.relationship.render_additional_relationship_form("' + add_relationship_form_path + '")', :type => :button) %>
+  </div>
 
   <div class="form-actions">
     <%= f.submit(t('actor.new.create_actor'), class: 'btn btn-large btn-primary') %>
