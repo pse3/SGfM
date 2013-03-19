@@ -37,6 +37,10 @@ SGfM::Application.routes.draw do
     # Development routes
     get   'all/reset' => 'application#reset_all', as: 'reset_all'
 
+    # CSV Import routes
+    get 'csv_import/new' => 'csv_import#new', as: 'new_csv_import'
+    post 'csv_import/import' => 'csv_import#import', as:  'import_csv_import'
+
     # AJAX routes
     get   '/information_types_for_actor_type' => 'actor#information_types_for_actor_type', as: 'information_types_for_actor_type'
 

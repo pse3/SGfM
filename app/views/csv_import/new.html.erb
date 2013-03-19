@@ -1,0 +1,7 @@
+<%= form_tag({:action => :import}, :multipart => true) do %>
+    <%= file_field_tag 'csv' %>
+
+    <div class="form-actions">
+        <%= submit_tag(('upload'), :class => 'btn btn-primary') %>
+    </div>
+<% end %>
