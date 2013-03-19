@@ -6,23 +6,22 @@ class ActorController < ApplicationController
   def create
     user = current_login.account
     @actor = Actor.new
-    @actor.actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
     @actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
-
-    user.actors.push @actor
+    @actor.actor_type = @actor_type
     current_actor = @actor
 
-    for info_type in @actor_type.information_type do
+    @actor_type.information_type.each do |info_type|
       info = Information.new()
       info.value = params[:actor][info_type.key]
       info.information_type = InformationType.find_by_key(info_type.key)
-      info.actor = current_actor
+      info.actor = @actor
     end
 
-    current_actor.save
+    user.actors.push(@actor)
+    @actor.save
     user.save
 
-		if current_actor.valid?
+		if @actor.valid?
 			flash[:success] = t('actor.create.success')
 			redirect_to actors_path
 		end
@@ -40,7 +39,7 @@ class ActorController < ApplicationController
 
     @actors_hash = Hash.new{|h, k| h[k] = []}
     actors.each do |actor|
-      @actors_hash[actor.actor_type] << actor
+      @actors_hash[actor.actor_type].push(actor)
     end
 
     @actors_hash
@@ -71,9 +70,9 @@ class ActorController < ApplicationController
     key = params[:actor_type_key]
     actor_type = ActorType.find_by_key(key)
 		information_types =  actor_type.information_type
-    render :partial => 'actor/new_actor_information_types', :locals => {:actor_type_key => key,
+    render(:partial => 'actor/new_actor_information_types', :locals => {:actor_type_key => key,
                                                                         :actor_type => actor_type,
-																																				:information_types => information_types}
+																																				:information_types => information_types})
 	end
 
   # Find actor with given id
