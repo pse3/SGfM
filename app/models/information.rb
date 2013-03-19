@@ -1,4 +1,4 @@
-class Information
+tclass Information
   # base class for the actual data
 
   include Mongoid::Document
