@@ -32,7 +32,16 @@ SGfM::Application.routes.draw do
     post  'actor_types/create'    => 'actor_type#create'
     get   'actor_types/:id'       => 'actor_type#show',   as: 'show_actor_type'
     get   'actor_types/edit/:id'  => 'actor_type#edit',   as: 'edit_actor_type'
-    post  'actor_type/edit/:id'   => 'actor_type#update', as: 'update_actor_type'
+    post  'actor_types/edit/:id'  => 'actor_type#update', as: 'update_actor_type'
+
+    # RelationshipType routes
+    get   'relationship_types'           => 'relationship_type#list',   as: 'relationship_types'
+    get   'relationship_types/create'    => 'relationship_type#new',    as: 'create_relationship_type'
+    post  'relationship_types/create'    => 'relationship_type#create'
+    get   'relationship_types/:id'       => 'relationship_type#show',   as: 'show_relationship_type'
+    get   'relationship_types/edit/:id'  => 'relationship_type#edit',   as: 'edit_relationship_type'
+    post  'relationship_types/edit/:id'  => 'relationship_type#update', as: 'update_relationship_type'
+
 
     # Development routes
     get   'all/reset' => 'application#reset_all', as: 'reset_all'

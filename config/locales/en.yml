@@ -122,6 +122,20 @@ en:
       success: 'Information type successfully updated!'
 
 
+# Translations for all actor_type-pages, sorted by page structure
+  relationship_type:
+    list:
+      title: 'RelationshipTypes'
+
+    show:
+      title: ''
+    new:
+      title: 'Create new RelationshipType'
+    edit:
+    create:
+    update:
+
+
 # Translations for all login-pages, sorted by page structure
   logins:
     show:
