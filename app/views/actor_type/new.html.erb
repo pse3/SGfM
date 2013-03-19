@@ -12,7 +12,19 @@
 
   <!--todo need to add field_name for each lang.-->
   <div class="control-group">
-    <%= f.label(t('actor_type.new.name'), class: 'control-label') %>
+    <%= f.label(t('actor_type.new.name_en'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:name, placeholder: t('actor_type.new.key'), required: true) %>
+    </div>
+    <%= f.label(t('actor_type.new.name_de'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:name, placeholder: t('actor_type.new.key'), required: true) %>
+    </div>
+    <%= f.label(t('actor_type.new.name_fr'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:name, placeholder: t('actor_type.new.key'), required: true) %>
+    </div>
+    <%= f.label(t('actor_type.new.name_it'), class: 'control-label') %>
     <div class="controls">
       <%= f.text_field(:name, placeholder: t('actor_type.new.key'), required: true) %>
     </div>
