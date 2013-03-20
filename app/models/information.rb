@@ -10,7 +10,7 @@ class Information
 
   belongs_to :creator, class_name: 'User', inverse_of: nil                              #referenced  / one way relationship                                                                                                                                                                                                                                                 #embedded
   belongs_to :information_type, class_name: 'InformationType', inverse_of: nil          #referenced  / one way relationship
-  belongs_to :scope, class_name: 'Scope', inverse_of: nil                                                   #referenced
+  has_one :scope, :as => :scopeable                                                   #referenced
   embedded_in :actor, class_name: 'Actor'                                               #embedded
 
   def initialize
