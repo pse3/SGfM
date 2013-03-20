@@ -4,13 +4,54 @@
 <%= form_for(@actor_type, :url => update_actor_type_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
 
   <div class="control-group">
-    <%= f.label(:actor_type, t('actor_type.edit.type'), :class => 'control-label') %>
+    <%= f.label(:name_en, t('actor_type.new.name_en'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:actor_type, :disabled => 'disabled') %>
+      <%= f.text_field(:name_en, value: @actor_type.name_locale(:en)) %>
     </div>
   </div>
 
-  <!-- todo form -->
+    <div class="control-group">
+      <%= f.label(:name_de, t('actor_type.new.name_de'), :class => 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(:name_de, value: @actor_type.name_locale(:de)) %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label(:name_fr, t('actor_type.new.name_fr'), :class => 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(:name_fr, value: @actor_type.name_locale(:fr)) %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label(:name_it, t('actor_type.new.name_it'), :class => 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(:name_it, value: @actor_type.name_locale(:it)) %>
+      </div>
+    </div>
+
+    <% for info_type in @actor_type.information_type do %>
+        <%= f.fields_for info_type do |it_form| %>
+            <div class="control-group">
+              <%= it_form.label(:key, info_type.name, :class => 'control-label') %>
+              <div class="controls">
+                <%= check_box_tag(info_type.key, '1', checked: true ) %>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+
+    <% for info_type in list_information_types - @actor_type.information_type do %>
+        <%= f.fields_for info_type do |it_form| %>
+            <div class="control-group">
+              <%= it_form.label(:key, info_type.name, :class => 'control-label') %>
+              <div class="controls">
+                <%= check_box_tag(info_type.key, '1') %>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
 
   <div class="form-actions">
     <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>

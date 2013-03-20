@@ -74,14 +74,18 @@ de:
       title: '%{actor_type}'
       name: 'Name'
       edit_actor_type: 'Akteurtyp bearbeiten'
-      field_table: 'Datenfeld'
-      value_table: 'Wert'
+      information_types: 'Informationtypen'
+      information_type_name: 'Name'
+      information_type_key: 'Schlüssel'
 
     new:
       title: 'Neuen Akteurtyp erstellen'
       create_actor_type: 'Erstellen'
       key: 'Schlüssel'
-      name: 'Name'
+      name_en: 'Name (englisch)'
+      name_de: 'Name (deutsch)'
+      name_fr: 'Name (französisch)'
+      name_it: 'Name (italienisch)'
 
     edit:
       title: 'Akteurtyp bearbeiten'
