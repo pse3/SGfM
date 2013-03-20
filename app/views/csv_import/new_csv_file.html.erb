@@ -1,4 +1,6 @@
-<%= form_tag({:action => :import}, :multipart => true) do %>
+<% @page_title = t('csv_import.file.new.title') %>
+
+<%= form_tag({:action => :upload_csv_file}, :multipart => true) do %>
     <%= file_field_tag 'csv' %>
 
     <div class="form-actions">

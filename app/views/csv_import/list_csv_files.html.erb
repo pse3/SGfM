@@ -1,0 +1,29 @@
+<% @page_title = t('csv_import.file.list.title') %>
+
+<% content_for :header do %>
+    <%= javascript_include_tag 'csv_import/list_csv_files' %>
+<% end %>
+
+<div class="row pull-right">
+    <%= link_to(t('csv_import.file.list.link_new'), new_csv_file_path, :class => 'btn btn-primary') %>
+</div>
+
+<table class="table table-hover">
+    <tr>
+        <th><%= t('csv_import.file.list.column_file') %></th>
+        <th><%= t('csv_import.file.list.column_uploaded') %></th>
+        <th><%= t('csv_import.file.list.column_imported') %></th>
+        <th></th>
+        <th></th>
+    </tr>
+    <% @csv_files.each do |csv_file| %>
+        <tr>
+            <td><%= csv_file.file_name %></td>
+            <td><%= unless csv_file.uploaded.nil? then l csv_file.uploaded end %></td>
+            <td><%= unless csv_file.imported.nil? then l csv_file.imported end %></td>
+            <td><%= t('csv_import.file.list.column_import') %></td>
+            <td><%= render(:partial => 'delete_button', :locals => { :csv_file => csv_file}) %></td>
+        </tr>
+    <% end %>
+
+</table>
