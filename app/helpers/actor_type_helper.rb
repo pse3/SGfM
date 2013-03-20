@@ -4,4 +4,7 @@ module ActorTypeHelper
     @actor_types = ActorType.all
   end
 
+	def list_scopes
+		Scope.all
+	end
 end
