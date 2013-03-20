@@ -3,7 +3,7 @@
   <div class="control-group">
     <%= f.label(:relationship_type, 'Relationship Type', class: 'control-label') %>
     <div class="controls">
-      <%= f.collection_select(:relationship_type, relationship_types, :key, :name, {}, {:id => 'actor-type-select',:onchange => "SGfM.actor.render_matching_form('"+information_types_for_actor_type_path+"',this.value)"}) %>
+      <%= f.collection_select(:relationship_type, relationship_types, :key, :name) %>
     </div>
   </div>
 
