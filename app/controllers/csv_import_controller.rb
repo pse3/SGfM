@@ -26,7 +26,7 @@ class CsvImportController < ApplicationController
     csv_file.file_path = file_path
     csv_file.save
 
-    flash[:notice] = t('csv_import.file.upload.success_message')
+    flash[:notice] = t('csv_import.file.upload.success_message', :file_name => filename)
     redirect_to list_csv_files_path
   end
 

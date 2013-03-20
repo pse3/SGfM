@@ -176,13 +176,14 @@ de:
       new:
         title: "Neue CSV Datei hochladen"
       upload:
-        success_message: "CSV Datei erfolgreich hochgeladen."
+        success_message: "%{file_name} erfolgreich hochgeladen"
       list:
         title: "Verfügbare CSV Dateien"
         column_file: "Dateiname"
         column_uploaded: "hinzugefügt am"
         column_imported: "importiert am"
         column_import: "importieren"
+        link_new: "Datei hochladen"
 
 # Translations for date and time
   date:
