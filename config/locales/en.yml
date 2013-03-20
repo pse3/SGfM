@@ -3,6 +3,12 @@
 
 en:
 
+  lang:
+    en: 'English'
+    de: 'German'
+    it: 'Italian'
+    fr: 'French'
+
   form:
     email: 'email'
     password: 'password'
@@ -132,10 +138,16 @@ en:
 
     show:
       title: ''
+
     new:
       title: 'Create new RelationshipType'
+      name: 'Name'
+      key: 'Key'
+      create_relationship_type: 'Create'
+
     edit:
     create:
+      success: 'RelationshipType successfully created!'
     update:
 
 

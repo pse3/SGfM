@@ -4,7 +4,13 @@ class RelationshipTypeController < ApplicationController
 
 
   def create
+    relationship_type = RelationshipType.new
+    relationship_type.key = params[:relationship_type][:name][:en].downcase.tr(' ', '_')
+    relationship_type.name_translations = params[:relationship_type][:name]
+    relationship_type.save
 
+    flash[:success] = t('relationship_type.create.success')
+    redirect_to relationship_types_path
   end
 
   def list
