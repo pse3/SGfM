@@ -1,4 +1,4 @@
-tclass Information
+class Information
   # base class for the actual data
 
   include Mongoid::Document
@@ -29,6 +29,5 @@ tclass Information
   def key
     self.information_type.key
   end
-
 
 end

@@ -2,8 +2,9 @@ class InformationFieldType
 
   include Mongoid::Document
 
-  field :name, :type => String, :localize => true
+
   field :key, :type => Symbol
+
 
   validates_uniqueness_of :key
 
