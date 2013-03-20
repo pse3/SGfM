@@ -10,7 +10,6 @@ class Scope
 
 	validates_uniqueness_of :key
 
-	belongs_to :scopeable, polymorphic: true
   #no mappings needed! (yet)
 
 end
