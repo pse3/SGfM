@@ -9,7 +9,7 @@ class ActorController < ApplicationController
     @actor = Actor.new
     @actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
     @actor.actor_type = @actor_type
-    current_actor = @actor
+    @current_actor = @actor
 
     @actor_type.information_type.each do |info_type|
       info = Information.new()
