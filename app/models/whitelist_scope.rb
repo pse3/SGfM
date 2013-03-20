@@ -1,4 +1,5 @@
 class WhitelistScope < Scope
+
 	def visible? (viewer, viewed)
 		list = self.list
 		if viewer.nil?

@@ -14,6 +14,7 @@ class ActorController < ApplicationController
       info = Information.new()
       info.value = params[:actor][info_type.key]
       info.information_type = InformationType.find_by_key(info_type.key)
+			info.scope = Scope.where(key: params[:actor][:scope][info_type.key].to_sym)
       info.actor = @actor
     end
 
