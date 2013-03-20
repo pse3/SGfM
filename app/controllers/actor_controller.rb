@@ -1,6 +1,7 @@
 class ActorController < ApplicationController
 
   before_filter :authenticate_login!
+  before_filter :ensure_user_owns_actor!, :only => [:edit]
 
   # Creates a Actor with chosen name and type
   def create

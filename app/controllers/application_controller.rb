@@ -41,4 +41,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def ensure_user_owns_actor!
+    unless current_actor.owner == current_login.account
+      flash[:error] = t('flash.not_owner_of_actor')
+      redirect_to(home_path)
+    end
+  end
 end

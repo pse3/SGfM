@@ -21,6 +21,7 @@ en:
 
   flash:
     no_admin_rights: 'Access denied'
+    not_owner_of_actor: 'You can not edit this actor'
 
 
   application:
