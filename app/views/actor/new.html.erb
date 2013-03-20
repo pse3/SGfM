@@ -3,14 +3,18 @@
 
 <%= form_for(:actor, html: {class: 'form-horizontal'}) do |f| %>
 
-    <div class="control-group">
-        <%= f.label(:actor_type, t('actor.new.select_type'), class: 'control-label') %>
-        <div class="controls">
-            <%= f.collection_select(:actor_type, list_actor_types, :key, :name, {}, {:id => 'actor-type-select',:onchange => "SGfM.actor.render_matching_form('"+information_types_for_actor_type_path+"',this.value)"}) %>
-        </div>
-    </div>
+  <div class="control-group">
+    <%= f.label(:actor_type, t('actor.new.select_type'), class: 'control-label') %>
+      <div class="controls">
+        <%= f.collection_select(:actor_type, list_actor_types, :key, :name, {}, {:id => 'actor-type-select',:onchange => "SGfM.actor.render_matching_form('"+information_types_for_actor_type_path+"',this.value)"}) %>
+      </div>
+  </div>
 
-    <div id="information-types-form"></div>
+  <div id="information-types-form"></div>
+
+  <div class="form-actions">
+    <%= f.submit(t('actor.new.create_actor'), class: 'btn btn-large btn-primary') %>
+  </div>
 
 <% end %>
 
