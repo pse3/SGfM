@@ -7,7 +7,7 @@ class ActorTypeController < ApplicationController
     @actor_type = ActorType.new
     @actor_type.key = params[:actor_type][:name_en].downcase.tr(' ', '_')
 
-    temp_lang = I18n.locale
+    current_lang = I18n.locale
     I18n.locale = :en
     @actor_type.name = params[:actor_type][:name_en]
     I18n.locale = :de
@@ -16,8 +16,10 @@ class ActorTypeController < ApplicationController
     @actor_type.name = params[:actor_type][:name_fr]
     I18n.locale = :it
     @actor_type.name = params[:actor_type][:name_it]
-    I18n.locale = temp_lang
+    I18n.locale = current_lang
 
+    # todo iterate over info_types in params array with information_types of actor_type rather than over all info_types
+    # see issue number 25 on github
     for info_type in InformationType.each do
       if params[info_type.key].to_i == 1
         @actor_type.information_type.push(info_type)
@@ -56,7 +58,26 @@ class ActorTypeController < ApplicationController
   def update
     @actor_type = ActorType.find(params[:id])
 
-    #todo update data
+    current_lang = I18n.locale
+    I18n.locale = :en
+    @actor_type.name = params[:actor_type][:name_en]
+    I18n.locale = :de
+    @actor_type.name = params[:actor_type][:name_de]
+    I18n.locale = :fr
+    @actor_type.name = params[:actor_type][:name_fr]
+    I18n.locale = :it
+    @actor_type.name = params[:actor_type][:name_it]
+    I18n.locale = current_lang
+
+    # todo iterate over info_types in params array with information_types of actor_type rather than over all info_types
+    # see issue number 25 on github
+    for info_type in InformationType.each do
+      if params[info_type.key].to_i == 1
+        @actor_type.information_type.push(info_type) unless @actor_type.information_type.include?(info_type)
+      else
+        @actor_type.information_type.delete(info_type) if @actor_type.information_type.include?(info_type)
+      end
+    end
 
     @actor_type.save
 
