@@ -3,7 +3,7 @@ class Information
 
   include Mongoid::Document
 
-  field :value, :type => String
+  field :value, :type => Array
 
   field :created_at, :type => DateTime
   field :changed_a, :type => DateTime
@@ -16,8 +16,10 @@ class Information
   def initialize
     super
     self.created_at = DateTime.now
+    self.value = Array.new
   end
 
+  #TODO rewrite according to single_value / multiple_value
   def to_s
     self.value
   end
@@ -30,4 +32,16 @@ class Information
     self.information_type.key
   end
 
+  def single_value
+     self.value[0]
+  end
+
+  def single_value=(newvalue)
+    self.value[0]= newvalue
+    self.save
+  end
+
+  def multiple_value
+    .self.value
+  end
 end

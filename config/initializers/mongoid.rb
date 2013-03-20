@@ -11,6 +11,19 @@ unless Rails.env == :production
   User.delete_all
   Admin.delete_all
 
+  #create the information field types
+  singlevalue = InformationValueType.new
+  singlevalue.key = :singlevalue
+  singlevalue.save
+
+  mutiplechoice = InformationValueType.new
+  mutiplechoice.key = :mutiplechoice
+  mutiplechoice.save
+
+  radio =  InformationValueType.new
+  radio.key = :radio
+  radio.save
+
   #create some information_types
   info_company = InformationType.new
   info_company.key = :company
