@@ -8,7 +8,7 @@ class InformationType
 
   validates_uniqueness_of :key
 
-  belongs_to :information_type_ype, class_name: 'InformationTypeType', inverse_of: nil  #referenced  / one way relationship
+  belongs_to :information_field_type, class_name: 'InformationFieldType', inverse_of: nil  #referenced  / one way relationship
 
   #no mappings needed!
 

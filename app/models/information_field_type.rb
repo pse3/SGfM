@@ -1,4 +1,4 @@
-class InformationTypeType
+class InformationFieldType
 
   include Mongoid::Document
 
@@ -7,10 +7,9 @@ class InformationTypeType
 
   validates_uniqueness_of :key
 
-  #no mappings needed!
 
   def self.find_by_key(key)
-    InformationType.find_by(key: key)
+    InformationFieldType.find_by(key: key)
   end
 
 
