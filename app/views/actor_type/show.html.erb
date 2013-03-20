@@ -6,10 +6,6 @@
     <th><%= t('actor_type.show.information_type_name') %></th>
     <th><%= t('actor_type.show.information_type_key') %></th>
   </tr>
-  <tr>
-    <td><%= @actor_type.name %></td>
-    <td><%= @actor_type.key %></td>
-  </tr>
   <% for info_type in @actor_type.information_type %>
       <tr>
         <td><%= info_type.name %></td>

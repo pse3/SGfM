@@ -29,16 +29,13 @@
     </div>
   </div>
 
-  <!--todo clicking label should toggle checkbox like in signIn popup.-->
   <% for info_type in @information_types do %>
-    <%= f.fields_for info_type do |it_form| %>
     <div class="control-group">
-      <%= it_form.label(:key, info_type.name, :class => 'control-label') %>
+      <%= label_tag("information[#{info_type.key}]", info_type.name, :class => 'control-label') %>
       <div class="controls">
-        <%= check_box_tag(info_type.key, '1') %>
+        <%= check_box_tag("information[#{info_type.key}]", '1') %>
       </div>
     </div>
-    <% end %>
   <% end %>
 
   <div class="form-actions">

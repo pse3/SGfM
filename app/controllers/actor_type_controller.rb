@@ -18,10 +18,9 @@ class ActorTypeController < ApplicationController
     @actor_type.name = params[:actor_type][:name_it]
     I18n.locale = current_lang
 
-    # todo iterate over info_types in params array with information_types of actor_type rather than over all info_types
-    # see issue number 25 on github
-    for info_type in InformationType.each do
-      if params[info_type.key].to_i == 1
+    params[:information].each do |key,value|
+      info_type = InformationType.find_by_key(key.to_sym)
+      if value.to_i == 1
         @actor_type.information_type.push(info_type)
       end
     end
@@ -71,8 +70,9 @@ class ActorTypeController < ApplicationController
 
     # todo iterate over info_types in params array with information_types of actor_type rather than over all info_types
     # see issue number 25 on github
-    for info_type in InformationType.each do
-      if params[info_type.key].to_i == 1
+    params[:information].each do |key,value|
+      info_type = InformationType.find_by_key(key.to_sym)
+      if value.to_i == 1
         @actor_type.information_type.push(info_type) unless @actor_type.information_type.include?(info_type)
       else
         @actor_type.information_type.delete(info_type) if @actor_type.information_type.include?(info_type)
