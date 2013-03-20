@@ -20,7 +20,13 @@ class Actor
 
   def find_information_by_key(key)
     self.informations.detect{ |info| info.information_type.key == key }
-  end
+	end
+
+	def visible_informations (viewer)
+		infos= Array.new(self.informations)
+		infos.keep_if{|info| info.visible?(viewer)}
+		infos
+	end
 
   def to_s
     return find_information_by_key(:company) unless find_information_by_key(:company).nil?

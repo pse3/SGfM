@@ -17,8 +17,8 @@ class BlacklistScope < Scope
 			unless visible
 				break
 			end
-			return visible
 		end
+		return visible
 	end
 end
 
