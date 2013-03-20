@@ -5,7 +5,7 @@
       <div class="controls">
         <% @scopes = list_scopes %>
         <%= f.text_field(info.key, placeholder: info.name, required: true) %>
-        <%= f.collection_select("#{info.key}-scope", @scopes, :key, :name)%>
+        <%= f.collection_select("scope[#{info.key}]", @scopes, :key, :name)%>
       </div>
 
     </div>
