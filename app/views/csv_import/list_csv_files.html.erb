@@ -20,7 +20,7 @@
             <td><%= csv_file.file_name %></td>
             <td><%= unless csv_file.uploaded.nil? then l csv_file.uploaded end %></td>
             <td><%= unless csv_file.imported.nil? then l csv_file.imported end %></td>
-            <td><%= t('csv_import.file.list.column_import') %></td>
+            <td><%= render(:partial => 'import_button', :locals => { :csv_file => csv_file}) %></td>
             <td><%= render(:partial => 'delete_button', :locals => { :csv_file => csv_file}) %></td>
         </tr>
     <% end %>

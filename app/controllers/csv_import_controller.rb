@@ -44,15 +44,19 @@ class CsvImportController < ApplicationController
   def import
     csv_file = CsvImport::CsvFile.find(params[:id])
 
-    CSV.foreach(Rails.root.join("public/uploads/csv_import.csv"), {:col_sep => "|", :encoding => "ISO-8859-1"}) do |row|
+    CSV.foreach(csv_file.file_path, {:col_sep => "|", :encoding => "ISO-8859-1"}) do |row|
       name, titel, adresse, email, telefon1, telefon2, kanton, spez = row
       puts "name: #{name}"
       actor = Actor.new()
       actor.actor_type = ActorType.find_by_key(:doctor)
       actor.informations.push information(:last_name, name)
-      #actor.informations.push information(:email, email)
       actor.save
     end
+
+    csv_file.imported = DateTime.now
+    csv_file.save
+
+    render :nothing => true
   end
 
   def information(key,value)
