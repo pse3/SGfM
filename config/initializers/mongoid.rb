@@ -214,6 +214,17 @@ unless Rails.env == :production
   relation_works_with.name = '??'
   relation_works_with.save
 
+  relation_other = RelationshipType.new
+  relation_other.key = :other
+  I18n.locale = :en
+  relation_other.name = 'other'
+  I18n.locale = :de
+  relation_other.name = 'Andere'
+  I18n.locale = :it
+  relation_other.name = '??'
+  I18n.locale = :fr
+  relation_other.name = '??'
+  relation_other.save
 
   # Create a User and Admin
   user = User.new

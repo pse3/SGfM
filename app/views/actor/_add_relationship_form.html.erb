@@ -1,16 +1,16 @@
-<%= fields_for(:actor) do |f| %>
+<%= fields_for(:relationship) do |f| %>
 
   <div class="control-group">
-    <%= f.label(:relationship_type, 'Relationship Type', class: 'control-label') %>
+    <%= f.label(:type, 'Relationship Type', class: 'control-label') %>
     <div class="controls">
-      <%= f.collection_select(:relationship_type, relationship_types, :key, :name) %>
+      <%= f.select(:type, relationship_types, {}, :name => :'relationship[type][]') %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label(:reference, 'Reference', class: 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:reference) %>
+      <%= f.text_field(:reference, :name => :'relationship[reference][]') %>
     </div>
   </div>
 

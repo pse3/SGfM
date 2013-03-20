@@ -17,6 +17,17 @@ class ActorController < ApplicationController
       info.actor = @actor
     end
 
+    ref = params[:relationship][:reference]
+
+    params[:relationship][:type].each do |relationship_type|
+      relation = Relationship.new
+      relation.comment = 'dsfdsfsdfsdf'
+      relation.relationship_type = relationship_type
+      relation.actor = @actor
+      relation.reference = @actor
+    end
+
+
     user.actors.push(@actor)
     @actor.save
     user.save
