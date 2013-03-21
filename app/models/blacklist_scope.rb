@@ -20,4 +20,8 @@ class BlacklistScope < Scope
 		end
 		return visible
 	end
+
+	def to_s
+		'Blacklist Scope'
+	end
 end

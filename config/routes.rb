@@ -34,6 +34,10 @@ SGfM::Application.routes.draw do
     get   'actor_types/edit/:id'  => 'actor_type#edit',   as: 'edit_actor_type'
     post  'actor_type/edit/:id'   => 'actor_type#update', as: 'update_actor_type'
 
+		#Scopes Routes
+		get 'scopes' => 'scopes#list', as: 'scopes'
+
+
     # Development routes
     get   'all/reset' => 'application#reset_all', as: 'reset_all'
 

@@ -125,6 +125,15 @@ en:
     update:
       success: 'Information type successfully updated!'
 
+#Translation for all Scope-Pages
+  scopes:
+      list:
+       title: 'Scopes'
+       new_information_type: 'Create new scope'
+       name_table: 'Name'
+       key_table: 'Key'
+       type_table: 'Type'
+       list_contents_table: 'List contents'
 
 # Translations for all login-pages, sorted by page structure
   logins:
@@ -168,3 +177,4 @@ en:
       confirmation_inst: "Didn't receive confirmation instructions?"
       unlock_inst: "Didn't receive unlock instructions?"
       sign_in_with: 'Sign in with %{provider}'
+

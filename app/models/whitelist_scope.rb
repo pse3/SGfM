@@ -20,5 +20,9 @@ class WhitelistScope < Scope
 		end
 		return visible
 	end
+
+	def to_s
+		'Whitelist Scope'
+	end
 end
 
