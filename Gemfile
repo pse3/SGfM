@@ -9,6 +9,7 @@ gem 'mocha', :require => false
 gem 'minitest-reporters', :require => false
 gem 'rspec-rails', :require => false
 gem 'capybara'
+gem "select2-rails" # Added by urs, needed to allow easy dropdown autocomplete box for relationship references
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

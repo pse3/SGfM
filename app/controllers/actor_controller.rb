@@ -62,6 +62,7 @@ class ActorController < ApplicationController
 
   # Doesn't do anything
   def new
+    @all_actors = Actor.all
   end
 
   def update
