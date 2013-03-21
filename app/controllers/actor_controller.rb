@@ -28,11 +28,11 @@ class ActorController < ApplicationController
 
   end
 
-  # Gets all actors of the current logged in user hashed by their actor type
-  # If the current user is a admin, show all
-  def list
-    if current_login.is_admin?
-      actors = Actor.all
+			# Gets all actors of the current logged in user hashed by their actor type
+			# If the current user is a admin, show all
+			def list
+				if current_login.is_admin?
+					actors = Actor.all
     else
       actors = current_login.account.actors
     end
