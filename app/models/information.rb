@@ -46,4 +46,16 @@ class Information
     end
   end
 
+  def add_vslue(values)
+    unless information_type.information_field_type.single?
+      self.value.add(values)
+    end
+  end
+
+  def remove_value(values)
+    unless information_type.information_field_type.single?
+      self.value.delete(values)
+    end
+  end
+
 end

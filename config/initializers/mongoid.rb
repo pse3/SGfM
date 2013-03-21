@@ -12,16 +12,16 @@ unless Rails.env == :production
   Admin.delete_all
 
   #create the information field types
-  string = InformationValueType.new
+  string = InformationFieldType.new
   string.key = :string
 
   string.save
 
-  checkbox = InformationValueType.new
+  checkbox = InformationFieldType.new
   checkbox.key = :checkbox
   checkbox.save
 
-  radio =  InformationValueType.new
+  radio =  InformationFieldType.new
   radio.key = :radio
   radio.save
 

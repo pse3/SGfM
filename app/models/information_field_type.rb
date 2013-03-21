@@ -18,4 +18,5 @@ class InformationFieldType
     self.single
   end
 
+
 end
