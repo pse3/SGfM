@@ -29,7 +29,7 @@
 <script>
   $('document').ready(function() {
 
-    var data=[<%= @all_actors.map { |a| '"' + a.to_s + '"' }.join(", ") %>];
+    var data=[<%= raw(@all_actors.each_with_index.map { |a,i| "{id:#{i.to_s},tag:'#{a.to_s}'}" }.join(', ')) %>];
     function format(item) { return item.tag; };
 
 
