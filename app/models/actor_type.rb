@@ -16,4 +16,14 @@ class ActorType
     self.name
   end
 
+  ##
+  # returns name of actor_type object in lang
+  def name_locale(lang)
+    current_lang = I18n.locale
+    I18n.locale = lang
+    locale = self.name
+    I18n.locale = current_lang
+    locale
+  end
+
 end

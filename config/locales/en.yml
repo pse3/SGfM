@@ -74,14 +74,18 @@ en:
       title: '%{actor_type}'
       name: 'Name'
       edit_actor_type: 'Edit actor type'
-      field_table: 'Data field'
-      value_table: 'Vaule'
+      information_types: 'Information Types'
+      information_type_name: 'Name'
+      information_type_key: 'Key'
 
     new:
       title: 'Create new actor type'
       create_actor_type: 'Create'
       key: 'Key'
-      name: 'Name'
+      name_en: 'Name (english)'
+      name_de: 'Name (german)'
+      name_fr: 'Name (french)'
+      name_it: 'Name (italian)'
 
     edit:
       title: 'Edit actor type'
