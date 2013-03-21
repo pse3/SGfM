@@ -3,7 +3,7 @@
 
 <%= form_for(:actor, html: {class: 'form-horizontal'}) do |f| %>
 
-  <select id="e1"></select>
+  <input type="hidden" id="e1">
 
   <div class="control-group">
     <%= f.label(:actor_type, t('actor.new.select_type'), class: 'control-label') %>
@@ -27,17 +27,21 @@
 
 
 <script>
-  $(document).ready(function() {
+  $('document').ready(function() {
+
+    var data=[<%= @all_actors.map { |a| '"' + a.to_s + '"' }.join(", ") %>];
+    function format(item) { return item.tag; };
+
+
     $("#e1").select2({
-      width: '500'
+      width: '500',
+      data:{ results: data, text: 'tag' },
+      formatSelection: format,
+      formatResult: format
     });
-  });
-</script>
 
 
-<script>
-  //Set default form
-  $('document').ready(function(){
     SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path%>',$('#actor-type-select').val());
   });
 </script>
+
