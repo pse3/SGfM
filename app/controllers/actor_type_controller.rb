@@ -5,12 +5,16 @@ class ActorTypeController < ApplicationController
 	# Creates an ActorType with chosen name and InformationTypes
   def create
     @actor_type = ActorType.new
-    @actor_type.key = params[:actor_type][:key]
-    @actor_type.name = params[:actor_type][:name]
+    @actor_type.key = params[:actor_type][:name][:en].downcase.tr(' ', '_')
 
-    for info_type in InformationType.each do
-      if params[info_type.key].to_i == 1
-        @actor_type.information_type.push(info_type)
+    @actor_type.name_translations = params[:actor_type][:name]
+
+    unless params[:information].nil?
+      params[:information].each do |key,value|
+        info_type = InformationType.find_by_key(key.to_sym)
+        if value.to_i == 1
+          @actor_type.information_type.push(info_type)
+        end
       end
     end
 
@@ -45,8 +49,19 @@ class ActorTypeController < ApplicationController
 
   def update
     @actor_type = ActorType.find(params[:id])
+    @actor_type.name_translations = params[:actor_type][:name]
 
-    #todo update data
+    unless params[:information].nil?
+      params[:information].each do |key,value|
+        info_type = InformationType.find_by_key(key.to_sym)
+        if value.to_i == 1
+          @actor_type.information_type.push(info_type) unless @actor_type.information_type.include?(info_type)
+        else
+          @actor_type.information_type.delete(info_type) if @actor_type.information_type.include?(info_type)
+        end
+      end
+    end
+
 
     @actor_type.save
 
