@@ -1,5 +1,5 @@
 class ScopesController < ApplicationController
-	before_filter :authenticate_admin!
+	before_filter :authenticate_login!, :authenticate_admin!
 	def new
 	end
 
