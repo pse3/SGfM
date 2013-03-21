@@ -32,16 +32,19 @@ class Information
     self.information_type.key
   end
 
-  def single_value
-     self.value[0]
+  def value
+    if information_type.information_field_type.single?
+      return value[0]
+    end
+    self.value
   end
 
-  def single_value=(newvalue)
-    self.value[0]= newvalue
-    self.save
+  def value=(new_value)
+    if information_type.information_field_type.single?
+      self.value[0] = new_value
+    else
+      self.value = new_value
+    end
   end
 
-  def multiple_value
-    .self.value
-  end
 end
