@@ -19,7 +19,6 @@ class Information
     self.value = Array.new
   end
 
-  #TODO rewrite according to single_value / multiple_value
   def to_s
     self.value
   end

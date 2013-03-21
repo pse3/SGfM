@@ -7,6 +7,7 @@ class InformationTypeController < ApplicationController
     @information_type = InformationType.new
     @information_type.key = params[:information_type][:key]
     @information_type.name = params[:information_type][:name]
+    @information_type.infromation_field_type = params[:information_type] [:information_field_type]
 
     @information_type.save
 
