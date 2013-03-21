@@ -10,8 +10,27 @@
   <div class="control-group">
     <%= f.label(:reference, 'Reference', class: 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:reference, :name => :'relationship[reference][]') %>
+      <input type="hidden" id="e1" name="relationship[reference][]">
+
     </div>
   </div>
 
 <% end %>
+
+
+<!-- todo very unclean, this way with each new relationship field, the script gets dublicatet-->
+<script>
+  $('document').ready(function() {
+
+    var data=[<%= raw(all_actors.map { |a| "{id:'#{a.id}',tag:'#{a.id}'}" }.join(', ')) %>];
+    function format(item) { return item.tag; };
+
+
+    $("#e1").select2({
+      width: '500',
+      data:{ results: data, text: 'tag' },
+      formatSelection: format,
+      formatResult: format
+    });
+  });
+</script>
