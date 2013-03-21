@@ -59,6 +59,7 @@ class ActorController < ApplicationController
 		params[:actor][:information].each do |key,value|
       info = @actor.find_information_by_key(key.to_sym)
       info.value = value
+			info.scope = Scope.where(key: params[:actor][:scope][key.to_sym]).first
     end
     @actor.save
 
