@@ -32,6 +32,7 @@ class Information
 
 	def visible?(viewer)
 		self.scope.visible?(viewer, self.actor.owner)
+
 	end
 
 end
