@@ -22,15 +22,15 @@
 <script>
   $('document').ready(function() {
 
-    var data = [<%= raw(all_actors.map { |a| "{id:'#{a.id}',tag:'#{a.to_s}'}" }.join(', ')) %>];
+    var data = [<%= raw(all_actors.map { |a| "{id:'#{a.id}',text:'#{a.to_s}'}" }.join(', ')) %>];
 
     function format(item) {
-      return item.tag;
+      return item.text;
     };
 
     $("#e1").select2({
       width: '500',
-      data:{ results: data, text: 'tag' },
+      data:{ results: data },
       formatSelection: format,
       formatResult: format
     });
