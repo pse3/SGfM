@@ -14,7 +14,7 @@
   </tr>
   <% @scopes.each do |scope| %>
     <tr>
-      <td><%= scope.name  %></td>
+      <td><%= link_to(scope.name, edit_scope_path(scope)) %></td>
       <td><%= scope.key.to_s %></td>
       <td><%= scope.to_s %></td>
       <td>

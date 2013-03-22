@@ -1,0 +1,27 @@
+<% @page_title = t('scopes.edit.title') %>
+
+<% content_for :header do %>
+  <%= javascript_include_tag 'bootstrap-multiselect' %>
+  <%= javascript_include_tag 'scopes/new' %>
+<% end %>
+
+<%= form_for(@scope, url: create_scope_path, html: {class: 'form-horizontal'}) do |f| %>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.edit.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:name, placeholder: t('scopes.new.name'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.edit.list'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.select(i.key.to_s, options_from_collection_for_select(list_account_types, :to_s, :to_s, selected: @scope.list), {multiple: true})%>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit(t('scopes.edit.create_scope'), class: 'btn btn-primary') %>
+  </div>
+<% end %>

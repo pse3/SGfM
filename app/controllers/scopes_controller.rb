@@ -22,6 +22,10 @@ class ScopesController < ApplicationController
 		end
 	end
 
+	def edit
+		@scope = Scope.find(params[:id])
+	end
+
 	def list
 		@scopes = Scope.all
 	end
