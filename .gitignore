@@ -28,7 +28,7 @@ test/version_tmp
 tmp
 Gemfile.lock
 
-public/uploads/*
+data/csv_import/*
 
 # YARD artifacts
 .yardoc

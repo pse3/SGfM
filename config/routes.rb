@@ -38,8 +38,11 @@ SGfM::Application.routes.draw do
     get   'all/reset' => 'application#reset_all', as: 'reset_all'
 
     # CSV Import routes
-    get 'csv_import/new' => 'csv_import#new', as: 'new_csv_import'
-    post 'csv_import/import' => 'csv_import#import', as:  'import_csv_import'
+    get     'csv_import/file/new'     => 'csv_import#new_csv_file',     as: 'new_csv_file'
+    post    'csv_import/file/upload'  => 'csv_import#upload_csv_file',  as: 'upload_csv_file'
+    get     'csv_import/file/list'    => 'csv_import#list_csv_files',   as: 'list_csv_files'
+    delete  'csv_import/file/:id'     => 'csv_import#delete_csv_file',  as: 'delete_csv_file'
+    post    'csv_import/import/:id'   => 'csv_import#import',  as: 'import_csv_file'
 
     # AJAX routes
     get   '/information_types_for_actor_type' => 'actor#information_types_for_actor_type', as: 'information_types_for_actor_type'
