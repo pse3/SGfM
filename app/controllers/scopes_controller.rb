@@ -4,7 +4,22 @@ class ScopesController < ApplicationController
 	end
 
 	def create
-
+		if params[:scope][:_type] == 'BlacklistScope'
+			scope = BlacklistScope.new
+		else
+			scope = WhitelistScope.new
+		end
+		scope.key = params[:scope][:key]
+		scope.name = params[:scope][:name]
+		params[:scope][:list].delete_at(0)
+		scope.list = params[:scope][:list]
+		if scope.save
+			flash[:success]= t('scopes.create.success')
+			redirect_to scopes_path
+		else
+			flash[:error]= t('scopes.create.error')
+			redirect_to scopes_create_path
+		end
 	end
 
 	def list

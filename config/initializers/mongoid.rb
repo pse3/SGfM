@@ -203,13 +203,13 @@ unless Rails.env == :production
 	scope_private = WhitelistScope.new
 	scope_private.key = :private
 	scope_private.name = 'private'
-	scope_private.list = [:self]
+	scope_private.list = [:Self]
 	scope_private.save
 
 	scope_stats = WhitelistScope.new
 	scope_stats.key = :statistics
-	scope_stats.name = 'private + (anonymized) statistics'
-	scope_stats.list = [:self, :admin]
+	scope_stats.name = 'private + statistics'
+	scope_stats.list = [:Self, :Admin]
 	scope_stats.save
 
 	scope_public = BlacklistScope.new
@@ -221,7 +221,7 @@ unless Rails.env == :production
 	scope_disallow_self = BlacklistScope.new #just for test purposes
 	scope_disallow_self.key = :disallow_self
 	scope_disallow_self.name = 'disallow self'
-	scope_disallow_self.list = [:self]
+	scope_disallow_self.list = [:Self]
 	scope_disallow_self.save
 
 	#create a User and Login

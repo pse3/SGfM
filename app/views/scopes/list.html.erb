@@ -18,9 +18,7 @@
       <td><%= scope.key.to_s %></td>
       <td><%= scope.to_s %></td>
       <td>
-        <% scope.list.each do |item| %>
-          <%= "#{item.to_s};" %>
-        <% end %>
+        <%= scope.list.join(", ") %>
       </td>
     </tr>
   <% end %>

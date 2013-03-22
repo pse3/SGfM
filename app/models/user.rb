@@ -7,7 +7,7 @@ class User
     has_many :actors, class_name: 'Actor', inverse_of: :owner             #referenced
 
 	def user_type
-		:user
+		self.login.account_type
 	end
 
 end

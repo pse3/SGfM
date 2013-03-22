@@ -8,7 +8,7 @@ class BlacklistScope < Scope
 		end
 		list.each do |allowed_viewer|
 			currently_visible = false
-			if allowed_viewer == :self
+			if allowed_viewer == :Self
 				currently_visible = !(viewer.id == viewed.id) #current_visibility means visibility to current "allowed_viewer"
 			else
 				currently_visible = !(viewer.user_type == allowed_viewer)

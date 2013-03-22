@@ -3,6 +3,6 @@ class Admin
   has_one :login, :as => :account
 
 	def user_type
-		:admin
+		self.login.account_type
 	end
 end

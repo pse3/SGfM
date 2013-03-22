@@ -128,20 +128,22 @@ en:
 #Translation for all Scope-Pages
   scopes:
       list:
-       title: 'Scopes'
-       new_information_type: 'Create new scope'
-       name_table: 'Name'
-       key_table: 'Key'
-       type_table: 'Type'
-       list_contents_table: 'List contents'
+         title: 'Scopes'
+         new_information_type: 'Create new scope'
+         name_table: 'Name'
+         key_table: 'Key'
+         type_table: 'Type'
+         list_contents_table: 'List contents'
       new:
-       title: 'Create new scope'
-       type: 'Type'
-       name: 'Name'
-       key: 'Key'
-       list: 'Account-types list'
-       create_scope: 'Create'
-
+         title: 'Create new scope'
+         type: 'Type'
+         name: 'Name'
+         key: 'Key'
+         list: 'Account-types list'
+         create_scope: 'Create'
+      create:
+        success: 'You successfully created a scope!'
+        error: 'Something went wrong. Please retry!'
 
 # Translations for all login-pages, sorted by page structure
   logins:
