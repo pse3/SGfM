@@ -41,7 +41,14 @@ class ScopesController < ApplicationController
 	end
 
 	def destroy
-
+		scope = Scope.find(params[:id])
+		if scope.destroy
+			flash[:success] = t('scopes.destroy.success')
+			redirect_to scopes_path
+		else
+			flash[:error] = t('scopes.destroy.error')
+			redirect_to scopes_path
+		end
 	end
 
 	def list
