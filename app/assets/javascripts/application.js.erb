@@ -19,6 +19,8 @@
 //todo refactor this into "json format", like it was before
 var SGfM = {}
 
+var field_number = 0;
+
 SGfM.actor = {
   render_matching_form : function(controller_path, actor_type_key) {
     jQuery.ajax({
@@ -34,16 +36,20 @@ SGfM.actor = {
 }
 
 SGfM.relationship = {
-  render_additional_relationship_form : function(controller_path) {
+  add_relationship_form : function(controller_path) {
+    field_number += 1;
     jQuery.ajax({
       url: controller_path,
       type: 'GET',
-      //data: {"actor_type_key" : actor_type_key},
+      data: {"field_number" : field_number},
       dataType: 'html',
       success: function(data) {
         jQuery('#relationship-form').after(data);
       }
     });
+  },
+  remove_relationship_form : function(field_number) {
+    $("#relationship_" + field_number).remove();
   }
 }
 

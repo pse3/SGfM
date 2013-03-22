@@ -1,38 +1,40 @@
-<%= fields_for(:relationship) do |f| %>
+<%= content_tag(:div, :id => "relationship_#{field_number}") do %>
 
-  <div class="control-group">
-    <%= f.label(:type, 'Relationship Type', class: 'control-label') %>
-    <div class="controls">
-      <%= f.select(:type, relationship_types, {}, :name => :'relationship[type][]') %>
+  <%= fields_for(:relationship) do |f| %>
+    <div class="control-group">
+      <%= f.label(:type, 'Relationship Type', class: 'control-label') %>
+      <div class="controls">
+        <%= f.select(:type, relationship_types, {}, :name => :'relationship[type][]', :required => true) %>
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <%= f.label(:reference, 'Reference', class: 'control-label') %>
-    <div class="controls">
-      <input type="hidden" id="e1" name="relationship[reference][]">
-
+    <div class="control-group">
+      <%= f.label(:reference, 'Reference', class: 'control-label') %>
+      <div class="controls">
+        <%= f.hidden_field(:e1, :id => 'e1', :name => 'relationship[reference][]', :required => true) %>
+      </div>
     </div>
-  </div>
+
+    <%= link_to_function(:Remove, "SGfM.relationship.remove_relationship_form(\"#{field_number}\")", :type => :button) %>
+  <% end %>
+
+
+  <!-- todo very unclean, this way with each new relationship field, the script gets duplicated-->
+  <script>
+    $('document').ready(function() {
+
+      var data = [<%= raw(all_actors.map { |a| "{id:'#{a.id}',text:'#{a.to_s}'}" }.join(', ')) %>];
+      function format(item) { return item.text; };
+
+      $("#e1").select2({
+        width: '500',
+        data:{ results: data },
+        formatSelection: format,
+        formatResult: format
+      });
+
+    });
+  </script>
+
 
 <% end %>
-
-
-<!-- todo very unclean, this way with each new relationship field, the script gets dublicatet-->
-<script>
-  $('document').ready(function() {
-
-    var data = [<%= raw(all_actors.map { |a| "{id:'#{a.id}',text:'#{a.to_s}'}" }.join(', ')) %>];
-
-    function format(item) {
-      return item.text;
-    };
-
-    $("#e1").select2({
-      width: '500',
-      data:{ results: data },
-      formatSelection: format,
-      formatResult: format
-    });
-  });
-</script>
