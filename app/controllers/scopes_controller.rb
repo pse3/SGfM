@@ -26,6 +26,20 @@ class ScopesController < ApplicationController
 		@scope = Scope.find(params[:id])
 	end
 
+	def update
+		scope = Scope.find(params[:id])
+		scope.name = params[:scope][:name]
+		params[:scope][:list].delete_at(0)
+		scope.list = params[:scope][:list]
+		if scope.save
+			flash[:success]= t('scopes.update.success')
+			redirect_to scopes_path
+		else
+			flash[:error]= t('scopes.update.error')
+			redirect_to scopes_edit_path(scope)
+		end
+	end
+
 	def list
 		@scopes = Scope.all
 	end

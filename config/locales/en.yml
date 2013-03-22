@@ -144,12 +144,15 @@ en:
          create_scope: 'Create'
       create:
         success: 'You successfully created a scope!'
-        error: 'Something went wrong. Please retry!'
+        error: 'Oops. Something went wrong. Please retry!'
       edit:
         title: 'Edit scope'
         name: 'Name'
         list: 'Account-types list'
-        create_scope: 'Create'
+        save_scope: 'Save'
+      update:
+        success: 'You successfully edited a scope!'
+        error: 'Oops. Something went wrong. Please retry!'
 
 # Translations for all login-pages, sorted by page structure
   logins:

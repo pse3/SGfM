@@ -39,6 +39,7 @@ SGfM::Application.routes.draw do
 		get 'scopes/create' => 'scopes#new', as: 'create_scope'
 		post 'scopes/create' => 'scopes#create'
 		get 'scopes/edit/:id' => 'scopes#edit', as: 'edit_scope'
+		post 'scopes/edit/:id' => 'scopes#update'
 
 
 		# Development routes
