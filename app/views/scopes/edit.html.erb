@@ -2,7 +2,7 @@
 
 <% content_for :header do %>
   <%= javascript_include_tag 'bootstrap-multiselect' %>
-  <%= javascript_include_tag 'scopes/new' %>
+  <%= javascript_include_tag 'scopes/multiselect_initializer' %>
 <% end %>
 
 <%= form_for(:scope, url: edit_scope_path, html: {class: 'form-horizontal'}) do |f| %>
