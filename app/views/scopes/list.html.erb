@@ -11,14 +11,19 @@
     <th><%= t('scopes.list.key_table') %></th>
     <th><%= t('scopes.list.type_table') %></th>
     <th><%= t('scopes.list.list_contents_table') %></th>
+    <th><!-- commands (delete, edit, ...)--></th>
   </tr>
   <% @scopes.each do |scope| %>
     <tr>
-      <td><%= link_to(scope.name, edit_scope_path(scope)) %></td>
+      <td><%= scope.name %></td>
       <td><%= scope.key.to_s %></td>
       <td><%= scope.to_s %></td>
       <td>
         <%= scope.list.join(", ") %>
+      </td>
+      <td>
+        <%=  link_to(raw('<i class="icon-edit"></i>'), edit_scope_path(scope)) %>
+        <%=  link_to(raw('<i class="icon-trash"></i>'), delete_scope_path(scope), method: :delete, confirm: t('scopes.destroy.confirmation')) %>
       </td>
     </tr>
   <% end %>

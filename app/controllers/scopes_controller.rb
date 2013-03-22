@@ -40,6 +40,10 @@ class ScopesController < ApplicationController
 		end
 	end
 
+	def destroy
+
+	end
+
 	def list
 		@scopes = Scope.all
 	end

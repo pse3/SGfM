@@ -40,6 +40,7 @@ SGfM::Application.routes.draw do
 		post 'scopes/create' => 'scopes#create'
 		get 'scopes/edit/:id' => 'scopes#edit', as: 'edit_scope'
 		post 'scopes/edit/:id' => 'scopes#update'
+		delete 'scopes/destroy/:id' => 'scopes#destroy', as: 'delete_scope'
 
 
 		# Development routes

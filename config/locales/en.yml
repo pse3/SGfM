@@ -153,6 +153,8 @@ en:
       update:
         success: 'You successfully edited a scope!'
         error: 'Oops. Something went wrong. Please retry!'
+      destroy:
+        confirmation: 'Do you really want to delete a scope?'
 
 # Translations for all login-pages, sorted by page structure
   logins:
