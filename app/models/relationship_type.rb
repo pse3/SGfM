@@ -14,7 +14,7 @@ class RelationshipType
   end
 
   def to_s
-    self.name
+    self.name.to_s
   end
 
 end

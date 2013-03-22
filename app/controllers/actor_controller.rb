@@ -17,14 +17,15 @@ class ActorController < ApplicationController
       info.actor = @actor
     end
 
-    ref = params[:relationship][:reference]
-
-    params[:relationship][:type].each do |relationship_type|
+    references = params[:relationship][:reference]
+    types = params[:relationship][:type]
+    comments = params[:relationship][:comment]
+    types.each_with_index do |relationship_type,i|
       relation = Relationship.new
-      relation.comment = 'dsfdsfsdfsdf'
-      relation.relationship_type = relationship_type
+      relation.relationship_type = RelationshipType.find_by_key(relationship_type.to_sym)
       relation.actor = @actor
-      relation.reference = @actor
+      relation.comment = comments[i]
+      relation.reference = references[i]
     end
 
 

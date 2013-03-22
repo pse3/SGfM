@@ -22,8 +22,7 @@ class Relationship
   end
 
   def to_s
-    # hallo patrick ;)
-    self.reference.to_s + ' | ' + self.comment
+    "#{self.reference.to_s} | #{self.comment}"
   end
 
   def name

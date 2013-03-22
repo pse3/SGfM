@@ -54,6 +54,14 @@ en:
       title: 'Create new actor'
       select_type: 'Select a type'
       create_actor: 'Create'
+      add_relationship: 'Add relationship'
+      remove_relationship: 'Remove'
+      actor_type_data: 'ActorType data'
+      relationship_data: 'Relationship data'
+      relationship_reference: 'Reference'
+      relationship_comment: 'Comment'
+      relationship_type: 'Type'
+
 
     edit:
       title: 'Edit actor'

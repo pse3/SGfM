@@ -4,10 +4,11 @@ unless Rails.env == :production
 
   # Reset all objects and types
   Actor.delete_all
-  Information.delete_all
-  InformationType.delete_all
   ActorType.delete_all
   Information.delete_all
+  InformationType.delete_all
+  Relationship.delete_all
+  RelationshipType.delete_all
   Login.delete_all
   User.delete_all
   Admin.delete_all

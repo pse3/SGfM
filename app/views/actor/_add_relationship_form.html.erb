@@ -1,21 +1,33 @@
 <%= content_tag(:div, :id => "relationship_#{field_number}") do %>
 
   <%= fields_for(:relationship) do |f| %>
+
     <div class="control-group">
-      <%= f.label(:type, 'Relationship Type', class: 'control-label') %>
+      <%= f.label(:type, t('actor.new.relationship_type'), class: 'control-label') %>
       <div class="controls">
-        <%= f.select(:type, relationship_types, {}, :name => :'relationship[type][]', :required => true) %>
+        <%= f.select(:type, relationship_types.map{ |type| [type.name, type.key] }, {}, :name => :'relationship[type][]', :required => true) %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label(:reference, 'Reference', class: 'control-label') %>
+      <%= f.label(:reference, t('actor.new.relationship_reference'), class: 'control-label') %>
       <div class="controls">
         <%= f.hidden_field(:e1, :id => 'e1', :name => 'relationship[reference][]', :required => true) %>
+        <p class="pull-right">
+          <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor.new.remove_relationship')}"),
+                               "SGfM.relationship.remove_relationship_form(\"#{field_number}\")",
+                               :type => :button, :class => 'btn btn-danger') %>
+        </p>
       </div>
     </div>
 
-    <%= link_to_function(:Remove, "SGfM.relationship.remove_relationship_form(\"#{field_number}\")", :type => :button) %>
+    <div class="control-group">
+      <%= f.label(:comment, t('actor.new.relationship_comment'), class: 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(:comment, :name => :'relationship[comment][]') %>
+      </div>
+    </div>
+
   <% end %>
 
 
@@ -35,6 +47,5 @@
 
     });
   </script>
-
 
 <% end %>
