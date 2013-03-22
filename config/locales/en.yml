@@ -136,9 +136,12 @@ en:
        list_contents_table: 'List contents'
       new:
        title: 'Create new scope'
+       type: 'Type'
        name: 'Name'
        key: 'Key'
+       list: 'Account-types list'
        create_scope: 'Create'
+
 
 # Translations for all login-pages, sorted by page structure
   logins:
