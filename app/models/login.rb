@@ -60,6 +60,11 @@ class Login
 
   def is_admin?
     self.account_type == 'Admin'
-  end
+	end
+
+	#Gives you all account types in a list
+	def self.all_account_types
+		Login.all.distinct("account_type")
+	end
 
 end

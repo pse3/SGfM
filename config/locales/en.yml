@@ -134,6 +134,11 @@ en:
        key_table: 'Key'
        type_table: 'Type'
        list_contents_table: 'List contents'
+      new:
+       title: 'Create new scope'
+       name: 'Name'
+       key: 'Key'
+       create_scope: 'Create'
 
 # Translations for all login-pages, sorted by page structure
   logins:

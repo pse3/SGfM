@@ -1,0 +1,31 @@
+<% @page_title = t('scopes.new.title') %>
+
+<% content_for :header do %>
+  <%= javascript_include_tag 'scopes/test' %>
+<% end %>
+
+<%= form_for(:scope, url: create_scope_path, html: {class: 'form-horizontal'}) do |f| %>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:name, placeholder: t('scopes.new.name'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.key'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:key, placeholder: t('scopes.new.key'), required: true) %>
+    </div>
+  </div>
+
+  <div>
+    <%list_account_types.each do |acc|%>
+      <%= acc %>
+    <%end%>
+  </div>
+  <div class="form-actions">
+    <%= f.submit(t('scopes.new.create_scope'), class: 'btn btn-primary') %>
+  </div>
+<% end %>

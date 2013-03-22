@@ -36,9 +36,11 @@ SGfM::Application.routes.draw do
 
 		#Scopes Routes
 		get 'scopes' => 'scopes#list', as: 'scopes'
+		get 'scopes/create' => 'scopes#new', as: 'create_scope'
+		post 'scopes/create' => 'scopes#create'
 
 
-    # Development routes
+		# Development routes
     get   'all/reset' => 'application#reset_all', as: 'reset_all'
 
     # AJAX routes
