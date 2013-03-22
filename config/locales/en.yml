@@ -134,6 +134,7 @@ en:
          key_table: 'Key'
          type_table: 'Type'
          list_contents_table: 'List contents'
+         new_scope: 'Create new Scope'
       new:
          title: 'Create new scope'
          type: 'Type'
