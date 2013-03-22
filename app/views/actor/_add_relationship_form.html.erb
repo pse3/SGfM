@@ -22,9 +22,11 @@
 <script>
   $('document').ready(function() {
 
-    var data=[<%= raw(all_actors.map { |a| "{id:'#{a.id}',tag:'#{a.id}'}" }.join(', ')) %>];
-    function format(item) { return item.tag; };
+    var data = [<%= raw(all_actors.map { |a| "{id:'#{a.id}',tag:'#{a.to_s}'}" }.join(', ')) %>];
 
+    function format(item) {
+      return item.tag;
+    };
 
     $("#e1").select2({
       width: '500',
