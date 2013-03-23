@@ -7,11 +7,11 @@ class CsvImportController < ApplicationController
   before_filter :authenticate_login!, :authenticate_admin!
 
   def new_csv_file
-
+     @supported_encodings = ['UTF-8','ISO-8859-1']
   end
 
   def upload_csv_file
-    csv_file_io = params[:csv]
+    csv_file_io = params[:csv_file][:csv]
     filename = csv_file_io.original_filename
     file_path = Rails.root.join('data', 'csv_import', filename)
 
@@ -24,6 +24,7 @@ class CsvImportController < ApplicationController
     csv_file = CsvImport::CsvFile.new
     csv_file.file_name = filename
     csv_file.file_path = file_path
+    csv_file.encoding = params[:csv_file][:encoding]
     csv_file.save
 
     flash[:notice] = t('csv_import.file.upload.success_message', :file_name => filename)
@@ -45,7 +46,7 @@ class CsvImportController < ApplicationController
     csv_file = CsvImport::CsvFile.find(params[:id])
 
     #TODO encoding per CSVFile
-    CSV.foreach(csv_file.file_path, {:col_sep => "|", :encoding => "ISO-8859-1"}) do |row|
+    CSV.foreach(csv_file.file_path, {:col_sep => "|", :encoding => csv_file.encoding}) do |row|
       name, titel, adresse, email, telefon1, telefon2, kanton, spez = row
       actor = Actor.new()
       actor.actor_type = ActorType.find_by_key(:doctor)

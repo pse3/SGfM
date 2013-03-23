@@ -1,7 +1,20 @@
 <% @page_title = t('csv_import.file.new.title') %>
 
-<%= form_tag({:action => :upload_csv_file}, :multipart => true) do %>
-    <%= file_field_tag 'csv' %>
+<%= form_for(:csv_file, :url => {:action => :upload_csv_file}, :multipart => true) do |f| %>
+    <div class="control-group">
+        <%= f.label(:csv, 'Datei auswählen:', :class => 'control-label') %>
+        <div class="controls">
+            <%= f.file_field :csv %>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <%= f.label(:name, 'Encoding:', :class => 'control-label') %>
+        <div class="controls">
+            <%= f.select(:encoding, @supported_encodings) %>
+        </div>
+    </div>
+
 
     <div class="form-actions">
         <%= submit_tag(('upload'), :class => 'btn btn-primary') %>

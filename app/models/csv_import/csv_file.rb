@@ -9,6 +9,7 @@ module CsvImport
 
     field :file_name, :type => String
     field :file_path, :type => String
+    field :encoding, :type => String
 
     field :uploaded, :type => DateTime
     field :imported, :type => DateTime
