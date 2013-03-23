@@ -8,4 +8,7 @@ class InformationFieldDate < InformationFieldType
     Date.parse(value)
   end
 
+  def form(form_helper, key, options = {})
+  end
+
 end

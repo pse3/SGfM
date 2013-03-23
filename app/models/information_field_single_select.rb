@@ -5,7 +5,7 @@ class InformationFieldSingleSelect < InformationFieldType
   end
 
   def value=(value)
-    value[0]
+    value
   end
 
   def form(form_helper, key, options = {})

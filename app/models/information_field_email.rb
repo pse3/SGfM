@@ -8,4 +8,7 @@ class InformationFieldEmail < InformationFieldType
     value
   end
 
+  def form(form_helper, key, options = {})
+  end
+
 end

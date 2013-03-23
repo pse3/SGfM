@@ -26,11 +26,9 @@ class ActorController < ApplicationController
     @actor.save
     user.save
 
-		if @actor.valid?
-			flash[:success] = t('actor.create.success')
-			redirect_to actors_path
-		end
-
+    #todo deleted validater due it didnt validated right
+		flash[:success] = t('actor.create.success')
+	  redirect_to actors_path
   end
 
   # Gets all actors of the current logged in user hashed by their actor type
