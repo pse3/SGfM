@@ -1,9 +1,9 @@
 <%= form_for(:actor, url: create_actor_path, html: {class: 'form-horizontal'}) do |f| %>
-  <% for info in information_types do %>
+  <% information_types.each do |information_type| %>
     <div class="control-group">
-      <%= f.label(info.key, info.name, class: 'control-label') %>
+      <%= f.label(information_type.key, information_type.name, class: 'control-label') %>
       <div class="controls">
-        <%= f.text_field(info.key, placeholder: info.name, required: true) %>
+        <%= information_type.information_field_type.form(f, information_type.key, { :placeholder => information_type.name, :data => information_type.data, :required => true }) %>
       </div>
     </div>
   <% end %>
@@ -15,4 +15,3 @@
   </div>
 
 <% end %>
-

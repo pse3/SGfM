@@ -25,9 +25,27 @@ unless Rails.env == :production
   information_field_date.key = :date
   information_field_date.save
 
+  information_field_single_select = InformationFieldSingleSelect.new
+  information_field_single_select.key = :single_select
+  information_field_single_select.save
+
 
 
   #create some information_types
+  info_doctor_specification = InformationType.new
+  info_doctor_specification.key = :doctor_specification
+  info_doctor_specification.information_field_type = information_field_single_select
+  info_doctor_specification.data = ['Frauenarzt', 'Kinderarzt', 'Urologoe' ] # todo use mongoid localization
+  I18n.locale = :en
+  info_doctor_specification.name = "Doctor specification"
+  I18n.locale = :de
+  info_doctor_specification.name = "Artztyp"
+  I18n.locale = :it
+  info_doctor_specification.name = "??"
+  I18n.locale = :fr
+  info_doctor_specification.name = "??"
+  info_doctor_specification.save
+
   info_company = InformationType.new
   info_company.key = :company
   info_company.information_field_type = information_field_text
@@ -187,6 +205,7 @@ unless Rails.env == :production
   #create some actor_types
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
+  actor_doctor.information_type.push(info_doctor_specification)
   actor_doctor.information_type.push(info_first_name)
   actor_doctor.information_type.push(info_last_name)
   actor_doctor.information_type.push(info_phone)

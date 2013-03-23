@@ -8,4 +8,8 @@ class InformationFieldText < InformationFieldType
     value
   end
 
+  def form(form_helper, key, options = {})
+    form_helper.text_field(key, :placeholder => options[:placeholder], :required => options[:required])
+  end
+
 end

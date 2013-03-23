@@ -10,12 +10,14 @@
     </div>
   </div>
 
-  <% @actor.informations.each do |i|%>
-    <%=  f.fields_for i do |info_form| %>
+  <!-- todo this code sucks i guess -->
+  <% @actor.informations.each do |information|%>
+    <%=  f.fields_for information do |info_form| %>
       <div class="control-group">
-        <%= info_form.label(i.key, i.name, :class => 'control-label') %>
+        <%= info_form.label(information.information_type.key, information.information_type.name, :class => 'control-label') %>
         <div class="controls">
-          <%= info_form.text_field i.key, :value => i.value %>
+          <%= information.information_type.information_field_type.form(info_form, information.information_type.key,
+             { :value => information.value, :placeholder => information_type.name, :data => information.information_type.data, :required => true } ) %>
         </div>
       </div>
     <% end %>
