@@ -46,7 +46,7 @@ class Information
     end
   end
 
-  def add_vslue(values)
+  def add_value(values)
     unless information_type.information_field_type.single?
       self.value.add(values)
     end

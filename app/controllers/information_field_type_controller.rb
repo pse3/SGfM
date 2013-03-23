@@ -17,13 +17,4 @@ class InformationTypeController < ApplicationController
     @information_field_type = InformationFieldType.find(params[:id])
   end
 
-  def add(value)
-      unless
-  end
-
-  def edit
-
-  end
-
-
 end
