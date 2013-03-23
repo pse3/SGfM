@@ -3,31 +3,39 @@
 
 <%= form_for(:actor_type, :url => create_actor_type_path, :html => {:class => 'form-horizontal'}) do |f| %>
 
+  <!--key is no longer needed, key is just english name in lowercase with underscore instead of spaces-->
   <div class="control-group">
-    <%= f.label(t('actor_type.new.key'), class: 'control-label') %>
+    <%= f.label(:'name[en]', t('actor_type.new.name_en'), class: 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:key, placeholder: t('actor_type.new.key'), required: true) %>
+      <%= f.text_field(:'name[en]', placeholder: t('actor_type.new.name_en'), required: true) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label(:'name[de]', t('actor_type.new.name_de'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[de]', placeholder: t('actor_type.new.name_de'), required: true) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label(:'name[fr]', t('actor_type.new.name_fr'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[fr]', placeholder: t('actor_type.new.name_fr'), required: true) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label(:'name[it]', t('actor_type.new.name_it'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[it]', placeholder: t('actor_type.new.name_it'), required: true) %>
     </div>
   </div>
 
-  <!--todo need to add field_name for each lang.-->
-  <div class="control-group">
-    <%= f.label(t('actor_type.new.name'), class: 'control-label') %>
-    <div class="controls">
-      <%= f.text_field(:name, placeholder: t('actor_type.new.key'), required: true) %>
-    </div>
-  </div>
-
-  <!--todo clicking label should toggle checkbox like in signIn popup.-->
   <% for info_type in @information_types do %>
-    <%= f.fields_for info_type do |it_form| %>
     <div class="control-group">
-      <%= it_form.label(:key, info_type.name, :class => 'control-label') %>
+      <%= label_tag("information[#{info_type.key}]", info_type.name, :class => 'control-label') %>
       <div class="controls">
-        <%= check_box_tag(info_type.key, '1') %>
+        <%= check_box_tag("information[#{info_type.key}]", '1') %>
       </div>
     </div>
-    <% end %>
   <% end %>
 
   <div class="form-actions">
