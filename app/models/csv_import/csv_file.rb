@@ -19,7 +19,12 @@ module CsvImport
     end
 
     def remove_csv_file
+      begin
       FileUtils.rm(self.file_path)
+      rescue
+        #todo: proper log statement
+        puts "file could not be deleted"
+      end
     end
 
   end
