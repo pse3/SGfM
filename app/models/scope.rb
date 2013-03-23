@@ -1,5 +1,6 @@
+# Represents a scope - a scope can be attributed to Informations, Relations, etc. It describes kind of a visibility filter. This class is meant to
+# be extended. Extending classes need to implement the visible? method, which decides about visibility dependent on viewer, viewee and the field "list".
 class Scope
-  # base class for scopes such as private, public etc
 	#TODO: Implement validator
   include Mongoid::Document
 	field :key, :type => String
