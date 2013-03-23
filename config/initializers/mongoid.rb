@@ -5,6 +5,7 @@ unless Rails.env == :production
   Actor.delete_all
   Information.delete_all
   InformationType.delete_all
+  InformationFieldType.delete_all
   ActorType.delete_all
   Information.delete_all
   Login.delete_all
@@ -12,23 +13,27 @@ unless Rails.env == :production
   Admin.delete_all
 
   #create the information field types
-  string = InformationFieldType.new
-  string.key = :string
+  information_field_text = InformationFieldText.new
+  information_field_text.key = :text
+  information_field_text.save
 
-  string.save
+  information_field_email = InformationFieldEmail.new
+  information_field_email.key = :email
+  information_field_email.save
 
-  checkbox = InformationFieldType.new
-  checkbox.key = :checkbox
-  checkbox.save
+  information_field_date = InformationFieldDate.new
+  information_field_date.key = :date
+  information_field_date.save
 
-  radio =  InformationFieldType.new
-  radio.key = :radio
-  radio.save
+  information_field_checkbox = InformationFieldCheckbox.new
+  information_field_checkbox.key = :checkbox
+  information_field_checkbox.save
+
 
   #create some information_types
   info_company = InformationType.new
   info_company.key = :company
-  info_company.information_field_type = string
+  info_company.information_field_type = information_field_text
   I18n.locale = :en
   info_company.name = "Company"
   I18n.locale = :de
@@ -41,7 +46,7 @@ unless Rails.env == :production
 
   info_first_name = InformationType.new
   info_first_name.key = :first_name
-  info_first_name.information_field_type = string
+  info_first_name.information_field_type = information_field_text
   I18n.locale = :en
   info_first_name.name = "First name"
   I18n.locale = :de
@@ -54,7 +59,7 @@ unless Rails.env == :production
 
   info_last_name = InformationType.new
   info_last_name.key = :last_name
-  info_last_name.information_field_type = string
+  info_last_name.information_field_type = information_field_text
   I18n.locale = :en
   info_last_name.name = "Last name"
   I18n.locale = :de
@@ -67,7 +72,7 @@ unless Rails.env == :production
 
   info_phone = InformationType.new
   info_phone.key = :phone
-  info_phone.information_field_type = string
+  info_phone.information_field_type = information_field_text
   I18n.locale = :en
   info_phone.name = "Phone"
   I18n.locale = :de
@@ -80,7 +85,7 @@ unless Rails.env == :production
 
   info_mobile = InformationType.new
   info_mobile.key = :mobile
-  info_mobile.information_field_type = string
+  info_mobile.information_field_type = information_field_text
   I18n.locale = :en
   info_mobile.name = "Mobile"
   I18n.locale = :de
@@ -93,7 +98,7 @@ unless Rails.env == :production
 
   info_fax = InformationType.new
   info_fax.key = :fax
-  info_fax.information_field_type = string
+  info_fax.information_field_type = information_field_text
   I18n.locale = :en
   info_fax.name = "Fax"
   I18n.locale = :de
@@ -106,7 +111,7 @@ unless Rails.env == :production
 
   info_street = InformationType.new
   info_street.key = :street
-  info_street.information_field_type = string
+  info_street.information_field_type = information_field_text
   I18n.locale = :en
   info_street.name = "Street"
   I18n.locale = :de
@@ -119,7 +124,7 @@ unless Rails.env == :production
 
   info_street_number = InformationType.new
   info_street_number.key = :street_number
-  info_street_number.information_field_type = string
+  info_street_number.information_field_type = information_field_text
   I18n.locale = :en
   info_street_number.name = "Street number"
   I18n.locale = :de
@@ -132,7 +137,7 @@ unless Rails.env == :production
 
   info_zip_code = InformationType.new
   info_zip_code.key = :zip_code
-  info_zip_code.information_field_type = string
+  info_zip_code.information_field_type = information_field_text
   I18n.locale = :en
   info_zip_code.name = "ZIP"
   I18n.locale = :de
@@ -145,7 +150,7 @@ unless Rails.env == :production
 
   info_city = InformationType.new
   info_city.key = :city
-  info_city.information_field_type = string
+  info_city.information_field_type = information_field_text
   I18n.locale = :en
   info_city.name = "City"
   I18n.locale = :de
@@ -158,7 +163,7 @@ unless Rails.env == :production
 
   info_canton = InformationType.new
   info_canton.key = :canton
-  info_canton.information_field_type = string
+  info_canton.information_field_type = information_field_text
   I18n.locale = :en
   info_canton.name = "Canton"
   I18n.locale = :de
@@ -171,7 +176,7 @@ unless Rails.env == :production
 
   info_email = InformationType.new
   info_email.key = :email
-  info_email.information_field_type = string
+  info_email.information_field_type = information_field_text
   I18n.locale = :en
   info_email.name = "Email"
   I18n.locale = :de

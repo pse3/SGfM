@@ -4,6 +4,7 @@ class InformationType
 
   field :name, :type => String, :localize => true
   field :key, :type => Symbol
+  field :data, :type => Array # Store data that the information_field_type may can chose from *like list of tags*
 
 
   validates_uniqueness_of :key
