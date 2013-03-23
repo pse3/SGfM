@@ -25,9 +25,6 @@ unless Rails.env == :production
   information_field_date.key = :date
   information_field_date.save
 
-  information_field_checkbox = InformationFieldCheckbox.new
-  information_field_checkbox.key = :checkbox
-  information_field_checkbox.save
 
 
   #create some information_types

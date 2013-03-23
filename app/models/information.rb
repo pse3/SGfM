@@ -2,7 +2,7 @@
 class Information
   include Mongoid::Document
 
-  field :value
+  field :shit_value # todo needed to name this different otherwise its not clear what self.value is aiming for, do you know how to solve that?
 
   field :created_at, :type => DateTime
   field :changed_a, :type => DateTime
@@ -19,11 +19,15 @@ class Information
   end
 
   def value
-    self.information_type.information_field_type.value(self.value)
+    self.information_type.information_field_type.value(self.shit_value)
   end
 
   def value=(value)
-    self.value = self.information_type.information_field_type.value=(value)
+    self.shit_value = self.information_type.information_field_type.value=(value)
+  end
+
+  def to_s
+    self.value
   end
 
 end
