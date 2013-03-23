@@ -28,9 +28,9 @@ class ScopesController < ApplicationController
 
 	def update
 		scope = Scope.find(params[:id])
-		scope.name = params[:scope][:name]
-		params[:scope][:list].delete_at(0)
-		scope.list = params[:scope][:list]
+		scope.name_translations = params[:edited_scope][:name]
+		params[:edited_scope][:list].delete_at(0)
+		scope.list = params[:edited_scope][:list]
 		if scope.save
 			flash[:success]= t('scopes.update.success')
 			redirect_to scopes_path
