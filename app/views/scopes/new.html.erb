@@ -14,10 +14,32 @@
     </div>
   </div>
 
+
   <div class="control-group">
     <%= f.label(t('scopes.new.name'), class: 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:name, placeholder: t('scopes.new.name'), required: true) %>
+      <%= f.text_field(:'name[en]', placeholder: t('lang.en'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[de]', placeholder: t('lang.de'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[fr]', placeholder: t('lang.fr'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[it]', placeholder: t('lang.it'), required: true) %>
     </div>
   </div>
 

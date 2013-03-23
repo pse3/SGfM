@@ -202,27 +202,42 @@ unless Rails.env == :production
 	#create some scopes
 	scope_private = WhitelistScope.new
 	scope_private.key = :private
+	I18n.locale = :en
 	scope_private.name = 'private'
+	I18n.locale = :de
+	scope_private.name = 'privat'
+	I18n.locale = :it
+	scope_private.name = 'privato'
+	I18n.locale = :fr
+	scope_private.name = 'privé'
 	scope_private.list = [:Self]
 	scope_private.save
 
 	scope_stats = WhitelistScope.new
 	scope_stats.key = :statistics
+	I18n.locale = :en
 	scope_stats.name = 'private + statistics'
+	I18n.locale = :de
+	scope_stats.name = 'privat + statistik'
+	I18n.locale = :it
+	scope_stats.name = 'privato + statistiche'
+	I18n.locale = :fr
+	scope_stats.name = 'privé + statistique'
 	scope_stats.list = [:Self, :Admin]
 	scope_stats.save
 
 	scope_public = BlacklistScope.new
 	scope_public.key = :public
+	I18n.locale = :en
+	scope_public.name = 'public'
+	I18n.locale = :de
+	scope_public.name = 'öffentlich'
+	I18n.locale = :it
+	scope_public.name = 'pubblico'
+	I18n.locale = :fr
 	scope_public.name = 'public'
 	scope_public.list = []
 	scope_public.save
-
-	scope_disallow_self = BlacklistScope.new #just for test purposes
-	scope_disallow_self.key = :disallow_self
-	scope_disallow_self.name = 'disallow self'
-	scope_disallow_self.list = [:Self]
-	scope_disallow_self.save
 
 	#create a User and Login
   user = User.new

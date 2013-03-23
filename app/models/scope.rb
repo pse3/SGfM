@@ -3,7 +3,7 @@ class Scope
 	#TODO: Implement validator
   include Mongoid::Document
 	field :key, :type => String
-  field :name, :type => String  #TODO: need to localize :name
+  field :name, :type => String, :localize => true
 	field :list, :type => Array #allowed elements are: :Self and all possible account types (e.g. :Admin, :User, ...)
 
 	validates_uniqueness_of :key

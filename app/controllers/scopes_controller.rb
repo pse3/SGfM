@@ -10,7 +10,7 @@ class ScopesController < ApplicationController
 			scope = WhitelistScope.new
 		end
 		scope.key = params[:scope][:key]
-		scope.name = params[:scope][:name]
+		scope.name_translations = params[:scope][:name]
 		params[:scope][:list].delete_at(0)
 		scope.list = params[:scope][:list]
 		if scope.save

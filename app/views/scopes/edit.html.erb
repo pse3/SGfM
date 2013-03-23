@@ -17,7 +17,7 @@
   <div class="control-group">
     <%= f.label(t('scopes.edit.list'), class: 'control-label') %>
     <div class="controls">
-      <%= f.select('list', options_from_collection_for_select(list_account_types, :to_s, :to_s, selected: @scope.list), {}, {class: 'multiselect', multiple: true, })%>
+      <%= f.select('list', options_from_collection_for_select(list_account_types, :to_s, :to_s, selected: @scope.list), {}, {class: 'multiselect', multiple: true})%>
     </div>
   </div>
 
