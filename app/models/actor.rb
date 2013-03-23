@@ -10,8 +10,8 @@ class Actor
   embeds_many :informations, class_name: 'Information'                                  #embedded
   belongs_to :owner, class_name: 'User'                                                 #embedded
 
-	validates :informations, informations_not_empty: true
-
+  #todo: proper validation, not every information has to be set
+	#validates :informations, informations_not_empty: true
 
   def initialize
     super
