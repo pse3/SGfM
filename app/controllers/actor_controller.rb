@@ -10,12 +10,17 @@ class ActorController < ApplicationController
     @actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
     @actor.actor_type = @actor_type
 
-    @actor_type.information_type.each do |info_type|
-      info = Information.new()
-      info.value = params[:actor][info_type.key]
-      info.information_type = InformationType.find_by_key(info_type.key)
-      info.actor = @actor
+    unless params[:actor][:information].nil?
+      params[:actor][:information].each do |key,value|
+        info_type = InformationType.find_by_key(key.to_sym)
+        information = Information.new
+        information.value = value
+        information.information_type = info_type
+        @actor.informations.push information
+      end
     end
+
+    #TODO validate that each required information is present
 
     user.actors.push(@actor)
     @actor.save
