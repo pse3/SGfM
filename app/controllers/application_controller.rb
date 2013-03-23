@@ -22,13 +22,9 @@ class ApplicationController < ActionController::Base
   end
 
 
-  helper_method :current_actor, :current_actor=
+  helper_method :current_actor
 
   private
-
-  def current_actor=(actor)
-    @current_actor = actor
-  end
 
   def current_actor
     @current_actor
@@ -41,4 +37,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def ensure_user_owns_actor!()
+    unless Actor.find_by(id: params[:id]).owner == current_login.account
+      flash[:error] = t('flash.not_owner_of_actor')
+      redirect_to(home_path)
+    end
+  end
 end

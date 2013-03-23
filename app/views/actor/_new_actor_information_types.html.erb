@@ -1,17 +1,16 @@
 <% @scopes = list_scopes %>
 <%= fields_for(:actor) do |f| %>
-  <% information_types.each do |info| %>
-    <div class="control-group">
-      <%= f.label(info.key, info.name, class: 'control-label') %>
-      <div class="controls">
-        <%= f.text_field(info.key, placeholder: info.name, required: true) %>
-        <%= f.collection_select("scope[#{info.key}]", @scopes, :key, :name)%>
-      </div>
-
-    </div>
-  <% end %>
-
-  <%= f.hidden_field(:actor_type_key, value: actor_type_key) %>
-
+    <% information_types.each do |info| %>
+        <%= f.fields_for(:information) do |info_form|  %>
+            <div class="control-group">
+                <%= info_form.label(info.key, info.name, class: 'control-label') %>
+                <div class="controls">
+                    <%= info_form.text_field(info.key, placeholder: info.name, :value => nil, required: true) %>
+                    <%= f.collection_select("scope[#{info.key}]", @scopes, :key, :name)%>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+    <%= f.hidden_field(:actor_type_key, value: actor_type_key) %>
 <% end %>
 
