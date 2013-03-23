@@ -4,7 +4,6 @@ class InformationFieldType
 
 
   field :key, :type => Symbol
-  field :single, :type => Boolean
 
 
   validates_uniqueness_of :key
@@ -14,8 +13,16 @@ class InformationFieldType
     InformationFieldType.find_by(key: key)
   end
 
-  def single?
-    self.single
+  def parse(value)
+  end
+
+  def to_s(value)
+  end
+
+  def value(value)
+  end
+
+  def value=(value)
   end
 
 
