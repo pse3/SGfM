@@ -44,7 +44,7 @@
                       <li class="divider"></li>
                       <li><%= link_to(raw('<i class="icon-user"></i>') + " " + 'ActorTypes', actor_types_path) %></li>
                       <li><%= link_to(raw('<i class="icon-briefcase"></i>') + " " + 'InformationTypes', information_types_path) %></li>
-                      <li class="divider"></li>
+                      <li><%= link_to(raw('<i class="icon-share"></i>') + " " + 'CSV Import', list_csv_files_path) %></li>
                       <li class="divider"></li>
                       <li><%= link_to(raw('<i class="icon-exclamation-sign"></i>') + " " + 'Reset All', reset_all_path) %></li>
                     <% end %>
