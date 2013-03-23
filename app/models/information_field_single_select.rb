@@ -9,8 +9,10 @@ class InformationFieldSingleSelect < InformationFieldType
   end
 
   def form(form_helper, key, options = {})
-    puts  '---------------'
-    puts
+    puts '---------------'
+    puts options
+    puts form_helper
+    puts '---------------'
     form_helper.select(key, options[:data], :required => options[:required])
   end
 
