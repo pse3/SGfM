@@ -1,0 +1,19 @@
+<% @page_title = t('relationship_type.edit.title') %>
+
+
+<%= form_for(@relationship_type, :url => update_relationship_type_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
+
+  <div class="control-group">
+    <%= f.label(:relationship_type, t('relationship_type.edit.type'), :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:relationship_type, :disabled => 'disabled') %>
+    </div>
+  </div>
+
+  <!-- todo form -->
+
+  <div class="form-actions">
+    <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>
+  </div>
+
+<% end %>
