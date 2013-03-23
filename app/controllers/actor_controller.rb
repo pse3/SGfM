@@ -15,7 +15,7 @@ class ActorController < ApplicationController
         info_type = InformationType.find_by_key(key.to_sym)
         information = Information.new
         information.information_type = info_type
-        information.value=(params[:actor][info_type.key])
+        information.value=(params[:actor][:information][info_type.key])
         information.actor = @actor # or shall we use @actor.informations.push information ?
       end
     end
@@ -26,9 +26,10 @@ class ActorController < ApplicationController
     @actor.save
     user.save
 
-    #todo deleted validater due it didnt validated right
-		flash[:success] = t('actor.create.success')
-	  redirect_to actors_path
+    if @actor.valid?
+		  flash[:success] = t('actor.create.success')
+	    redirect_to actors_path
+    end
   end
 
   # Gets all actors of the current logged in user hashed by their actor type
