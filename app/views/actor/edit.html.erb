@@ -17,7 +17,10 @@
         <%= info_form.label(information.information_type.key, information.information_type.name, :class => 'control-label') %>
         <div class="controls">
           <%= information_field_type = information.information_type.information_field_type
-              information_field_type.form(info_form, information.information_type.key, { :value => information.value, :placeholder => information_type.name, :data => information.information_type.data, :required => true } ) %>
+              information_field_type.form(info_form, information.information_type.key, { :value => information.value,
+                                                                                         :placeholder => information.information_type.name,
+                                                                                         :data => information.information_type.data,
+                                                                                         :required => true } ) %>
         </div>
       </div>
     <% end %>
