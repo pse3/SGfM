@@ -10,6 +10,7 @@
   <div class="control-group">
     <%= f.label(t('scopes.new.type'), class: 'control-label') %>
     <div class="controls">
+      <% #=> Class Obj. :to_s = class names%>
       <%= f.collection_select("_type", list_scope_types, :to_s, :to_s)%>
     </div>
   </div>
