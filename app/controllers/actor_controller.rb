@@ -11,12 +11,12 @@ class ActorController < ApplicationController
     @actor.actor_type = @actor_type
 
     unless params[:actor][:information].nil?
-      params[:actor][:information].each do |key,value|
+      params[:actor][:information].each_key do |key|
         info_type = InformationType.find_by_key(key.to_sym)
         information = Information.new
-        information.value = value
         information.information_type = info_type
-        @actor.informations.push information
+        information.value=(params[:actor][:information][info_type.key])
+        information.actor = @actor # or shall we use @actor.informations.push information ?
       end
     end
 
@@ -26,11 +26,10 @@ class ActorController < ApplicationController
     @actor.save
     user.save
 
-		if @actor.valid?
-			flash[:success] = t('actor.create.success')
-			redirect_to actors_path
-		end
-
+    if @actor.valid?
+		  flash[:success] = t('actor.create.success')
+	    redirect_to actors_path
+    end
   end
 
   # Gets all actors of the current logged in user hashed by their actor type
