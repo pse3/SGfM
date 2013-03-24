@@ -1,7 +1,7 @@
 <% @page_title = t('actor.edit.title') %>
 
 
-<%= form_for(@actor, :url => update_actor_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
+<%= form_for(:actor, :url => update_actor_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
 
   <div class="control-group">
     <%= f.label(:actor_type, t('actor.edit.type'), :class => 'control-label') %>
@@ -10,14 +10,13 @@
     </div>
   </div>
 
-  <!-- todo this code sucks i guess -->
-  <% @actor.informations.each do |information|%>
-    <%=  f.fields_for information do |info_form| %>
+  <%= f.fields_for(:information) do |info_form| %>
+    <% @actor.informations.each do |information| %>
+      <% information_field_type = information.information_type.information_field_type %>
       <div class="control-group">
-        <%= info_form.label(information.information_type.key, information.information_type.name, :class => 'control-label') %>
+        <%= f.label(information.information_type.key, information.information_type.name, :class => 'control-label') %>
         <div class="controls">
-          <%= information_field_type = information.information_type.information_field_type
-              information_field_type.form(info_form, information.information_type.key, { :value => information.value,
+          <%= information_field_type.form(info_form, information.information_type.key, { :value => information.value,
                                                                                          :placeholder => information.information_type.name,
                                                                                          :data => information.information_type.data,
                                                                                          :required => true } ) %>

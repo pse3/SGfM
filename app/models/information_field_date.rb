@@ -9,6 +9,7 @@ class InformationFieldDate < InformationFieldType
   end
 
   def form(form_helper, key, options = {})
+    #todo not yet done
   end
 
 end
