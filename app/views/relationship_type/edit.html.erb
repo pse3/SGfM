@@ -4,13 +4,32 @@
 <%= form_for(@relationship_type, :url => update_relationship_type_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
 
   <div class="control-group">
-    <%= f.label(:relationship_type, t('relationship_type.edit.type'), :class => 'control-label') %>
+    <%= f.label(:'name[en]', t('relationship_type.new.name') + t('lang.en'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:relationship_type, :disabled => 'disabled') %>
+      <%= f.text_field('name[en]', value: @relationship_type.name_locale(:en)) %>
     </div>
   </div>
 
-  <!-- todo form -->
+  <div class="control-group">
+    <%= f.label(:'name[de]', t('relationship_type.new.name') + t('lang.de'), :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field('name[de]', value: @relationship_type.name_locale(:de)) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:'name[fr]', t('relationship_type.new.name') + t('lang.fr'), :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field('name[fr]', value: @relationship_type.name_locale(:fr)) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:'name[it]', t('relationship_type.new.name') + t('lang.it'), :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field('name[it]', value: @relationship_type.name_locale(:it)) %>
+    </div>
+  </div>
 
   <div class="form-actions">
     <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>

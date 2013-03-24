@@ -165,10 +165,13 @@ en:
     edit:
       title: 'Edit relationship type'
       type: 'Type'
+      name: 'Name'
 
     create:
       success: 'RelationshipType successfully created!'
+
     update:
+      success: 'Relationship type successfully updated!'
 
 
 # Translations for all login-pages, sorted by page structure

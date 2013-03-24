@@ -30,13 +30,11 @@ class RelationshipTypeController < ApplicationController
 
   def update
     @relationship_type = RelationshipType.find(params[:id])
-
-    #todo update data
-
+    @relationship_type.name_translations = params[:relationship_type][:name]
     @relationship_type.save
 
     flash[:success] = t('relationship_type.update.success')
-    redirect_to relationship_type_path(@relationship_type)
+    redirect_to relationship_types_path
   end
 
 end
