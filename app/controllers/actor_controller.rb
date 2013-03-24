@@ -17,7 +17,7 @@ class ActorController < ApplicationController
         information.value = value
         information.information_type = info_type
 				unless info_type.has_predefined_scope?
-					information.scope = Scope.where(key: params[:actor][:scope][info_type.key].to_sym).first
+					information.scope = Scope.find_by(key: params[:actor][:scope][info_type.key].to_sym)
 				else
 					information.scope = info_type.predefined_scope
 				end
@@ -69,7 +69,7 @@ class ActorController < ApplicationController
 		params[:actor][:information].each do |key,value|
       info = @actor.find_information_by_key(key.to_sym)
       info.value = value
-			info.scope = Scope.where(key: params[:actor][:scope][key.to_sym]).first
+			info.scope = Scope.find_by(key: params[:actor][:scope][key.to_sym])
     end
     @actor.save
 

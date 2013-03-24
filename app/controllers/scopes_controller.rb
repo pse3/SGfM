@@ -29,7 +29,7 @@ class ScopesController < ApplicationController
 	def update
 		scope = Scope.find(params[:id])
 		scope.name_translations = params[:edited_scope][:name]
-		params[:edited_scope][:list].delete_at(0)
+		params[:edited_scope][:list].delete_at(0) #There's an empty value.. (Don't know why, seems to be the multiselect.)
 		scope.list = params[:edited_scope][:list]
 		if scope.save
 			flash[:success]= t('scopes.update.success')
