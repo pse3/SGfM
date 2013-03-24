@@ -13,10 +13,10 @@
   <% for info in @actor.informations %>
     <tr>
       <td><%= info.information_type.name %></td>
-      <td><%= info.value %></td>
+      <td><%= info.value_to_s %></td>
     </tr>
   <%end %>
 </table>
 
 
-<%= link_to(t('actor.show.edit_actor'), edit_actor_path(@actor), :class => 'btn btn-large btn-primary') %>
+<%= link_to(t('actor.show.edit_actor'), edit_actor_path(@actor), :class => 'btn btn-primary') %>
