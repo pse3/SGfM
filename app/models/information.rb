@@ -27,7 +27,7 @@ class Information
   end
 
   def to_s
-    self.value
+    self.information_type.information_field_type.to_s(self.shit_value)
   end
 
 end

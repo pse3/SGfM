@@ -1,11 +1,15 @@
 class InformationFieldSingleSelect < InformationFieldType
 
   def get_value(value)
-    value.to_s
+    value
   end
 
   def set_value(value)
     value
+  end
+
+  def to_s(value)
+    value.to_s
   end
 
   def form(form_helper, key, options = { :data => [], :required => false, :value => '' })

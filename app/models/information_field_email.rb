@@ -8,6 +8,10 @@ class InformationFieldEmail < InformationFieldType
     value
   end
 
+  def to_s(value)
+    value.to_s
+  end
+
   def form(form_helper, key, options = {})
     #todo not yet done
   end
