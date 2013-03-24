@@ -120,7 +120,7 @@ en:
       edit_information_type: 'Edit information type'
       name: 'Name'
       field_table: 'Data field'
-      value_table: 'Vaule'
+      value_table: 'Value'
 
     new:
       title: 'Create new information type'
@@ -145,7 +145,11 @@ en:
       key_table: 'Key'
 
     show:
-      title: ''
+      title: '%{relationship_type}'
+      field_table: 'Data field'
+      value_table: 'Value'
+      name: 'Name'
+      edit_relationship_type: 'Edit relationship type'
 
     new:
       title: 'Create new RelationshipType'
@@ -154,6 +158,9 @@ en:
       create_relationship_type: 'Create'
 
     edit:
+      title: 'Edit relationship type'
+      type: 'Type'
+
     create:
       success: 'RelationshipType successfully created!'
     update:
