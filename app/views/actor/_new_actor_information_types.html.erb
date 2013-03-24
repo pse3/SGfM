@@ -6,7 +6,9 @@
                 <%= info_form.label(info.key, info.name, class: 'control-label') %>
                 <div class="controls">
                     <%= info_form.text_field(info.key, placeholder: info.name, :value => nil, required: true) %>
-                    <%= f.collection_select("scope[#{info.key}]", @scopes, :key, :name)%>
+                    <% unless info.scope_predefined? %>
+                      <%= f.collection_select("scope[#{info.key}]", @scopes, :key, :name)%>
+                    <% end %>
                 </div>
             </div>
         <% end %>

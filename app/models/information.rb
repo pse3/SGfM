@@ -35,4 +35,8 @@ class Information
 
 	end
 
+	def scope_predefined?
+		self.information_type.scope_predefined?
+	end
+
 end

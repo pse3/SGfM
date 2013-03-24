@@ -122,6 +122,8 @@ en:
       title: 'Create new information type'
       name: 'Name'
       key: 'Key'
+      predefined_scope: 'Predefined scope'
+      predefined_scope_prompt: 'None'
       create_information_type: 'Create'
 
     create:
