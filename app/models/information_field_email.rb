@@ -1,10 +1,10 @@
 class InformationFieldEmail < InformationFieldType
 
-  def value(value)
+  def get_value(value)
     value
   end
 
-  def value=(value)
+  def set_value(value)
     value
   end
 

@@ -1,10 +1,10 @@
 class InformationFieldDate < InformationFieldType
 
-  def value(value)
+  def get_value(value)
     value.strftime('%a %d %b %Y')
   end
 
-  def value=(value)
+  def set_value(value)
     Date.parse(value)
   end
 

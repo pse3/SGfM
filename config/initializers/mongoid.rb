@@ -15,64 +15,50 @@ unless Rails.env == :production
   #create the information field types
   information_field_text = InformationFieldText.new
   information_field_text.key = :text
-  information_field_text.name ='text filed'
+  information_field_text.name_translations = { :en => 'Text field', :de => 'Textfeld', :it => '???', :fr => '???' }
   information_field_text.save
 
   information_field_email = InformationFieldEmail.new
   information_field_email.key = :email
-  information_field_email.name = 'Email'
+  information_field_email.name_translations = { :en => 'Email field', :de => 'Emailfeld', :it => '???', :fr => '???' }
   information_field_email.save
 
   information_field_date = InformationFieldDate.new
   information_field_date.key = :date
-  information_field_date.name='Date'
+  information_field_date.name_translations = { :en => 'Date field', :de => 'Datumsfeld', :it => '???', :fr => '???' }
   information_field_date.save
 
   information_field_single_select = InformationFieldSingleSelect.new
   information_field_single_select.key = :single_select
-  information_field_single_select.name = 'single selection'
+  information_field_single_select.name_translations = { :en => 'single selection', :de => 'Einzelauswahl', :it => '???', :fr => '???' }
   information_field_single_select.save
 
   information_field_multiple_select = InformationFieldMultipleSelect.new
   information_field_multiple_select.key = :multiple_select
-  information_field_multiple_select.name = 'multiple selection'
+  information_field_multiple_select.name_translations = { :en => 'multiple selection', :de => 'Mehrauswahl', :it => '???', :fr => '???' }
   information_field_multiple_select.save
 
 
   #create some information_types
-  info_doctor_specification = InformationType.new
-  info_doctor_specification.key = :doctor_specification
-  info_doctor_specification.information_field_type = information_field_single_select
-  info_doctor_specification.data_translations = { :de => ['Frauenarzt', 'Kinderarzt', 'Urologoe' ],
-                                                  :en => ['Womendoctor', 'Childdoctor', 'Penisdoctor'],
-                                                  :fr => ['1??', '2??', '3??'],
-                                                  :it => ['4??', '5??', '6??'] }
-  I18n.locale = :en
-  info_doctor_specification.name = "Doctor type"
-  I18n.locale = :de
-  info_doctor_specification.name = "Doktor Typ"
-  I18n.locale = :it
-  info_doctor_specification.name = "dok type"
-  I18n.locale = :fr
-  info_doctor_specification.name = "dok type"
-  info_doctor_specification.save
+  info_medical_specialisations = InformationType.new
+  info_medical_specialisations.key = :medical_specialisations
+  info_medical_specialisations.information_field_type = information_field_multiple_select
+  info_medical_specialisations.data_translations = { :de => ['Frauenarzt', 'Kinderarzt', 'Urologoe' ],
+                                                     :en => ['Womendoctor', 'Childdoctor', 'Penisdoctor'],
+                                                     :fr => ['??', '??', '??'],
+                                                     :it => ['??', '??', '??'] }
+  info_medical_specialisations.name_translations = {:en => 'Medical specialisations', :de => 'Fachgebiete', :it => '??', :fr => '??' }
+  info_medical_specialisations.save
 
-  info_doctor_type = InformationType.new
-  info_doctor_type.key = :doctor_type
-  info_doctor_type.information_field_type = information_field_multiple_select
-  info_doctor_type.data_translations = { :de => ['Einzelpraxis', 'Gemeinschaftspraxis', 'Diverses' ],
-                                                  :en => ['0??', '00???', '000??'],
-                                                  :fr => ['1??', '2??', '3??'],
-                                                  :it => ['4??', '5??', '6??'] }
-  I18n.locale = :en
-  info_doctor_type.name = "Doctor typ"
-  I18n.locale = :de
-  info_doctor_type.name = "doc type"
-  I18n.locale = :it
-  info_doctor_type.name = "doc type"
-  I18n.locale = :fr
-  info_doctor_type.name = "doc type"
-  info_doctor_type.save
+  info_gender = InformationType.new
+  info_gender.key = :gender
+  info_gender.information_field_type = information_field_single_select
+  info_gender.data_translations = { :en => ['Male', 'Female'],
+                                    :de => ['Männlich', 'Weiblich'],
+                                    :fr => ['??', '??'],
+                                    :it => ['??', '??'] }
+  info_gender.name_translations = {:en => "Gender", :de =>"Geschlecht", :it => "??", :fr => "??" }
+  info_gender.save
 
   info_company = InformationType.new
   info_company.key = :company
@@ -233,10 +219,10 @@ unless Rails.env == :production
   #create some actor_types
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
-  actor_doctor.information_type.push(info_doctor_specification)
-  actor_doctor.information_type.push(info_doctor_type)
+  actor_doctor.information_type.push(info_medical_specialisations)
   actor_doctor.information_type.push(info_first_name)
   actor_doctor.information_type.push(info_last_name)
+  actor_doctor.information_type.push(info_gender)
   actor_doctor.information_type.push(info_phone)
   actor_doctor.information_type.push(info_email)
   actor_doctor.information_type.push(info_street)

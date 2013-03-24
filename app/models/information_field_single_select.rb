@@ -1,10 +1,10 @@
 class InformationFieldSingleSelect < InformationFieldType
 
-  def value(value)
+  def get_value(value)
     value.to_s
   end
 
-  def value=(value)
+  def set_value(value)
     value
   end
 

@@ -19,11 +19,11 @@ class Information
   end
 
   def value
-    self.information_type.information_field_type.value(self.shit_value)
+    self.information_type.information_field_type.get_value(self.shit_value)
   end
 
   def value=(value)
-    self.shit_value = self.information_type.information_field_type.value=(value)
+    self.shit_value = self.information_type.information_field_type.set_value(value)
   end
 
   def to_s
