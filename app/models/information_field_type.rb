@@ -10,4 +10,8 @@ class InformationFieldType
     InformationFieldType.find_by(key: key)
   end
 
+  def name
+    self[:key].to_s
+  end
+
 end
