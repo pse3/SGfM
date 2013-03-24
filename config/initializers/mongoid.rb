@@ -35,7 +35,10 @@ unless Rails.env == :production
   info_doctor_specification = InformationType.new
   info_doctor_specification.key = :doctor_specification
   info_doctor_specification.information_field_type = information_field_single_select
-  info_doctor_specification.data = ['Frauenarzt', 'Kinderarzt', 'Urologoe' ] # todo use mongoid localization
+  info_doctor_specification.data_translations = { :de => ['Frauenarzt', 'Kinderarzt', 'Urologoe' ],
+                                                  :en => ['Womendoctor', 'Childdoctor', 'Penisdoctor'],
+                                                  :fr => ['1??', '2??', '3??'],
+                                                  :it => ['4??', '5??', '6??'] }
   I18n.locale = :en
   info_doctor_specification.name = "Doctor specification"
   I18n.locale = :de

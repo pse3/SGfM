@@ -11,8 +11,7 @@ class ActorController < ApplicationController
     @actor.actor_type = @actor_type
 
     unless params[:actor][:information].nil?
-      # TODO refactoring!
-      params[:actor][:information].each do |key,value|
+      params[:actor][:information].each_key do |key|
         info_type = InformationType.find_by_key(key.to_sym)
         information = Information.new
         information.information_type = info_type
