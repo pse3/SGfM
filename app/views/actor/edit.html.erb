@@ -10,12 +10,37 @@
     </div>
   </div>
 
-  <% @actor.informations.each do |i|%>
-    <%=  f.fields_for i do |info_form| %>
+  <% @actor.informations.each do |information| %>
+    <%= f.fields_for information do |info_form| %>
       <div class="control-group">
-        <%= info_form.label(i.key, i.name, :class => 'control-label') %>
+        <%= info_form.label(information.key, information.name, :class => 'control-label') %>
         <div class="controls">
-          <%= info_form.text_field i.key, :value => i.value %>
+          <%= info_form.text_field(information.key, :value => information.value) %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% @actor.relationships.each do |relationship| %>
+    <%= f.fields_for relationship do |info_form| %>
+      <div class="control-group">
+        <%= info_form.label(:relationship_type, t('actor.new.relationship_type'), class: 'control-label') %>
+        <div class="controls">
+          <%= info_form.select(:relationship_type, relationship_types.map{ |type| [type.name, type.key] }, {}, :selected => RelationshipType.find_by_key(relationship.relationship_type.key), :name => :'relationship[relationship_type][]', :required => true) %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= info_form.label(:reference, t('actor.new.relationship_reference'), class: 'control-label') %>
+        <div class="controls">
+          <%= info_form.text_field(:reference, :value => relationship.reference.to_s, :disabled => true) %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= info_form.label(:comment, t('actor.new.relationship_comment'), class: 'control-label') %>
+        <div class="controls">
+          <%= info_form.text_area(:comment, :name => :'relationship[comment][]', :rows => 3) %>
         </div>
       </div>
     <% end %>

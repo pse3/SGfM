@@ -1,18 +1,19 @@
+<!-- todo need to rewrite whole params structure, dont make 3 arrays like types, references and comments. Instead make for each relationship an own 3-tuple -->
 <%= content_tag(:div, :id => "relationship_#{field_number}") do %>
 
   <%= fields_for(:relationship) do |f| %>
 
     <div class="control-group">
-      <%= f.label(:type, t('actor.new.relationship_type'), class: 'control-label') %>
+      <%= f.label(:relationship_type, t('actor.new.relationship_type'), class: 'control-label') %>
       <div class="controls">
-        <%= f.select(:type, relationship_types.map{ |type| [type.name, type.key] }, {}, :name => :'relationship[type][]', :required => true) %>
+        <%= f.select(:relationship_type, relationship_types.map{ |type| [type.name, type.key] }, {}, :name => :'relationship[relationship_type][]', :required => true) %>
       </div>
     </div>
 
     <div class="control-group">
       <%= f.label(:reference, t('actor.new.relationship_reference'), class: 'control-label') %>
       <div class="controls">
-        <%= f.hidden_field(:e1, :id => 'e1', :name => 'relationship[reference][]', :required => true) %>
+        <%= f.hidden_field(:reference, :id => 'e1', :name => 'relationship[reference][]', :required => true) %>
         <p class="pull-right">
           <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor.new.remove_relationship')}"),
                                "SGfM.relationship.remove_relationship_form(\"#{field_number}\")",
@@ -24,7 +25,7 @@
     <div class="control-group">
       <%= f.label(:comment, t('actor.new.relationship_comment'), class: 'control-label') %>
       <div class="controls">
-        <%= f.text_field(:comment, :name => :'relationship[comment][]') %>
+        <%= f.text_area(:comment, :name => 'relationship[comment][]', :rows => '3') %>
       </div>
     </div>
 

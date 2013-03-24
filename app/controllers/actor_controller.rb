@@ -21,7 +21,7 @@ class ActorController < ApplicationController
     end
 
     references = params[:relationship][:reference]
-    types = params[:relationship][:type]
+    types = params[:relationship][:relationship_type]
     comments = params[:relationship][:comment]
     types.each_with_index do |relationship_type,i|
       relation = Relationship.new
@@ -76,6 +76,9 @@ class ActorController < ApplicationController
       info = @actor.find_information_by_key(key.to_sym)
       info.value = value
     end
+
+    #todo update relationships
+
     @actor.save
 
     flash[:success] = t('actor.update.success')
