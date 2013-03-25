@@ -11,12 +11,12 @@
     <td><%= @actor.actor_type.name %></td>
   </tr>
 
-  <% for info in @actor.visible_informations(current_login.account) %>
+  % @actor.informations.each do |info|
     <tr>
       <td><%= info.information_type.name %></td>
       <td><%= info.value %></td>
     </tr>
-  <%end %>
+  % end
 </table>
 
 
