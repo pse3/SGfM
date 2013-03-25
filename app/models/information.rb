@@ -32,7 +32,7 @@ class Information
   field :value, :type => String
 
   field :created_at, :type => DateTime
-  field :changed_a, :type => DateTime
+  field :changed_at, :type => DateTime
 
   belongs_to :creator, class_name: 'User', inverse_of: nil                              #referenced  / one way relationship                                                                                                                                                                                                                                                 #embedded
   belongs_to :information_type, class_name: 'InformationType', inverse_of: nil          #referenced  / one way relationship
