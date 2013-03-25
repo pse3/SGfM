@@ -1,6 +1,7 @@
 class InformationType
 
   include Mongoid::Document
+  include Scoped
 
   field :name, :type => String, :localize => true
   field :key, :type => Symbol

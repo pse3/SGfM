@@ -16,15 +16,3 @@ class Scope
 		 Scope.descendants
 	end
 end
-
-module Scoped
-
-  def self.included(base)
-    base.extend ClassMethods
-    base.belongs_to :scope, class_name: 'Scope', inverse_of: nil
-  end
-
-  module ClassMethods
-
-  end
-end
