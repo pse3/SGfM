@@ -30,13 +30,8 @@ class Information
     self.information_type.key
   end
 
-	def visible?(viewer)
-		self.scope.visible?(viewer, self.actor.owner)
-
-	end
-
-	def scope_predefined?
-		self.information_type.scope_predefined?
-	end
-
+  def information_type=(value)
+    super(value)
+    value.referenced(self)
+  end
 end
