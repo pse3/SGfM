@@ -7,7 +7,7 @@ class ActorType
 
   validates_uniqueness_of :key
 
-  has_and_belongs_to_many :information_type, class_name: 'InformationType'    #referenced
+  has_and_belongs_to_many :information_type, class_name: 'InformationTypeDecorator'    #referenced
   def self.find_by_key(key)
     ActorType.find_by(key: key)
   end
