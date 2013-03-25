@@ -13,8 +13,4 @@ class InformationType
   def self.find_by_key(key)
     InformationType.find_by(key: key)
   end
-
-  def referenced(information)
-    information.scope= predefined_scope if predefined_scope and not information.scope
-  end
 end

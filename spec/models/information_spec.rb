@@ -8,5 +8,6 @@ describe Information do
     info.scope.should be_nil
     info.information_type = info_type
     info.scope.should == info_type.scope
+    info.information_type.should == info_type
   end
 end
