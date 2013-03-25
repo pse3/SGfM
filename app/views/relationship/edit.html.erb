@@ -5,7 +5,7 @@
   <div class="control-group">
     <%= f.label(:relationship_type, t('relationship.edit.relationship_type'), class: 'control-label') %>
     <div class="controls">
-      <%= f.select(:relationship_type, relationship_types.map{ |type| [type.name, type.key] }, {}, { :selected => @locals[:relationship].relationship_type,:required => true }) %>
+      <%= f.select(:relationship_type, relationship_types.map{ |type| [type.name, type.key] }, { :selected => @locals[:relationship].relationship_type.name, :required => true }) %>
     </div>
   </div>
 

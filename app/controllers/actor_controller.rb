@@ -18,6 +18,7 @@ class ActorController < ApplicationController
         information.value=(params[:actor][:information][info_type.key])
         information.actor = @actor # or shall we use @actor.informations.push information ?
       end
+    end
 
     references = params[:relationship][:reference]
     types = params[:relationship][:relationship_type]
@@ -38,7 +39,7 @@ class ActorController < ApplicationController
     user.save
 
     if @actor.valid?
-		flash[:success] = t('actor.create.success')
+		  flash[:success] = t('actor.create.success')
 	    redirect_to actors_path
     end
   end

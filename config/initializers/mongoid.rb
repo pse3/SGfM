@@ -362,6 +362,16 @@ unless Rails.env == :production
   dummy_actor_karl = Actor.new
   dummy_actor_karl.actor_type = ActorType.find_by_key(:doctor)
 
+  karl_medical_specialisations = Information.new
+  karl_medical_specialisations.information_type = InformationType.find_by_key(:medical_specialisations)
+  karl_medical_specialisations.value = ['Childdoctor']
+  karl_medical_specialisations.actor = dummy_actor_karl
+
+  karl_gender = Information.new
+  karl_gender.information_type = InformationType.find_by_key(:gender)
+  karl_gender.value = 'Male'
+  karl_gender.actor = dummy_actor_karl
+
   karl_fname = Information.new
   karl_fname.information_type = InformationType.find_by_key(:first_name)
   karl_fname.value = 'Karl'
