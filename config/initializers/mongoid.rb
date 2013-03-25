@@ -315,43 +315,43 @@ unless Rails.env == :production
   dummy_actor_insel.actor_type = ActorType.find_by_key(:hospital)
 
   insel_name = Information.new
-  insel_name.value = 'Insel'
   insel_name.information_type = InformationType.find_by_key(:company)
+  insel_name.value = 'Insel'
   insel_name.actor = dummy_actor_insel
 
   insel_phone = Information.new
-  insel_phone.value = '033 iwas'
   insel_phone.information_type = InformationType.find_by_key(:phone)
+  insel_phone.value = '033 777 88 11'
   insel_phone.actor = dummy_actor_insel
 
   insel_email = Information.new
-  insel_email.value = 'insel@bern.ch'
   insel_email.information_type = InformationType.find_by_key(:email)
+  insel_email.value = 'insel@bern.ch'
   insel_email.actor = dummy_actor_insel
 
   insel_street = Information.new
-  insel_street.value = 'Inselstrasse'
   insel_street.information_type = InformationType.find_by_key(:street)
+  insel_street.value = 'Inselstrasse'
   insel_street.actor = dummy_actor_insel
 
   insel_street_number = Information.new
-  insel_street_number.value = '666'
   insel_street_number.information_type = InformationType.find_by_key(:street_number)
+  insel_street_number.value = '666'
   insel_street_number.actor = dummy_actor_insel
 
   insel_zip_code = Information.new
-  insel_zip_code.value = '4000'
   insel_zip_code.information_type = InformationType.find_by_key(:zip_code)
+  insel_zip_code.value = '4000'
   insel_zip_code.actor = dummy_actor_insel
 
   insel_city = Information.new
-  insel_city.value = 'Bern'
   insel_city.information_type = InformationType.find_by_key(:city)
+  insel_city.value = 'Bern'
   insel_city.actor = dummy_actor_insel
 
   insel_canton = Information.new
-  insel_canton.value = 'BE'
   insel_canton.information_type = InformationType.find_by_key(:canton)
+  insel_canton.value = 'BE'
   insel_canton.actor = dummy_actor_insel
 
   user.actors.push(dummy_actor_insel)
@@ -363,48 +363,48 @@ unless Rails.env == :production
   dummy_actor_karl.actor_type = ActorType.find_by_key(:doctor)
 
   karl_fname = Information.new
-  karl_fname.value = 'Karl'
   karl_fname.information_type = InformationType.find_by_key(:first_name)
+  karl_fname.value = 'Karl'
   karl_fname.actor = dummy_actor_karl
 
   karl_lname = Information.new
-  karl_lname.value = 'Schürch'
   karl_lname.information_type = InformationType.find_by_key(:last_name)
+  karl_lname.value = 'Schürch'
   karl_lname.actor = dummy_actor_karl
 
   karl_phone = Information.new
-  karl_phone.value = '078 888 77 66'
   karl_phone.information_type = InformationType.find_by_key(:phone)
+  karl_phone.value = '078 888 77 66'
   karl_phone.actor = dummy_actor_karl
 
   karl_email = Information.new
-  karl_email.value = 'karl@schürch.ch'
   karl_email.information_type = InformationType.find_by_key(:email)
+  karl_email.value = 'karl@schürch.ch'
   karl_email.actor = dummy_actor_karl
 
   karl_street = Information.new
-  karl_street.value = 'Karlstrasse'
   karl_street.information_type = InformationType.find_by_key(:street)
+  karl_street.value = 'Karlstrasse'
   karl_street.actor = dummy_actor_karl
 
   karl_street_number = Information.new
-  karl_street_number.value = '999'
   karl_street_number.information_type = InformationType.find_by_key(:street_number)
+  karl_street_number.value = '999'
   karl_street_number.actor = dummy_actor_karl
 
   karl_zip_code = Information.new
-  karl_zip_code.value = '-2000'
   karl_zip_code.information_type = InformationType.find_by_key(:zip_code)
+  karl_zip_code.value = '3178'
   karl_zip_code.actor = dummy_actor_karl
 
   karl_city = Information.new
-  karl_city.value = 'Bösingen'
   karl_city.information_type = InformationType.find_by_key(:city)
+  karl_city.value = 'Bösingen'
   karl_city.actor = dummy_actor_karl
 
   karl_canton = Information.new
-  karl_canton.value = 'FR'
   karl_canton.information_type = InformationType.find_by_key(:canton)
+  karl_canton.value = 'FR'
   karl_canton.actor = dummy_actor_karl
 
   user.actors.push(dummy_actor_karl)
@@ -419,7 +419,5 @@ unless Rails.env == :production
   relationship_insel.actor = dummy_actor_insel
   relationship_insel.reference = dummy_actor_karl
   relationship_insel.save
-
-
 
 end
