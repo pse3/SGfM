@@ -14,7 +14,7 @@
   <% @actor.informations.each do |info| %>
     <tr>
       <td><%= info.information_type.name %></td>
-      <td><%= info.value %></td>
+      <td><%= info.value_to_s %></td>
     </tr>
   <% end %>
 </table>

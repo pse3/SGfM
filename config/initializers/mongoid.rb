@@ -1,9 +1,11 @@
 # encoding: utf-8
-
 unless Rails.env == :production
 
   # Reset all objects and types
   Actor.delete_all
+  Information.delete_all
+  InformationType.delete_all
+  InformationFieldType.delete_all
   ActorType.delete_all
   Information.delete_all
   InformationType.delete_all
@@ -13,9 +15,57 @@ unless Rails.env == :production
   User.delete_all
   Admin.delete_all
 
-  # Create some InformationTypes
+  #create the information field types
+  information_field_text = InformationFieldText.new
+  information_field_text.key = :text
+  information_field_text.name_translations = { :en => 'Text field', :de => 'Textfeld', :it => '???', :fr => '???' }
+  information_field_text.save
+
+  information_field_email = InformationFieldEmail.new
+  information_field_email.key = :email
+  information_field_email.name_translations = { :en => 'Email field', :de => 'Emailfeld', :it => '???', :fr => '???' }
+  information_field_email.save
+
+  information_field_date = InformationFieldDate.new
+  information_field_date.key = :date
+  information_field_date.name_translations = { :en => 'Date field', :de => 'Datumsfeld', :it => '???', :fr => '???' }
+  information_field_date.save
+
+  information_field_single_select = InformationFieldSingleSelect.new
+  information_field_single_select.key = :single_select
+  information_field_single_select.name_translations = { :en => 'single selection', :de => 'Einzelauswahl', :it => '???', :fr => '???' }
+  information_field_single_select.save
+
+  information_field_multiple_select = InformationFieldMultipleSelect.new
+  information_field_multiple_select.key = :multiple_select
+  information_field_multiple_select.name_translations = { :en => 'multiple selection', :de => 'Mehrauswahl', :it => '???', :fr => '???' }
+  information_field_multiple_select.save
+
+
+  #create some information_types
+  info_medical_specialisations = InformationType.new
+  info_medical_specialisations.key = :medical_specialisations
+  info_medical_specialisations.information_field_type = information_field_multiple_select
+  info_medical_specialisations.data_translations = { :de => ['Frauenarzt', 'Kinderarzt', 'Urologoe' ],
+                                                     :en => ['Womendoctor', 'Childdoctor', 'Penisdoctor'],
+                                                     :fr => ['??', '??', '??'],
+                                                     :it => ['??', '??', '??'] }
+  info_medical_specialisations.name_translations = {:en => 'Medical specialisations', :de => 'Fachgebiete', :it => '??', :fr => '??' }
+  info_medical_specialisations.save
+
+  info_gender = InformationType.new
+  info_gender.key = :gender
+  info_gender.information_field_type = information_field_single_select
+  info_gender.data_translations = { :en => ['Male', 'Female'],
+                                    :de => ['Männlich', 'Weiblich'],
+                                    :fr => ['??', '??'],
+                                    :it => ['??', '??'] }
+  info_gender.name_translations = {:en => "Gender", :de =>"Geschlecht", :it => "??", :fr => "??" }
+  info_gender.save
+
   info_company = InformationType.new
   info_company.key = :company
+  info_company.information_field_type = information_field_text
   I18n.locale = :en
   info_company.name = "Company"
   I18n.locale = :de
@@ -28,6 +78,7 @@ unless Rails.env == :production
 
   info_first_name = InformationType.new
   info_first_name.key = :first_name
+  info_first_name.information_field_type = information_field_text
   I18n.locale = :en
   info_first_name.name = "First name"
   I18n.locale = :de
@@ -40,6 +91,7 @@ unless Rails.env == :production
 
   info_last_name = InformationType.new
   info_last_name.key = :last_name
+  info_last_name.information_field_type = information_field_text
   I18n.locale = :en
   info_last_name.name = "Last name"
   I18n.locale = :de
@@ -52,6 +104,7 @@ unless Rails.env == :production
 
   info_phone = InformationType.new
   info_phone.key = :phone
+  info_phone.information_field_type = information_field_text
   I18n.locale = :en
   info_phone.name = "Phone"
   I18n.locale = :de
@@ -64,6 +117,7 @@ unless Rails.env == :production
 
   info_mobile = InformationType.new
   info_mobile.key = :mobile
+  info_mobile.information_field_type = information_field_text
   I18n.locale = :en
   info_mobile.name = "Mobile"
   I18n.locale = :de
@@ -76,6 +130,7 @@ unless Rails.env == :production
 
   info_fax = InformationType.new
   info_fax.key = :fax
+  info_fax.information_field_type = information_field_text
   I18n.locale = :en
   info_fax.name = "Fax"
   I18n.locale = :de
@@ -88,6 +143,7 @@ unless Rails.env == :production
 
   info_street = InformationType.new
   info_street.key = :street
+  info_street.information_field_type = information_field_text
   I18n.locale = :en
   info_street.name = "Street"
   I18n.locale = :de
@@ -100,6 +156,7 @@ unless Rails.env == :production
 
   info_street_number = InformationType.new
   info_street_number.key = :street_number
+  info_street_number.information_field_type = information_field_text
   I18n.locale = :en
   info_street_number.name = "Street number"
   I18n.locale = :de
@@ -112,6 +169,7 @@ unless Rails.env == :production
 
   info_zip_code = InformationType.new
   info_zip_code.key = :zip_code
+  info_zip_code.information_field_type = information_field_text
   I18n.locale = :en
   info_zip_code.name = "ZIP"
   I18n.locale = :de
@@ -124,6 +182,7 @@ unless Rails.env == :production
 
   info_city = InformationType.new
   info_city.key = :city
+  info_city.information_field_type = information_field_text
   I18n.locale = :en
   info_city.name = "City"
   I18n.locale = :de
@@ -136,6 +195,7 @@ unless Rails.env == :production
 
   info_canton = InformationType.new
   info_canton.key = :canton
+  info_canton.information_field_type = information_field_text
   I18n.locale = :en
   info_canton.name = "Canton"
   I18n.locale = :de
@@ -148,6 +208,7 @@ unless Rails.env == :production
 
   info_email = InformationType.new
   info_email.key = :email
+  info_email.information_field_type = information_field_text
   I18n.locale = :en
   info_email.name = "Email"
   I18n.locale = :de
@@ -162,8 +223,10 @@ unless Rails.env == :production
   # Create some ActorTypes
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
+  actor_doctor.information_type.push(info_medical_specialisations)
   actor_doctor.information_type.push(info_first_name)
   actor_doctor.information_type.push(info_last_name)
+  actor_doctor.information_type.push(info_gender)
   actor_doctor.information_type.push(info_phone)
   actor_doctor.information_type.push(info_email)
   actor_doctor.information_type.push(info_street)

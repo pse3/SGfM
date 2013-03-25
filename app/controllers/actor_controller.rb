@@ -11,14 +11,13 @@ class ActorController < ApplicationController
     @actor.actor_type = @actor_type
 
     unless params[:actor][:information].nil?
-      params[:actor][:information].each do |key,value|
+      params[:actor][:information].each_key do |key|
         info_type = InformationType.find_by_key(key.to_sym)
         information = Information.new
-        information.value = value
         information.information_type = info_type
-        @actor.informations.push(information)
+        information.value=(params[:actor][:information][info_type.key])
+        information.actor = @actor # or shall we use @actor.informations.push information ?
       end
-    end
 
     references = params[:relationship][:reference]
     types = params[:relationship][:relationship_type]
@@ -38,11 +37,10 @@ class ActorController < ApplicationController
     @actor.save
     user.save
 
-		if @actor.valid?
-			flash[:success] = t('actor.create.success')
-			redirect_to actors_path
-		end
-
+    if @actor.valid?
+		flash[:success] = t('actor.create.success')
+	    redirect_to actors_path
+    end
   end
 
   # Gets all actors of the current logged in user hashed by their actor type
@@ -77,9 +75,6 @@ class ActorController < ApplicationController
       info = @actor.find_information_by_key(key.to_sym)
       info.value = value
     end
-
-    #todo update relationships
-
     @actor.save
 
     flash[:success] = t('actor.update.success')
