@@ -7,7 +7,4 @@ class Scope
 
   #no mappings needed! (yet)
 
-  #something
-
-
 end
