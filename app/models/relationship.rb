@@ -13,7 +13,7 @@ class Relationship
   belongs_to :creator, class_name: 'User', inverse_of: nil                                #referenced  / one way relationship                                                                                                                                                                                                                                                 #embedded
   belongs_to :relationship_type, class_name: 'RelationshipType', inverse_of: nil          #referenced  / one way relationship
   belongs_to :scope, class_name: 'Scope', inverse_of: nil                                 #referenced
-  embedded_in :actor, class_name: 'Actor'                                                 #embedded
+  belongs_to :actor, class_name: 'Actor', inverse_of: :relationships                                       #embedded
   belongs_to :reference, class_name: 'Actor', inverse_of: nil                                #referenced  / one way relationship
 
   def initialize

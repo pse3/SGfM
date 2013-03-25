@@ -16,7 +16,7 @@ class ActorController < ApplicationController
         information = Information.new
         information.value = value
         information.information_type = info_type
-        @actor.informations.push information
+        @actor.informations.push(information)
       end
     end
 
@@ -29,6 +29,7 @@ class ActorController < ApplicationController
       relation.actor = @actor
       relation.comment = comments[i]
       relation.reference = references[i]
+      relation.save
     end
 
     #TODO validate that each required information is present
