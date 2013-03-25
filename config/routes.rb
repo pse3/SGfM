@@ -17,6 +17,12 @@ SGfM::Application.routes.draw do
     get   'actors/edit/:id' => 'actor#edit',    as: 'edit_actor'
     post  'actors/edit/:id' => 'actor#update',  as: 'update_actor'
 
+    # Relationship routes
+    get     'relationship/create/:actor'  => 'relationship#new',      as: 'create_relationship'
+    post    'relationship/create/:actor'  => 'relationship#create'
+    get     'relationship/edit/:id'       => 'relationship#edit',     as: 'edit_relationship'
+    post    'relationship/edit/:id'       => 'relationship#update',   as: 'update_relationship'
+    delete  'relationship/destroy/:id'    => 'relationship#destroy',  as: 'delete_relationship'
 
     # InformationType routes
     get   'information_types'           => 'information_type#list',   as: 'information_types'

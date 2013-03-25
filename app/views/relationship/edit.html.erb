@@ -1,0 +1,46 @@
+<% @page_title = t('relationship.edit.title', :actor => @locals[:relationship].actor) %>
+
+<%= form_for(:relationship, :url => update_relationship_path(@locals[:relationship]), :method => :post, :html => { :class => 'form-horizontal'} ) do |f| %>
+
+  <div class="control-group">
+    <%= f.label(:relationship_type, t('relationship.edit.relationship_type'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.select(:relationship_type, relationship_types.map{ |type| [type.name, type.key] }, {}, { :selected => @locals[:relationship].relationship_type,:required => true }) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:reference, t('relationship.edit.relationship_reference'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:reference, { :value => @locals[:relationship].reference, :disabled => true }) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:comment, t('relationship.edit.relationship_comment'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_area(:comment, { :rows => '3', :value => @locals[:relationship].comment }) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit(t('form.update'), class: 'btn btn-large btn-primary') %>
+  </div>
+
+<% end %>
+
+<script>
+  $('document').ready(function() {
+
+    var data = [<%= raw(@locals[:all_actors].map { |a| "{id:'#{a.id}',text:'#{a.to_s}'}" }.join(', ')) %>];
+    function format(item) { return item.text; };
+
+    $("#e1").select2({
+      width: '500',
+      data:{ results: data },
+      formatSelection: format,
+      formatResult: format
+    });
+
+  });
+</script>

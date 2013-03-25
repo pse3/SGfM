@@ -16,6 +16,7 @@ en:
     current_password: 'current password'
     remember: 'remember me'
     submit: 'submit'
+    create: 'create'
     update: 'update'
     cancel: 'cancel'
 
@@ -48,8 +49,13 @@ en:
       title: '%{actor}'
       type: 'Type'
       edit_actor: 'Edit actor'
-      field_table: 'Data field'
-      value_table: 'Vaule'
+      add_relationship: 'Add relationship'
+      information_type: 'Information'
+      information_value: 'Value'
+      relationship_type: 'Type'
+      relationship_reference: 'Referenced Actor'
+      relationship_comment: 'Comment'
+      actions_table: 'Actions'
 
     new:
       title: 'Create new actor'
@@ -62,7 +68,6 @@ en:
       relationship_reference: 'Reference'
       relationship_comment: 'Comment'
       relationship_type: 'Type'
-
 
     edit:
       title: 'Edit actor'
@@ -139,6 +144,30 @@ en:
 
     update:
       success: 'Information type successfully updated!'
+
+
+# Translations for all relationship-pages, sorted by page structure
+  relationship:
+    new:
+      title: 'Create relationship for %{actor}'
+      relationship_type: 'Type'
+      relationship_reference: 'Referenced Actor'
+      relationship_comment: 'Comment'
+
+    edit:
+      title: 'Edit relationship for %{actor}'
+      relationship_type: 'Type'
+      relationship_reference: 'Referenced Actor'
+      relationship_comment: 'Comment'
+
+    create:
+      success: 'Successfully created relationship'
+
+    update:
+      success: 'Successfully updated relationship'
+
+    destroy:
+      success: 'Successfully deleted relationship'
 
 
 # Translations for all actor_type-pages, sorted by page structure
