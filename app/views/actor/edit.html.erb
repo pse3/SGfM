@@ -16,7 +16,11 @@
         <%= info_form.label(i.key, i.name, :class => 'control-label') %>
         <div class="controls">
           <%= info_form.text_field i.key, :value => i.value %>
-          <% unless i.scope_predefined? %>
+          <% if i.information_type.scope %>
+            <select disabled="disabled">
+              <option><%= i.information_type.scope.name %></option>
+            </select>
+          <% else %>
             <% @scopes = list_scopes %>
             <%= select("actor[scope]", i.key.to_s, options_from_collection_for_select(@scopes, :key, :name, selected: i.scope.key), {selected: i.scope.key})%>
           <% end %>
