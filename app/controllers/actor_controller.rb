@@ -89,7 +89,7 @@ class ActorController < ApplicationController
   # Find actor with given id
   def show
     @actor = Actor.find(params[:id])
-    @informations = Scope.scope_array(@actor.informations, current_account)
+    @informations = ScopesHelper.scope_array(@actor.informations, current_account)
   end
 
 end
