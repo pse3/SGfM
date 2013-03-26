@@ -1,0 +1,44 @@
+# Copy/Paste ins Terminal zum Erstellen eines Actors
+
+rails console
+
+@itype_1 = InformationType.new
+@itype_1.name = "TestItype1"
+@itype_1.key = :itype1
+@itype_1.save
+
+@itype_2 = InformationType.new
+@itype_2.name = "TestItype2"
+@itype_2.key = :itype2
+@itype_2.save
+
+@atype_1 = ActorType.new
+@atype_1.name = "Atype1"
+@atype_1.key = :atype1
+@atype_1.information_type.push(InformationType.find_by_key(:itype1))
+@atype_1.information_type.push(InformationType.find_by_key(:itype2))
+@atype_1.save
+
+@actor = Actor.new
+@actor.actor_type = @atype_1
+@actor.save
+
+@information1 = Information.new
+@information1.shit_value = "Testvalue1"
+@information1.information_type = @itype_1
+
+@information2 = Information.new
+@information2.shit_value = "Testvalue2"
+@information2.information_type = @itype_2
+
+@actor.informations.push(@information1)
+@actor.informations.push(@information2)
+
+@actor.save
+@actor
+
+Actor.full_text_search("Testvalue").size
+Actor.full_text_search("Testvalue1").size
+Actor.full_text_search("Test").size
+Actor.full_text_search("Other").size
+

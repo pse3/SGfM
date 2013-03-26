@@ -37,7 +37,9 @@ class Actor
 
   def update_searchfield
     self.searchfield = ""
-    self.informations.each { |info| self.searchfield = self.searchfield + info.value_to_s }
+    #TODO: At the moment, every information is added to the searchfield; in the future
+    #only information that is labelled as "searchable" must be added to the searchfield
+    self.informations.each { |info| self.searchfield = self.searchfield + info.shit_value }
   end
 
 end
