@@ -9,6 +9,7 @@ class Actor
 
   field :created_at, :type => DateTime
   field :searchfield
+  field :to_string_field
 
   belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                   #referenced
   embeds_many :informations, class_name: 'Information'                                  #embedded
@@ -17,7 +18,7 @@ class Actor
 	#validates :informations, informations_not_empty: true #TODO: Do not forget to enable validation again. It's disabled for testing purposes only
 
   #Please note: 'before_save' MUST be written BEFORE "search_in"
-  before_save :update_searchfield
+  before_save :update_searchfield_and_to_string_field
   search_in :searchfield
 
   def initialize
@@ -33,6 +34,18 @@ class Actor
   def to_s
     return find_information_by_key(:company).value_to_s unless find_information_by_key(:company).nil?
     return self.find_information_by_key(:last_name).value_to_s + ' ' + find_information_by_key(:first_name).value_to_s
+  end
+
+  def update_searchfield_and_to_string_field
+    update_to_string_field
+    update_searchfield
+  end
+
+  def update_to_string_field
+      self.to_string_field = ""
+      #TODO: At the moment, every information is added to the to_string_field; in the future
+      #only information that is labelled as "toString" must be added to the to_string_field
+      self.informations.each { |info| self.to_string_field = self.to_string_field + info.shit_value }
   end
 
   def update_searchfield
