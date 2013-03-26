@@ -60,5 +60,3 @@ Actor.full_text_search("Testvalue3").size
 Actor.full_text_search("Test").size
 Actor.full_text_search("Other").size
 
-exit
-
