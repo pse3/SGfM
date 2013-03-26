@@ -75,7 +75,7 @@ unless Rails.env == :production
   info_first_name.name = "??"
   I18n.locale = :fr
   info_first_name.name = "??"
-  # info_first_name.scope = scope_public
+  info_first_name.scope = scope_public
   info_first_name.save
 
   info_last_name = InformationType.new
@@ -88,7 +88,7 @@ unless Rails.env == :production
   info_last_name.name = "??"
   I18n.locale = :fr
   info_last_name.name = "??"
-  # info_last_name.scope = scope_public
+  info_last_name.scope = scope_public
   info_last_name.save
 
   info_phone = InformationType.new
