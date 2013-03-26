@@ -11,12 +11,12 @@
     <td><%= @actor.actor_type.name %></td>
   </tr>
 
-  % @informations.each do |info|
+  <% @informations.each do |info| %>
     <tr>
       <td><%= info.information_type.name %></td>
       <td><%= info.value %></td>
     </tr>
-  % end
+  <% end %>
 </table>
 
 
