@@ -8,7 +8,7 @@
                     <%= information_form.text_field(information.key, placeholder: information.name, :value => nil, required: true) %>
                     <% if information.scope %>
                       <%#TODO refactor. Add translation %>
-                      <%=  f.label(information.scope) %>
+                      <%=  f.label(information.scope.name) %>
                     <% else %>
                       <%= f.collection_select("scope[#{information.key}]", @scopes, :key, :name)%>
                     <% end %>

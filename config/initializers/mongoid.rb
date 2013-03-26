@@ -1,6 +1,17 @@
 # encoding: utf-8
 unless Rails.env == :production
 
+  #reset all objects and types
+  Actor.delete_all
+  Information.delete_all
+  InformationType.delete_all
+  ActorType.delete_all
+  Information.delete_all
+  Login.delete_all
+  User.delete_all
+  Admin.delete_all
+	Scope.delete_all
+
   #create some scopes
   scope_private = WhitelistScope.new
   scope_private.key = :private
@@ -40,17 +51,6 @@ unless Rails.env == :production
   scope_public.name = 'public'
   scope_public.list = []
   scope_public.save
-
-  #reset all objects and types
-  Actor.delete_all
-  Information.delete_all
-  InformationType.delete_all
-  ActorType.delete_all
-  Information.delete_all
-  Login.delete_all
-  User.delete_all
-  Admin.delete_all
-	Scope.delete_all
 
   #create some information_types
   info_company = InformationType.new

@@ -16,10 +16,8 @@ class ActorController < ApplicationController
         information = Information.new
         information.value = value
         information.information_type = info_type
-				unless info_type.has_predefined_scope?
+				unless info_type.scope
 					information.scope = Scope.find_by(key: params[:actor][:scope][info_type.key].to_sym)
-				else
-					information.scope = info_type.predefined_scope
 				end
 				@actor.informations.push information
       end
