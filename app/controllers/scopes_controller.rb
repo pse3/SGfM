@@ -12,7 +12,7 @@ class ScopesController < ApplicationController
 		scope.key = params[:scope][:key]
 		scope.name_translations = params[:scope][:name]
 		params[:scope][:list].delete_at(0)
-		scope.list = params[:scope][:list]
+		scope.list = params[:scope][:list].collect {|elem| elem.to_sym}
 		if scope.save
 			flash[:success]= t('scopes.create.success')
 			redirect_to scopes_path
@@ -30,7 +30,7 @@ class ScopesController < ApplicationController
 		scope = Scope.find(params[:id])
 		scope.name_translations = params[:edited_scope][:name]
 		params[:edited_scope][:list].delete_at(0) #There's an empty value.. (Don't know why, seems to be the multiselect.)
-		scope.list = params[:edited_scope][:list]
+		scope.list = params[:edited_scope][:list].collect {|elem| elem.to_sym}
 		if scope.save
 			flash[:success]= t('scopes.update.success')
 			redirect_to scopes_path

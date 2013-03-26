@@ -10,7 +10,7 @@ class WhitelistScope < Scope
 		end
 		list.each do |allowed_viewer|
 			currently_visible = false
-			if allowed_viewer == :Self
+			if allowed_viewer.to_sym == :Self
 				currently_visible = (viewer.id == viewed.id) #current_visibility means visibility to current "allowed_viewer"
 			else
 				currently_visible = (viewer.user_type == allowed_viewer)

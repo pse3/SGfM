@@ -4,6 +4,7 @@ class BlacklistScope < Scope
 
 	#If viewer is in list (literally or as ":Self") he is NOT allowed to view the element which this Scope is attributed to.
 	def visible? (viewer, viewed)
+
 		visible = true
 		list = self.list
 		if viewer.nil?
