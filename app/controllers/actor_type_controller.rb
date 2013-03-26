@@ -59,7 +59,7 @@ class ActorTypeController < ApplicationController
 
     unless params[:information].nil?
       params[:information].each do |key,value|
-        info_type = InformationType.find_by_key(key.to_sym)
+        info_type = InformationTypeDecorator.find_by_key(key.to_sym)
         if value.to_i == 1
           @actor_type.information_type.push(info_type) unless @actor_type.information_type.include?(info_type)
         else

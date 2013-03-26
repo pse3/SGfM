@@ -11,5 +11,9 @@ class InformationTypeDecorator
     args.empty? ? information_type.send(method) : information_type.send(method, args)
   end
 
+  def self.find_by_key(key)
+    where(:information_type => InformationType.find_by_key(key)).first
+  end
+
 end
 
