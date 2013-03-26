@@ -1,5 +1,7 @@
 class RelationshipController < ApplicationController
 
+  before_filter :ensure_user_owns_actor!, :only => [:new, :create]
+  before_filter :ensure_user_owns_relationship!, :only => [:edit, :update, :destroy]
 
   def new
     @locals = { :all_actors => Actor.all,

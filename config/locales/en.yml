@@ -29,6 +29,7 @@ en:
   flash:
     no_admin_rights: 'Access denied'
     not_owner_of_actor: 'You can not edit this actor'
+    not_owner_of_relationship: 'You can not edit this relationship'
 
 
   application:
@@ -178,6 +179,7 @@ en:
       name_table: 'Name'
       key_table: 'Key'
       actions_table: 'Actions'
+      sure_to_delete: 'Are you sure to delete this entry? All existing Relationships with this type will be deleted!'
 
     show:
       title: '%{relationship_type}'

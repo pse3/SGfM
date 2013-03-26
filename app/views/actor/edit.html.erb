@@ -25,31 +25,6 @@
     <% end %>
   <% end %>
 
-  <% @actor.relationships.each do |relationship| %>
-    <%= f.fields_for relationship do |info_form| %>
-      <div class="control-group">
-        <%= info_form.label(:relationship_type, t('actor.new.relationship_type'), class: 'control-label') %>
-        <div class="controls">
-          <%= info_form.select(:relationship_type, relationship_types.map{ |type| [type.name, type.key] }, {}, :selected => RelationshipType.find_by_key(relationship.relationship_type.key), :name => :'relationship[relationship_type][]', :required => true) %>
-        </div>
-      </div>
-
-      <div class="control-group">
-        <%= info_form.label(:reference, t('actor.new.relationship_reference'), class: 'control-label') %>
-        <div class="controls">
-          <%= info_form.text_field(:reference, :value => relationship.reference.to_s, :disabled => true) %>
-        </div>
-      </div>
-
-      <div class="control-group">
-        <%= info_form.label(:comment, t('actor.new.relationship_comment'), class: 'control-label') %>
-        <div class="controls">
-          <%= info_form.text_area(:comment, :name => :'relationship[comment][]', :rows => 3) %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-
   <div class="form-actions">
     <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>
   </div>

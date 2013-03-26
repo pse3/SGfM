@@ -19,7 +19,7 @@
       <td><%= relationship_type.key %></td>
       <td>
         <%= link_to(raw('<i class="icon-edit"></i>'), edit_relationship_type_path(relationship_type)) %>
-        <%= link_to(raw('<i class="icon-trash"></i>'), delete_relationship_type_path(relationship_type), :method => :delete) %>
+        <%= link_to(raw('<i class="icon-trash"></i>'), delete_relationship_type_path(relationship_type), :confirm => t('relationship_type.list.sure_to_delete'), :method => :delete) %>
       </td>
     </tr>
   <% end %>
