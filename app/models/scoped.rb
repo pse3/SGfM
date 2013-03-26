@@ -10,7 +10,8 @@ module Scoped
   end
 
   def visible?(viewer)
-    scope.visible?(viewer, self)
+		#TODO - self.actor.owner - quick fix - don't know if this is the most beautiful solution.
+    scope.visible?(viewer, self.actor.owner)
   end
 
   module ClassMethods
