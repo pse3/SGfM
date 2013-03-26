@@ -11,11 +11,16 @@
   <tr>
     <th><%= t('relationship_type.list.name_table') %></th>
     <th><%= t('relationship_type.list.key_table') %></th>
+    <th><%= t('relationship_type.list.actions_table') %></th>
   </tr>
   <% @relationship_types.each do |relationship_type| %>
     <tr>
       <td><%= link_to(relationship_type, show_relationship_type_path(relationship_type)) %></td>
       <td><%= relationship_type.key %></td>
+      <td>
+        <%= link_to(raw('<i class="icon-edit"></i>'), edit_relationship_type_path(relationship_type)) %>
+        <%= link_to(raw('<i class="icon-trash"></i>'), delete_relationship_type_path(relationship_type), :method => :delete) %>
+      </td>
     </tr>
   <% end %>
 </table>

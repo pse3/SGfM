@@ -37,4 +37,16 @@ class RelationshipTypeController < ApplicationController
     redirect_to relationship_types_path
   end
 
+  def destroy
+    @relationship_type = RelationshipType.find(params[:id])
+    @relationships = Relationship.where( :relationship_type => @relationship_type)
+    @relationship_type.destroy
+    @relationships.each do |relationship|
+      relationship.destroy
+    end
+
+    flash[:success] = t('relationship_type.destroy.success')
+    redirect_to(relationship_types_path)
+  end
+
 end

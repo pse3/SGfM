@@ -177,6 +177,7 @@ en:
       new_relationship_type: 'Create new RelationshipType'
       name_table: 'Name'
       key_table: 'Key'
+      actions_table: 'Actions'
 
     show:
       title: '%{relationship_type}'
@@ -201,6 +202,9 @@ en:
 
     update:
       success: 'Relationship type successfully updated!'
+
+    destroy:
+      success: 'Successfully deleted relationship'
 
 
 # Translations for all login-pages, sorted by page structure

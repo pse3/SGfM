@@ -41,12 +41,13 @@ SGfM::Application.routes.draw do
     post  'actor_types/edit/:id'  => 'actor_type#update', as: 'update_actor_type'
 
     # RelationshipType routes
-    get   'relationship_types'           => 'relationship_type#list',   as: 'relationship_types'
-    get   'relationship_types/create'    => 'relationship_type#new',    as: 'create_relationship_type'
-    post  'relationship_types/create'    => 'relationship_type#create'
-    get   'relationship_types/:id'       => 'relationship_type#show',   as: 'show_relationship_type'
-    get   'relationship_types/edit/:id'  => 'relationship_type#edit',   as: 'edit_relationship_type'
-    post  'relationship_types/edit/:id'  => 'relationship_type#update', as: 'update_relationship_type'
+    get     'relationship_types'              => 'relationship_type#list',      as: 'relationship_types'
+    get     'relationship_types/create'       => 'relationship_type#new',       as: 'create_relationship_type'
+    post    'relationship_types/create'       => 'relationship_type#create'
+    get     'relationship_types/:id'          => 'relationship_type#show',      as: 'show_relationship_type'
+    get     'relationship_types/edit/:id'     => 'relationship_type#edit',      as: 'edit_relationship_type'
+    post    'relationship_types/edit/:id'     => 'relationship_type#update',    as: 'update_relationship_type'
+    delete  'relationship_types/destroy/:id'  => 'relationship_type#destroy',  as: 'delete_relationship_type'
 
 
     # Development routes
