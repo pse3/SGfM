@@ -11,8 +11,9 @@ class Actor
   field :searchfield
   field :to_string_field
 
-  belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                   #referenced
+  belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced
   embeds_many :informations, class_name: 'Information'                                  #embedded
+  has_many :relationships, class_name: 'Relationship'                                	#embedded
   belongs_to :owner, class_name: 'User'                                                 #embedded
 
 	#validates :informations, informations_not_empty: true #TODO: Do not forget to enable validation again. It's disabled for testing purposes only
@@ -28,6 +29,10 @@ class Actor
 
   def find_information_by_key(key)
     self.informations.detect{ |info| info.information_type.key == key }
+  end
+
+  def find_relationship_by_key(key)
+    self.relationship.detect{ |relationship| relationship.relationship_type.key == key }
   end
 
   #TODO need to fix this, only temporary to sting method # needs to be type specific
