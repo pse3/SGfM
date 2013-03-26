@@ -50,14 +50,14 @@ class Actor
       self.to_string_field = ""
       #TODO: At the moment, every information is added to the to_string_field; in the future
       #only information that is labelled as "toString" must be added to the to_string_field
-      self.informations.each { |info| self.to_string_field = self.to_string_field + info.shit_value }
+      self.informations.each { |info| self.to_string_field = self.to_string_field + info.value_to_s }
   end
 
   def update_searchfield
     self.searchfield = ""
     #TODO: At the moment, every information is added to the searchfield; in the future
     #only information that is labelled as "searchable" must be added to the searchfield
-    self.informations.each { |info| self.searchfield = self.searchfield + info.shit_value }
+    self.informations.each { |info| self.searchfield = self.searchfield + info.value_to_s }
   end
 
 end
