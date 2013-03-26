@@ -68,8 +68,10 @@ class ActorController < ApplicationController
 		params[:actor][:information].each do |key,value|
       info = @actor.find_information_by_key(key.to_sym)
       info.value = value
-			info.scope = Scope.find_by(key: params[:actor][:scope][key.to_sym])
-    end
+			unless params[:actor][:scope][key.to_sym].nil?
+				info.scope = Scope.find_by(key: params[:actor][:scope][key.to_sym])
+			end
+  	end
     @actor.save
 
     flash[:success] = t('actor.update.success')
