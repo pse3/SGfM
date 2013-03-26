@@ -9,7 +9,6 @@ gem 'mocha', :require => false
 gem 'minitest-reporters', :require => false
 gem 'rspec-rails', :require => false
 gem 'capybara'
-gem 'mongoid_search'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

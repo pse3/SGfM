@@ -3,15 +3,22 @@ class Actor
 
   include Mongoid::Document
 	include ActiveModel::Validations
+  include Mongoid::Search
+  # More informations about this search gem: https://github.com/mauriciozaffari/mongoid_search
+  # Search with: Actor.full_text_search("Suchbegriff")
 
   field :created_at, :type => DateTime
+  field :searchfield
 
   belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                   #referenced
   embeds_many :informations, class_name: 'Information'                                  #embedded
   belongs_to :owner, class_name: 'User'                                                 #embedded
 
-	validates :informations, informations_not_empty: true
+	#validates :informations, informations_not_empty: true #TODO: Do not forget to enable validation again. It's disabled for testing purposes only
 
+  #Please note: 'before_save' MUST be written BEFORE "search_in"
+  before_save :update_searchfield
+  search_in :searchfield
 
   def initialize
     super
@@ -26,6 +33,11 @@ class Actor
   def to_s
     return find_information_by_key(:company).value_to_s unless find_information_by_key(:company).nil?
     return self.find_information_by_key(:last_name).value_to_s + ' ' + find_information_by_key(:first_name).value_to_s
+  end
+
+  def update_searchfield
+    self.searchfield = ""
+    self.informations.each { |info| self.searchfield = self.searchfield + info.value_to_s }
   end
 
 end
