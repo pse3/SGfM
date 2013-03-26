@@ -9,6 +9,10 @@ module Scoped
     child.scope=scope if scope
   end
 
+  def visible?(viewer)
+    scope.visible?(viewer, self)
+  end
+
   module ClassMethods
     def inherit_scope_from(parent)
       method_name = "#{parent}="

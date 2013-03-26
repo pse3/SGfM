@@ -1,6 +1,46 @@
 # encoding: utf-8
 unless Rails.env == :production
 
+  #create some scopes
+  scope_private = WhitelistScope.new
+  scope_private.key = :private
+  I18n.locale = :en
+  scope_private.name = 'private'
+  I18n.locale = :de
+  scope_private.name = 'privat'
+  I18n.locale = :it
+  scope_private.name = 'privato'
+  I18n.locale = :fr
+  scope_private.name = 'privé'
+  scope_private.list = [:Self]
+  scope_private.save
+
+  scope_stats = WhitelistScope.new
+  scope_stats.key = :statistics
+  I18n.locale = :en
+  scope_stats.name = 'private + statistics'
+  I18n.locale = :de
+  scope_stats.name = 'privat + statistik'
+  I18n.locale = :it
+  scope_stats.name = 'privato + statistiche'
+  I18n.locale = :fr
+  scope_stats.name = 'privé + statistique'
+  scope_stats.list = [:Self, :Admin]
+  scope_stats.save
+
+  scope_public = BlacklistScope.new
+  scope_public.key = :public
+  I18n.locale = :en
+  scope_public.name = 'public'
+  I18n.locale = :de
+  scope_public.name = 'öffentlich'
+  I18n.locale = :it
+  scope_public.name = 'pubblico'
+  I18n.locale = :fr
+  scope_public.name = 'public'
+  scope_public.list = []
+  scope_public.save
+
   #reset all objects and types
   Actor.delete_all
   Information.delete_all
@@ -35,6 +75,7 @@ unless Rails.env == :production
   info_first_name.name = "??"
   I18n.locale = :fr
   info_first_name.name = "??"
+  # info_first_name.scope = scope_public
   info_first_name.save
 
   info_last_name = InformationType.new
@@ -47,6 +88,7 @@ unless Rails.env == :production
   info_last_name.name = "??"
   I18n.locale = :fr
   info_last_name.name = "??"
+  # info_last_name.scope = scope_public
   info_last_name.save
 
   info_phone = InformationType.new
@@ -198,46 +240,6 @@ unless Rails.env == :production
   I18n.locale = :fr
   actor_hospital.name = "Hôpital"
   actor_hospital.save
-
-	#create some scopes
-	scope_private = WhitelistScope.new
-	scope_private.key = :private
-	I18n.locale = :en
-	scope_private.name = 'private'
-	I18n.locale = :de
-	scope_private.name = 'privat'
-	I18n.locale = :it
-	scope_private.name = 'privato'
-	I18n.locale = :fr
-	scope_private.name = 'privé'
-	scope_private.list = [:Self]
-	scope_private.save
-
-	scope_stats = WhitelistScope.new
-	scope_stats.key = :statistics
-	I18n.locale = :en
-	scope_stats.name = 'private + statistics'
-	I18n.locale = :de
-	scope_stats.name = 'privat + statistik'
-	I18n.locale = :it
-	scope_stats.name = 'privato + statistiche'
-	I18n.locale = :fr
-	scope_stats.name = 'privé + statistique'
-	scope_stats.list = [:Self, :Admin]
-	scope_stats.save
-
-	scope_public = BlacklistScope.new
-	scope_public.key = :public
-	I18n.locale = :en
-	scope_public.name = 'public'
-	I18n.locale = :de
-	scope_public.name = 'öffentlich'
-	I18n.locale = :it
-	scope_public.name = 'pubblico'
-	I18n.locale = :fr
-	scope_public.name = 'public'
-	scope_public.list = []
-	scope_public.save
 
 	#create a User and Login
   user = User.new

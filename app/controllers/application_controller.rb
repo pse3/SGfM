@@ -22,12 +22,16 @@ class ApplicationController < ActionController::Base
   end
 
 
-  helper_method :current_actor
+  helper_method :current_actor, :current_account
 
   private
 
   def current_actor
     @current_actor
+  end
+
+  def current_account
+    current_login.account
   end
 
   def authenticate_admin!
