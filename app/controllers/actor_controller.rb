@@ -5,7 +5,7 @@ class ActorController < ApplicationController
 
   # Creates a Actor with chosen name and type
   def create
-    user = current_login.account
+    user = current_account
     @actor = Actor.new
     @actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
     @actor.actor_type = @actor_type
