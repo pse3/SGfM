@@ -13,10 +13,11 @@ class ActorController < ApplicationController
     unless params[:actor][:information].nil?
       params[:actor][:information].each_key do |key|
         info_type = InformationType.find_by_key(key.to_sym)
+        info_type_decorator = @actor_type.information_type_decorator_by_information_type(info_type)
         information = Information.new
-        information.information_type = info_type
-        information.value=(params[:actor][:information][info_type.key])
-        information.actor = @actor # or shall we use @actor.informations.push information ?
+        information.information_type = info_type_decorator
+        information.value=(params[:actor][:information][info_type_decorator.key])
+        information.actor = @actor
       end
     end
 

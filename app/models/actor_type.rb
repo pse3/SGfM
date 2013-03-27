@@ -35,4 +35,8 @@ class ActorType
     info_types
   end
 
+  def information_type_decorator_by_information_type(info_type)
+    self.information_type.select{|a| a.information_type==key.info_type}.first
+  end
+
 end
