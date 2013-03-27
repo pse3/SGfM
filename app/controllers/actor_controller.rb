@@ -20,6 +20,20 @@ class ActorController < ApplicationController
       end
     end
 
+    unless params[:relationship].nil?
+      references = params[:relationship][:reference]
+      types = params[:relationship][:relationship_type]
+      comments = params[:relationship][:comment]
+      types.each_with_index do |relationship_type,i|
+        relation = Relationship.new
+        relation.relationship_type = RelationshipType.find_by_key(relationship_type.to_sym)
+        relation.actor = @actor
+        relation.comment = comments[i]
+        relation.reference = references[i]
+        relation.save
+      end
+    end
+
     #TODO validate that each required information is present
 
     user.actors.push(@actor)
@@ -70,6 +84,7 @@ class ActorController < ApplicationController
     redirect_to actors_path
   end
 
+  # todo move to ajax controller
 	def information_types_for_actor_type
     key = params[:actor_type_key]
     actor_type = ActorType.find_by_key(key)
