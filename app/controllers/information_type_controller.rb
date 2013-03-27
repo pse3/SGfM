@@ -8,7 +8,10 @@ class InformationTypeController < ApplicationController
     @information_type.key = params[:information_type][:key]
     @information_type.name = params[:information_type][:name]
     @information_type.information_field_type = params[:information_type][:information_field_type]
-    @information_type.save
+    if params[:information_type][:scope]
+			@information_type.scope =  params[:information_type][:scope]
+		end
+		@information_type.save
 
     flash[:success] = t('information_type.create.success')
     redirect_to information_types_path
