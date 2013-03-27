@@ -217,86 +217,20 @@ unless Rails.env == :production
   info_email.name = "Émail"
   info_email.save
 
-  #create some actor_types with information_type_decorators just for the moment!!!
+  #create some actor_types
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
-  info_type_decorator = InformationTypeDecorator.new
-  info_type_decorator.information_type = info_medical_specialisations
-  info_type_decorator.index = 1
-  info_type_decorator.actor_type = actor_doctor
-  info_type_decorator.searchable = true
-  info_type_decorator.required = true
-  actor_doctor.information_type.push(info_type_decorator)
-  info_type_decorator = InformationTypeDecorator.new
-  info_type_decorator.information_type = info_first_name
-  info_type_decorator.index = 2
-  info_type_decorator.actor_type = actor_doctor
-  info_type_decorator.searchable = true
-  info_type_decorator.required = true
-  actor_doctor.information_type.push(info_type_decorator)
-  info_type_decorator = InformationTypeDecorator.new
-  info_type_decorator.information_type = info_last_name
-  info_type_decorator.index = 3
-  info_type_decorator.actor_type = actor_doctor
-  info_type_decorator.searchable = true
-  info_type_decorator.required = true
-  actor_doctor.information_type.push(info_type_decorator)
-  info_type_decorator = InformationTypeDecorator.new
-  info_type_decorator.information_type = info_gender
-  info_type_decorator.index = 4
-  info_type_decorator.actor_type = actor_doctor
-  info_type_decorator.searchable = true
-  info_type_decorator.required = true
-  actor_doctor.information_type.push(info_type_decorator)
-  info_type_decorator = InformationTypeDecorator.new
-  info_type_decorator.information_type = info_phone
-  info_type_decorator.index = 5
-  info_type_decorator.actor_type = actor_doctor
-  info_type_decorator.searchable = true
-  info_type_decorator.required = true
-  actor_doctor.information_type.push(info_type_decorator)
-  info_type_decorator = InformationTypeDecorator.new
-  info_type_decorator.information_type = info_email
-  info_type_decorator.index = 6
-  info_type_decorator.actor_type = actor_doctor
-  info_type_decorator.searchable = true
-  info_type_decorator.required = true
-  actor_doctor.information_type.push(info_type_decorator)
-  info_type_decorator = InformationTypeDecorator.new
-  info_type_decorator.information_type = info_street
-  info_type_decorator.index = 7
-  info_type_decorator.actor_type = actor_doctor
-  info_type_decorator.searchable = true
-  info_type_decorator.required = true
-  actor_doctor.information_type.push(info_type_decorator)
-  info_type_decorator = InformationTypeDecorator.new
-  info_type_decorator.information_type = info_street_number
-  info_type_decorator.index = 8
-  info_type_decorator.actor_type = actor_doctor
-  info_type_decorator.searchable = true
-  info_type_decorator.required = true
-  actor_doctor.information_type.push(info_type_decorator)
-  info_type_decorator = InformationTypeDecorator.new
-  info_type_decorator.information_type = info_zip_code
-  info_type_decorator.index = 9
-  info_type_decorator.actor_type = actor_doctor
-  info_type_decorator.searchable = true
-  info_type_decorator.required = true
-  actor_doctor.information_type.push(info_type_decorator)
-  info_type_decorator = InformationTypeDecorator.new
-  info_type_decorator.information_type = info_city
-  info_type_decorator.index = 10
-  info_type_decorator.actor_type = actor_doctor
-  info_type_decorator.searchable = true
-  info_type_decorator.required = true
-  actor_doctor.information_type.push(info_type_decorator)
-  info_type_decorator = InformationTypeDecorator.new
-  info_type_decorator.information_type = info_canton
-  info_type_decorator.index = 11
-  info_type_decorator.actor_type = actor_doctor
-  info_type_decorator.searchable = true
-  info_type_decorator.required = true
-  actor_doctor.information_type.push(info_type_decorator)
+  InformationTypeDecorator.create(info_medical_specialisations, actor_doctor, 1, true, true)
+  InformationTypeDecorator.create(info_first_name, actor_doctor, 2, true, true)
+  InformationTypeDecorator.create(info_last_name, actor_doctor, 3, true, true)
+  InformationTypeDecorator.create(info_gender, actor_doctor, 4, true, true)
+  InformationTypeDecorator.create(info_phone, actor_doctor, 5, true, true)
+  InformationTypeDecorator.create(info_email, actor_doctor, 6, true, true)
+  InformationTypeDecorator.create(info_street, actor_doctor, 7, true, true)
+  InformationTypeDecorator.create(info_street_number, actor_doctor, 8, true, true)
+  InformationTypeDecorator.create(info_zip_code, actor_doctor, 9, true, true)
+  InformationTypeDecorator.create(info_city, actor_doctor, 10, true, true)
+  InformationTypeDecorator.create(info_canton, actor_doctor, 11, true, true)
   I18n.locale = :en
   actor_doctor.name = "Doctor"
   I18n.locale = :de
@@ -309,6 +243,15 @@ unless Rails.env == :production
 
   actor_hospital = ActorType.new
   actor_hospital.key = :hospital
+  InformationTypeDecorator.create(info_company, actor_hospital, 1, true, true)
+  InformationTypeDecorator.create(info_phone, actor_hospital, 2, true, true)
+  InformationTypeDecorator.create(info_email, actor_hospital, 3, true, true)
+  InformationTypeDecorator.create(info_street, actor_hospital, 4, true, true)
+  InformationTypeDecorator.create(info_street_number, actor_hospital, 5, true, true)
+  InformationTypeDecorator.create(info_zip_code, actor_hospital, 6, true, true)
+  InformationTypeDecorator.create(info_city, actor_hospital, 7, true, true)
+  InformationTypeDecorator.create(info_canton, actor_hospital, 8, true, true)
+
   actor_hospital.information_type.push(info_company)
   actor_hospital.information_type.push(info_phone)
   actor_hospital.information_type.push(info_email)
