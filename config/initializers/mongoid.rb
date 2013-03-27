@@ -224,17 +224,17 @@ unless Rails.env == :production
   # Create some ActorTypes
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
-  InformationTypeDecorator.create(info_medical_specialisations, actor_doctor, 1, true, true)
+  #InformationTypeDecorator.create(info_medical_specialisations, actor_doctor, 1, true, true)
   InformationTypeDecorator.create(info_first_name, actor_doctor, 2, true, true)
   InformationTypeDecorator.create(info_last_name, actor_doctor, 3, true, true)
-  InformationTypeDecorator.create(info_gender, actor_doctor, 4, false, true)
-  InformationTypeDecorator.create(info_phone, actor_doctor, 5, false, true)
-  InformationTypeDecorator.create(info_email, actor_doctor, 6, false, true)
-  InformationTypeDecorator.create(info_street, actor_doctor, 7, true, true)
-  InformationTypeDecorator.create(info_street_number, actor_doctor, 8, true, true)
-  InformationTypeDecorator.create(info_zip_code, actor_doctor, 9, true, true)
-  InformationTypeDecorator.create(info_city, actor_doctor, 10, true, true)
-  InformationTypeDecorator.create(info_canton, actor_doctor, 11, true, true)
+  #InformationTypeDecorator.create(info_gender, actor_doctor, 4, false, true)
+  #InformationTypeDecorator.create(info_phone, actor_doctor, 5, false, true)
+  #InformationTypeDecorator.create(info_email, actor_doctor, 6, false, true)
+  #InformationTypeDecorator.create(info_street, actor_doctor, 7, true, true)
+  #InformationTypeDecorator.create(info_street_number, actor_doctor, 8, true, true)
+  #InformationTypeDecorator.create(info_zip_code, actor_doctor, 9, true, true)
+  InformationTypeDecorator.create(info_city, actor_doctor, 10, false, true)
+  InformationTypeDecorator.create(info_canton, actor_doctor, 11, false, true)
   I18n.locale = :en
   actor_doctor.name = "Doctor"
   I18n.locale = :de
@@ -244,7 +244,7 @@ unless Rails.env == :production
   I18n.locale = :fr
   actor_doctor.name = "Médecin"
   actor_doctor.save
-
+=begin
   actor_hospital = ActorType.new
   actor_hospital.key = :hospital
   InformationTypeDecorator.create(info_company, actor_hospital, 1, true, true)
@@ -265,7 +265,7 @@ unless Rails.env == :production
   I18n.locale = :fr
   actor_hospital.name = "Hôpital"
   actor_hospital.save
-
+=end
 
   # Create some RelationshipTypes
   relation_works_with = RelationshipType.new
@@ -313,6 +313,8 @@ unless Rails.env == :production
   # Create some Actors
 
   # Dummy actor 'Insel'
+
+=begin
   dummy_actor_insel = Actor.new
   dummy_actor_insel.actor_type = ActorType.find_by_key(:hospital)
 
@@ -431,5 +433,5 @@ unless Rails.env == :production
   relationship_insel.actor = dummy_actor_insel
   relationship_insel.reference = dummy_actor_karl
   relationship_insel.save
-
+=end
 end

@@ -14,10 +14,9 @@ class ActorController < ApplicationController
     #TODO validate that each required information is present
     unless params[:actor][:information].nil?
       params[:actor][:information].each_key do |key|
-        info_type = InformationType.find_by_key(key.to_sym)
-        info_type_decorator = @actor_type.information_type_decorator_by_information_type(info_type)  #THIS SHOULD ASSIGN INFO_TYPE_DEC BUT IT ASSIGNS NIL
+        info_type_decorator = @actor_type.decorator_by_key(key.to_sym)  #THIS SHOULD ASSIGN INFO_TYPE_DEC BUT IT ASSIGNS NIL
         information = Information.new
-        information.information_type = info_type_decorator
+        information.information_type_decorator = info_type_decorator
         information.value=(params[:actor][:information][info_type_decorator.key])
         information.actor = @actor
       end
@@ -78,9 +77,9 @@ class ActorController < ApplicationController
 		params[:actor][:information].each do |key,value|
 			info = @actor.find_information_by_key(key.to_sym)
 			info.value = value
-			unless params[:actor][:scope][key.to_sym].nil?
-				info.scope = Scope.find_by(key: params[:actor][:scope][key.to_sym])
-			end
+			#unless params[:actor][:scope][key.to_sym].nil?
+			#	info.scope = Scope.find_by(key: params[:actor][:scope][key.to_sym])
+			#end
 		end
 		@actor.save
 
@@ -91,7 +90,7 @@ class ActorController < ApplicationController
 	def information_types_for_actor_type
 		key = params[:actor_type_key]
 		actor_type = ActorType.find_by_key(key)
-		information_types = actor_type.information_type
+		information_types = actor_type.information_type_decorators
 		render(:partial => 'actor/new_actor_information_types', :locals => {:actor_type_key => key,
 																																				:actor_type => actor_type,
 																																				:information_types => information_types})

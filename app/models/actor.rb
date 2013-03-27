@@ -28,7 +28,7 @@ class Actor
   end
 
   def find_information_by_key(key)
-    self.informations.detect{ |info| info.information_type.key == key }
+    self.informations.detect{ |info| info.information_type_decorator.key == key }
 	end
 
   def find_relationship_by_key(key)

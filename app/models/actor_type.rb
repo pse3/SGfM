@@ -7,7 +7,7 @@ class ActorType
 
   validates_uniqueness_of :key
 
-  embeds_many :information_type, class_name: 'InformationTypeDecorator'    #embedded
+  has_many :information_type_decorators, class_name: 'InformationTypeDecorator', inverse_of: :actor_type
 
   def self.find_by_key(key)
     ActorType.find_by(key: key)
@@ -35,8 +35,9 @@ class ActorType
     info_types
   end
 
-  def information_type_decorator_by_information_type(info_type)        #THIS FUCKER SHOULD GIVE ME AN InformationTypeObject BUT IT GIVES ME NilObject
-    self.information_type.select{|a| a.information_type==info_type}.first
+  def decorator_by_key(key)        #THIS FUCKER SHOULD GIVE ME AN InformationTypeObject BUT IT GIVES ME NilObject
+    array = information_type_decorators.select{|info_type_decorator| info_type_decorator.information_type == InformationType.find_by_key(key) }
+    array.first
   end
 
 end

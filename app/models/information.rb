@@ -8,10 +8,10 @@ class Information
   field :changed_at, :type => DateTime
 
   belongs_to :creator, class_name: 'User', inverse_of: nil                              #referenced  / one way relationship                                                                                                                                                                                                                                                 #embedded
-  belongs_to :information_type, class_name: 'InformationType', inverse_of: nil          #referenced  / one way relationship
+  belongs_to :information_type_decorator, class_name: 'InformationTypeDecorator', inverse_of: nil          #referenced  / one way relationship
   embedded_in :actor, class_name: 'Actor'                                               #embedded
 
-  inherit_scope_from :information_type
+  inherit_scope_from :information_type_decorator
 
   def initialize
     super
@@ -19,15 +19,15 @@ class Information
   end
 
   def value
-    self.information_type.information_field_type.get_value(self.shit_value)
+    self.information_type_decorator.information_field_type.get_value(self.shit_value)
   end
 
   def value=(value)
-    self.shit_value = self.information_type.information_field_type.set_value(value)
+    self.shit_value = self.information_type_decorator.information_field_type.set_value(value)
   end
 
   def value_to_s
-    self.information_type.information_field_type.to_s(self.shit_value)
+    self.information_type_decorator.information_field_type.to_s(self.shit_value)
   end
 
 end
