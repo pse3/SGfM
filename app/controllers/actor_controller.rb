@@ -14,11 +14,11 @@ class ActorController < ApplicationController
     #TODO validate that each required information is present
     unless params[:actor][:information].nil?
       params[:actor][:information].each_key do |key|
-        info_type = InformationType.find_by_key(key)
-        info_type_decorator = @actor_type.information_type.select{ |a| a.information_type.key == key.to_sym }.first #this should return
+        info_type = InformationType.find_by_key(key.to_sym)
+        info_type_decorator = @actor_type.information_type_decorator_by_information_type(info_type)  #THIS SHOULD ASSIGN INFO_TYPE_DEC BUT IT ASSIGNS NIL
         information = Information.new
         information.information_type = info_type_decorator
-        information.value=(params[:actor][:information][info_type.key])
+        information.value=(params[:actor][:information][info_type_decorator.key])
         information.actor = @actor
       end
     end
