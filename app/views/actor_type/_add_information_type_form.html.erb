@@ -1,0 +1,29 @@
+<%= content_tag(:div, :id => "information_type_#{field_number}") do %>
+  <%= fields_for(:information_type_decorator) do |f| %>
+    <div class='control-group'>
+      <%=  f.label(:information_type, 'Type', class: 'control-label') %>
+      <div class='controls'>
+        <%=  f.select(:information_type, information_types.map{ |type| [type.name, type.key]}, {}, :name => :'information[information_type][]', :required => true) %>
+        <p class='pull-right'>
+          <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor_type.new.remove_information_type')}"),
+                               "SGfM.actor_type.remove_information_type_form(\"#{field_number}\")",
+                               :type => :button, :class => 'btn btn-danger') %>
+        </p>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <%= f.label(:scope, t('actor_type.new.scope'), class: 'control-label') %>
+      <div class='controls'>
+        <!-- TODO add some shit here-->
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <%= f.label(:optional, t('actor_type.new.optional'), class: 'control-label') %>
+      <div class='controls'>
+        <!-- TODO and here-->
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -101,6 +101,11 @@ en:
     new:
       title: 'Create new actor type'
       create_actor_type: 'Create'
+      information_types: 'Information types'
+      add_information_type: 'Add information type'
+      remove_information_type: 'Remove information type'
+      scope: 'predefine visibility scope'
+      optional: 'Require this information'
       key: 'Key'
       name_en: 'Name (english)'
       name_de: 'Name (german)'

@@ -81,6 +81,11 @@ de:
     new:
       title: 'Neuen Akteurtyp erstellen'
       create_actor_type: 'Erstellen'
+      information_types: 'Informationstypen'
+      add_information_type: 'Bratwurst hinzufügen'
+      remove_information_type: 'Bratwurst entfernen'
+      scope: 'Privatsphäre voreinstellen'
+      optional: 'Bratwurst benötigt'
       key: 'Schlüssel'
       name_en: 'Name (englisch)'
       name_de: 'Name (deutsch)'

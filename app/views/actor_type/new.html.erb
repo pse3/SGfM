@@ -29,14 +29,19 @@
     </div>
   </div>
 
-  <% for info_type in @information_types do %>
-    <div class="control-group">
-      <%= label_tag("information[#{info_type.key}]", info_type.name, :class => 'control-label') %>
-      <div class="controls">
-        <%= check_box_tag("information[#{info_type.key}]", '1') %>
-      </div>
-    </div>
-  <% end %>
+  <div class="page-header">
+    <h1><small><%= t('actor.new.information_types') %></small></h1>
+  </div>
+
+  <div id="information-type-form"></div>
+
+  <div class="control-group">
+    <p>
+      <%= button_to_function('Add Information Type',
+                             'SGfM.actor_type.add_information_type_form("' + add_information_type_form_path + '")',
+                             :type => :button, :class => 'btn btn-medium') %>
+    </p>
+  </div>
 
   <div class="form-actions">
     <%= f.submit(t('actor_type.new.create_actor_type'), :class => 'btn btn-primary') %>

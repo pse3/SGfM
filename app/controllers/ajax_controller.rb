@@ -5,7 +5,7 @@ class AjaxController < ApplicationController
   end
 
   def add_information_type_form
-    render_partial('actor_type/add_informatoin_type_form')
+    render_partial('actor_type/add_information_type_form', {:information_types => InformationType.all})
   end
 
 
