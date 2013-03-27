@@ -5,7 +5,7 @@ class Actor
 	include ActiveModel::Validations
   include Mongoid::Search
   # More informations about this search gem: https://github.com/mauriciozaffari/mongoid_search
-  # Search with: Actor.full_text_search("Suchbegriff")
+  # Search with: Actor.full_text_search("Suchbegriff", match: :all)
 
   field :created_at, :type => DateTime
   field :searchfield
