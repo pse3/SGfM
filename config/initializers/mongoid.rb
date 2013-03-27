@@ -225,10 +225,10 @@ unless Rails.env == :production
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
   InformationTypeDecorator.create(info_medical_specialisations, actor_doctor, 1, true, true)
-  InformationTypeDecorator.create(info_first_name, actor_doctor, 2, true, true)
+  InformationTypeDecorator.create(info_first_name, actor_doctor, 2, false, true)
   InformationTypeDecorator.create(info_last_name, actor_doctor, 3, true, true)
-  InformationTypeDecorator.create(info_gender, actor_doctor, 4, true, true)
-  InformationTypeDecorator.create(info_phone, actor_doctor, 5, true, true)
+  InformationTypeDecorator.create(info_gender, actor_doctor, 4, false, true)
+  InformationTypeDecorator.create(info_phone, actor_doctor, 5, false, true)
   InformationTypeDecorator.create(info_email, actor_doctor, 6, true, true)
   InformationTypeDecorator.create(info_street, actor_doctor, 7, true, true)
   InformationTypeDecorator.create(info_street_number, actor_doctor, 8, true, true)

@@ -35,6 +35,14 @@
       <div class="controls">
         <%= check_box_tag("information[#{info_type.key}]", '1') %>
       </div>
+      <%= label_tag("information[#{info_type.key}.required]", 'required', :class => 'control-label') %>
+      <div class="controls">
+        <%= check_box_tag("information[#{info_type.key}.required]", '1') %>
+      </div>
+      <%= label_tag("information[#{info_type.key}.searchable]", 'searchable', :class => 'control-label') %>
+      <div class="controls">
+        <%= check_box_tag("information[#{info_type.key}.searchable]", '1') %>
+      </div>
     </div>
   <% end %>
 
