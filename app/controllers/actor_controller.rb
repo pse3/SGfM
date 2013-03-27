@@ -20,16 +20,18 @@ class ActorController < ApplicationController
       end
     end
 
-    references = params[:relationship][:reference]
-    types = params[:relationship][:relationship_type]
-    comments = params[:relationship][:comment]
-    types.each_with_index do |relationship_type,i|
-      relation = Relationship.new
-      relation.relationship_type = RelationshipType.find_by_key(relationship_type.to_sym)
-      relation.actor = @actor
-      relation.comment = comments[i]
-      relation.reference = references[i]
-      relation.save
+    unless params[:relationship].nil?
+      references = params[:relationship][:reference]
+      types = params[:relationship][:relationship_type]
+      comments = params[:relationship][:comment]
+      types.each_with_index do |relationship_type,i|
+        relation = Relationship.new
+        relation.relationship_type = RelationshipType.find_by_key(relationship_type.to_sym)
+        relation.actor = @actor
+        relation.comment = comments[i]
+        relation.reference = references[i]
+        relation.save
+      end
     end
 
     #TODO validate that each required information is present
