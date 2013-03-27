@@ -225,11 +225,11 @@ unless Rails.env == :production
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
   InformationTypeDecorator.create(info_medical_specialisations, actor_doctor, 1, true, true)
-  InformationTypeDecorator.create(info_first_name, actor_doctor, 2, false, true)
+  InformationTypeDecorator.create(info_first_name, actor_doctor, 2, true, true)
   InformationTypeDecorator.create(info_last_name, actor_doctor, 3, true, true)
   InformationTypeDecorator.create(info_gender, actor_doctor, 4, false, true)
   InformationTypeDecorator.create(info_phone, actor_doctor, 5, false, true)
-  InformationTypeDecorator.create(info_email, actor_doctor, 6, true, true)
+  InformationTypeDecorator.create(info_email, actor_doctor, 6, false, true)
   InformationTypeDecorator.create(info_street, actor_doctor, 7, true, true)
   InformationTypeDecorator.create(info_street_number, actor_doctor, 8, true, true)
   InformationTypeDecorator.create(info_zip_code, actor_doctor, 9, true, true)
@@ -256,14 +256,6 @@ unless Rails.env == :production
   InformationTypeDecorator.create(info_city, actor_hospital, 7, true, true)
   InformationTypeDecorator.create(info_canton, actor_hospital, 8, true, true)
 
-  actor_hospital.information_type.push(info_company)
-  actor_hospital.information_type.push(info_phone)
-  actor_hospital.information_type.push(info_email)
-  actor_hospital.information_type.push(info_street)
-  actor_hospital.information_type.push(info_street_number)
-  actor_hospital.information_type.push(info_zip_code)
-  actor_hospital.information_type.push(info_city)
-  actor_hospital.information_type.push(info_canton)
   I18n.locale = :en
   actor_hospital.name = "Hospital"
   I18n.locale = :de

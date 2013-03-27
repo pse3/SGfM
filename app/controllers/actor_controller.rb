@@ -15,7 +15,7 @@ class ActorController < ApplicationController
         info_type = InformationType.find_by_key(key.to_sym)
         info_type_decorator = @actor_type.information_type_decorator_by_information_type(info_type)
         information = Information.new
-        information.information_type = info_type_decorator
+        information.information_type = info_type
         information.value=(params[:actor][:information][info_type_decorator.key])
         information.actor = @actor
       end
