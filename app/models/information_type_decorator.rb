@@ -5,6 +5,7 @@ class InformationTypeDecorator
   field :searchable, type: Boolean
   field :index, type: Integer
 
+  embedded_in :actor_type, class_name: 'ActorType'
   belongs_to :information_type, class_name: 'InformationType', inverse_of: nil
 
   def method_missing(method, *args)

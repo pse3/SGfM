@@ -5,6 +5,7 @@ unless Rails.env == :production
   Actor.delete_all
   Information.delete_all
   InformationType.delete_all
+  InformationTypeDecorator.delete_all
   InformationFieldType.delete_all
   ActorType.delete_all
   Information.delete_all
@@ -216,20 +217,86 @@ unless Rails.env == :production
   info_email.name = "Émail"
   info_email.save
 
-  #create some actor_types
+  #create some actor_types with information_type_decorators just for the moment!!!
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
-  actor_doctor.information_type.push(info_medical_specialisations)
-  actor_doctor.information_type.push(info_first_name)
-  actor_doctor.information_type.push(info_last_name)
-  actor_doctor.information_type.push(info_gender)
-  actor_doctor.information_type.push(info_phone)
-  actor_doctor.information_type.push(info_email)
-  actor_doctor.information_type.push(info_street)
-  actor_doctor.information_type.push(info_street_number)
-  actor_doctor.information_type.push(info_zip_code)
-  actor_doctor.information_type.push(info_city)
-  actor_doctor.information_type.push(info_canton)
+  info_type_decorator = InformationTypeDecorator.new
+  info_type_decorator.information_type = info_medical_specialisations
+  info_type_decorator.index = 1
+  info_type_decorator.actor_type = actor_doctor
+  info_type_decorator.searchable = true
+  info_type_decorator.required = true
+  actor_doctor.information_type.push(info_type_decorator)
+  info_type_decorator = InformationTypeDecorator.new
+  info_type_decorator.information_type = info_first_name
+  info_type_decorator.index = 2
+  info_type_decorator.actor_type = actor_doctor
+  info_type_decorator.searchable = true
+  info_type_decorator.required = true
+  actor_doctor.information_type.push(info_type_decorator)
+  info_type_decorator = InformationTypeDecorator.new
+  info_type_decorator.information_type = info_last_name
+  info_type_decorator.index = 3
+  info_type_decorator.actor_type = actor_doctor
+  info_type_decorator.searchable = true
+  info_type_decorator.required = true
+  actor_doctor.information_type.push(info_type_decorator)
+  info_type_decorator = InformationTypeDecorator.new
+  info_type_decorator.information_type = info_gender
+  info_type_decorator.index = 4
+  info_type_decorator.actor_type = actor_doctor
+  info_type_decorator.searchable = true
+  info_type_decorator.required = true
+  actor_doctor.information_type.push(info_type_decorator)
+  info_type_decorator = InformationTypeDecorator.new
+  info_type_decorator.information_type = info_phone
+  info_type_decorator.index = 5
+  info_type_decorator.actor_type = actor_doctor
+  info_type_decorator.searchable = true
+  info_type_decorator.required = true
+  actor_doctor.information_type.push(info_type_decorator)
+  info_type_decorator = InformationTypeDecorator.new
+  info_type_decorator.information_type = info_email
+  info_type_decorator.index = 6
+  info_type_decorator.actor_type = actor_doctor
+  info_type_decorator.searchable = true
+  info_type_decorator.required = true
+  actor_doctor.information_type.push(info_type_decorator)
+  info_type_decorator = InformationTypeDecorator.new
+  info_type_decorator.information_type = info_street
+  info_type_decorator.index = 7
+  info_type_decorator.actor_type = actor_doctor
+  info_type_decorator.searchable = true
+  info_type_decorator.required = true
+  actor_doctor.information_type.push(info_type_decorator)
+  info_type_decorator = InformationTypeDecorator.new
+  info_type_decorator.information_type = info_street_number
+  info_type_decorator.index = 8
+  info_type_decorator.actor_type = actor_doctor
+  info_type_decorator.searchable = true
+  info_type_decorator.required = true
+  actor_doctor.information_type.push(info_type_decorator)
+  info_type_decorator = InformationTypeDecorator.new
+  info_type_decorator.information_type = info_zip_code
+  info_type_decorator.index = 9
+  info_type_decorator.actor_type = actor_doctor
+  info_type_decorator.searchable = true
+  info_type_decorator.required = true
+  actor_doctor.information_type.push(info_type_decorator)
+  info_type_decorator = InformationTypeDecorator.new
+  info_type_decorator.information_type = info_city
+  info_type_decorator.index = 10
+  info_type_decorator.actor_type = actor_doctor
+  info_type_decorator.searchable = true
+  info_type_decorator.required = true
+  actor_doctor.information_type.push(info_type_decorator)
+  info_type_decorator = InformationTypeDecorator.new
+  info_type_decorator.information_type = info_canton
+  info_type_decorator.index = 11
+  info_type_decorator.actor_type = actor_doctor
+  info_type_decorator.searchable = true
+  info_type_decorator.required = true
+  actor_doctor.information_type.push(info_type_decorator)
   I18n.locale = :en
   actor_doctor.name = "Doctor"
   I18n.locale = :de

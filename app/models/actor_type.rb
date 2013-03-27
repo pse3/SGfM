@@ -7,7 +7,8 @@ class ActorType
 
   validates_uniqueness_of :key
 
-  has_and_belongs_to_many :information_type, class_name: 'InformationTypeDecorator'    #referenced
+  embeds_many :information_type, class_name: 'InformationTypeDecorator'    #embedded
+
   def self.find_by_key(key)
     ActorType.find_by(key: key)
   end
@@ -24,6 +25,14 @@ class ActorType
     locale = self.name
     I18n.locale = current_lang
     locale
+  end
+
+  def every_information_type
+    info_types = Array.new
+    for info_type in information_type do
+      info_types.push(info_type.information_type)
+    end
+    info_types
   end
 
 end

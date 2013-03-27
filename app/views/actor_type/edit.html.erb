@@ -40,7 +40,7 @@
         </div>
     <% end %>
 
-    <% for info_type in list_information_types - @actor_type.information_type do %>
+    <% for info_type in list_information_types - @actor_type.every_information_type do %>
         <%= f.fields_for info_type do |it_form| %>
             <div class="control-group">
               <%= label_tag("information[#{info_type.key}]", info_type.name, :class => 'control-label') %>

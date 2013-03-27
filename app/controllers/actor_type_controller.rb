@@ -14,12 +14,12 @@ class ActorTypeController < ApplicationController
         if value.to_i == 1
           index = index + 1
           info_type_decorator = InformationTypeDecorator.new
+          info_type_decorator.actor_type = @actor_type
           info_type_decorator.information_type = info_type
           info_type_decorator.required = true
           info_type_decorator.index = index
           info_type_decorator.searchable = true
           info_type_decorator.save
-          @actor_type.information_type.push(info_type_decorator)
         end
       end
     end
@@ -59,15 +59,31 @@ class ActorTypeController < ApplicationController
 
     unless params[:information].nil?
       params[:information].each do |key,value|
-        info_type = InformationTypeDecorator.find_by_key(key.to_sym)
-        if value.to_i == 1
-          @actor_type.information_type.push(info_type) unless @actor_type.information_type.include?(info_type)
-        else
-          @actor_type.information_type.delete(info_type) if @actor_type.information_type.include?(info_type)
+        info_type = InformationType.find_by_key(key.to_sym)
+        info_type_decorator = @actor_type.information_type.select{ |a| a.information_type == info_type }.first
+
+        if info_type_decorator.nil?  #in this case info_type_decorator doesn't exists and needs creating ONLY if value is one. otherwise ignore
+          if value.to_i == 1
+            info_type_decorator = InformationTypeDecorator.new
+            info_type_decorator.information_type = info_type
+            info_type_decorator.required = true               #todo get params here
+            info_type_decorator.searchable = true
+            info_type_decorator.index = 10
+            info_type_decorator.actor_type = @actor_type
+            @actor_type.information_type.push(info_type_decorator)
+          end
+        else #in this case info_type_decorator exists already, only needs to be deleted or updated
+          if value.to_i == 1
+            info_type_decorator.searchable = true #todo get params here
+            info_type_decorator.required = true
+            info_type_decorator.index = 10
+          else
+            @actor_type.information_type.delete(info_type_decorator)
+            info_type_decorator.delete
+          end
         end
       end
     end
-
 
     @actor_type.save
 
