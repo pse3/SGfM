@@ -16,7 +16,21 @@
 //= require select2
 
 //todo refactor this into "json format", like it was before
-var SGfM = {}
+var SGfM = {
+  remove_form : function(id, field_number) {
+    $(id + "_" + field_number).remove();
+  },
+  add_form : function(controller_path, after_id) {
+    jQuery.ajax({
+      url: controller_path,
+      type: 'GET',
+      dataType: 'html',
+      success: function(data) {
+        jQuery(after_id).after(data);
+      }
+    });
+  }
+}
 
 
 SGfM.actor = {
@@ -35,17 +49,10 @@ SGfM.actor = {
 
 SGfM.relationship = {
   add_relationship_form : function(controller_path) {
-    jQuery.ajax({
-      url: controller_path,
-      type: 'GET',
-      dataType: 'html',
-      success: function(data) {
-        jQuery('#relationship-form').after(data);
-      }
-    });
+    SGfM.add_form(controller_path, '#relationship-form');
   },
   remove_relationship_form : function(field_number) {
-    $("#relationship_" + field_number).remove();
+    SGfM.remove_form("#relationship", field_number);
   }
 }
 
