@@ -2,6 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 de:
+  yes: 'Ja'
+  no: 'Nein'
 
   form:
     email: 'Email'
@@ -10,6 +12,7 @@ de:
     current_password: 'Aktuelles Passwort'
     remember: 'Automatisch einloggen'
     submit: 'Absenden'
+    update: 'Aktualisieren'
     update: 'Aktualisieren'
     cancel: 'Abbrechen'
 
@@ -86,6 +89,7 @@ de:
       remove_information_type: 'Bratwurst entfernen'
       scope: 'Privatsphäre voreinstellen'
       optional: 'Bratwurst benötigt'
+      searchable: 'Durchsuchbar'
       key: 'Schlüssel'
       name_en: 'Name (englisch)'
       name_de: 'Name (deutsch)'

@@ -2,6 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  yes: 'Yes'
+  no: 'No'
+
   lang:
     en: 'English'
     de: 'German'
@@ -111,6 +114,7 @@ en:
       remove_information_type: 'Remove information type'
       scope: 'predefine visibility scope'
       optional: 'Require this information'
+      searchable: 'Searchable'
       key: 'Key'
       name_en: 'Name (english)'
       name_de: 'Name (german)'
