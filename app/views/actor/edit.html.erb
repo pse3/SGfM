@@ -24,7 +24,10 @@
             <select disabled="disabled">
               <option><%= information.information_type_decorator.scope.name %></option>
             </select>
-           <% end %>
+          <% else %>
+            <% @scopes = list_scopes %>
+            <%= select("actor[scope]", information.information_type.key.to_s, options_from_collection_for_select(@scopes, :key, :name, selected: information.scope.key), {selected: information.scope.key})%>
+          <% end %>
         </div>
       </div>
     <% end %>
