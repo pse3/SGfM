@@ -7,9 +7,7 @@ class InformationTypeController < ApplicationController
     @information_type = InformationType.new
     @information_type.key = params[:information_type][:key]
     @information_type.name = params[:information_type][:name]
-		unless params[:information_type][:predefined_scope].empty?
-			@information_type.predefined_scope =  Scope.find_by(key: params[:information_type][:predefined_scope])
-		end
+    @information_type.information_field_type = params[:information_type][:information_field_type]
     @information_type.save
 
     flash[:success] = t('information_type.create.success')

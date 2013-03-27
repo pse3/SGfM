@@ -1,0 +1,37 @@
+<% @page_title = t('relationship_type.new.title') %>
+
+
+<%= form_for(:relationship_type, :url => create_relationship_type_path, :html => {:class => 'form-horizontal'}) do |f| %>
+
+  <div class="control-group">
+    <%= f.label(t('relationship_type.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[en]', placeholder: t('lang.en'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('relationship_type.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[de]', placeholder: t('lang.de'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('relationship_type.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[fr]', placeholder: t('lang.fr'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('relationship_type.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[it]', placeholder: t('lang.it'), required: true) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit(t('relationship_type.new.create_relationship_type'), :class => 'btn btn-primary') %>
+  </div>
+<% end %>
