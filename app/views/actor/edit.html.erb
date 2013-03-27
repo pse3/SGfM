@@ -1,7 +1,7 @@
 <% @page_title = t('actor.edit.title') %>
 
 
-<%= form_for(:actor, :url => update_actor_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
+<%= form_for(@actor, :url => update_actor_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
 
   <div class="control-group">
     <%= f.label(:actor_type, t('actor.edit.type'), :class => 'control-label') %>
@@ -20,6 +20,14 @@
                                                                                          :placeholder => information.information_type.name,
                                                                                          :data => information.information_type.data,
                                                                                          :required => true } ) %>
+          <% if information.information_type.scope %>
+            <select disabled="disabled">
+              <option><%= information.information_type.scope.name %></option>
+            </select>
+          <% else %>
+            <% @scopes = list_scopes %>
+            <%= select("actor[scope]", information.key.to_s, options_from_collection_for_select(@scopes, :key, :name, selected: i.scope.key), {selected: i.scope.key})%>
+          <% end %>
         </div>
       </div>
     <% end %>

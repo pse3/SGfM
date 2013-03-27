@@ -11,7 +11,7 @@
     <td><%= @actor.actor_type.name %></td>
   </tr>
 
-  <% @actor.informations.each do |info| %>
+  <% @informations.each do |info| %>
     <tr>
       <td><%= info.information_type.name %></td>
       <td><%= info.value_to_s %></td>

@@ -1,6 +1,7 @@
 class InformationType
 
   include Mongoid::Document
+  include Scoped
 
   field :name, :type => String, :localize => true
   field :key, :type => Symbol
@@ -16,6 +17,4 @@ class InformationType
   def self.find_by_key(key)
     InformationType.find_by(key: key)
   end
-
-
 end

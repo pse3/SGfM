@@ -29,7 +29,7 @@ class Actor
 
   def find_information_by_key(key)
     self.informations.detect{ |info| info.information_type.key == key }
-  end
+	end
 
   def find_relationship_by_key(key)
     self.relationship.detect{ |relationship| relationship.relationship_type.key == key }

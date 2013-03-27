@@ -4,4 +4,5 @@ module ActorTypeHelper
     @actor_types = ActorType.all
   end
 
+
 end

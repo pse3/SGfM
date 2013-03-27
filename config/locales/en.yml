@@ -2,6 +2,11 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  lang:
+    en: 'English'
+    de: 'German'
+    it: 'Italian'
+    fr: 'French'
 
   lang:
     en: 'English'
@@ -142,6 +147,8 @@ en:
       title: 'Create new information type'
       name: 'Name'
       key: 'Key'
+      predefined_scope: 'Predefined scope'
+      predefined_scope_prompt: 'None'
       create_information_type: 'Create'
 
     create:
@@ -151,6 +158,38 @@ en:
     update:
       success: 'Information type successfully updated!'
 
+#Translation for all Scope-Pages
+  scopes:
+      list:
+         title: 'Scopes'
+         new_information_type: 'Create new scope'
+         name_table: 'Name'
+         key_table: 'Key'
+         type_table: 'Type'
+         list_contents_table: 'List contents'
+         new_scope: 'Create new Scope'
+      new:
+         title: 'Create new scope'
+         type: 'Type'
+         name: 'Name'
+         key: 'Key'
+         list: 'Account-types list'
+         create_scope: 'Create'
+      create:
+        success: 'You successfully created a scope!'
+        error: 'Oops. Something went wrong. Please retry!'
+      edit:
+        title: 'Edit scope'
+        name: 'Name'
+        list: 'Account-types list'
+        save_scope: 'Save'
+      update:
+        success: 'You successfully edited a scope!'
+        error: 'Oops. Something went wrong. Please retry!'
+      destroy:
+        confirmation: 'Do you really want to delete a scope?'
+        success: 'You successfully deleted a scope!'
+        error: 'Oops. Something went wrong. Please retry!'
 
 # Translations for all relationship-pages, sorted by page structure
   relationship:
@@ -256,3 +295,4 @@ en:
       confirmation_inst: "Didn't receive confirmation instructions?"
       unlock_inst: "Didn't receive unlock instructions?"
       sign_in_with: 'Sign in with %{provider}'
+

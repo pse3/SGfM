@@ -5,4 +5,9 @@ module ActorHelper
     @current_actor = Actor.find(id)
   end
 
+	def list_scopes
+		Scope.all
+	end
+
+
 end

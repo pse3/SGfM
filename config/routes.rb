@@ -50,7 +50,16 @@ SGfM::Application.routes.draw do
     delete  'relationship_types/destroy/:id'  => 'relationship_type#destroy',  as: 'delete_relationship_type'
 
 
-    # Development routes
+		#Scopes Routes
+		get 'scopes' => 'scopes#list', as: 'scopes'
+		get 'scopes/create' => 'scopes#new', as: 'create_scope'
+		post 'scopes/create' => 'scopes#create'
+		get 'scopes/edit/:id' => 'scopes#edit', as: 'edit_scope'
+		post 'scopes/edit/:id' => 'scopes#update'
+		delete 'scopes/destroy/:id' => 'scopes#destroy', as: 'delete_scope'
+
+
+		# Development routes
     get   'all/reset' => 'application#reset_all', as: 'reset_all'
 
     # AJAX routes
