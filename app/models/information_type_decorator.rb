@@ -23,7 +23,7 @@ class InformationTypeDecorator
   end
 
   def self.find_by_key(key)
-    where(:information_type => InformationType.find_by_key(key.to_sym)).first
+    self.all.select{|info_type_dec| info_type_dec.information_type == InformationType.find_by_key(key.to_sym)}.first
   end
 
 end
