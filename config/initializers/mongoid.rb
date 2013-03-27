@@ -15,6 +15,47 @@ unless Rails.env == :production
   Login.delete_all
   User.delete_all
   Admin.delete_all
+  Scope.delete_all
+
+  #create some scopes
+  scope_private = WhitelistScope.new
+  scope_private.key = :private
+  I18n.locale = :en
+  scope_private.name = 'private'
+  I18n.locale = :de
+  scope_private.name = 'privat'
+  I18n.locale = :it
+  scope_private.name = 'privato'
+  I18n.locale = :fr
+  scope_private.name = 'privé'
+  scope_private.list = [:Self]
+  scope_private.save
+
+  scope_stats = WhitelistScope.new
+  scope_stats.key = :statistics
+  I18n.locale = :en
+  scope_stats.name = 'private + statistics'
+  I18n.locale = :de
+  scope_stats.name = 'privat + statistik'
+  I18n.locale = :it
+  scope_stats.name = 'privato + statistiche'
+  I18n.locale = :fr
+  scope_stats.name = 'privé + statistique'
+  scope_stats.list = [:Self, :Admin]
+  scope_stats.save
+
+  scope_public = BlacklistScope.new
+  scope_public.key = :public
+  I18n.locale = :en
+  scope_public.name = 'public'
+  I18n.locale = :de
+  scope_public.name = 'öffentlich'
+  I18n.locale = :it
+  scope_public.name = 'pubblico'
+  I18n.locale = :fr
+  scope_public.name = 'public'
+  scope_public.list = []
+  scope_public.save
 
   #create the information field types
   information_field_text = InformationFieldText.new
@@ -88,6 +129,7 @@ unless Rails.env == :production
   info_first_name.name = "??"
   I18n.locale = :fr
   info_first_name.name = "??"
+  info_first_name.scope = scope_public
   info_first_name.save
 
   info_last_name = InformationType.new
@@ -101,6 +143,7 @@ unless Rails.env == :production
   info_last_name.name = "??"
   I18n.locale = :fr
   info_last_name.name = "??"
+  info_last_name.scope = scope_public
   info_last_name.save
 
   info_phone = InformationType.new
@@ -224,15 +267,15 @@ unless Rails.env == :production
   # Create some ActorTypes
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
-  #InformationTypeDecorator.create(info_medical_specialisations, actor_doctor, 1, true, true)
+  InformationTypeDecorator.create(info_medical_specialisations, actor_doctor, 1, true, true)
   InformationTypeDecorator.create(info_first_name, actor_doctor, 2, true, true)
   InformationTypeDecorator.create(info_last_name, actor_doctor, 3, true, true)
-  #InformationTypeDecorator.create(info_gender, actor_doctor, 4, false, true)
-  #InformationTypeDecorator.create(info_phone, actor_doctor, 5, false, true)
-  #InformationTypeDecorator.create(info_email, actor_doctor, 6, false, true)
-  #InformationTypeDecorator.create(info_street, actor_doctor, 7, true, true)
-  #InformationTypeDecorator.create(info_street_number, actor_doctor, 8, true, true)
-  #InformationTypeDecorator.create(info_zip_code, actor_doctor, 9, true, true)
+  InformationTypeDecorator.create(info_gender, actor_doctor, 4, false, true)
+  InformationTypeDecorator.create(info_phone, actor_doctor, 5, false, true)
+  InformationTypeDecorator.create(info_email, actor_doctor, 6, false, true)
+  InformationTypeDecorator.create(info_street, actor_doctor, 7, true, true)
+  InformationTypeDecorator.create(info_street_number, actor_doctor, 8, true, true)
+  InformationTypeDecorator.create(info_zip_code, actor_doctor, 9, true, true)
   InformationTypeDecorator.create(info_city, actor_doctor, 10, false, true)
   InformationTypeDecorator.create(info_canton, actor_doctor, 11, false, true)
   I18n.locale = :en
@@ -244,12 +287,13 @@ unless Rails.env == :production
   I18n.locale = :fr
   actor_doctor.name = "Médecin"
   actor_doctor.save
-=begin
+
+
   actor_hospital = ActorType.new
   actor_hospital.key = :hospital
   InformationTypeDecorator.create(info_company, actor_hospital, 1, true, true)
-  InformationTypeDecorator.create(info_phone, actor_hospital, 2, true, true)
-  InformationTypeDecorator.create(info_email, actor_hospital, 3, true, true)
+  InformationTypeDecorator.create(info_phone, actor_hospital, 2, false, true)
+  InformationTypeDecorator.create(info_email, actor_hospital, 3, false, true)
   InformationTypeDecorator.create(info_street, actor_hospital, 4, true, true)
   InformationTypeDecorator.create(info_street_number, actor_hospital, 5, true, true)
   InformationTypeDecorator.create(info_zip_code, actor_hospital, 6, true, true)
@@ -265,7 +309,6 @@ unless Rails.env == :production
   I18n.locale = :fr
   actor_hospital.name = "Hôpital"
   actor_hospital.save
-=end
 
   # Create some RelationshipTypes
   relation_works_with = RelationshipType.new
@@ -313,48 +356,55 @@ unless Rails.env == :production
   # Create some Actors
 
   # Dummy actor 'Insel'
-
-=begin
   dummy_actor_insel = Actor.new
   dummy_actor_insel.actor_type = ActorType.find_by_key(:hospital)
+  dummy_actor_type = dummy_actor_insel.actor_type
 
   insel_name = Information.new
-  insel_name.information_type = InformationType.find_by_key(:company)
+  insel_name.scope = scope_public
+  insel_name.information_type_decorator = dummy_actor_type.decorator_by_key(:company)
   insel_name.value = 'Insel'
   insel_name.actor = dummy_actor_insel
 
   insel_phone = Information.new
-  insel_phone.information_type = InformationType.find_by_key(:phone)
+  insel_phone.scope = scope_public
+  insel_phone.information_type_decorator = dummy_actor_type.decorator_by_key(:phone)
   insel_phone.value = '033 777 88 11'
   insel_phone.actor = dummy_actor_insel
 
   insel_email = Information.new
-  insel_email.information_type = InformationType.find_by_key(:email)
+  insel_email.scope = scope_public
+  insel_email.information_type_decorator = dummy_actor_type.decorator_by_key(:email)
   insel_email.value = 'insel@bern.ch'
   insel_email.actor = dummy_actor_insel
 
   insel_street = Information.new
-  insel_street.information_type = InformationType.find_by_key(:street)
+  insel_street.scope = scope_public
+  insel_street.information_type_decorator = dummy_actor_type.decorator_by_key(:street)
   insel_street.value = 'Inselstrasse'
   insel_street.actor = dummy_actor_insel
 
   insel_street_number = Information.new
-  insel_street_number.information_type = InformationType.find_by_key(:street_number)
+  insel_street_number.scope = scope_public
+  insel_street_number.information_type_decorator = dummy_actor_type.decorator_by_key(:street_number)
   insel_street_number.value = '666'
   insel_street_number.actor = dummy_actor_insel
 
   insel_zip_code = Information.new
-  insel_zip_code.information_type = InformationType.find_by_key(:zip_code)
+  insel_zip_code.scope = scope_public
+  insel_zip_code.information_type_decorator = dummy_actor_type.decorator_by_key(:zip_code)
   insel_zip_code.value = '4000'
   insel_zip_code.actor = dummy_actor_insel
 
   insel_city = Information.new
-  insel_city.information_type = InformationType.find_by_key(:city)
+  insel_city.scope = scope_public
+  insel_city.information_type_decorator = dummy_actor_type.decorator_by_key(:city)
   insel_city.value = 'Bern'
   insel_city.actor = dummy_actor_insel
 
   insel_canton = Information.new
-  insel_canton.information_type = InformationType.find_by_key(:canton)
+  insel_canton.scope = scope_public
+  insel_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
   insel_canton.value = 'BE'
   insel_canton.actor = dummy_actor_insel
 
@@ -365,59 +415,71 @@ unless Rails.env == :production
   # Dummy doctor 'Karl Schürch'
   dummy_actor_karl = Actor.new
   dummy_actor_karl.actor_type = ActorType.find_by_key(:doctor)
+  dummy_actor_type = dummy_actor_karl.actor_type
 
   karl_medical_specialisations = Information.new
-  karl_medical_specialisations.information_type = InformationType.find_by_key(:medical_specialisations)
+  karl_medical_specialisations.information_type_decorator = dummy_actor_type.decorator_by_key(:medical_specialisations)
+  karl_medical_specialisations.scope = scope_public
   karl_medical_specialisations.value = ['Childdoctor']
   karl_medical_specialisations.actor = dummy_actor_karl
 
   karl_gender = Information.new
-  karl_gender.information_type = InformationType.find_by_key(:gender)
+  karl_gender.information_type_decorator = dummy_actor_type.decorator_by_key(:gender)
+  karl_gender.scope = scope_public
   karl_gender.value = 'Male'
   karl_gender.actor = dummy_actor_karl
 
   karl_fname = Information.new
-  karl_fname.information_type = InformationType.find_by_key(:first_name)
+  karl_fname.information_type_decorator = dummy_actor_type.decorator_by_key(:first_name)
+  karl_fname.scope = scope_public
   karl_fname.value = 'Karl'
   karl_fname.actor = dummy_actor_karl
 
   karl_lname = Information.new
-  karl_lname.information_type = InformationType.find_by_key(:last_name)
+  karl_lname.information_type_decorator = dummy_actor_type.decorator_by_key(:last_name)
+  karl_lname.scope = scope_public
   karl_lname.value = 'Schürch'
   karl_lname.actor = dummy_actor_karl
 
   karl_phone = Information.new
-  karl_phone.information_type = InformationType.find_by_key(:phone)
+  karl_phone.information_type_decorator = dummy_actor_type.decorator_by_key(:phone)
+  karl_phone.scope = scope_private
   karl_phone.value = '078 888 77 66'
   karl_phone.actor = dummy_actor_karl
 
   karl_email = Information.new
-  karl_email.information_type = InformationType.find_by_key(:email)
+  karl_email.information_type_decorator = dummy_actor_type.decorator_by_key(:email)
+  karl_email.scope = scope_public
   karl_email.value = 'karl@schürch.ch'
   karl_email.actor = dummy_actor_karl
 
   karl_street = Information.new
-  karl_street.information_type = InformationType.find_by_key(:street)
+  karl_street.information_type_decorator = dummy_actor_type.decorator_by_key(:street)
+  karl_street.scope = scope_public
   karl_street.value = 'Karlstrasse'
   karl_street.actor = dummy_actor_karl
 
   karl_street_number = Information.new
-  karl_street_number.information_type = InformationType.find_by_key(:street_number)
+  karl_street_number.information_type_decorator = dummy_actor_type.decorator_by_key(:street_number)
+  karl_street_number.scope = scope_private
   karl_street_number.value = '999'
   karl_street_number.actor = dummy_actor_karl
 
   karl_zip_code = Information.new
-  karl_zip_code.information_type = InformationType.find_by_key(:zip_code)
+  karl_zip_code.information_type_decorator = dummy_actor_type.decorator_by_key(:zip_code)
+  karl_zip_code.scope = scope_private
   karl_zip_code.value = '3178'
   karl_zip_code.actor = dummy_actor_karl
 
   karl_city = Information.new
-  karl_city.information_type = InformationType.find_by_key(:city)
+  karl_city.information_type_decorator = dummy_actor_type.decorator_by_key(:city)
+  karl_city.scope = scope_private
   karl_city.value = 'Bösingen'
   karl_city.actor = dummy_actor_karl
 
   karl_canton = Information.new
-  karl_canton.information_type = InformationType.find_by_key(:canton)
+  karl_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
+  karl_canton.scope = scope_private
   karl_canton.value = 'FR'
   karl_canton.actor = dummy_actor_karl
 
@@ -433,5 +495,5 @@ unless Rails.env == :production
   relationship_insel.actor = dummy_actor_insel
   relationship_insel.reference = dummy_actor_karl
   relationship_insel.save
-=end
+
 end

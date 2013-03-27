@@ -6,7 +6,7 @@
     <th><%= t('actor_type.show.information_type_name') %></th>
     <th><%= t('actor_type.show.information_type_key') %></th>
   </tr>
-  <% for info_type in @actor_type.information_type %>
+  <% for info_type in @actor_type.information_type_decorators %>
       <tr>
         <td><%= info_type.name %></td>
         <td><%= info_type.key %></td>

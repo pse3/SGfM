@@ -36,6 +36,7 @@ class Actor
   end
 
   #TODO need to fix this, only temporary to sting method # needs to be type specific
+  #this causes a lot of errors when playing around with info_types of actor_types. just sayin
   def to_s
     return find_information_by_key(:company).value_to_s unless find_information_by_key(:company).nil?
     return self.find_information_by_key(:last_name).value_to_s + ' ' + find_information_by_key(:first_name).value_to_s

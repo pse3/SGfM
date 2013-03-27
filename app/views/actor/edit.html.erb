@@ -14,7 +14,11 @@
     <% @actor.informations.each do |information| %>
       <% information_field_type = information.information_type_decorator.information_field_type %>
       <div class="control-group">
-        <%= f.label(information.information_type_decorator.key, information.information_type_decorator.name, :class => 'control-label') %>
+        <% if information.information_type_decorator.required %>
+            <%=  info_form.label(information.information_type_decorator.key,  information.information_type_decorator.name+'*', class: 'control-label') %>
+        <% else %>
+            <%= info_form.label(information.information_type_decorator.key,  information.information_type_decorator.name, class: 'control-label') %>
+        <% end %>
         <div class="controls">
           <%= information_field_type.form(info_form, information.information_type_decorator.key, { :value => information.value,
                                                                                          :placeholder => information.information_type_decorator.name,
@@ -26,7 +30,7 @@
             </select>
           <% else %>
             <% @scopes = list_scopes %>
-            <%= select("actor[scope]", information.information_type.key.to_s, options_from_collection_for_select(@scopes, :key, :name, selected: information.scope.key), {selected: information.scope.key})%>
+            <%= select("actor[scope]", information.information_type_decorator.key.to_s, options_from_collection_for_select(@scopes, :key, :name, selected: information.scope.key), {selected: information.scope.key})%>
           <% end %>
         </div>
       </div>

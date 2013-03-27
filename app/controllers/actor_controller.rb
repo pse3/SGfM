@@ -14,15 +14,18 @@ class ActorController < ApplicationController
     #TODO validate that each required information is present
     unless params[:actor][:information].nil?
       params[:actor][:information].each_key do |key|
-        info_type_decorator = @actor_type.decorator_by_key(key.to_sym)  #THIS SHOULD ASSIGN INFO_TYPE_DEC BUT IT ASSIGNS NIL
+        info_type_decorator = @actor_type.decorator_by_key(key.to_sym)
         information = Information.new
         information.information_type_decorator = info_type_decorator
         information.value=(params[:actor][:information][info_type_decorator.key])
+        unless info_type_decorator.scope
+          information.scope = Scope.find_by(key: params[:actor][:scope][info_type_decorator.key].to_sym)
+        end
         information.actor = @actor
       end
     end
 
-    unless params[:relationship].nil?
+    if params[:relationship]
       references = params[:relationship][:reference]
       types = params[:relationship][:relationship_type]
       comments = params[:relationship][:comment]
@@ -77,9 +80,9 @@ class ActorController < ApplicationController
 		params[:actor][:information].each do |key,value|
 			info = @actor.find_information_by_key(key.to_sym)
 			info.value = value
-			#unless params[:actor][:scope][key.to_sym].nil?
-			#	info.scope = Scope.find_by(key: params[:actor][:scope][key.to_sym])
-			#end
+			unless params[:actor][:scope][key.to_sym].nil?
+				info.scope = Scope.find_by(key: params[:actor][:scope][key.to_sym])
+			end
 		end
 		@actor.save
 

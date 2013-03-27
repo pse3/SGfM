@@ -1,26 +1,16 @@
 class ActorTypeController < ApplicationController
 
 	before_filter :authenticate_login!, :authenticate_admin!
-  #TODO refactoorrrrr
+
 	# Creates an ActorType with chosen name and InformationTypes
   def create
     @actor_type = ActorType.new
     @actor_type.key = params[:actor_type][:name][:en].downcase.tr(' ', '_')
-    index = 0 #dummy variable to test functionality
     @actor_type.name_translations = params[:actor_type][:name]
     unless params[:information].nil?
       params[:information].each do |key,value|
         info_type = InformationType.find_by_key(key.to_sym)
-        if value.to_i == 1
-          index = index + 1
-          info_type_decorator = InformationTypeDecorator.new
-          info_type_decorator.actor_type = @actor_type
-          info_type_decorator.information_type = info_type
-          info_type_decorator.required = true
-          info_type_decorator.index = index
-          info_type_decorator.searchable = true
-          info_type_decorator.save
-        end
+        InformationTypeDecorator.create(info_type, @actor_type, 10, true, true)
       end
     end
 
@@ -56,31 +46,15 @@ class ActorTypeController < ApplicationController
   def update
     @actor_type = ActorType.find(params[:id])
     @actor_type.name_translations = params[:actor_type][:name]
-    old_information_types = @actor_type.information_type
-    @actor_type.information_type = Array.new
+    @actor_type.information_type_decorators.delete_all
 
-    #the code above moves all the info_type_decs of an actor_type to separate array and then removes them from the actor_type
+    #the code above removes all the info_type_decs of an actor_type
     #the code below adds all the info_type_decs back to the actor_type based on if they were selected in the edit view
 
     unless params[:information].nil?
       params[:information].each do |key,value|
         info_type = InformationType.find_by_key(key.to_sym)
-        info_type_decorator = old_information_types.select{ |a| a.information_type == info_type }.first
-
-        if info_type_decorator.nil?  #in this case info_type_decorator doesn't exists and needs creating
-          info_type_decorator = InformationTypeDecorator.new
-          info_type_decorator.information_type = info_type
-          info_type_decorator.required = true               #todo get params here from view
-          info_type_decorator.searchable = true
-          info_type_decorator.index = 10
-          info_type_decorator.actor_type = @actor_type
-
-        else #in this case info_type_decorator exists already, only needs to be updated
-          info_type_decorator.searchable = true #todo get params here from view
-          info_type_decorator.required = true
-          info_type_decorator.index = 10
-          info_type_decorator.actor_type = @actor_type
-        end
+        InformationTypeDecorator.create(info_type, @actor_type, 10, true, true)
       end
     end
 
