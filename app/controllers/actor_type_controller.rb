@@ -46,9 +46,10 @@ class ActorTypeController < ApplicationController
   def update
     @actor_type = ActorType.find(params[:id])
     @actor_type.name_translations = params[:actor_type][:name]
-    @actor_type.information_type_decorators.delete_all
+    @actor_type.information_type_decorators = Array.new
 
-    #the code above removes all the info_type_decs of an actor_type
+    #the code above removes all the info_type_decs of an actor_type.doesn't delete the decorators. they are needed because
+    #informations still reference and need their data!!!
     #the code below adds all the info_type_decs back to the actor_type based on if they were selected in the edit view
 
     unless params[:information].nil?
