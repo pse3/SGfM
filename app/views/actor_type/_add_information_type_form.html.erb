@@ -28,5 +28,13 @@
         <%= f.select(:searchable, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[searchable][]') %>
       </div>
     </div>
+
+    <div class="control-group">
+      <%= f.label(:'information_type_decorator[index][]', t('actor_type.new.index'), class: 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(:index, required: true) %>
+      </div>
+    </div>
+
   <% end %>
 <% end %>
