@@ -8,14 +8,14 @@ class ActorTypeController < ApplicationController
     @actor_type.key = params[:actor_type][:name][:en].downcase.tr(' ', '_')
     @actor_type.name_translations = params[:actor_type][:name]
 
-    #TODO required and searchable aren't collected correctly from form. BIATCH. info_type_decs are created but required and searchable are sett false
-
-    unless params[:information_type_decorator].nil?
-      params[:information_type_decorator][:type].each do |key, required, searchable|
+    if params[:information_type_decorator]
+      keys = params[:information_type_decorator][:type]
+      required = params[:information_type_decorator][:required]
+      searchable = params[:information_type_decorator][:searchable]
+      keys.each_with_index do |key,i|
         info_type = InformationType.find_by_key(key.to_sym)
-        InformationTypeDecorator.create(info_type, @actor_type, 10, required, searchable)
+        InformationTypeDecorator.create(info_type, @actor_type, 10, required[i], searchable[i])
       end
-
     end
 
     @actor_type.save

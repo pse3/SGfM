@@ -17,7 +17,7 @@
       <%= f.label(:required, t('actor_type.new.required'), class: 'control-label') %>
       <div class='controls'>
         <!-- TODO Yes and no are not translated -->
-        <%= f.select :required, [[t('yes'), true], [t('no'), false]], :name => 'information_type_decorator[type][required]' %>
+        <%= f.select(:required, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[required][]') %>
       </div>
     </div>
 
@@ -25,7 +25,7 @@
       <%= f.label(:searchable, t('actor_type.new.searchable'), class: 'control-label') %>
       <div class='controls'>
         <!-- TODO Yes and no are not translated - only should be able to choose if info type is predefined public-->
-        <%= f.select :active, [[t('yes'), true], [t('no'), false]], :name => 'information_type[type][searchable]' %>
+        <%= f.select(:searchable, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[searchable][]') %>
       </div>
     </div>
   <% end %>

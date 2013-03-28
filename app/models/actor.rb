@@ -39,7 +39,8 @@ class Actor
   #this causes a lot of errors when playing around with info_types of actor_types. just sayin
   def to_s
     return find_information_by_key(:company).value_to_s unless find_information_by_key(:company).nil?
-    return self.find_information_by_key(:last_name).value_to_s + ' ' + find_information_by_key(:first_name).value_to_s
+    #return self.find_information_by_key(:last_name).value_to_s + ' ' + find_information_by_key(:first_name).value_to_s
+    return 'bazinga'
   end
 
   def update_searchfield_and_to_string_field
