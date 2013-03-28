@@ -10,6 +10,7 @@ module CsvImport
     field :file_name, :type => String
     field :file_path, :type => String
     field :encoding, :type => String
+    field :delimiter, :type => String
 
     field :uploaded, :type => DateTime
     field :imported, :type => DateTime
@@ -17,14 +18,16 @@ module CsvImport
     def initialize
       super
       self.uploaded = DateTime.now
+      # default separator if none given
+      self.delimiter = "|"
     end
 
     def remove_csv_file
       begin
-      FileUtils.rm(self.file_path)
-      rescue
-        #todo: proper log statement
-        puts "file could not be deleted"
+        FileUtils.rm(self.file_path)
+      rescue Errno::ENOENT
+        #todo use logger?
+        puts "file #{self.file_path} doesn't exist any more"
       end
     end
 
