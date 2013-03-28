@@ -4,7 +4,7 @@
     <div class='control-group'>
       <%=  f.label(:information_type, 'Type', class: 'control-label') %>
       <div class='controls'>
-        <%=  f.select(:information_type, information_types.map{ |type| [type.name, type.key]}, {}, :name => :'information_type[type][]', :required => true) %>
+        <%=  f.select(:information_type, information_types.map{ |type| [type.name, type.key]}, {}, :name => :'information_type_decorator[type][]', :required => true) %>
         <p class='pull-right'>
           <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor_type.new.remove_information_type')}"),
                                "SGfM.actor_type.remove_information_type_form(\"#{field_number}\")",
@@ -14,10 +14,10 @@
     </div>
 
     <div class='control-group'>
-      <%= f.label(:optional, t('actor_type.new.optional'), class: 'control-label') %>
+      <%= f.label(:required, t('actor_type.new.required'), class: 'control-label') %>
       <div class='controls'>
         <!-- TODO Yes and no are not translated -->
-        <%= f.select :optional, [[t('yes'), true], [t('no'), false]], :name => 'information_type[optional][]' %>
+        <%= f.select :required, [[t('yes'), true], [t('no'), false]], :name => 'information_type_decorator[type][required]' %>
       </div>
     </div>
 
@@ -25,7 +25,7 @@
       <%= f.label(:searchable, t('actor_type.new.searchable'), class: 'control-label') %>
       <div class='controls'>
         <!-- TODO Yes and no are not translated - only should be able to choose if info type is predefined public-->
-        <%= f.select :active, [[t('yes'), true], [t('no'), false]], :name => 'information_type[searchable][]' %>
+        <%= f.select :active, [[t('yes'), true], [t('no'), false]], :name => 'information_type[type][searchable]' %>
       </div>
     </div>
   <% end %>
