@@ -13,20 +13,39 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require select2
 
-var SGfM = {
-    actor : {
-        render_matching_form : function(controller_path, actor_type_key) {
-            jQuery.ajax({
-                url: controller_path,
-                type: 'GET',
-                data: {"actor_type_key" : actor_type_key},
-                dataType: 'html',
-                success: function(data) {
-                    jQuery('#information-types-form').html(data);
-                }
-        });
-    }
+//todo refactor this into "json format", like it was before
+var SGfM = {}
+
+
+SGfM.actor = {
+  render_matching_form : function(controller_path, actor_type_key) {
+    jQuery.ajax({
+      url: controller_path,
+      type: 'GET',
+      data: {"actor_type_key" : actor_type_key},
+      dataType: 'html',
+      success: function(data) {
+          jQuery('#information-types-form').html(data);
+      }
+    });
+  }
+}
+
+SGfM.relationship = {
+  add_relationship_form : function(controller_path) {
+    jQuery.ajax({
+      url: controller_path,
+      type: 'GET',
+      dataType: 'html',
+      success: function(data) {
+        jQuery('#relationship-form').after(data);
+      }
+    });
+  },
+  remove_relationship_form : function(field_number) {
+    $("#relationship_" + field_number).remove();
   }
 }
 

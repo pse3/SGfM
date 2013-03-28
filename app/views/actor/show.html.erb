@@ -3,21 +3,47 @@
 
 <table class="table table-hover">
   <tr>
-    <th><%= t('actor.show.field_table') %></th>
-    <th><%= t('actor.show.value_table') %></th>
+    <th class="span4"><%= t('actor.show.information_type') %></th>
+    <th class="span8"><%= t('actor.show.information_value') %></th>
   </tr>
   <tr>
     <td><%= t('actor.show.type') %></td>
     <td><%= @actor.actor_type.name %></td>
   </tr>
 
-  <% for info in @actor.informations %>
+  <% @informations.each do |info| %>
     <tr>
       <td><%= info.information_type.name %></td>
-      <td><%= info.value %></td>
+      <td><%= info.value_to_s %></td>
     </tr>
-  <%end %>
+  <% end %>
 </table>
 
+<p class="pull-right">
+  <%= link_to(t('actor.show.edit_actor'), edit_actor_path(@actor), :class => 'btn btn-small') %>
+</p>
 
-<%= link_to(t('actor.show.edit_actor'), edit_actor_path(@actor)) %>
+
+<table class="table table-hover">
+  <tr>
+    <th class="span3"><%= t('actor.show.relationship_type') %></th>
+    <th class="span3"><%= t('actor.show.relationship_reference') %></th>
+    <th class="span5"><%= t('actor.show.relationship_comment') %></th>
+    <th class="span1"><%= t('actor.show.actions_table') %></th>
+  </tr>
+  <% @actor.relationships.each do |relationship| %>
+    <tr>
+      <td><%= relationship.relationship_type.to_s %></td>
+      <td><%= relationship.reference.to_s %></td>
+      <td><%= relationship.comment.to_s %></td>
+      <td>
+        <%= link_to(raw('<i class="icon-edit"></i>'), edit_relationship_path(relationship)) %>
+        <%= link_to(raw('<i class="icon-trash"></i>'), delete_relationship_path(relationship), :method => :delete) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="pull-right">
+  <%= link_to(t('actor.show.add_relationship'), create_relationship_path(@actor), :class => 'btn btn-small pull-right') %>
+</p>
