@@ -2,6 +2,8 @@ class InformationController < ApplicationController
 
   before_filter :authenticate_login!
 
+  # todo what is this controller good for?
+
   # Creates an Information with chosen InformationType and a value
   def create
     @information = Information.new
