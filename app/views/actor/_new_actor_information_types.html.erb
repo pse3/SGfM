@@ -1,4 +1,3 @@
-<% @scopes = list_scopes %>
 <%= fields_for(:actor) do |f| %>
   <% information_types.each do |information_type| %>
     <%= f.fields_for(:information) do |info_form| %>
@@ -16,7 +15,7 @@
         </div>
       </div>
     <% end %>
-  <% end %>
 
-  <%= f.hidden_field(:actor_type_key, value: actor_type_key) %>
+    <%= f.hidden_field(:actor_type_key, value: actor_type_key) %>
 <% end %>
+
