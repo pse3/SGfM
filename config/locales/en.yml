@@ -2,6 +2,17 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  lang:
+    en: 'English'
+    de: 'German'
+    it: 'Italian'
+    fr: 'French'
+
+  lang:
+    en: 'English'
+    de: 'German'
+    it: 'Italian'
+    fr: 'French'
 
   form:
     email: 'email'
@@ -10,6 +21,7 @@ en:
     current_password: 'current password'
     remember: 'remember me'
     submit: 'submit'
+    create: 'create'
     update: 'update'
     cancel: 'cancel'
 
@@ -22,6 +34,7 @@ en:
   flash:
     no_admin_rights: 'Access denied'
     not_owner_of_actor: 'You can not edit this actor'
+    not_owner_of_relationship: 'You can not edit this relationship'
 
 
   application:
@@ -42,13 +55,25 @@ en:
       title: '%{actor}'
       type: 'Type'
       edit_actor: 'Edit actor'
-      field_table: 'Data field'
-      value_table: 'Vaule'
+      add_relationship: 'Add relationship'
+      information_type: 'Information'
+      information_value: 'Value'
+      relationship_type: 'Type'
+      relationship_reference: 'Referenced Actor'
+      relationship_comment: 'Comment'
+      actions_table: 'Actions'
 
     new:
       title: 'Create new actor'
       select_type: 'Select a type'
       create_actor: 'Create'
+      add_relationship: 'Add relationship'
+      remove_relationship: 'Remove'
+      actor_type_data: 'ActorType data'
+      relationship_data: 'Relationship data'
+      relationship_reference: 'Reference'
+      relationship_comment: 'Comment'
+      relationship_type: 'Type'
 
     edit:
       title: 'Edit actor'
@@ -111,12 +136,14 @@ en:
       edit_information_type: 'Edit information type'
       name: 'Name'
       field_table: 'Data field'
-      value_table: 'Vaule'
+      value_table: 'Value'
 
     new:
       title: 'Create new information type'
       name: 'Name'
       key: 'Key'
+      predefined_scope: 'Predefined scope'
+      predefined_scope_prompt: 'None'
       create_information_type: 'Create'
 
     create:
@@ -125,6 +152,100 @@ en:
 
     update:
       success: 'Information type successfully updated!'
+
+#Translation for all Scope-Pages
+  scopes:
+      list:
+         title: 'Scopes'
+         new_information_type: 'Create new scope'
+         name_table: 'Name'
+         key_table: 'Key'
+         type_table: 'Type'
+         list_contents_table: 'List contents'
+         new_scope: 'Create new Scope'
+      new:
+         title: 'Create new scope'
+         type: 'Type'
+         name: 'Name'
+         key: 'Key'
+         list: 'Account-types list'
+         create_scope: 'Create'
+      create:
+        success: 'You successfully created a scope!'
+        error: 'Oops. Something went wrong. Please retry!'
+      edit:
+        title: 'Edit scope'
+        name: 'Name'
+        list: 'Account-types list'
+        save_scope: 'Save'
+      update:
+        success: 'You successfully edited a scope!'
+        error: 'Oops. Something went wrong. Please retry!'
+      destroy:
+        confirmation: 'Do you really want to delete a scope?'
+        success: 'You successfully deleted a scope!'
+        error: 'Oops. Something went wrong. Please retry!'
+
+# Translations for all relationship-pages, sorted by page structure
+  relationship:
+    new:
+      title: 'Create relationship for %{actor}'
+      relationship_type: 'Type'
+      relationship_reference: 'Referenced Actor'
+      relationship_comment: 'Comment'
+
+    edit:
+      title: 'Edit relationship for %{actor}'
+      relationship_type: 'Type'
+      relationship_reference: 'Referenced Actor'
+      relationship_comment: 'Comment'
+
+    create:
+      success: 'Successfully created relationship'
+
+    update:
+      success: 'Successfully updated relationship'
+
+    destroy:
+      success: 'Successfully deleted relationship'
+
+
+# Translations for all actor_type-pages, sorted by page structure
+  relationship_type:
+    list:
+      title: 'RelationshipTypes'
+      new_relationship_type: 'Create new RelationshipType'
+      name_table: 'Name'
+      key_table: 'Key'
+      actions_table: 'Actions'
+      sure_to_delete: 'Are you sure to delete this entry? All existing Relationships with this type will be deleted!'
+
+    show:
+      title: '%{relationship_type}'
+      field_table: 'Data field'
+      value_table: 'Value'
+      name: 'Name'
+      edit_relationship_type: 'Edit relationship type'
+
+    new:
+      title: 'Create new RelationshipType'
+      name: 'Name'
+      key: 'Key'
+      create_relationship_type: 'Create'
+
+    edit:
+      title: 'Edit relationship type'
+      type: 'Type'
+      name: 'Name'
+
+    create:
+      success: 'RelationshipType successfully created!'
+
+    update:
+      success: 'Relationship type successfully updated!'
+
+    destroy:
+      success: 'Successfully deleted relationship'
 
 
 # Translations for all login-pages, sorted by page structure
