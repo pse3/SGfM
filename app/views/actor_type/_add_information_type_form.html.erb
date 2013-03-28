@@ -1,4 +1,3 @@
-<!-- TODO actually pass on proper params so new method in action_type_controller works -->
 <%= content_tag(:div, :id => "information_type_#{field_number}") do %>
   <%= fields_for(:information_type_decorator) do |f| %>
     <div class='control-group'>
@@ -26,13 +25,6 @@
       <div class='controls'>
         <!-- TODO Yes and no are not translated - only should be able to choose if info type is predefined public-->
         <%= f.select(:searchable, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[searchable][]') %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label(:'information_type_decorator[index][]', t('actor_type.new.index'), class: 'control-label') %>
-      <div class="controls">
-        <%= f.text_field(:index, required: true) %>
       </div>
     </div>
 

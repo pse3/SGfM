@@ -80,6 +80,8 @@ de:
       information_types: 'Informationtypen'
       information_type_name: 'Name'
       information_type_key: 'Schlüssel'
+      information_type_required: 'Obligatorisch'
+      information_type_searchable: 'Suchbar'
 
     new:
       title: 'Neuen Akteurtyp erstellen'

@@ -105,6 +105,8 @@ en:
       information_types: 'Information Types'
       information_type_name: 'Name'
       information_type_key: 'Key'
+      information_type_required: 'Required'
+      information_type_searchable: 'Searchable'
 
     new:
       title: 'Create new actor type'

@@ -31,25 +31,53 @@
       </div>
     </div>
 
+    <% if false %>
+    <% #^very badass way of block commenting in a view %>
     <% for info_type in @actor_type.information_type_decorators do %>
+      <%= fields_for(:information_type_decorator) do |f| %>
+
         <div class="control-group">
-          <%= label_tag("information[#{info_type.key}]", info_type.name, :class => 'control-label') %>
+          <%= f.label(info_type, t('actor_type.edit.information_type'), :class => 'control-label') %>
           <div class="controls">
-            <%= check_box_tag("information[#{info_type.key}]", '1', checked: true ) %>
+            <%= f.text_field(:information_type, :value => info_type.name, :disabled => 'disabled') %>
+              <p class='pull-right'>
+                <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor_type.new.remove_information_type')}"),
+                                       "SGfM.actor_type.remove_information_type_form()",
+                                       :type => :button, :class => 'btn btn-danger') %>
+              </p>
+            </div>
+          </div>
+
+        <div class='control-group'>
+          <%= f.label(:required, t('actor_type.new.required'), class: 'control-label') %>
+          <div class='controls'>
+            <!-- TODO Yes and no are not translated -->
+            <%= f.select(info_type.required, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[required][]') %>
           </div>
         </div>
+
+        <div class='control-group'>
+          <%= f.label(:searchable, t('actor_type.new.searchable'), class: 'control-label') %>
+          <div class='controls'>
+            <!-- TODO Yes and no are not translated - only should be able to choose if info type is predefined public-->
+            <%= f.select(info_type.searchable, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[searchable][]') %>
+          </div>
+        </div>
+
+      <% end %>
+    <% end %>
+    <% #end of badass block comment %>
     <% end %>
 
-    <% for info_type in list_information_types - @actor_type.every_information_type do %>
-        <%= f.fields_for info_type do |it_form| %>
-            <div class="control-group">
-              <%= label_tag("information[#{info_type.key}]", info_type.name, :class => 'control-label') %>
-              <div class="controls">
-                <%= check_box_tag("information[#{info_type.key}]", '1') %>
-              </div>
-            </div>
-        <% end %>
-    <% end %>
+    <div id="information-type-form"></div>
+
+    <div class="control-group">
+      <p>
+        <%= button_to_function('Add Information Type',
+                               'SGfM.actor_type.add_information_type_form("' + add_information_type_form_path + '")',
+                               :type => :button, :class => 'btn btn-medium') %>
+      </p>
+    </div>
 
   <div class="form-actions">
     <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>

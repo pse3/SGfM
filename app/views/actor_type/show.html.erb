@@ -5,11 +5,16 @@
   <tr>
     <th><%= t('actor_type.show.information_type_name') %></th>
     <th><%= t('actor_type.show.information_type_key') %></th>
+    <th><%= t('actor_type.show.information_type_required') %></th>
+    <th><%= t('actor_type.show.information_type_searchable') %></th>
   </tr>
   <% for info_type in @actor_type.information_type_decorators %>
       <tr>
+        <!-- TODO display true as yes and false as no and translate -->
         <td><%= info_type.name %></td>
         <td><%= info_type.key %></td>
+        <td><%= info_type.required %></td>
+        <td><%= info_type.searchable %></td>
       </tr>
   <%end %>
 </table>

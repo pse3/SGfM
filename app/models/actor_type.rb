@@ -19,6 +19,7 @@ class ActorType
 
   ##
   # returns name of actor_type object in lang
+  # TODO get rid of this method and replace usages with proper (urs) solution
   def name_locale(lang)
     current_lang = I18n.locale
     I18n.locale = lang
@@ -36,8 +37,7 @@ class ActorType
   end
 
   def decorator_by_key(key)
-    array = information_type_decorators.select{|info_type_decorator| info_type_decorator.information_type == InformationType.find_by_key(key) }
-    array.first
+    information_type_decorators.select{|info_type_decorator| info_type_decorator.information_type == InformationType.find_by_key(key) }.first
   end
 
 end

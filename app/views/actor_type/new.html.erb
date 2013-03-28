@@ -3,7 +3,6 @@
 
 <%= form_for(:actor_type, :url => create_actor_type_path, :html => {:class => 'form-horizontal'}) do |f| %>
 
-  <!--key is no longer needed, key is just english name in lowercase with underscore instead of spaces-->
   <div class="control-group">
     <%= f.label(:'name[en]', t('actor_type.new.name_en'), class: 'control-label') %>
     <div class="controls">

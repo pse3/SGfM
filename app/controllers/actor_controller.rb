@@ -12,7 +12,7 @@ class ActorController < ApplicationController
     @actor.actor_type = @actor_type
 
     #TODO validate that each required information is present
-    unless params[:actor][:information].nil?
+    if params[:actor][:information]
       params[:actor][:information].each_key do |key|
         info_type_decorator = @actor_type.decorator_by_key(key.to_sym)
         information = Information.new
@@ -103,7 +103,6 @@ class ActorController < ApplicationController
 	def show
 		@actor = Actor.find(params[:id])
 		@informations = scope_array(@actor.informations, current_account)
-
 	end
 
 end

@@ -267,17 +267,17 @@ unless Rails.env == :production
   # Create some ActorTypes
   actor_doctor = ActorType.new
   actor_doctor.key = :doctor
-  InformationTypeDecorator.create(info_medical_specialisations, actor_doctor, 1, true, true)
-  InformationTypeDecorator.create(info_first_name, actor_doctor, 2, true, true)
-  InformationTypeDecorator.create(info_last_name, actor_doctor, 3, true, true)
-  InformationTypeDecorator.create(info_gender, actor_doctor, 4, false, true)
-  InformationTypeDecorator.create(info_phone, actor_doctor, 5, false, true)
-  InformationTypeDecorator.create(info_email, actor_doctor, 6, false, true)
-  InformationTypeDecorator.create(info_street, actor_doctor, 7, true, true)
-  InformationTypeDecorator.create(info_street_number, actor_doctor, 8, true, true)
-  InformationTypeDecorator.create(info_zip_code, actor_doctor, 9, true, true)
-  InformationTypeDecorator.create(info_city, actor_doctor, 10, false, true)
-  InformationTypeDecorator.create(info_canton, actor_doctor, 11, false, true)
+  InformationTypeDecorator.create(info_medical_specialisations, actor_doctor, true, true)
+  InformationTypeDecorator.create(info_first_name, actor_doctor,  true, true)
+  InformationTypeDecorator.create(info_last_name, actor_doctor, true, true)
+  InformationTypeDecorator.create(info_gender, actor_doctor, false, true)
+  InformationTypeDecorator.create(info_phone, actor_doctor, false, true)
+  InformationTypeDecorator.create(info_email, actor_doctor, false, true)
+  InformationTypeDecorator.create(info_street, actor_doctor, true, true)
+  InformationTypeDecorator.create(info_street_number, actor_doctor, true, true)
+  InformationTypeDecorator.create(info_zip_code, actor_doctor, true, true)
+  InformationTypeDecorator.create(info_city, actor_doctor, false, true)
+  InformationTypeDecorator.create(info_canton, actor_doctor, false, true)
   I18n.locale = :en
   actor_doctor.name = "Doctor"
   I18n.locale = :de
@@ -291,14 +291,14 @@ unless Rails.env == :production
 
   actor_hospital = ActorType.new
   actor_hospital.key = :hospital
-  InformationTypeDecorator.create(info_company, actor_hospital, 1, true, true)
-  InformationTypeDecorator.create(info_phone, actor_hospital, 2, false, true)
-  InformationTypeDecorator.create(info_email, actor_hospital, 3, false, true)
-  InformationTypeDecorator.create(info_street, actor_hospital, 4, true, true)
-  InformationTypeDecorator.create(info_street_number, actor_hospital, 5, true, true)
-  InformationTypeDecorator.create(info_zip_code, actor_hospital, 6, true, true)
-  InformationTypeDecorator.create(info_city, actor_hospital, 7, true, true)
-  InformationTypeDecorator.create(info_canton, actor_hospital, 8, true, true)
+  InformationTypeDecorator.create(info_company, actor_hospital, true, true)
+  InformationTypeDecorator.create(info_phone, actor_hospital, false, true)
+  InformationTypeDecorator.create(info_email, actor_hospital, false, true)
+  InformationTypeDecorator.create(info_street, actor_hospital, true, true)
+  InformationTypeDecorator.create(info_street_number, actor_hospital, true, true)
+  InformationTypeDecorator.create(info_zip_code, actor_hospital, true, true)
+  InformationTypeDecorator.create(info_city, actor_hospital, true, true)
+  InformationTypeDecorator.create(info_canton, actor_hospital, true, true)
 
   I18n.locale = :en
   actor_hospital.name = "Hospital"
