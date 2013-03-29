@@ -128,6 +128,8 @@ en:
       name: 'Name'
       to_string_pattern: 'ToString representation'
       to_string_pattern_explanation: 'Use |:infotypekey| to display a information'
+      basics: 'Basic informations'
+      information_types: 'Information types'
 
     create:
       title: 'Created actor type'

@@ -37,7 +37,6 @@ class Information
      self.information_type_decorator.information_type
   end
 
-  # todo doesn't work correctly due to saving-bug ...
   def searchable?
     self.information_type_decorator.searchable
   end

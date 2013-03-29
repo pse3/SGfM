@@ -47,6 +47,18 @@ SGfM.actor = {
   }
 }
 
+<!-- always use this one -->
+SGfM.form = {
+  add_form_with_id : function(controller_path,id) {
+    SGfM.add_form(controller_path, '#' + id);
+  },
+  remove_form_with_id : function(id,field_number) {
+    SGfM.remove_form('#' + id, field_number)
+  }
+}
+
+
+
 SGfM.relationship = {
   add_relationship_form : function(controller_path) {
     SGfM.add_form(controller_path, '#relationship-form');
@@ -64,6 +76,5 @@ SGfM.actor_type = {
     SGfM.remove_form('#information_type', field_number)
   }
 }
-
 
 
