@@ -15,31 +15,21 @@
 //= require bootstrap
 //= require select2
 
-//todo refactor this into "json format", like it was before
+
 var SGfM = {
   remove_form : function(id, field_number) {
     $(id + "_" + field_number).remove();
   },
-    add_form : function(controller_path, before_id) {
-        jQuery.ajax({
-            url: controller_path,
-            type: 'GET',
-            dataType: 'html',
-            success: function(data) {
-                jQuery(before_id).before(data);
-            }
-        });
-    },
-    add_form_after : function(controller_path, after_id) {
-        jQuery.ajax({
-            url: controller_path,
-            type: 'GET',
-            dataType: 'html',
-            success: function(data) {
-                jQuery(after_id).after(data);
-            }
-        });
-    }
+  add_form : function(controller_path, id) {
+    jQuery.ajax({
+      url: controller_path,
+      type: 'GET',
+      dataType: 'html',
+      success: function(data) {
+        jQuery(id).before(data);
+      }
+    });
+  }
 }
 
 
@@ -51,7 +41,7 @@ SGfM.actor = {
       data: {"actor_type_key" : actor_type_key},
       dataType: 'html',
       success: function(data) {
-          jQuery('#information-types-form').html(data);
+        jQuery('#information-types-form').html(data);
       }
     });
   }
@@ -59,7 +49,7 @@ SGfM.actor = {
 
 SGfM.relationship = {
   add_relationship_form : function(controller_path) {
-    SGfM.add_form_after(controller_path, '#relationship-form');
+    SGfM.add_form(controller_path, '#relationship-form');
   },
   remove_relationship_form : function(field_number) {
     SGfM.remove_form("#relationship", field_number);
