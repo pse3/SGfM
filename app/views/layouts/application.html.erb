@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>SGfM</title>
+    <meta charset="utf-8">
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -44,6 +45,7 @@
                       <li class="divider"></li>
                       <li><%= link_to(raw('<i class="icon-user"></i>') + " " + 'ActorTypes', actor_types_path) %></li>
                       <li><%= link_to(raw('<i class="icon-briefcase"></i>') + " " + 'InformationTypes', information_types_path) %></li>
+                      <li><%= link_to(raw('<i class="icon-share"></i>') + " " + 'CSV Import', list_csv_files_path) %></li>
                       <li><%= link_to(raw('<i class="icon-filter"></i>') + " " + 'Scopes', scopes_path) %></li>
                       <li><%= link_to(raw('<i class="icon-heart"></i>') + " " + 'RelationshipTypes', relationship_types_path) %></li>
                       <li class="divider"></li>
