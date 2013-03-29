@@ -1,13 +1,15 @@
 class InformationTypeDecorator
+
   include Mongoid::Document
   include Scoped
 
-  field :required, type: Boolean
-  field :searchable, type: Boolean
-  field :index, type: Integer
+  field :required, :type => Boolean
+  field :searchable, :type => Boolean
+  field :index, :type => Integer
 
-  belongs_to :actor_type, class_name: 'ActorType'
-  belongs_to :information_type, class_name: 'InformationType', inverse_of: nil
+  belongs_to :actor_type, :class_name => 'ActorType'
+  belongs_to :information_type, :class_name => 'InformationType', :inverse_of => nil
+
 
   def self.create(info_type, actor_type, required, searchable)
     info_type_dec = self.new
@@ -19,6 +21,12 @@ class InformationTypeDecorator
     info_type_dec
   end
 
+  # todo delete after searchable and required are saved correctly in db
+  def to_s
+    "req:#{required},search:#{searchable}"
+  end
+
+  # todo that looks nice, what does it do?
   def method_missing(method, *args)
     args.empty? ? information_type.send(method) : information_type.send(method, args)
   end

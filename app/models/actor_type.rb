@@ -10,6 +10,8 @@ class ActorType
 
   has_many :information_type_decorators, class_name: 'InformationTypeDecorator', inverse_of: :actor_type
 
+  after_save :update_corresponding_actors
+
 
   def self.find_by_key(key)
     ActorType.find_by(key: key)
@@ -30,6 +32,14 @@ class ActorType
 
   def decorator_by_key(key)
     information_type_decorators.select{|info_type_decorator| info_type_decorator.information_type == InformationType.find_by_key(key) }.first
+  end
+
+  # Saves each actor that uses this actor_type to activate update methods of actor (e.g. before_save)
+  def update_corresponding_actors
+    corresponding_actors = Actor.where(:actor_type => self)
+    corresponding_actors.each do |actor|
+      actor.save
+    end
   end
 
 end

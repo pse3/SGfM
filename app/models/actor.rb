@@ -48,10 +48,14 @@ class Actor
     self.to_string_field = final_parsed
   end
 
-  #TODO: At the moment, every information is added to the search_field; in the future only information that is labelled as "searchable" must be added to the searchfield
+  # todo untested due to bug in saving searchable in db correctly
   def update_search_field
     self.search_field = ''
-    self.informations.each { |info| self.search_field += info.value_to_s }
+    self.informations.each do |information|
+      if information.searchable?
+        self.search_field += information.value_to_s
+      end
+    end
   end
 
 end
