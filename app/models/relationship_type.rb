@@ -17,13 +17,4 @@ class RelationshipType
     self.name.to_s
   end
 
-  # Returns name of actor_type object in lang
-  def name_locale(lang)
-    current_lang = I18n.locale
-    I18n.locale = lang
-    name = self.name
-    I18n.locale = current_lang
-    name
-  end
-
 end

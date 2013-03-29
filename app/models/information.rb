@@ -3,7 +3,6 @@ class Information
   include Scoped
 
   field :shit_value # todo needed to name this different otherwise its not clear what self.value is aiming for, do you know how to solve that?
-
   field :created_at, :type => DateTime
   field :changed_at, :type => DateTime
 
@@ -12,6 +11,7 @@ class Information
   embedded_in :actor, class_name: 'Actor'                                               #embedded
 
   inherit_scope_from :information_type_decorator
+
 
   def initialize
     super
@@ -28,6 +28,11 @@ class Information
 
   def value_to_s
     self.information_type_decorator.information_field_type.to_s(self.shit_value)
+  end
+
+  # Returns the information type of this information without the decorator
+  def information_type
+     self.information_type_decorator.information_type
   end
 
 end

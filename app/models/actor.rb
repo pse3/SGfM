@@ -1,5 +1,5 @@
+# Base class for hospitals, doctors etc.
 class Actor
-  # base class for hospitals, doctors etc.
 
   include Mongoid::Document
 	include ActiveModel::Validations
@@ -22,13 +22,14 @@ class Actor
   before_save :update_searchfield_and_to_string_field
   search_in :searchfield
 
+
   def initialize
     super
     self.created_at = DateTime.now
   end
 
   def find_information_by_key(key)
-    self.informations.detect{ |info| info.information_type_decorator.key == key }
+    self.informations.detect{ |information| information.information_type_decorator.key == key }
 	end
 
   def find_relationship_by_key(key)
@@ -47,17 +48,15 @@ class Actor
     update_searchfield
   end
 
+  #TODO: At the moment, every information is added to the to_string_field; in the future only information that is labelled as "toString" must be added to the to_string_field
   def update_to_string_field
       self.to_string_field = ""
-      #TODO: At the moment, every information is added to the to_string_field; in the future
-      #only information that is labelled as "toString" must be added to the to_string_field
       self.informations.each { |info| self.to_string_field = self.to_string_field + info.value_to_s }
   end
 
+  #TODO: At the moment, every information is added to the searchfield; in the future only information that is labelled as "searchable" must be added to the searchfield
   def update_searchfield
     self.searchfield = ""
-    #TODO: At the moment, every information is added to the searchfield; in the future
-    #only information that is labelled as "searchable" must be added to the searchfield
     self.informations.each { |info| self.searchfield = self.searchfield + info.value_to_s }
   end
 

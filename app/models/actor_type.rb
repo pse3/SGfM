@@ -9,6 +9,7 @@ class ActorType
 
   has_many :information_type_decorators, class_name: 'InformationTypeDecorator', inverse_of: :actor_type
 
+
   def self.find_by_key(key)
     ActorType.find_by(key: key)
   end
@@ -17,23 +18,13 @@ class ActorType
     self.name
   end
 
-  ##
-  # returns name of actor_type object in lang
-  # TODO get rid of this method and replace usages with proper (urs) solution
-  def name_locale(lang)
-    current_lang = I18n.locale
-    I18n.locale = lang
-    locale = self.name
-    I18n.locale = current_lang
-    locale
-  end
-
-  def every_information_type
-    info_types = Array.new
-    for info_type in information_type_decorators do
-      info_types.push(info_type.information_type)
+  # Returns list with all information types of this actor type without the decorator
+  def information_types
+    information_types = Array.new
+    information_type_decorators.each do |decorator|
+      information_types.push(decorator.information_type)
     end
-    info_types
+    information_types
   end
 
   def decorator_by_key(key)

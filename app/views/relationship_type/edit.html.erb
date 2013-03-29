@@ -6,28 +6,28 @@
   <div class="control-group">
     <%= f.label(:'name[en]', t('relationship_type.new.name') + t('lang.en'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field('name[en]', value: @relationship_type.name_locale(:en)) %>
+      <%= f.text_field('name[en]', value: @relationship_type.name_translations['en']) %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label(:'name[de]', t('relationship_type.new.name') + t('lang.de'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field('name[de]', value: @relationship_type.name_locale(:de)) %>
+      <%= f.text_field('name[de]', value: @relationship_type.name_translations['de']) %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label(:'name[fr]', t('relationship_type.new.name') + t('lang.fr'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field('name[fr]', value: @relationship_type.name_locale(:fr)) %>
+      <%= f.text_field('name[fr]', value: @relationship_type.name_translations['fr']) %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label(:'name[it]', t('relationship_type.new.name') + t('lang.it'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field('name[it]', value: @relationship_type.name_locale(:it)) %>
+      <%= f.text_field('name[it]', value: @relationship_type.name_translations['it']) %>
     </div>
   </div>
 

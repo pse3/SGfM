@@ -6,28 +6,28 @@
   <div class="control-group">
     <%= f.label(:'name[en]', t('actor_type.new.name_en'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field('name[en]', value: @actor_type.name_locale(:en)) %>
+      <%= f.text_field('name[en]', value: @actor_type.name_translations['en']) %>
     </div>
   </div>
 
     <div class="control-group">
       <%= f.label(:'name[de]', t('actor_type.new.name_de'), :class => 'control-label') %>
       <div class="controls">
-        <%= f.text_field('name[de]', value: @actor_type.name_locale(:de)) %>
+        <%= f.text_field('name[de]', value: @actor_type.name_translations['de']) %>
       </div>
     </div>
 
     <div class="control-group">
       <%= f.label(:'name[fr]', t('actor_type.new.name_fr'), :class => 'control-label') %>
       <div class="controls">
-        <%= f.text_field('name[fr]', value: @actor_type.name_locale(:fr)) %>
+        <%= f.text_field('name[fr]', value: @actor_type.name_translations['fr']) %>
       </div>
     </div>
 
     <div class="control-group">
       <%= f.label(:'name[it]', t('actor_type.new.name_it'), :class => 'control-label') %>
       <div class="controls">
-        <%= f.text_field('name[it]', value: @actor_type.name_locale(:it)) %>
+        <%= f.text_field('name[it]', value: @actor_type.name_translations['it']) %>
       </div>
     </div>
 
