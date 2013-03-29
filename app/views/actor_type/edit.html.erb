@@ -10,72 +10,84 @@
     </div>
   </div>
 
-    <div class="control-group">
-      <%= f.label(:'name[de]', "#{t('actor_type.edit.name')} (#{t('lang.de')})", :class => 'control-label') %>
-      <div class="controls">
-        <%= f.text_field('name[de]', :value => @actor_type.name_translations['de']) %>
-      </div>
+  <div class="control-group">
+    <%= f.label(:'name[de]', "#{t('actor_type.edit.name')} (#{t('lang.de')})", :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field('name[de]', :value => @actor_type.name_translations['de']) %>
     </div>
+  </div>
 
-    <div class="control-group">
-      <%= f.label(:'name[fr]', "#{t('actor_type.edit.name')} (#{t('lang.fr')})", :class => 'control-label') %>
-      <div class="controls">
-        <%= f.text_field('name[fr]', :value => @actor_type.name_translations['fr']) %>
-      </div>
+  <div class="control-group">
+    <%= f.label(:'name[fr]', "#{t('actor_type.edit.name')} (#{t('lang.fr')})", :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field('name[fr]', :value => @actor_type.name_translations['fr']) %>
     </div>
+  </div>
 
-    <div class="control-group">
-      <%= f.label(:'name[it]', "#{t('actor_type.edit.name')} (#{t('lang.it')})", :class => 'control-label') %>
-      <div class="controls">
-        <%= f.text_field('name[it]', :value => @actor_type.name_translations['it']) %>
-      </div>
+  <div class="control-group">
+    <%= f.label(:'name[it]', "#{t('actor_type.edit.name')} (#{t('lang.it')})", :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field('name[it]', :value => @actor_type.name_translations['it']) %>
     </div>
+  </div>
 
-    <!-- todo this is just shit! the controller will not know how to handle the generated params. the person who did this just copy&pasted some code without thinking -->
-    <% for info_type in @actor_type.information_type_decorators do %>
-      <%= fields_for(:information_type_decorator) do |f| %>
+  <div class="control-group">
+    <%= f.label(:'to_string', t('actor_type.edit.to_string'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'to_string', placeholder: t('actor_type.edit.to_string'), required: true) %>
+    </div>
+  </div>
+
+  <% @actor_type.information_type_decorators.each_with_index do |information_type,i| %>
+    <%= fields_for(:information_type_decorator) do |f| %>
+      <%= content_tag(:div, :id => "information_type_#{i}") do %>
 
         <div class="control-group">
-          <%= f.label(info_type, t('actor_type.edit.information_type'), :class => 'control-label') %>
+          <%= f.label(:information_type, t('actor_type.edit.information_type'), :class => 'control-label') %>
           <div class="controls">
-            <%= f.text_field(:information_type, :value => info_type.name, :disabled => 'disabled') %>
-              <p class='pull-right'>
-                <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor_type.new.remove_information_type')}"),
-                                       "SGfM.actor_type.remove_information_type_form()",
-                                       :type => :button, :class => 'btn btn-danger') %>
-              </p>
+            <%= f.text_field(:information_type, { :value => information_type.key,        # todo display info.name and pass info.key in params
+                                                  :readonly => true,
+                                                  :name => 'information_type_decorator[information_type][]' }) %>
             </div>
           </div>
 
         <div class='control-group'>
-          <%= f.label(:required, t('actor_type.edit.required'), class: 'control-label') %>
+          <%= f.label(:required, t('actor_type.edit.required'), :class => 'control-label') %>
           <div class='controls'>
             <!-- TODO use checkbox here instead! -->
-            <%= f.select(info_type.required, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[required][]') %>
+            <%= f.select(:required, [[t('yes'), true], [t('no'), false]], {}, { :value => information_type.required,
+                                                                                :name => 'information_type_decorator[required][]' }) %>
           </div>
         </div>
 
         <div class='control-group'>
-          <%= f.label(:searchable, t('actor_type.edit.searchable'), class: 'control-label') %>
+          <%= f.label(:searchable, t('actor_type.edit.searchable'), :class => 'control-label') %>
           <div class='controls'>
             <!-- TODO use checkbox here instead!
                  TODO only should be able to choose if info type is predefined public -->
-            <%= f.select(info_type.searchable, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[searchable][]') %>
+            <%= f.select(:searchable, [[t('yes'), true], [t('no'), false]], {}, { :name => 'information_type_decorator[searchable][]',
+                                                                                  :value => information_type.searchable }) %>
           </div>
         </div>
 
+        <p class='pull-right'>
+          <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor_type.new.remove_information_type')}"),
+                               "SGfM.actor_type.remove_information_type_form(#{i})",
+                               :type => :button, :class => 'btn btn-danger') %>
+        </p>
       <% end %>
     <% end %>
+  <% end %>
 
-    <div id="information-type-form"></div>
+  <div id="information-type-form"></div>
 
-    <div class="control-group">
-      <p>
-        <%= button_to_function('Add Information Type',
-                               'SGfM.actor_type.add_information_type_form("' + add_information_type_form_path + '")',
-                               :type => :button, :class => 'btn btn-medium') %>
-      </p>
-    </div>
+  <div class="control-group">
+    <p>
+      <%= button_to_function('Add Information Type',
+                             'SGfM.actor_type.add_information_type_form("' + add_information_type_form_path + '")',
+                             :type => :button, :class => 'btn btn-medium') %>
+    </p>
+  </div>
 
   <div class="form-actions">
     <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>

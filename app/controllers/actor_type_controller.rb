@@ -7,6 +7,7 @@ class ActorTypeController < ApplicationController
     @actor_type = ActorType.new
     @actor_type.key = params[:actor_type][:name][:en].downcase.tr(' ', '_')
     @actor_type.name_translations = params[:actor_type][:name]
+    @actor_type.to_string = params[:actor_type][:to_string]
 
     if params[:information_type_decorator]
       keys = params[:information_type_decorator][:type]
@@ -50,19 +51,21 @@ class ActorTypeController < ApplicationController
   def update
     @actor_type = ActorType.find(params[:id])
     @actor_type.name_translations = params[:actor_type][:name]
+    @actor_type.to_string = params[:actor_type][:to_string]
     @actor_type.information_type_decorators = Array.new
+
 
     #the code above removes all the info_type_decs of an actor_type.doesn't delete the decorators. they are needed because
     #informations of existing actors of this actor_type still reference and need their data!!!
     #the code below adds all the info_type_decs back to the actor_type based on if they were selected in the edit view
 
     if params[:information_type_decorator]
-      keys = params[:information_type_decorator][:type]
+      keys = params[:information_type_decorator][:information_type]
       required = params[:information_type_decorator][:required]
       searchable = params[:information_type_decorator][:searchable]
       keys.each_with_index do |key, i|
-        info_type = InformationType.find_by_key(key.to_sym)
-        InformationTypeDecorator.create(info_type, @actor_type, required[i], searchable[i])
+        information_type = InformationType.find_by_key(key.to_sym)
+        InformationTypeDecorator.create(information_type, @actor_type, required[i], searchable[i])
       end
     end
 

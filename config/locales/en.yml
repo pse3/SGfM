@@ -119,12 +119,13 @@ en:
       optional: 'Require this information'
       searchable: 'Searchable'
       key: 'Key'
-      to_s: 'ToString representation'
+      to_string: 'ToString representation'
       name: 'Name'
 
     edit:
       title: 'Edit actor type'
       name: 'Name'
+      to_string: 'ToString representation'
 
     create:
       title: 'Created actor type'
