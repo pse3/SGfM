@@ -4,35 +4,34 @@
 <%= form_for(@actor_type, :url => update_actor_type_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
 
   <div class="control-group">
-    <%= f.label(:'name[en]', t('actor_type.new.name_en'), :class => 'control-label') %>
+    <%= f.label(:'name[en]', "#{t('actor_type.edit.name')} (#{t('lang.en')})", :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field('name[en]', value: @actor_type.name_translations['en']) %>
+      <%= f.text_field('name[en]', :value => @actor_type.name_translations['en']) %>
     </div>
   </div>
 
     <div class="control-group">
-      <%= f.label(:'name[de]', t('actor_type.new.name_de'), :class => 'control-label') %>
+      <%= f.label(:'name[de]', "#{t('actor_type.edit.name')} (#{t('lang.de')})", :class => 'control-label') %>
       <div class="controls">
-        <%= f.text_field('name[de]', value: @actor_type.name_translations['de']) %>
+        <%= f.text_field('name[de]', :value => @actor_type.name_translations['de']) %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label(:'name[fr]', t('actor_type.new.name_fr'), :class => 'control-label') %>
+      <%= f.label(:'name[fr]', "#{t('actor_type.edit.name')} (#{t('lang.fr')})", :class => 'control-label') %>
       <div class="controls">
-        <%= f.text_field('name[fr]', value: @actor_type.name_translations['fr']) %>
+        <%= f.text_field('name[fr]', :value => @actor_type.name_translations['fr']) %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label(:'name[it]', t('actor_type.new.name_it'), :class => 'control-label') %>
+      <%= f.label(:'name[it]', "#{t('actor_type.edit.name')} (#{t('lang.it')})", :class => 'control-label') %>
       <div class="controls">
-        <%= f.text_field('name[it]', value: @actor_type.name_translations['it']) %>
+        <%= f.text_field('name[it]', :value => @actor_type.name_translations['it']) %>
       </div>
     </div>
 
-    <% if false %>
-    <% #^very badass way of block commenting in a view %>
+    <!-- todo this is just shit! the controller will not know how to handle the generated params. the person who did this just copy&pasted some code without thinking -->
     <% for info_type in @actor_type.information_type_decorators do %>
       <%= fields_for(:information_type_decorator) do |f| %>
 
@@ -49,24 +48,23 @@
           </div>
 
         <div class='control-group'>
-          <%= f.label(:required, t('actor_type.new.required'), class: 'control-label') %>
+          <%= f.label(:required, t('actor_type.edit.required'), class: 'control-label') %>
           <div class='controls'>
-            <!-- TODO Yes and no are not translated -->
+            <!-- TODO use checkbox here instead! -->
             <%= f.select(info_type.required, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[required][]') %>
           </div>
         </div>
 
         <div class='control-group'>
-          <%= f.label(:searchable, t('actor_type.new.searchable'), class: 'control-label') %>
+          <%= f.label(:searchable, t('actor_type.edit.searchable'), class: 'control-label') %>
           <div class='controls'>
-            <!-- TODO Yes and no are not translated - only should be able to choose if info type is predefined public-->
+            <!-- TODO use checkbox here instead!
+                 TODO only should be able to choose if info type is predefined public -->
             <%= f.select(info_type.searchable, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[searchable][]') %>
           </div>
         </div>
 
       <% end %>
-    <% end %>
-    <% #end of badass block comment %>
     <% end %>
 
     <div id="information-type-form"></div>
