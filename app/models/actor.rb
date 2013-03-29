@@ -35,11 +35,13 @@ class Actor
     self.relationship.detect{ |relationship| relationship.relationship_type.key == key }
   end
 
+  # todo this solution maybe too much datebase hungry?
   def to_s
-    puts '------------'
-    puts self.actor_type.to_string.to_s
-    puts '------------'
-    self.actor_type.to_string.to_s
+    final_parsed = self.actor_type.to_string
+    informations.each do |information|
+      final_parsed = final_parsed.gsub("|:#{information.information_type.key.to_s}|", information.value_to_s)
+    end
+    final_parsed
   end
 
   #TODO: At the moment, every information is added to the search_field; in the future only information that is labelled as "searchable" must be added to the searchfield
