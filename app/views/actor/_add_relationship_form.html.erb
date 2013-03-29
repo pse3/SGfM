@@ -15,7 +15,7 @@
         <%= f.hidden_field(:reference, :id => 'e1', :name => 'relationship[reference][]', :required => true) %>
         <p class="pull-right">
           <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor.new.remove_relationship')}"),
-                               "SGfM.relationship.remove_relationship_form(\"#{field_number}\")",
+                               "SGfM.form.remove_form('relationship',\"#{field_number}\")",
                                :type => :button, :class => 'btn btn-danger') %>
         </p>
       </div>

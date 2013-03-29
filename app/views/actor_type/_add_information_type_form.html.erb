@@ -4,10 +4,10 @@
     <div class='control-group'>
       <%=  f.label(:information_type, 'Type', class: 'control-label') %>
       <div class='controls'>
-        <%=  f.select(:information_type, information_types.map{ |type| [type.name, type.key]}, {}, :name => :'information_type_decorator[type][]', :required => true) %>
+        <%=  f.select(:information_type, information_types.map{ |type| [type.name, type.key]}, {}, :name => :'information_type_decorator[information_type][]', :required => true) %>
         <p class='pull-right'>
           <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor_type.new.remove_information_type')}"),
-                               "SGfM.form.remove_form_with_id('information_type',#{field_number})",
+                               "SGfM.form.remove_form('information_type',#{field_number})",
                                :type => :button, :class => 'btn btn-danger') %>
         </p>
       </div>

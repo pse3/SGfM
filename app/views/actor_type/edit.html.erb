@@ -58,6 +58,11 @@
             <%= f.text_field("information_type_#{i}", { :value => information_type_decorator.key,        # todo display info.name and pass info.key in params
                                                   :readonly => true,
                                                   :name => 'information_type_decorator[information_type][]' }) %>
+            <p class='pull-right'>
+              <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor_type.new.remove_information_type')}"),
+                                   "SGfM.form.remove_form('information_type_decorator',#{i})",
+                                   :type => :button, :class => 'btn btn-danger') %>
+            </p>
             </div>
           </div>
 
@@ -79,12 +84,6 @@
                                                                                   :name => 'information_type_decorator[searchable][]' }) %>
           </div>
         </div>
-
-        <p class='pull-right'>
-          <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor_type.new.remove_information_type')}"),
-                               "SGfM.form.remove_form_with_id(information_type_decorator,#{i})",
-                               :type => :button, :class => 'btn btn-danger') %>
-        </p>
       <% end %>
     <% end %>
   <% end %>
@@ -94,7 +93,7 @@
   <div class="control-group">
     <p>
       <%= button_to_function('Add Information Type',
-                             'SGfM.actor_type.add_information_type_form("' + add_information_type_form_path + '")',
+                             "SGfM.form.add_form(\"#{add_information_type_form_path}\",'information-type-form')",
                              :type => :button, :class => 'btn btn-medium') %>
     </p>
   </div>

@@ -26,7 +26,7 @@ var SGfM = {
       type: 'GET',
       dataType: 'html',
       success: function(data) {
-        jQuery(id).before(data);
+        jQuery(id).after(data); <!-- if you use before here, the relationship reference shit will break!!!!!!-->
       }
     });
   }
@@ -49,31 +49,11 @@ SGfM.actor = {
 
 <!-- always use this one -->
 SGfM.form = {
-  add_form_with_id : function(controller_path,id) {
-    SGfM.add_form(controller_path, '#' + id);
+  add_form : function(controller_path,where) {
+    SGfM.add_form(controller_path, '#' + where);
   },
-  remove_form_with_id : function(id,field_number) {
+  remove_form : function(id,field_number) {
     SGfM.remove_form('#' + id, field_number)
-  }
-}
-
-
-
-SGfM.relationship = {
-  add_relationship_form : function(controller_path) {
-    SGfM.add_form(controller_path, '#relationship-form');
-  },
-  remove_relationship_form : function(field_number) {
-    SGfM.remove_form("#relationship", field_number);
-  }
-}
-
-SGfM.actor_type = {
-  add_information_type_form : function(controller_path) {
-    SGfM.add_form(controller_path, '#information-type-form');
-  },
-  remove_information_type_form : function(field_number) {
-    SGfM.remove_form('#information_type', field_number)
   }
 }
 

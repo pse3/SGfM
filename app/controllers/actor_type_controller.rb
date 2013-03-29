@@ -10,7 +10,7 @@ class ActorTypeController < ApplicationController
     @actor_type.to_string_pattern = params[:actor_type][:to_string_pattern]
 
     if params[:information_type_decorator]
-      keys = params[:information_type_decorator][:type]
+      keys = params[:information_type_decorator][:information_type]
       required = params[:information_type_decorator][:required]
       searchable = params[:information_type_decorator][:searchable]
       keys.each_with_index do |key, i|
