@@ -8,37 +8,38 @@
   </div>
 
   <div class="control-group">
-    <%= f.label(:'name[en]', "#{t('actor_type.new.name')} (#{t('lang.en')})", class: 'control-label') %>
+    <%= f.label(:'name[en]', "#{t('actor_type.new.name')} (#{t('lang.en')})", :class => 'control-label') %>
     <div class="controls">
       <%= f.text_field(:'name[en]', :placeholder => t('actor_type.new.name'), :required => true) %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label(:'name[de]', "#{t('actor_type.new.name')} (#{t('lang.de')})", class: 'control-label') %>
+    <%= f.label(:'name[de]', "#{t('actor_type.new.name')} (#{t('lang.de')})", :class => 'control-label') %>
     <div class="controls">
       <%= f.text_field(:'name[de]', :placeholder => t('actor_type.new.name'), :required => true) %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label(:'name[fr]', "#{t('actor_type.new.name')} (#{t('lang.fr')})", class: 'control-label') %>
+    <%= f.label(:'name[fr]', "#{t('actor_type.new.name')} (#{t('lang.fr')})", :class => 'control-label') %>
     <div class="controls">
       <%= f.text_field(:'name[fr]', :placeholder => t('actor_type.new.name'), :required => true) %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label(:'name[it]', "#{t('actor_type.new.name')} (#{t('lang.it')})", class: 'control-label') %>
+    <%= f.label(:'name[it]', "#{t('actor_type.new.name')} (#{t('lang.it')})", :class => 'control-label') %>
     <div class="controls">
       <%= f.text_field(:'name[it]', :placeholder => t('actor_type.new.name'), :required => true) %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label(:'to_string', t('actor_type.new.to_string'), class: 'control-label') %>
+    <%= f.label(:'to_string_pattern', t('actor_type.new.to_string_pattern'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:'to_string', placeholder: t('actor_type.new.to_string'), required: true) %>
+      <%= f.text_field(:'to_string_pattern', :placeholder => t('actor_type.new.to_string_pattern'), :required => true) %>
+      <span class="help-block"><%= t('actor_type.new.to_string_pattern_explanation') %></span>
     </div>
   </div>
 

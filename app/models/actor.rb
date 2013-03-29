@@ -9,7 +9,8 @@ class Actor
   # Search with: Actor.full_text_search("Suchbegriff", match: :all)
 
   field :created_at, :type => DateTime
-  field :search_field
+  field :search_field, :type => String
+  field :to_string_field, :type => String
 
   belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced
   embeds_many :informations, class_name: 'Information'                                  #embedded
@@ -18,7 +19,7 @@ class Actor
 
 	#validates :informations, informations_not_empty: true #TODO: Do not forget to enable validation again. It's disabled for testing purposes only
 
-  before_save :update_search_field
+  before_save :update_search_field, :update_to_string_field
   search_in :search_field
 
 
@@ -35,13 +36,16 @@ class Actor
     self.relationship.detect{ |relationship| relationship.relationship_type.key == key }
   end
 
-  # todo this solution maybe too much datebase hungry?
   def to_s
-    final_parsed = self.actor_type.to_string
+    to_string_field
+  end
+
+  def update_to_string_field
+    final_parsed = self.actor_type.to_string_pattern
     informations.each do |information|
       final_parsed = final_parsed.gsub("|:#{information.information_type.key.to_s}|", information.value_to_s)
     end
-    final_parsed
+    self.to_string_field = final_parsed
   end
 
   #TODO: At the moment, every information is added to the search_field; in the future only information that is labelled as "searchable" must be added to the searchfield

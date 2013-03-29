@@ -7,7 +7,7 @@ class ActorTypeController < ApplicationController
     @actor_type = ActorType.new
     @actor_type.key = params[:actor_type][:name][:en].downcase.tr(' ', '_')
     @actor_type.name_translations = params[:actor_type][:name]
-    @actor_type.to_string = params[:actor_type][:to_string]
+    @actor_type.to_string_pattern = params[:actor_type][:to_string_pattern]
 
     if params[:information_type_decorator]
       keys = params[:information_type_decorator][:type]
@@ -51,7 +51,7 @@ class ActorTypeController < ApplicationController
   def update
     @actor_type = ActorType.find(params[:id])
     @actor_type.name_translations = params[:actor_type][:name]
-    @actor_type.to_string = params[:actor_type][:to_string]
+    @actor_type.to_string_pattern = params[:actor_type][:to_string_pattern]
     @actor_type.information_type_decorators = Array.new
 
 

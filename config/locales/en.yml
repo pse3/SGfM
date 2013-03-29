@@ -119,13 +119,15 @@ en:
       optional: 'Require this information'
       searchable: 'Searchable'
       key: 'Key'
-      to_string: 'ToString representation'
+      to_string_pattern: 'ToString representation'
+      to_string_pattern_explanation: 'Use |:infotypekey| to display a information'
       name: 'Name'
 
     edit:
       title: 'Edit actor type'
       name: 'Name'
-      to_string: 'ToString representation'
+      to_string_pattern: 'ToString representation'
+      to_string_pattern_explanation: 'Use |:infotypekey| to display a information'
 
     create:
       title: 'Created actor type'

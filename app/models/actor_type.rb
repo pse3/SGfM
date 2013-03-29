@@ -4,7 +4,7 @@ class ActorType
 
   field :name, :type => String, :localize => true
   field :key, :type => Symbol
-  field :to_string, :type => String
+  field :to_string_pattern, :type => String
 
   validates_uniqueness_of :key
 
