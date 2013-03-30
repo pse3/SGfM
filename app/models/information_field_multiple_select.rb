@@ -18,9 +18,9 @@ class InformationFieldMultipleSelect < InformationFieldType
   end
 
   def form(form_helper, key, options = { :data => [], :required => false, :value => '' })
-    form_helper.select(key, options[:data], {:prompt => 'select'}, { :required => options[:required],
-                                                                    :selected  => options[:value],
-                                                                    :multiple => true })
+    form_helper.select(key, options[:data], {}, { :required => options[:required],
+                                                  :selected  => options[:value],
+                                                  :multiple => true })
   end
 
 end
