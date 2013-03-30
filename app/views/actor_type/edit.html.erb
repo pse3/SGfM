@@ -69,19 +69,21 @@
         <div class='control-group'>
           <%= f.label("required_#{i}", t('actor_type.edit.required'), :class => 'control-label') %>
           <div class='controls'>
-            <!-- TODO use checkbox here instead! -->
-            <%= f.select("required_#{i}", [[t('yes'), true], [t('no'), false]], {}, { :value => information_type_decorator.required,
-                                                                                :name => 'information_type_decorator[required][]' }) %>
+            <!-- TODO use checkbox here instead! PLEASE NOTE: HANDLE THE PARAMS WITH CHECKBOXES AIN'T EASY!!! -->
+            <%= f.select("required_#{i}", [[t('yes'), true], [t('no'), false]],
+                         { :selected => information_type_decorator.required },
+                         { :name => 'information_type_decorator[required][]' }) %>
           </div>
         </div>
 
         <div class='control-group'>
           <%= f.label("searchable_#{i}", t('actor_type.edit.searchable'), :class => 'control-label') %>
           <div class='controls'>
-            <!-- TODO use checkbox here instead!
+            <!-- TODO use checkbox here instead! PLEASE NOTE: HANDLE THE PARAMS WITH CHECKBOXES AIN'T EASY!!!
                  TODO only should be able to choose if info type is predefined public -->
-            <%= f.select("searchable_#{i}", [[t('yes'), true], [t('no'), false]], {}, { :value => information_type_decorator.searchable,
-                                                                                  :name => 'information_type_decorator[searchable][]' }) %>
+            <%= f.select("searchable_#{i}", [[t('yes'), true], [t('no'), false]],
+                         { :selected => information_type_decorator.searchable },
+                         { :name => 'information_type_decorator[searchable][]' }) %>
           </div>
         </div>
       <% end %>
