@@ -9,6 +9,7 @@ class RelationshipType
 
   #no mappings needed!
 
+
   def self.find_by_key(key)
     RelationshipType.find_by(key: key)
   end

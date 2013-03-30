@@ -21,11 +21,6 @@ class InformationTypeDecorator
     info_type_dec
   end
 
-  # todo delete after searchable and required are saved correctly in db
-  def to_s
-    "req:#{required},search:#{searchable}"
-  end
-
   # todo that looks nice, what does it do?
   def method_missing(method, *args)
     args.empty? ? information_type.send(method) : information_type.send(method, args)

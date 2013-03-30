@@ -8,8 +8,8 @@ class Information
   field :created_at, :type => DateTime
   field :changed_at, :type => DateTime
 
-  belongs_to :creator, :class_name => 'User', :inverse_of => nil                                          #referenced  / one way relationship                                                                                                                                                                                                                                                 #embedded
-  belongs_to :information_type_decorator, :class_name => 'InformationTypeDecorator', :inverse_of => nil   #referenced  / one way relationship
+  belongs_to :creator, :class_name => 'User', :inverse_of => nil                                          #referenced / one way relationship                                                                                                                                                                                                                                                 #embedded
+  belongs_to :information_type_decorator, :class_name => 'InformationTypeDecorator', :inverse_of => nil   #referenced / one way relationship
   embedded_in :actor, :class_name => 'Actor'                                                              #embedded
 
   inherit_scope_from :information_type_decorator
