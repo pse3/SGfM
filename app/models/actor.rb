@@ -16,7 +16,7 @@ class Actor
   has_many :relationships, class_name: 'Relationship'                                  	#embedded
   belongs_to :owner, class_name: 'User'                                                 #embedded
 
-	#validates :informations, informations_not_empty: true #TODO: Do not forget to enable validation again. It's disabled for testing purposes only
+	#validates :informations, informations_not_empty: true #TODO: Do we still need this validation?
 
   #Please note: 'before_save' MUST be written BEFORE "search_in"
   before_save :update_searchfield_and_to_string_field
@@ -49,16 +49,16 @@ class Actor
 
   def update_to_string_field
       self.to_string_field = ""
-      #TODO: At the moment, every information is added to the to_string_field; in the future
-      #only information that is labelled as "toString" must be added to the to_string_field
-      self.informations.each { |info| self.to_string_field = self.to_string_field + info.value_to_s }
+      #self.informations.each do |info|
+      #  self.to_string_field = self.to_string_field + info.value_to_s if info.information_type_decorator.part_of_to_string_field == true
+      #end
   end
 
   def update_searchfield
     self.searchfield = ""
-    #TODO: At the moment, every information is added to the searchfield; in the future
-    #only information that is labelled as "searchable" must be added to the searchfield
-    self.informations.each { |info| self.searchfield = self.searchfield + info.value_to_s }
+    self.informations.each do |info|
+      self.searchfield = self.searchfield + info.value_to_s if info.information_type_decorator.searchable == true && true # && info.scope == public
+    end
   end
 
 end
