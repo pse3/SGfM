@@ -57,7 +57,7 @@ class Actor
   def update_searchfield
     self.searchfield = ""
     self.informations.each do |info|
-      self.searchfield = self.searchfield + info.value_to_s if info.information_type_decorator.searchable == true && true # && info.scope == public
+      self.searchfield = self.searchfield + info.value_to_s if info.information_type_decorator.searchable == true  && info.scope.key == "public"
     end
   end
 
