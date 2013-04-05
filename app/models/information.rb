@@ -49,4 +49,8 @@ class Information
     self.information_type_decorator.index
   end
 
+  def public?
+    self.scope.key == "public" # TODO use here string or scope?
+  end
+
 end
