@@ -17,7 +17,7 @@ class Actor
   has_many :relationships, class_name: 'Relationship'                                  	#embedded
   belongs_to :owner, class_name: 'User'                                                 #embedded
 
-	#validates :informations, informations_not_empty: true #TODO: Do not forget to enable validation again. It's disabled for testing purposes only
+	#validates :informations, informations_not_empty: true #TODO: Do we still need this validation?
 
   before_save :update_search_field, :update_to_string_field
   search_in :search_field
@@ -52,7 +52,7 @@ class Actor
   def update_search_field
     self.search_field = ''
     self.informations.each do |information|
-      if information.searchable?
+      if information.searchable? and information.public?
         self.search_field += information.value_to_s
       end
     end

@@ -5,8 +5,8 @@ class Admin
   has_one :login, :as => :account
 
 
-	def user_type
-		self.login.account_type
+  def user_type
+    self.login.account_type
   end
 
 end
