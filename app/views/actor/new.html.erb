@@ -26,7 +26,7 @@
   <div class="control-group">
     <p>
       <%= button_to_function(t('actor.new.add_relationship'),
-                             'SGfM.relationship.add_relationship_form("' + add_relationship_form_path + '")',
+                             "SGfM.form.add_form(\"#{add_relationship_form_path}\",'relationship-form')",
                              :type => :button, :class => 'btn btn-medium') %>
     </p>
   </div>

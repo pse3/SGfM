@@ -15,31 +15,21 @@
 //= require bootstrap
 //= require select2
 
-//todo refactor this into "json format", like it was before
+
 var SGfM = {
   remove_form : function(id, field_number) {
     $(id + "_" + field_number).remove();
   },
-    add_form : function(controller_path, before_id) {
-        jQuery.ajax({
-            url: controller_path,
-            type: 'GET',
-            dataType: 'html',
-            success: function(data) {
-                jQuery(before_id).before(data);
-            }
-        });
-    },
-    add_form_after : function(controller_path, after_id) {
-        jQuery.ajax({
-            url: controller_path,
-            type: 'GET',
-            dataType: 'html',
-            success: function(data) {
-                jQuery(after_id).after(data);
-            }
-        });
-    }
+  add_form : function(controller_path, id) {
+    jQuery.ajax({
+      url: controller_path,
+      type: 'GET',
+      dataType: 'html',
+      success: function(data) {
+        jQuery(id).after(data); <!-- if you use before here, the relationship reference shit will break!!!!!!-->
+      }
+    });
+  }
 }
 
 
@@ -51,29 +41,20 @@ SGfM.actor = {
       data: {"actor_type_key" : actor_type_key},
       dataType: 'html',
       success: function(data) {
-          jQuery('#information-types-form').html(data);
+        jQuery('#information-types-form').html(data);
       }
     });
   }
 }
 
-SGfM.relationship = {
-  add_relationship_form : function(controller_path) {
-    SGfM.add_form_after(controller_path, '#relationship-form');
+<!-- always use this one -->
+SGfM.form = {
+  add_form : function(controller_path,where) {
+    SGfM.add_form(controller_path, '#' + where);
   },
-  remove_relationship_form : function(field_number) {
-    SGfM.remove_form("#relationship", field_number);
+  remove_form : function(id,field_number) {
+    SGfM.remove_form('#' + id, field_number)
   }
 }
-
-SGfM.actor_type = {
-  add_information_type_form : function(controller_path) {
-    SGfM.add_form(controller_path, '#information-type-form');
-  },
-  remove_information_type_form : function(field_number) {
-    SGfM.remove_form('#information_type', field_number)
-  }
-}
-
 
 

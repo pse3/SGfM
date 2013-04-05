@@ -3,6 +3,7 @@
 class Scope
 	#TODO: Implement validator
   include Mongoid::Document
+
 	field :key, :type => String
   field :name, :type => String, :localize => true
 	field :list, :type => Array #allowed elements are: :Self and all possible account types (e.g. :Admin, :User, ...)
@@ -14,5 +15,6 @@ class Scope
 	#Returns all types of scopes in a list. (That means it returns the Class-Objects)
 	def self.all_types
 		 Scope.descendants
-	end
+  end
+
 end
