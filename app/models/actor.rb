@@ -48,15 +48,12 @@ class Actor
     self.to_string_field = final_parsed
   end
 
+  # todo maybe it not updated correctly when called via actor_type's after_save, maybe
   def update_search_field
     self.search_field = ''
     self.informations.each do |information|
       if information.searchable? and information.public?
-        self.search_field += information.value_to_s   #TODO: Refactor: information.public? Should be
-                                                      #replaced by information.visible? as soon as the
-                                                      #.visible? method is available.
-                                                      #the public? Method in "information.rb" can be
-                                                      #deleted then
+        self.search_field += information.value_to_s
       end
     end
   end

@@ -34,12 +34,11 @@ class ActorType
     information_type_decorators.select{|info_type_decorator| info_type_decorator.information_type == InformationType.find_by_key(key) }.first
   end
 
-  # Updates the search_field and to_string_field of each actor that uses this actor_type
+  # Saves each actor that uses this actor_type to activate update methods of actor (e.g. before_save)
   def update_corresponding_actors
     corresponding_actors = Actor.where(:actor_type => self)
     corresponding_actors.each do |actor|
-      actor.update_search_field
-      actor.update_to_string_field
+      actor.save
     end
   end
 
