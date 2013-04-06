@@ -12,6 +12,9 @@ module Scoped
   def visible?(viewer)
 		#TODO - self.actor.owner - quick fix - don't know if this is the most beautiful solution. (Assuming every scoped has a .actor.owner - works for now)
     scope.visible?(viewer, self.actor.owner)
+
+    #TODO: Add a method visible? without a certain viewer that returns true if the information is publicly visible
+
   end
 
   module ClassMethods

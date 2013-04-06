@@ -38,7 +38,8 @@ class ActorType
   def update_corresponding_actors
     corresponding_actors = Actor.where(:actor_type => self)
     corresponding_actors.each do |actor|
-      actor.save
+      actor.update_search_field
+      actor.update_to_string_field
     end
   end
 
