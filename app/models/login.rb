@@ -2,9 +2,10 @@
 # for devise specific data. It is connected to an account which can either be
 # a User or an Admin.
 # Author::    Kenneth Radunz  (kenneth.radunz@gmail.com)
-
 class Login
+
   include Mongoid::Document
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -62,8 +63,8 @@ class Login
     self.account_type == 'Admin'
 	end
 
-	#Gives you all account types in a list
-	def self.all_account_types
+	# Returns all account types in a list
+	def self.account_types
 		Login.all.distinct("account_type")
 	end
 

@@ -15,7 +15,7 @@
         <%= f.hidden_field(:reference, :id => 'e1', :name => 'relationship[reference][]', :required => true) %>
         <p class="pull-right">
           <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor.new.remove_relationship')}"),
-                               "SGfM.relationship.remove_relationship_form(\"#{field_number}\")",
+                               "SGfM.form.remove_form('relationship',\"#{field_number}\")",
                                :type => :button, :class => 'btn btn-danger') %>
         </p>
       </div>
@@ -31,9 +31,10 @@
   <% end %>
 
 
-  <!-- todo very unclean, this way with each new relationship field, the script gets duplicated-->
+  <!-- todo very unclean, this way with each new relationship field, the array gets duplicated-->
   <!-- todo fix this, then go change method in javascript file from 'add_form_after' to 'add_form' and delete 'add_form_after'-->
   <!-- todo ask oli if above line is unclear ;) -->
+  <!-- todo what? lool? -->
   <script>
     $('document').ready(function() {
 

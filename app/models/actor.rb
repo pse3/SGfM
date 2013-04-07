@@ -1,15 +1,16 @@
+# Base class for hospitals, doctors etc.
 class Actor
-  # base class for hospitals, doctors etc.
 
   include Mongoid::Document
 	include ActiveModel::Validations
   include Mongoid::Search
+
   # More informations about this search gem: https://github.com/mauriciozaffari/mongoid_search
   # Search with: Actor.full_text_search("Suchbegriff", match: :all)
 
   field :created_at, :type => DateTime
-  field :searchfield
-  field :to_string_field
+  field :search_field, :type => String
+  field :to_string_field, :type => String
 
   belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced
   embeds_many :informations, class_name: 'Information'                                  #embedded
@@ -18,9 +19,9 @@ class Actor
 
 	#validates :informations, informations_not_empty: true #TODO: Do we still need this validation?
 
-  #Please note: 'before_save' MUST be written BEFORE "search_in"
-  before_save :update_searchfield_and_to_string_field
-  search_in :searchfield
+  before_save :update_search_field, :update_to_string_field
+  search_in :search_field
+
 
   def initialize
     super
@@ -28,36 +29,32 @@ class Actor
   end
 
   def find_information_by_key(key)
-    self.informations.detect{ |info| info.information_type_decorator.key == key }
+    self.informations.detect{ |information| information.information_type_decorator.key == key }
 	end
 
   def find_relationship_by_key(key)
     self.relationship.detect{ |relationship| relationship.relationship_type.key == key }
   end
 
-  #TODO need to fix this, only temporary to sting method # needs to be type specific
   def to_s
-    return find_information_by_key(:company).value_to_s unless find_information_by_key(:company).nil?
-    return self.find_information_by_key(:last_name).value_to_s + ' ' + find_information_by_key(:first_name).value_to_s unless find_information_by_key(:first_name).nil? || find_information_by_key(:last_name).nil?
-    return 'bazinga'
-  end
-
-  def update_searchfield_and_to_string_field
-    update_to_string_field
-    update_searchfield
+    to_string_field
   end
 
   def update_to_string_field
-      self.to_string_field = ""
-      #self.informations.each do |info|
-      #  self.to_string_field = self.to_string_field + info.value_to_s if info.information_type_decorator.part_of_to_string_field == true
-      #end
+    final_parsed = self.actor_type.to_string_pattern
+    informations.each do |information|
+      final_parsed = final_parsed.gsub("|:#{information.information_type.key.to_s}|", information.value_to_s)
+    end
+    self.to_string_field = final_parsed
   end
 
-  def update_searchfield
-    self.searchfield = ""
-    self.informations.each do |info|
-      self.searchfield = self.searchfield + info.value_to_s if info.information_type_decorator.searchable == true  && info.scope.key == "public"
+  # todo maybe it not updated correctly when called via actor_type's after_save, maybe
+  def update_search_field
+    self.search_field = ''
+    self.informations.each do |information|
+      if information.searchable? and information.public?
+        self.search_field += information.value_to_s
+      end
     end
   end
 

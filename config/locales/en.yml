@@ -111,6 +111,7 @@ en:
     new:
       title: 'Create new actor type'
       create_actor_type: 'Create'
+      basics: 'Basic informations'
       information_types: 'Information types'
       add_information_type: 'Add information type'
       remove_information_type: 'Remove information type'
@@ -118,13 +119,17 @@ en:
       optional: 'Require this information'
       searchable: 'Searchable'
       key: 'Key'
-      name_en: 'Name (english)'
-      name_de: 'Name (german)'
-      name_fr: 'Name (french)'
-      name_it: 'Name (italian)'
+      to_string_pattern: 'ToString representation'
+      to_string_pattern_explanation: 'Use |:infotypekey| to display a information'
+      name: 'Name'
 
     edit:
       title: 'Edit actor type'
+      name: 'Name'
+      to_string_pattern: 'ToString representation'
+      to_string_pattern_explanation: 'Use |:infotypekey| to display a information'
+      basics: 'Basic informations'
+      information_types: 'Information types'
 
     create:
       title: 'Created actor type'

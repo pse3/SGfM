@@ -13,9 +13,7 @@ class InformationFieldSingleSelect < InformationFieldType
   end
 
   def form(form_helper, key, options = { :data => [], :required => false, :value => '' })
-    form_helper.select(key, options[:data],
-                       :required => options[:required],
-                       :selected  => options[:value] )
+    form_helper.select(key, options[:data], :required => options[:required], :selected  => options[:value] )
   end
 
 end

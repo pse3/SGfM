@@ -1,4 +1,5 @@
 class InformationFieldType
+
   include Mongoid::Document
 
   field :key, :type => Symbol
