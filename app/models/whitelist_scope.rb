@@ -8,7 +8,7 @@ class WhitelistScope < Scope
 		list = self.list
 
 		if viewer.is_a? Symbol #accepts a symbol. facilitates indexing scoped-objects in search. untested.
-			return !(list.include?(viewer))
+			return (list.include?(viewer))
 		end
 
 		if viewer.nil?
