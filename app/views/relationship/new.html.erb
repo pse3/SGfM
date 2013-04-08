@@ -1,0 +1,46 @@
+<% @page_title = t('relationship.new.title', :actor => @locals[:actor]) %>
+
+<%= form_for(:relationship, :url => create_relationship_path, :method => :post, :html => { :class => 'form-horizontal'} ) do |f| %>
+
+  <div class="control-group">
+    <%= f.label(:relationship_type, t('relationship.new.relationship_type'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.select(:relationship_type, relationship_types.map{ |type| [type.name, type.key] }, {}, :required => true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:reference, t('relationship.new.relationship_reference'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.hidden_field(:reference, :id => 'e1', :required => true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:comment, t('relationship.new.relationship_comment'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_area(:comment, { :rows => '3' }) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit(t('form.create'), class: 'btn btn-large btn-primary') %>
+  </div>
+
+<% end %>
+
+<script>
+  $('document').ready(function() {
+
+    var data = [<%= raw(@locals[:all_actors].map { |a| "{id:'#{a.id}',text:'#{a.to_s}'}" }.join(', ')) %>];
+    function format(item) { return item.text; };
+
+    $("#e1").select2({
+      width: '500',
+      data:{ results: data },
+      formatSelection: format,
+      formatResult: format
+    });
+
+  });
+</script>

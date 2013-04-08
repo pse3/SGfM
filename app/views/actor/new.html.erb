@@ -1,23 +1,46 @@
 <% @page_title = t('actor.new.title') %>
 
 
-<%= form_for(:actor, html: {class: 'form-horizontal'}) do |f| %>
+<%= form_for(:actor, :url => create_actor_path, :method => :post, :html => { :class => 'form-horizontal' }) do |f| %>
 
-    <div class="control-group">
-        <%= f.label(:actor_type, t('actor.new.select_type'), class: 'control-label') %>
-        <div class="controls">
-            <%= f.collection_select(:actor_type, list_actor_types, :key, :name, {}, {:id => 'actor-type-select',:onchange => "SGfM.actor.render_matching_form('"+information_types_for_actor_type_path+"',this.value)"}) %>
-        </div>
-    </div>
+  <div class="page-header">
+    <h1><small><%= t('actor.new.actor_type_data') %></small></h1>
+  </div>
 
-    <div id="information-types-form"></div>
+  <div class="control-group">
+    <%= f.label(:actor_type, t('actor.new.select_type'), class: 'control-label') %>
+      <div class="controls">
+        <%= f.collection_select(:actor_type, list_actor_types, :key, :name, {}, {:id => 'actor-type-select',:onchange => "SGfM.actor.render_matching_form('"+information_types_for_actor_type_path+"',this.value)"}) %>
+      </div>
+  </div>
+
+  <div id="information-types-form"></div>
+
+
+  <div class="page-header">
+    <h1><small><%= t('actor.new.relationship_data') %></small></h1>
+  </div>
+
+  <div id="relationship-form"></div>
+
+  <div class="control-group">
+    <p>
+      <%= button_to_function(t('actor.new.add_relationship'),
+                             'SGfM.relationship.add_relationship_form("' + add_relationship_form_path + '")',
+                             :type => :button, :class => 'btn btn-medium') %>
+    </p>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit(t('actor.new.create_actor'), class: 'btn btn-large btn-primary') %>
+  </div>
 
 <% end %>
 
 
 <script>
-    //Set default form
-    $('document').ready(function(){
-        SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path%>',$('#actor-type-select').val());
-    });
+  $('document').ready(function() {
+    SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path%>',$('#actor-type-select').val());
+  });
 </script>
+

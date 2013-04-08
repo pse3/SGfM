@@ -1,18 +1,26 @@
-<%= form_for(:actor, url: create_actor_path, html: {class: 'form-horizontal'}) do |f| %>
-  <% for info in information_types do %>
-    <div class="control-group">
-      <%= f.label(info.key, info.name, class: 'control-label') %>
-      <div class="controls">
-        <%= f.text_field(info.key, placeholder: info.name, required: true) %>
-      </div>
-    </div>
-  <% end %>
+<% @scopes = list_scopes %>
+<%= fields_for(:actor) do |f| %>
+    <% information_types.each do |information_type| %>
+        <%= f.fields_for(:information) do |info_form| %>
+            <div class="control-group">
+              <% if information_type.required %>
+                  <%=  info_form.label(information_type.key,  information_type.name+'*', class: 'control-label') %>
+              <% else %>
+                  <%= info_form.label(information_type.key,  information_type.name, class: 'control-label') %>
+              <% end %>
+              <div class="controls">
+                <%= information_type.information_field_type.form(info_form, information_type.key, { :placeholder => information_type.name, :data => information_type.data, :required => information_type.required }) %>
+                <% if information_type.scope %>
+                    <select disabled="disabled">
+                      <option><%= information_type.scope.name %></option>
+                    </select>
+                <% else %>
+                    <%= f.collection_select("scope[#{information_type.key}]", @scopes, :key, :name)%>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
 
-  <%= f.hidden_field(:actor_type_key, value: actor_type_key) %>
-
-  <div class="form-actions">
-    <%= f.submit(t('actor.new.create_actor'), class: 'btn btn-large btn-primary') %>
-  </div>
-
+    <%= f.hidden_field(:actor_type_key, value: actor_type_key) %>
 <% end %>
-

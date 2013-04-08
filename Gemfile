@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'mongoid', '~> 3.0.0'
@@ -9,8 +9,13 @@ gem 'mocha', :require => false
 gem 'minitest-reporters', :require => false
 gem 'rspec-rails', :require => false
 gem 'capybara'
+# for Server
 gem 'execjs'
 gem 'therubyracer'
+# end
+gem "select2-rails" # Added by urs, needed to allow easy dropdown autocomplete box for relationship references
+gem 'mongoid_search'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

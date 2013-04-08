@@ -4,18 +4,34 @@
 <%= form_for(@actor, :url => update_actor_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
 
   <div class="control-group">
-    <%= f.label(:actor_type, t('actor.edit.title'), :class => 'control-label') %>
+    <%= f.label(:actor_type, t('actor.edit.type'), :class => 'control-label') %>
     <div class="controls">
       <%= f.text_field(:actor_type, :disabled => 'disabled') %>
     </div>
   </div>
 
-  <% @actor.informations.each do |i|%>
-    <%=  f.fields_for i do |info_form| %>
+  <%= f.fields_for(:information) do |info_form| %>
+    <% @actor.informations.each do |information| %>
+      <% information_field_type = information.information_type_decorator.information_field_type %>
       <div class="control-group">
-        <%= info_form.label(i.key, i.name, :class => 'control-label') %>
+        <% if information.information_type_decorator.required %>
+            <%=  info_form.label(information.information_type_decorator.key,  information.information_type_decorator.name+'*', class: 'control-label') %>
+        <% else %>
+            <%= info_form.label(information.information_type_decorator.key,  information.information_type_decorator.name, class: 'control-label') %>
+        <% end %>
         <div class="controls">
-          <%= info_form.text_field i.key, :value => i.value %>
+          <%= information_field_type.form(info_form, information.information_type_decorator.key, { :value => information.value,
+                                                                                         :placeholder => information.information_type_decorator.name,
+                                                                                         :data => information.information_type_decorator.data,
+                                                                                         :required => information.information_type_decorator.required } ) %>
+          <% if information.information_type_decorator.scope %>
+            <select disabled="disabled">
+              <option><%= information.information_type_decorator.scope.name %></option>
+            </select>
+          <% else %>
+            <% @scopes = list_scopes %>
+            <%= select("actor[scope]", information.information_type_decorator.key.to_s, options_from_collection_for_select(@scopes, :key, :name, selected: information.scope.key), {selected: information.scope.key})%>
+          <% end %>
         </div>
       </div>
     <% end %>

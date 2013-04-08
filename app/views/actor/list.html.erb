@@ -1,19 +1,36 @@
 <% @page_title = t('actor.list.title') %>
 
 
-<div class="row pull-right">
-  <%= link_to(t('actor.list.new_actor'), create_actor_path, :class => 'btn btn-primary') %>
+<div class="row">
+  <div class="row pull-right">
+    <%= link_to(t('actor.list.new_actor'), create_actor_path, :class => 'btn btn-primary') %>
+  </div>
 </div>
 
-<table class="table table-hover">
-  <tr>
-    <th><%= t('actor.list.name_table') %></th>
-    <th><%= t('actor.list.type_table') %></th>
-  </tr>
-  <% for actor in @actors %>
-    <tr>
-      <td><%= link_to(actor, show_actor_path(actor)) %></td>
-      <td><%= actor.actor_type %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+    <% @actors_hash.keys.each_with_index do |actor_type, tab_count| %>
+      <li <%= 'class="active"' if tab_count == 0 %>>
+        <%= content_tag(:a, :href => '#tab' + tab_count.to_s, :'data-toggle' => 'tab') do %>
+          <%= actor_type %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <% @actors_hash.keys.each_with_index do |type,tab_count| %>
+      <%= content_tag(:div, :class => 'tab-pane' + ((tab_count == 0) ? ' active' : ''), :id => "tab#{tab_count.to_s}") do %>
+        <table class="table table-hover">
+          <tr>
+            <th><%= t('actor.list.name_table') %></th>
+          </tr>
+          <% @actors_hash[type].each do |actor| %>
+            <tr>
+              <td><%= link_to(actor.to_s, show_actor_path(actor)) %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+    <% end %>
+  </div>
+</div>

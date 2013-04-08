@@ -2,7 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 it:
-
+  yes: 'Si'
+  no: 'No'
   layout:
     sign_in: 'Pizza'
     sign_out: 'Mozzarella'

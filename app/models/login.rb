@@ -1,4 +1,8 @@
-# The Login model represents an abstract login. This
+# The Login model represents an abstract login. This is a container
+# for devise specific data. It is connected to an account which can either be
+# a User or an Admin.
+# Author::    Kenneth Radunz  (kenneth.radunz@gmail.com)
+
 class Login
   include Mongoid::Document
   # Include default devise modules. Others available are:
@@ -56,6 +60,11 @@ class Login
 
   def is_admin?
     self.account_type == 'Admin'
-  end
+	end
+
+	#Gives you all account types in a list
+	def self.all_account_types
+		Login.all.distinct("account_type")
+	end
 
 end

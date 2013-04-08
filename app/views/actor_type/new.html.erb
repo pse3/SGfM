@@ -4,31 +4,43 @@
 <%= form_for(:actor_type, :url => create_actor_type_path, :html => {:class => 'form-horizontal'}) do |f| %>
 
   <div class="control-group">
-    <%= f.label(t('actor_type.new.key'), class: 'control-label') %>
+    <%= f.label(:'name[en]', t('actor_type.new.name_en'), class: 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:key, placeholder: t('actor_type.new.key'), required: true) %>
+      <%= f.text_field(:'name[en]', placeholder: t('actor_type.new.name_en'), required: true) %>
     </div>
   </div>
-
-  <!--todo need to add field_name for each lang.-->
   <div class="control-group">
-    <%= f.label(t('actor_type.new.name'), class: 'control-label') %>
+    <%= f.label(:'name[de]', t('actor_type.new.name_de'), class: 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:name, placeholder: t('actor_type.new.key'), required: true) %>
+      <%= f.text_field(:'name[de]', placeholder: t('actor_type.new.name_de'), required: true) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label(:'name[fr]', t('actor_type.new.name_fr'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[fr]', placeholder: t('actor_type.new.name_fr'), required: true) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label(:'name[it]', t('actor_type.new.name_it'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[it]', placeholder: t('actor_type.new.name_it'), required: true) %>
     </div>
   </div>
 
-  <!--todo clicking label should toggle checkbox like in signIn popup.-->
-  <% for info_type in @information_types do %>
-    <%= f.fields_for info_type do |it_form| %>
-    <div class="control-group">
-      <%= it_form.label(:key, info_type.name, :class => 'control-label') %>
-      <div class="controls">
-        <%= check_box_tag(info_type.key, '1') %>
-      </div>
-    </div>
-    <% end %>
-  <% end %>
+  <div class="page-header">
+    <h1><small><%= t('actor.new.information_types') %></small></h1>
+  </div>
+
+  <div id="information-type-form"></div>
+
+  <div class="control-group">
+    <p>
+      <%= button_to_function('Add Information Type',
+                             'SGfM.actor_type.add_information_type_form("' + add_information_type_form_path + '")',
+                             :type => :button, :class => 'btn btn-medium') %>
+    </p>
+  </div>
 
   <div class="form-actions">
     <%= f.submit(t('actor_type.new.create_actor_type'), :class => 'btn btn-primary') %>

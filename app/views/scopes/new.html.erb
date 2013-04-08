@@ -1,0 +1,63 @@
+<% @page_title = t('scopes.new.title') %>
+
+<% content_for :header do %>
+  <%= javascript_include_tag 'bootstrap-multiselect' %>
+  <%= javascript_include_tag 'scopes/multiselect_initializer' %>
+<% end %>
+
+<%= form_for(:scope, url: create_scope_path, html: {class: 'form-horizontal'}) do |f| %>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.type'), class: 'control-label') %>
+    <div class="controls">
+      <% #=> Class Obj. :to_s = class names%>
+      <%= f.collection_select("_type", list_scope_types, :to_s, :to_s)%>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[en]', placeholder: t('lang.en'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[de]', placeholder: t('lang.de'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[fr]', placeholder: t('lang.fr'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.name'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[it]', placeholder: t('lang.it'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.key'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:key, placeholder: t('scopes.new.key'), required: true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(t('scopes.new.list'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.collection_select("list", list_account_types, :to_s, :to_s, {}, {class: 'multiselect', multiple: true})%>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit(t('scopes.new.create_scope'), class: 'btn btn-primary') %>
+  </div>
+<% end %>
