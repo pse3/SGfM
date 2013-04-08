@@ -140,6 +140,8 @@ en:
      new_information_type: 'Create new information type'
      name_table: 'Name'
      key_table: 'Key'
+     field_type_table: 'Field Type'
+     actions_table: 'Actions'
 
     show:
       title: '%{information_type}'
