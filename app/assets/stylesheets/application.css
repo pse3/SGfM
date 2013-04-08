@@ -14,3 +14,6 @@
  *= require header
  *= require select2
  */
+.bottom-margin {
+    margin-bottom:15px;
+}
