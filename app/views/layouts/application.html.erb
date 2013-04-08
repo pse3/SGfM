@@ -31,6 +31,12 @@
             <!-- nav-bar menu left -->
             <ul class="nav">
               <li><%= link_to(t('home.index.title'), home_path) %></li>
+              <% if login_signed_in? %>
+                <li><%= link_to(t('application.menu.actors'), actors_path) %></li>
+                <% if current_login.is_admin? %>
+                <li></li>
+                <% end %>
+              <% end %>
             </ul>
 
             <!-- nav-bar menu right -->
@@ -88,12 +94,23 @@
       </div>
     </div>
 
-    <!-- flash-messages -->
+    <!-- admin tab-menue -->
+    <% if login_signed_in? %>
+      <% if current_login.is_admin? %>
       <div class="row-fluid">
         <div class="span8 offset2">
-          <%= render partial: "shared/flashes", flash: flash %>
+          <%= render partial: "admin/menue" %>
         </div>
       </div>
+    <% end %>
+    <% end %>
+
+    <!-- flash-messages -->
+    <div class="row-fluid">
+      <div class="span8 offset2">
+        <%= render partial: "shared/flashes", flash: flash %>
+      </div>
+    </div>
 
     <!-- main div -->
     <div class="row-fluid">
