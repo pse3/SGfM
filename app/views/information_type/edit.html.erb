@@ -47,35 +47,39 @@
   <div class="control-group">
     <%= f.label :'information_field_type_data[en]', "#{t('information_type.edit.field_type_data')} (#{t('lang.en')})", class: 'control-label' %>
     <div class='controls'>
-      <%= f.text_field(:'information_field_type_data[en]', :value => @information_type.data_translations['en'].join(', '), :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
+      <%= f.text_field(:'information_field_type_data[en]', :value => @information_type.data_translations['en'] ? @information_type.data_translations['en'].join(', ') : nil, :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :'information_field_type_data[de]', "#{t('information_type.edit.field_type_data')} (#{t('lang.de')})", class: 'control-label' %>
     <div class='controls'>
-      <%= f.text_field(:'information_field_type_data[de]', :value => @information_type.data_translations['de'].join(', '), :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
+      <%= f.text_field(:'information_field_type_data[de]', :value => @information_type.data_translations['de'] ? @information_type.data_translations['de'].join(', ') : nil, :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :'information_field_type_data[fr]', "#{t('information_type.edit.field_type_data')} (#{t('lang.fr')})", class: 'control-label' %>
     <div class='controls'>
-      <%= f.text_field(:'information_field_type_data[fr]', :value => @information_type.data_translations['fr'].join(', '), :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
+      <%= f.text_field(:'information_field_type_data[fr]', :value => @information_type.data_translations['fr'] ? @information_type.data_translations['fr'].join(', ') : nil, :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :'information_field_type_data[it]', "#{t('information_type.edit.field_type_data')} (#{t('lang.it')})", class: 'control-label' %>
     <div class='controls'>
-      <%= f.text_field(:'information_field_type_data[it]', :value => @information_type.data_translations['it'].join(', '), :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
+      <%= f.text_field(:'information_field_type_data[it]', :value => @information_type.data_translations['it'] ? @information_type.data_translations['it'].join(', ') : nil, :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label(t('information_type.edit.predefined_scope'), class: 'control-label')%>
     <div class="controls">
-      <%= f.collection_select(:scope, list_scopes, :key, :name, {:selected => @information_type.scope.key}) %>
+      <% if @information_type.scope %>
+        <%= f.collection_select(:scope, list_scopes, :key, :name, {:selected => @information_type.scope.key}) %>
+      <% else %>
+        <%= f.collection_select(:scope, list_scopes, :key, :name, {:prompt => t('information_type.edit.predefined_scope_prompt')}) %>
+      <% end %>
     </div>
   </div>
 
