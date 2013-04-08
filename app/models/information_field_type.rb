@@ -7,6 +7,9 @@ class InformationFieldType
 
   validates_uniqueness_of :key
 
+  def parse_data(data)
+    #just implementing for children
+  end
 
   def self.find_by_key(key)
     InformationFieldType.find_by(key: key)

@@ -11,6 +11,7 @@ class InformationTypeController < ApplicationController
 			information_type.scope =  Scope.find_by name: params[:information_type][:scope]
     end
     information_type.information_field_type= InformationFieldType.find_by_key params[:information_type][:information_field_type]
+    information_type.data_translations= information_type.information_field_type.parse_data(params[:information_type][:information_field_type_data])
 		information_type.save
 
     flash[:success] = t('information_type.create.success')

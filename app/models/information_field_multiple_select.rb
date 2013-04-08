@@ -23,4 +23,11 @@ class InformationFieldMultipleSelect < InformationFieldType
                                                   :multiple => true })
   end
 
+  def parse_data(data)
+    result ={}
+    data.each do |key, value|
+      result[key] = value.split(%r{,\s*})
+    end
+    result
+  end
 end
