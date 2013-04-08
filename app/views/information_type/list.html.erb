@@ -14,13 +14,17 @@
   <tr>
     <th><%= t('information_type.list.name_table') %></th>
     <th><%= t('information_type.list.key_table') %></th>
-    <th><%= t('information_type.list.field_type') %></th>
+    <th><%= t('information_type.list.field_type_table') %></th>
+    <th><%= t('information.type.list.actions_table') %></th>
   </tr>
   <% for information_type in @information_types %>
     <tr>
       <td><%= link_to(information_type.name, show_information_type_path(information_type)) %></td>
       <td><%= information_type.key %></td>
       <td><%= information_type.information_field_type.name %></td>
+      <td>
+        <%= link_to raw('<i class="icon-edit"></i>'), edit_information_type_path(information_type) %>
+      </td>
     </tr>
   <% end %>
 </table>

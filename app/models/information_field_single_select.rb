@@ -16,4 +16,11 @@ class InformationFieldSingleSelect < InformationFieldType
     form_helper.select(key, options[:data], :required => options[:required], :selected  => options[:value] )
   end
 
+  def parse_data(data)
+    result ={}
+    data.each do |key, value|
+      result[key] = value.split(%r{,\s*})
+    end
+    result
+  end
 end

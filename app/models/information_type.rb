@@ -11,7 +11,6 @@ class InformationType
 
   belongs_to :information_field_type, :class_name => 'InformationFieldType', :inverse_of => nil  #referenced / one way relationship
 
-
   def self.find_by_key(key)
     InformationType.find_by(key: key)
   end
