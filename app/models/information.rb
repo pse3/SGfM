@@ -4,7 +4,7 @@ class Information
   include Scoped
 
   # todo needed to name this different otherwise its not clear what self.value is aiming for, do you know how to solve that?
-  field :shit_value
+  field :value_of_this_information
   field :created_at, :type => DateTime
   field :changed_at, :type => DateTime
 
@@ -21,15 +21,15 @@ class Information
   end
 
   def value
-    self.information_type_decorator.information_field_type.get_value(self.shit_value)
+    self.information_type_decorator.information_field_type.get_value(self.value_of_this_information)
   end
 
   def value=(value)
-    self.shit_value = self.information_type_decorator.information_field_type.set_value(value)
+    self.value_of_this_information = self.information_type_decorator.information_field_type.set_value(value)
   end
 
   def value_to_s
-    self.information_type_decorator.information_field_type.to_s(self.shit_value)
+    self.information_type_decorator.information_field_type.to_s(self.value_of_this_information)
   end
 
   # Returns the information type of this information without the decorator
@@ -47,10 +47,6 @@ class Information
 
   def index
     self.information_type_decorator.index
-  end
-
-  def public?
-    self.scope.key == "public" # TODO use here string or scope?
   end
 
 end

@@ -52,7 +52,7 @@ class Actor
   def update_search_field
     self.search_field = ''
     self.informations.each do |information|
-      if information.searchable? and information.public?
+      if information.searchable? and information.visible?(:User)
         self.search_field += information.value_to_s
       end
     end
