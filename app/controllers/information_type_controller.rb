@@ -13,10 +13,15 @@ class InformationTypeController < ApplicationController
     information_type.information_field_type= InformationFieldType.find_by_key params[:information_type][:information_field_type]
     #TODO make the view receive the data form via ajax so it is only displayed when needed
     information_type.data_translations= information_type.information_field_type.parse_data(params[:information_type][:information_field_type_data])
-		information_type.save
 
-    flash[:success] = t('information_type.create.success')
-    redirect_to information_types_path
+		if	information_type.save
+      flash[:success] = t('information_type.create.success')
+      redirect_to information_types_path
+    else
+      flash[:error] = t('information_type.create.failure')
+      redirect_to information_types_path
+    end
+
   end
 
   # Gets all information_types
@@ -25,6 +30,24 @@ class InformationTypeController < ApplicationController
     @information_types = InformationType.all
     if @information_types.nil?
       return Array.new
+    end
+  end
+
+  def edit
+    @information_type = InformationType.find_by id: params[:id]
+  end
+
+  def update
+    information_type = InformationType.find_by id: params[:id]
+    information_type.update_attributes(params[:information_type])
+    information_type.name_translations = params[:information_type][:name]
+    information_type.data_translations = information_type.information_field_type.parse_data(params[:information_type][:information_field_type_data])
+    if information_type.save
+      flash[:sucess] = t('information_type.update.success')
+      redirect_to information_types_path
+    else
+      flash[:error] = t('information_type.update.failure')
+      redirect_to edit_information_type(information_type)
     end
   end
 

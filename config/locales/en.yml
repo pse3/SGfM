@@ -161,12 +161,26 @@ en:
       field_type_data: 'Field type data'
       field_type_data_placeholder: 'e.g. option 1, option 2, option 3'
 
+    edit:
+      title: 'Edit information type'
+      name: 'Name'
+      key: 'Key'
+      predefined_scope: 'Predefined scope'
+      predefined_scope_prompt: 'None'
+      update_information_type: 'Edit'
+      field_type: 'Field type'
+      field_type_data: 'Field type data'
+      field_type_data_placeholder: 'e.g. option 1, option 2, option 3'
+
+
     create:
       title: 'Created information type'
       success: 'You have successfully created an information type!'
+      failure: 'There was an unknown error!'
 
     update:
-      success: 'Information type successfully updated!'
+      success: 'Edited informaton successfully!'
+      failure: 'There was an unknown error!'
 
 #Translation for all Scope-Pages
   scopes:
