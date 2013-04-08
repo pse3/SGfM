@@ -4,9 +4,30 @@
 <%= form_for(:information_type, :url => create_information_type_path, :html => {:class => 'form-horizontal'}) do |f| %>
 
   <div class="control-group">
-    <%= f.label(t('information_type.new.name'), :class => 'control-label') %>
+    <%= f.label('name[en]', "#{t('information_type.new.name')} (#{t('lang.en')})", class: 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:name, :placeholder => t('information_type.new.name')) %>
+      <%= f.text_field(:'name[en]', :placeholder => t('information_type.new.name'), :required => true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label('name[de]', "#{t('information_type.new.name')} (#{t('lang.de')})", class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[de]', :placeholder => t('information_type.new.name'), :required => true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label('name[fr]', "#{t('information_type.new.name')} (#{t('lang.fr')})", class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[fr]', :placeholder => t('information_type.new.name'), :required => true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label('name[it]', "#{t('information_type.new.name')} (#{t('lang.it')})", class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[it]', :placeholder => t('information_type.new.name'), :required => true) %>
     </div>
   </div>
 
@@ -18,11 +39,19 @@
   </div>
 
   <div class="control-group">
+    <%= f.label(t('information_type.new.field_type'), class: 'control-label')%>
+    <div class="controls">
+      <%= f.collection_select(:information_field_type, information_field_types, :key, :name) %>
+    </div>
+  </div>
+
+  <div class="control-group">
     <%= f.label(t('information_type.new.predefined_scope'), class: 'control-label')%>
     <div class="controls">
       <%= f.collection_select(:scope, list_scopes, :key, :name, {prompt: t('information_type.new.predefined_scope_prompt')}) %>
     </div>
   </div>
+
   <div class="form-actions">
     <%= f.submit(t('information_type.new.create_information_type'), :class => 'btn btn-primary') %>
   </div>

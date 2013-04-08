@@ -4,14 +4,14 @@ class InformationTypeController < ApplicationController
 
 	# Creates an InformationType with chosen name
   def create
-    @information_type = InformationType.new
-    @information_type.key = params[:information_type][:key]
-    @information_type.name = params[:information_type][:name]
-    @information_type.information_field_type = params[:information_type][:information_field_type]
+    information_type = InformationType.new
+    information_type.name_translations = params[:information_type][:name]
+    information_type.key = params[:information_type][:key]
     if params[:information_type][:scope]
-			@information_type.scope =  params[:information_type][:scope]
-		end
-		@information_type.save
+			information_type.scope =  Scope.find_by name: params[:information_type][:scope]
+    end
+    information_type.information_field_type= InformationFieldType.find_by_key params[:information_type][:information_field_type]
+		information_type.save
 
     flash[:success] = t('information_type.create.success')
     redirect_to information_types_path

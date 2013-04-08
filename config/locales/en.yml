@@ -161,6 +161,7 @@ en:
       predefined_scope: 'Predefined scope'
       predefined_scope_prompt: 'None'
       create_information_type: 'Create'
+      field_type: 'Field type'
 
     create:
       title: 'Created information type'
