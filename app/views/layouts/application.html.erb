@@ -32,9 +32,11 @@
             <ul class="nav">
               <li><%= link_to(t('home.index.title'), home_path) %></li>
               <% if login_signed_in? %>
+                <li class="divider-vertical"></li>
                 <li><%= link_to(t('application.menu.actors'), actors_path) %></li>
                 <% if current_login.is_admin? %>
-                <li></li>
+                   <li class="divider-vertical"></li>
+                   <li> <%= link_to(t('home.admin'), actor_types_path) %></li>
                 <% end %>
               <% end %>
             </ul>
@@ -42,27 +44,7 @@
             <!-- nav-bar menu right -->
             <% if login_signed_in? %>
               <ul class="nav pull-right">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="#"><%= current_login.email %><b class="caret"></b></a>
-                  <ul id="menu1" class="dropdown-menu">
-                    <li><%= link_to(raw('<i class="icon-pencil"></i>') + " " + t('application.menu.profile'), logins_show_path) %></li>
-                    <li><%= link_to(raw('<i class="icon-th-list"></i>') + " " + t('application.menu.actors'), actors_path) %></li>
-                    <% if current_login.is_admin? %>
-                      <li class="divider"></li>
-                      <li><%= link_to(raw('<i class="icon-user"></i>') + " " + 'ActorTypes', actor_types_path) %></li>
-                      <li><%= link_to(raw('<i class="icon-briefcase"></i>') + " " + 'InformationTypes', information_types_path) %></li>
-                      <li><%= link_to(raw('<i class="icon-share"></i>') + " " + 'CSV Import', list_csv_files_path) %></li>
-                      <li><%= link_to(raw('<i class="icon-filter"></i>') + " " + 'Scopes', scopes_path) %></li>
-                      <li><%= link_to(raw('<i class="icon-heart"></i>') + " " + 'RelationshipTypes', relationship_types_path) %></li>
-                      <li class="divider"></li>
-                      <li class="divider"></li>
-                      <li><%= link_to(raw('<i class="icon-exclamation-sign"></i>') + " " + 'Reset All', reset_all_path) %></li>
-                    <% end %>
-                  </ul>
-                </li>
-
-                <li class="divider-vertical"></li>
-                <li><%= link_to(t('application.menu.settings'), edit_login_registration_path) %></li>
+                <li><%= link_to(current_login.email, edit_login_registration_path) %></li>
                 <li class="divider-vertical"></li>
                 <li><%= link_to(t('basic.sign_out'), destroy_login_session_path, :method => :delete) %></li>
               </ul>
