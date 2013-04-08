@@ -95,15 +95,7 @@
     </div>
 
     <!-- admin tab-menue -->
-    <% if login_signed_in? %>
-      <% if current_login.is_admin? %>
-      <div class="row-fluid">
-        <div class="span8 offset2">
-          <%= render partial: "admin/menue" %>
-        </div>
-      </div>
-    <% end %>
-    <% end %>
+    <%= yield :admin_tab_bar %>
 
     <!-- flash-messages -->
     <div class="row-fluid">

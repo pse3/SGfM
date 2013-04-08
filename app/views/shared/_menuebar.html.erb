@@ -1,0 +1,16 @@
+<% if login_signed_in? %>
+    <% if current_login.is_admin? %>
+        <div class="row-fluid">
+          <div class="span8 offset2">
+
+            <ul class="nav nav-tabs">
+              <li class="#{:locals[:ActorTypes}"><%= link_to('ActorTypes', actor_types_path) %></li>
+              <li class="#{@InfoTypes}"><%= link_to('InformationTypes', information_types_path) %></li>
+              <li class="#{@Import}"><%= link_to('CSV Import', list_csv_files_path) %></li>
+              <li class="#{@Scopes}"><%= link_to('Scopes', scopes_path) %></li>
+              <li class="#{@RelationshipTypes}"><%= link_to('RelationshipTypes', relationship_types_path) %></li>
+            </ul>
+          </div>
+        </div>
+    <% end %>
+<% end %>
