@@ -1,7 +1,15 @@
 require 'spec_helper'
 
 describe Information do
-  it 'should inherit the scope' do
+
+  it "creates an information" do
+    information = Information.new
+    information.should_not be_nil
+  end
+
+  it "adds an information type decorator to an information"
+  it "adds a value to an information"
+  it 'inherits the scope' do
     info = Information.new
     info_type = InformationType.new
     info_type.scope = Scope.new
