@@ -128,9 +128,11 @@ en:
     create:
       title: 'Created actor type'
       success: 'You have successfully created an actor type!'
+      failure: 'An unknown error ocurred!'
 
     update:
       success: 'Actor type successfully updated!'
+      failure: 'An unknown error ocurred!'
 
 
 # Translations for all information_type-pages, sorted by page structure
