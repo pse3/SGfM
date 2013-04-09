@@ -2,6 +2,7 @@ require 'spec_helper'
 
 # TODO: refactoring:
 # page.should have_selector with different languages to Test Helper!
+#todo do we really need feature tests?
 
 describe "Static Pages" do
 

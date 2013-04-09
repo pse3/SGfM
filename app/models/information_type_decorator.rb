@@ -26,9 +26,5 @@ class InformationTypeDecorator
     args.empty? ? information_type.send(method) : information_type.send(method, args)
   end
 
-  def self.find_by_information_type(info_type)
-    ActorType.find_by(information_type: info_type)
-  end
-
 end
 

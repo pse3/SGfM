@@ -56,7 +56,8 @@ describe "ActorType" do
     expect(@atype_doctor.name).to eq('Arzt')
   end
   it "finds actor type by key" do
-    ActorType.find_by_key(:doctor).should be(@atype_doctor)
+    expect(ActorType.find_by_key(:doctor)).to eq(@atype_doctor)
+    expect(ActorType.find_by_key(:hospital)).to eq(@atype_hospital)
   end
   it "has information type decorators" do
     @atype_doctor.information_type_decorators.should include(@itypedec_name)
