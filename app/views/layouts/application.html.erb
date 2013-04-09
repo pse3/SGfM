@@ -76,6 +76,19 @@
       </div>
     </div>
 
+
+    <div class="row-fluid">
+      <div class="span8 offset2">
+        <p class="pull-right">
+          <%= link_to('de', :locale => 'de') %>
+          <%= link_to('fr', :locale => 'fr') %>
+          <%= link_to('it', :locale => 'it') %>
+          <%= link_to('en', :locale => 'en') %>
+        </p>
+      </div>
+    </div>
+
+
     <!-- admin tab-menue -->
     <%= yield :admin_tab_bar %>
 
@@ -89,12 +102,6 @@
     <!-- main div -->
     <div class="row-fluid">
       <div class="span8 offset2">
-        <p class="pull-right">
-          <%= link_to('de', :locale => 'de') %>
-          <%= link_to('fr', :locale => 'fr') %>
-          <%= link_to('it', :locale => 'it') %>
-          <%= link_to('en', :locale => 'en') %>
-        </p>
         <div class="page-header">
           <h1><%= @page_title %></h1>
         </div>
