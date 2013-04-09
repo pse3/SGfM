@@ -174,6 +174,7 @@ unless Rails.env == :production
   InformationTypeDecorator.create(info_city, actor_doctor, false, true)
   InformationTypeDecorator.create(info_canton, actor_doctor, false, true)
   actor_doctor.name_translations = { :en => 'Doctor', :de =>'Arzt', :it => 'Dottore', :fr => 'Médecin' }
+  actor_doctor.to_string_pattern = '|:last_name| |:first_name|'
   actor_doctor.save
 
 
@@ -188,6 +189,7 @@ unless Rails.env == :production
   InformationTypeDecorator.create(info_city, actor_hospital, true, true)
   InformationTypeDecorator.create(info_canton, actor_hospital, true, true)
   actor_hospital.name_translations = { :en => 'Hospital', :de =>'Spital', :it => 'Ospedale', :fr => 'Hôpital' }
+  actor_hospital.to_string_pattern = '|:company|//|:canton|'
   actor_hospital.save
 
   # Create some RelationshipTypes

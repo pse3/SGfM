@@ -1,85 +1,109 @@
+<%= content_for :admin_tab_bar do %>
+    <% render :partial => 'shared/menuebar', :locals => {:actor_type => "active", :info_type => "", :import => "",
+                                                         :scope => "", :relationship_type => ""} %>
+<% end %>
+
 <% @page_title = t('actor_type.edit.title') %>
 
 
 <%= form_for(@actor_type, :url => update_actor_type_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
 
+  <div class="page-header">
+    <h1><small><%= t('actor_type.new.basics') %></small></h1>
+  </div>
+
   <div class="control-group">
-    <%= f.label(:'name[en]', t('actor_type.new.name_en'), :class => 'control-label') %>
+    <%= f.label(:'name[en]', "#{t('actor_type.edit.name')} (#{t('lang.en')})", :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field('name[en]', value: @actor_type.name_locale(:en)) %>
+      <%= f.text_field('name[en]', :value => @actor_type.name_translations['en']) %>
     </div>
   </div>
 
-    <div class="control-group">
-      <%= f.label(:'name[de]', t('actor_type.new.name_de'), :class => 'control-label') %>
-      <div class="controls">
-        <%= f.text_field('name[de]', value: @actor_type.name_locale(:de)) %>
-      </div>
+  <div class="control-group">
+    <%= f.label(:'name[de]', "#{t('actor_type.edit.name')} (#{t('lang.de')})", :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field('name[de]', :value => @actor_type.name_translations['de']) %>
     </div>
+  </div>
 
-    <div class="control-group">
-      <%= f.label(:'name[fr]', t('actor_type.new.name_fr'), :class => 'control-label') %>
-      <div class="controls">
-        <%= f.text_field('name[fr]', value: @actor_type.name_locale(:fr)) %>
-      </div>
+  <div class="control-group">
+    <%= f.label(:'name[fr]', "#{t('actor_type.edit.name')} (#{t('lang.fr')})", :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field('name[fr]', :value => @actor_type.name_translations['fr']) %>
     </div>
+  </div>
 
-    <div class="control-group">
-      <%= f.label(:'name[it]', t('actor_type.new.name_it'), :class => 'control-label') %>
-      <div class="controls">
-        <%= f.text_field('name[it]', value: @actor_type.name_locale(:it)) %>
-      </div>
+  <div class="control-group">
+    <%= f.label(:'name[it]', "#{t('actor_type.edit.name')} (#{t('lang.it')})", :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field('name[it]', :value => @actor_type.name_translations['it']) %>
     </div>
+  </div>
 
-    <!-- todo rethink this whole view and come up with better solution. meanwhile when editing actor_type, all info_types need to be added again.. -->
-    <% if false %>
-    <% #^very badass way of block commenting in a view %>
-    <% for info_type in @actor_type.information_type_decorators do %>
-      <%= fields_for(:information_type_decorator) do |f| %>
+  <div class="control-group">
+    <%= f.label(:'to_string_pattern', t('actor_type.edit.to_string_pattern'), class: 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'to_string_pattern', :value => @actor_type.to_string_pattern, :placeholder => t('actor_type.edit.to_string_pattern'), :required => true) %>
+      <span class="help-block"><%= t('actor_type.new.to_string_pattern_explanation') %></span>
+    </div>
+  </div>
+
+
+  <div class="page-header">
+    <h1><small><%= t('actor_type.edit.information_types') %></small></h1>
+  </div>
+
+  <% @actor_type.information_type_decorators.each_with_index do |information_type_decorator,i| %>
+    <%= fields_for(:information_type_decorator) do |f| %>
+      <%= content_tag(:div, :id => "information_type_decorator_#{i}") do %>
 
         <div class="control-group">
-          <%= f.label(info_type, t('actor_type.edit.information_type'), :class => 'control-label') %>
+          <%= f.label("information_type_#{i}", t('actor_type.edit.information_type'), :class => 'control-label') %>
           <div class="controls">
-            <%= f.text_field(:information_type, :value => info_type.name, :disabled => 'disabled') %>
-              <p class='pull-right'>
-                <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor_type.new.remove_information_type')}"),
-                                       "SGfM.actor_type.remove_information_type_form()",
-                                       :type => :button, :class => 'btn btn-danger') %>
-              </p>
+            <%= f.text_field("information_type_#{i}", { :value => information_type_decorator.key,        # todo display info.name and pass info.key in params
+                                                  :readonly => true,
+                                                  :name => 'information_type_decorator[information_type][]' }) %>
+            <p class='pull-right'>
+              <%= link_to_function(raw("<i class='icon-remove icon-white'></i>#{t('actor_type.new.remove_information_type')}"),
+                                   "SGfM.form.remove_form('information_type_decorator',#{i})",
+                                   :type => :button, :class => 'btn btn-danger') %>
+            </p>
             </div>
           </div>
 
         <div class='control-group'>
-          <%= f.label(:required, t('actor_type.new.required'), class: 'control-label') %>
+          <%= f.label("required_#{i}", t('actor_type.edit.required'), :class => 'control-label') %>
           <div class='controls'>
-            <!-- TODO Yes and no are not translated -->
-            <%= f.select(info_type.required, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[required][]') %>
+            <!-- TODO use checkbox here instead! PLEASE NOTE: HANDLE THE PARAMS WITH CHECKBOXES AIN'T EASY!!! -->
+            <%= f.select("required_#{i}", [[t('yes'), true], [t('no'), false]],
+                         { :selected => information_type_decorator.required },
+                         { :name => 'information_type_decorator[required][]' }) %>
           </div>
         </div>
 
         <div class='control-group'>
-          <%= f.label(:searchable, t('actor_type.new.searchable'), class: 'control-label') %>
+          <%= f.label("searchable_#{i}", t('actor_type.edit.searchable'), :class => 'control-label') %>
           <div class='controls'>
-            <!-- TODO Yes and no are not translated - only should be able to choose if info type is predefined public-->
-            <%= f.select(info_type.searchable, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[searchable][]') %>
+            <!-- TODO use checkbox here instead! PLEASE NOTE: HANDLE THE PARAMS WITH CHECKBOXES AIN'T EASY!!!
+                 TODO only should be able to choose if info type is predefined public -->
+            <%= f.select("searchable_#{i}", [[t('yes'), true], [t('no'), false]],
+                         { :selected => information_type_decorator.searchable },
+                         { :name => 'information_type_decorator[searchable][]' }) %>
           </div>
         </div>
-
       <% end %>
     <% end %>
+  <% end %>
 
-    <% #end of badass block comment %>
-    <% end %>
+  <div id="information-type-form"></div>
 
-    <div id="information-type-form"></div>
-
-    <div class="control-group">
-      <p>
-        <%= button_to_function('Add Information Type',
-                               'SGfM.actor_type.add_information_type_form("' + add_information_type_form_path + '")',
-                               :type => :button, :class => 'btn btn-medium') %>
-      </p>
-    </div>
+  <div class="control-group">
+    <p>
+      <%= button_to_function('Add Information Type',
+                             "SGfM.form.add_form(\"#{add_information_type_form_path}\",'information-type-form')",
+                             :type => :button, :class => 'btn btn-medium') %>
+    </p>
+  </div>
 
   <div class="form-actions">
     <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>

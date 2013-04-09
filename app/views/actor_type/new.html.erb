@@ -1,35 +1,56 @@
+<%= content_for :admin_tab_bar do %>
+    <% render :partial => 'shared/menuebar', :locals => {:actor_type => "active", :info_type => "", :import => "",
+                                                         :scope => "", :relationship_type => ""} %>
+<% end %>
+
 <% @page_title = t('actor_type.new.title') %>
 
 
 <%= form_for(:actor_type, :url => create_actor_type_path, :html => {:class => 'form-horizontal'}) do |f| %>
 
-  <div class="control-group">
-    <%= f.label(:'name[en]', t('actor_type.new.name_en'), class: 'control-label') %>
-    <div class="controls">
-      <%= f.text_field(:'name[en]', placeholder: t('actor_type.new.name_en'), required: true) %>
-    </div>
+  <div class="page-header">
+    <h1><small><%= t('actor_type.new.basics') %></small></h1>
   </div>
+
   <div class="control-group">
-    <%= f.label(:'name[de]', t('actor_type.new.name_de'), class: 'control-label') %>
+    <%= f.label(:'name[en]', "#{t('actor_type.new.name')} (#{t('lang.en')})", :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:'name[de]', placeholder: t('actor_type.new.name_de'), required: true) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label(:'name[fr]', t('actor_type.new.name_fr'), class: 'control-label') %>
-    <div class="controls">
-      <%= f.text_field(:'name[fr]', placeholder: t('actor_type.new.name_fr'), required: true) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label(:'name[it]', t('actor_type.new.name_it'), class: 'control-label') %>
-    <div class="controls">
-      <%= f.text_field(:'name[it]', placeholder: t('actor_type.new.name_it'), required: true) %>
+      <%= f.text_field(:'name[en]', :placeholder => t('actor_type.new.name'), :required => true) %>
     </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label(:'name[de]', "#{t('actor_type.new.name')} (#{t('lang.de')})", :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[de]', :placeholder => t('actor_type.new.name'), :required => true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:'name[fr]', "#{t('actor_type.new.name')} (#{t('lang.fr')})", :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[fr]', :placeholder => t('actor_type.new.name'), :required => true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:'name[it]', "#{t('actor_type.new.name')} (#{t('lang.it')})", :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'name[it]', :placeholder => t('actor_type.new.name'), :required => true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:'to_string_pattern', t('actor_type.new.to_string_pattern'), :class => 'control-label') %>
+    <div class="controls">
+      <%= f.text_field(:'to_string_pattern', :placeholder => t('actor_type.new.to_string_pattern'), :required => true) %>
+      <span class="help-block"><%= t('actor_type.new.to_string_pattern_explanation') %></span>
+    </div>
+  </div>
+
+
   <div class="page-header">
-    <h1><small><%= t('actor.new.information_types') %></small></h1>
+    <h1><small><%= t('actor_type.new.information_types') %></small></h1>
   </div>
 
   <div id="information-type-form"></div>
@@ -37,7 +58,7 @@
   <div class="control-group">
     <p>
       <%= button_to_function('Add Information Type',
-                             'SGfM.actor_type.add_information_type_form("' + add_information_type_form_path + '")',
+                             "SGfM.form.add_form(\"#{add_information_type_form_path}\",'information-type-form')",
                              :type => :button, :class => 'btn btn-medium') %>
     </p>
   </div>

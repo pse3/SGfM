@@ -11,12 +11,6 @@ en:
     it: 'Italian'
     fr: 'French'
 
-  lang:
-    en: 'English'
-    de: 'German'
-    it: 'Italian'
-    fr: 'French'
-
   form:
     email: 'email'
     password: 'password'
@@ -111,6 +105,7 @@ en:
     new:
       title: 'Create new actor type'
       create_actor_type: 'Create'
+      basics: 'Basic informations'
       information_types: 'Information types'
       add_information_type: 'Add information type'
       remove_information_type: 'Remove information type'
@@ -118,13 +113,17 @@ en:
       optional: 'Require this information'
       searchable: 'Searchable'
       key: 'Key'
-      name_en: 'Name (english)'
-      name_de: 'Name (german)'
-      name_fr: 'Name (french)'
-      name_it: 'Name (italian)'
+      to_string_pattern: 'ToString representation'
+      to_string_pattern_explanation: 'Use |:infotypekey| to display a information'
+      name: 'Name'
 
     edit:
       title: 'Edit actor type'
+      name: 'Name'
+      to_string_pattern: 'ToString representation'
+      to_string_pattern_explanation: 'Use |:infotypekey| to display a information'
+      basics: 'Basic informations'
+      information_types: 'Information types'
 
     create:
       title: 'Created actor type'
@@ -134,13 +133,15 @@ en:
       success: 'Actor type successfully updated!'
 
 
-# Translations for all actor_type-pages, sorted by page structure
+# Translations for all information_type-pages, sorted by page structure
   information_type:
     list:
      title: 'InformationTypes'
      new_information_type: 'Create new information type'
      name_table: 'Name'
      key_table: 'Key'
+     field_type_table: 'Field Type'
+     actions_table: 'Actions'
 
     show:
       title: '%{information_type}'
@@ -156,13 +157,30 @@ en:
       predefined_scope: 'Predefined scope'
       predefined_scope_prompt: 'None'
       create_information_type: 'Create'
+      field_type: 'Field type'
+      field_type_data: 'Field type data'
+      field_type_data_placeholder: 'e.g. option 1, option 2, option 3'
+
+    edit:
+      title: 'Edit information type'
+      name: 'Name'
+      key: 'Key'
+      predefined_scope: 'Predefined scope'
+      predefined_scope_prompt: 'None'
+      update_information_type: 'Edit'
+      field_type: 'Field type'
+      field_type_data: 'Field type data'
+      field_type_data_placeholder: 'e.g. option 1, option 2, option 3'
+
 
     create:
       title: 'Created information type'
       success: 'You have successfully created an information type!'
+      failure: 'There was an unknown error!'
 
     update:
-      success: 'Information type successfully updated!'
+      success: 'Edited informaton successfully!'
+      failure: 'There was an unknown error!'
 
 #Translation for all Scope-Pages
   scopes:

@@ -1,7 +1,12 @@
+<%= content_for :admin_tab_bar do %>
+    <% render :partial => 'shared/menuebar', :locals => {:actor_type => "", :info_type => "", :import => "",
+                                                         :scope => "active", :relationship_type => ""} %>
+<% end %>
+
 <% @page_title = t('scopes.list.title') %>
 
 
-<div class="row pull-right">
+<div class="row pull-right bottom-margin">
   <%= link_to(t('scopes.list.new_scope'), create_scope_path, class: 'btn btn-primary') %>
 </div>
 

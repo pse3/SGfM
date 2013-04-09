@@ -1,7 +1,14 @@
+<%= content_for :admin_tab_bar do %>
+    <% render :partial => 'shared/menuebar', :locals => {:actor_type => "active", :info_type => "", :import => "",
+                                                         :scope => "", :relationship_type => ""} %>
+<% end %>
+
+
+
 <% @page_title = t('actor_type.list.title') %>
 
 
-<div class="row pull-right">
+<div class="row pull-right bottom-margin">
   <%= link_to(t('actor_type.list.new_actor_type'), create_actor_type_path, :class => 'btn btn-primary') %>
 </div>
 
