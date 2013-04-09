@@ -50,7 +50,7 @@ describe "ActorType" do
   end
   it "assigns a key for an actor type" do
     @atype_doctor.key.should be(:doctor)
-    @atype_hospital.key should be(:hospital)
+    @atype_hospital.key.should be(:hospital)
   end
   it "assigns a name for an actor type" do
     expect(@atype_doctor.name).to eq('Arzt')
