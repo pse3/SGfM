@@ -14,6 +14,7 @@ class Information
 
   inherit_scope_from :information_type_decorator
 
+	validates_presence_of :value_of_this_information, :if => :required
 
   def initialize
     super
@@ -49,4 +50,10 @@ class Information
     self.information_type_decorator.index
   end
 
+	#validations
+
+	#supports validation by returning required value
+	def required
+		self.information_type_decorator.required?
+	end
 end
