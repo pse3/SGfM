@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "Relationship" do
+describe Relationship do
   before {
-    # Create some RelationshipTypes
+    # Create some relationship_types
     @relation_works_with = RelationshipType.new
     @relation_works_with.key = :works_with
     @relation_works_with.name_translations = { :en => 'works with', :de =>'arbeitet mit', :it => '??', :fr => '??' }
@@ -39,10 +39,12 @@ describe "Relationship" do
     @relationship1.should be_an_instance_of(Relationship)
     @relationship2.should be_an_instance_of(Relationship)
   end
+
   it "sets correct time of creation" do
     @relationship1.created_at.should be_within(10).of(DateTime.now)
     @relationship2.created_at.should be_within(10).of(DateTime.now)
   end
+
   it "stores correct actors" do
     @relationship1.actor.should be(@actor_karl)
     @relationship2.actor.should be(@actor_peter)

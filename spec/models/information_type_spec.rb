@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "InformationType" do
+describe InformationType do
   before {
     #create some information_types
     @itype_name = InformationType.new
@@ -20,8 +20,10 @@ describe "InformationType" do
     @itype_name.should be_an_instance_of(InformationType)
     @itype_phone.should be_an_instance_of(InformationType)
   end
+
   it "finds information type by key" do
     expect(InformationType.find_by_key(:name)).to eq(@itype_name)
     expect(InformationType.find_by_key(:phone)).to eq(@itype_phone)
   end
+
 end

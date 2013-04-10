@@ -2,10 +2,9 @@ require 'spec_helper'
 
 describe Scope do
   before {
-    #create some scopes
+    #create a scope
     @scope = Scope.new
     @scope.key = :private
-    @scope.name_translations = { :en => 'private', :de => 'privat', :it => 'privato', :fr => 'privé' }
     @scope.list = [:Self, :Admin]
     @scope.save
   }
@@ -17,4 +16,5 @@ describe Scope do
     @scope.should respond_to(:name)
     @scope.should respond_to(:list)
   end
+
 end

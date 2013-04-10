@@ -2,24 +2,23 @@ require 'spec_helper'
 
 describe Information do
   before {
-    #create an actor type
+    #create an actor_type
     @atype = ActorType.new
     @atype.key = :doctor
     @atype.save
 
-    #create an information type
+    #create an information_type
     @itype = InformationType.new
     @itype.key = :street
     @itype.name = 'Street'
     @itype.information_field_type = InformationFieldText.new
     @itype.save
 
-    #create an information type decorator
+    #create an information_type_decorator
     @itypedec = InformationTypeDecorator.create(@itype, @atype, true, true)
 
     #create an information
     @information = Information.new
-
   }
 
   it "creates an information" do

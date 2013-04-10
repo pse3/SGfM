@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 #todo do we really need feature tests?
-
+=begin
 describe "User Creation" do
 
   describe "Sign Up" do
@@ -42,3 +42,4 @@ describe "User Creation" do
   end
 
 end
+=end
