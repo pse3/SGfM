@@ -4,7 +4,7 @@ class ActorType
 
   field :name, :type => String, :localize => true
   field :key, :type => Symbol
-  field :to_string_pattern, :type => String   #todo: server side validations of to_str_pattern. browser side is done.
+  field :to_string_pattern, :type => String
 
   has_many :information_type_decorators, class_name: 'InformationTypeDecorator', inverse_of: :actor_type
 
@@ -13,7 +13,7 @@ class ActorType
 
 	validates_uniqueness_of :key
 	validates_presence_of :name, :to_string_pattern
-
+	#validates_format_of :to_string_pattern, :with => /(\|:.+\|( )*)*/ Doesn't seem to work. No idea why.
 
   def self.find_by_key(key)
     ActorType.find_by(key: key)
