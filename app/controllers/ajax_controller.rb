@@ -9,7 +9,7 @@ class AjaxController < ApplicationController
   end
 
   def information_type_data_form
-    information_type = InformationType.find_by id: params[:information_field_type]
+    information_type = InformationFieldType.find_by key: params[:information_field_type]
     render :partial => InformationTypeHelper.get_partial(information_type)
   end
 
