@@ -4,12 +4,12 @@ describe InformationType do
   before {
     #create some information_types
     @itype_name = InformationType.new
-    @itype_name.key = :name
+    @itype_name.key = :name_test
     @itype_name.name = "Name"
     @itype_name.save
 
     @itype_phone = InformationType.new
-    @itype_phone.key = :phone
+    @itype_phone.key = :phone_test
     @itype_phone.name = "Telefon"
     @itype_phone.save
   }
@@ -22,8 +22,8 @@ describe InformationType do
   end
 
   it "finds information type by key" do
-    expect(InformationType.find_by_key(:name)).to eq(@itype_name)
-    expect(InformationType.find_by_key(:phone)).to eq(@itype_phone)
+    expect(InformationType.find_by_key(:name_test)).to eq(@itype_name)
+    expect(InformationType.find_by_key(:phone_test)).to eq(@itype_phone)
   end
 
 end
