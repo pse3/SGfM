@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe Actor do
   before {
+    #create a user
+
+    @user1 = User.new
+
     #create an information_field_type
     information_field_text = InformationFieldText.new
     information_field_text.key = :text
@@ -56,12 +60,12 @@ describe Actor do
     @atype_doctor.key = :doctor
     @itypedec_name = InformationTypeDecorator.create(itype_name, @atype_doctor, true, true)
     @itypedec_phone = InformationTypeDecorator.create(itype_phone, @atype_doctor, true, true)
-    InformationTypeDecorator.create(itype_address, @atype_doctor, true, true)
-    InformationTypeDecorator.create(itype_email, @atype_doctor, true, true)
+    @atype_doctor.to_string_pattern = "|:name|//|:phone|"
     @atype_doctor.save
 
     #create actor
     @actor = Actor.new
+    @actor.owner = @user1
     @actor.actor_type = @atype_doctor
   }
 
@@ -85,7 +89,11 @@ describe Actor do
     information = Information.new
     information.information_type_decorator = @itypedec_name
     information.actor = @actor
+    information.value = 'peter'
+    @actor.save
+    information.save
     @actor.informations.should include(information)
+    expect(information.value).to eq('peter')
   end
 
   it "adds a relationship to actor" do
@@ -99,7 +107,11 @@ describe Actor do
     information = Information.new
     information.information_type_decorator = @itypedec_phone
     information.actor = @actor
+    information.value = '999'
+    @actor.save
+    information.save
     @actor.find_information_by_key(:phone).should be(information)
+    expect(information.value).to eq('999')
   end
 
   it "finds relationships by key" do
@@ -117,8 +129,15 @@ describe Actor do
     @actor.find_relationship_by_key(:father).should be(relation2)
   end
 
-  it "displays correct to_string_field"
-  it "updates to_string_field"
+  it "displays correct to_string_field" do
+    #todo this fails
+    expect(@actor.to_s).to eq('peter//999')
+  end
+  it "updates to_string_field" do
+    #todo this fails
+    @atype_doctor.to_string_pattern = "|:name|"
+    expect(@actor.to_s).to eq('peter')
+  end
   it "updates search_field"
 
 end
