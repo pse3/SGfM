@@ -47,13 +47,30 @@ SGfM.actor = {
   }
 }
 
+SGfM.information_type = {
+  render_options_form : function(controller_path, information_field_type_key) {
+    jQuery.ajax({
+      url: controller_path,
+      type: 'GET',
+      data: {"information_field_type" : information_field_type_key},
+      dataType: 'html',
+      success: function(data) {
+        jQuery('#data-options').replaceWith(data);
+      }
+    });
+  }
+}
+
 <!-- always use this one -->
 SGfM.form = {
   add_form : function(controller_path,where) {
     SGfM.add_form(controller_path, '#' + where);
   },
   remove_form : function(id,field_number) {
-    SGfM.remove_form('#' + id, field_number)
+    SGfM.remove_form('#' + id, field_number);
+  },
+  replace_form : function(id, data) {
+    jQuery('#' + id).replaceWith(data)
   }
 }
 
