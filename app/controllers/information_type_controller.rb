@@ -12,8 +12,9 @@ class InformationTypeController < ApplicationController
     end
     information_type.information_field_type= InformationFieldType.find_by_key params[:information_type][:information_field_type]
     #TODO make the view receive the data form via ajax so it is only displayed when needed
-    information_type.data_translations= information_type.information_field_type.parse_data(params[:information_type][:information_field_type_data])
-
+    if params[:information_type][:data]
+      information_type.data_translations= InformationTypeHelper.parse_data(params[:information_type][:information_field_type_data], information_type.information_field_type)
+    end
 		if	information_type.save
       flash[:success] = t('information_type.create.success')
       redirect_to information_types_path
