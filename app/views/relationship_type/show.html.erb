@@ -1,8 +1,3 @@
-<%= content_for :admin_tab_bar do %>
-    <% render :partial => 'shared/menuebar', :locals => {:actor_type => "", :info_type => "", :import => "",
-                                                         :scope => "", :relationship_type => "active"} %>
-<% end %>
-
 <% @page_title = t('relationship_type.show.title', :relationship_type => @relationship_type.name) %>
 
 
