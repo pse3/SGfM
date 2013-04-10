@@ -41,15 +41,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def ensure_user_owns_actor!()
-    unless Actor.find_by(:id => (params[:id].nil? ? params[:actor] : params[:id]) ).owner == current_login.account
+  def owns_actor_or_is_admin!
+    unless Actor.find_by(:id => (params[:id].nil? ? params[:actor] : params[:id]) ).owner == current_account or current_login.is_admin?
       flash[:error] = t('flash.not_owner_of_actor')
       redirect_to(home_path)
     end
   end
 
-  def ensure_user_owns_relationship!()
-    unless Relationship.find_by(:id => params[:id]).actor.owner == current_login.account
+  def owns_relationship_or_is_admin!
+    unless Relationship.find_by(:id => params[:id]).actor.owner == current_account or current_login.is_admin?
       flash[:error] = t('flash.not_owner_of_relationship')
       redirect_to(home_path)
     end

@@ -1,12 +1,12 @@
 class RelationshipController < ApplicationController
 
-  before_filter :ensure_user_owns_actor!, :only => [:new, :create]
-  before_filter :ensure_user_owns_relationship!, :only => [:edit, :update, :destroy]
+  before_filter :owns_actor_or_is_admin!, :only => [:new, :create]
+  before_filter :owns_relationship_or_is_admin!, :only => [:edit, :update, :destroy]
 
   def new
     @locals = { :all_actors => Actor.all,
                 :actor => Actor.find(params[:actor]) }
-    # todo shouldn't we do it everywhere like this? easier to find passed variables in view and only way to pass multiple
+    # todo either use this way or make all to @-variables
   end
 
   def create
