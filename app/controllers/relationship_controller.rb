@@ -16,9 +16,13 @@ class RelationshipController < ApplicationController
     relationship.reference = Actor.find(params[:relationship][:reference])
     relationship.comment = params[:relationship][:comment]
     relationship.relationship_type = RelationshipType.find_by_key(params[:relationship][:relationship_type])
-    relationship.save
-    flash[:success] = t('relationship.create.success')
-    redirect_to(show_actor_path(@actor))
+    if relationship.save
+      flash[:success] = t('relationship.create.success')
+      redirect_to(show_actor_path(@actor))
+    else
+      flash[:error] = t 'relationship.create.failure'
+      redirect_to create_relationship_path
+    end
   end
 
   def edit
@@ -31,10 +35,13 @@ class RelationshipController < ApplicationController
     @actor = relationship.actor
     relationship.relationship_type = RelationshipType.find_by_key(params[:relationship][:relationship_type])
     relationship.comment = params[:relationship][:comment]
-    relationship.save
-
-    flash[:success] = t('relationship.update.success')
-    redirect_to(show_actor_path(@actor))
+    if relationship.save
+      flash[:success] = t('relationship.update.success')
+      redirect_to(show_actor_path(@actor))
+    else
+      flash[:error] = t 'relationship.update.failure'
+      redirect_to show_actor_path(@actor)
+    end
   end
 
   def destroy

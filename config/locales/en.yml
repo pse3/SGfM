@@ -238,9 +238,11 @@ en:
 
     create:
       success: 'Successfully created relationship'
+      failure: 'An unknown error ocurred!'
 
     update:
       success: 'Successfully updated relationship'
+      failure: 'An unknown error ocurred!'
 
     destroy:
       success: 'Successfully deleted relationship'
