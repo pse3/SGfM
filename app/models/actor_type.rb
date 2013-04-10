@@ -4,7 +4,7 @@ class ActorType
 
   field :name, :type => String, :localize => true
   field :key, :type => Symbol
-  field :to_string_pattern, :type => String
+  field :to_string_pattern, :type => String   #todo: server side validations of to_str_pattern. browser side is done.
 
   has_many :information_type_decorators, class_name: 'InformationTypeDecorator', inverse_of: :actor_type
 

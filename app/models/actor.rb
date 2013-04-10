@@ -18,6 +18,7 @@ class Actor
   belongs_to :owner, class_name: 'User'                                                 #embedded
 
 	#validates :informations, informations_not_empty: true #TODO: Do we still need this validation?
+	validates_presence_of :search_field, :to_string_field, :actor_type, :owner
 
   before_save :update_search_field, :update_to_string_field
   search_in :search_field

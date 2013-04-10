@@ -11,7 +11,6 @@ class ActorController < ApplicationController
     @actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
     @actor.actor_type = @actor_type
 
-    #TODO validate that each required information is present
     if params[:actor][:information]
       params[:actor][:information].each_key do |key|
         info_type_decorator = @actor_type.decorator_by_key(key.to_sym)
@@ -46,6 +45,9 @@ class ActorController < ApplicationController
 		if @actor.valid?
 			flash[:success] = t('actor.create.success')
 			redirect_to actors_path
+		else
+			flash[:error] = t('actor_create.error')
+			redirect_to actors_create_path
 		end
 	end
 
