@@ -54,4 +54,13 @@ class ApplicationController < ActionController::Base
       redirect_to(home_path)
     end
   end
+
+  def login_owns_actor(login, actor)
+    if login.is_user?
+      login.account.actors.include?(actor)
+    else
+      false
+    end
+  end
+
 end

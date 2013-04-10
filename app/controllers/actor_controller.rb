@@ -103,6 +103,11 @@ class ActorController < ApplicationController
 	def show
 		@actor = Actor.find(params[:id])
 		@informations = scope_array(@actor.informations, current_account)
+    if login_owns_actor(current_login, @actor)
+      render('actor/internal_show')
+    else
+      render('actor/external_show')
+    end
 	end
 
 end
