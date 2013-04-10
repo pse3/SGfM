@@ -19,10 +19,14 @@ class ActorTypeController < ApplicationController
       end
     end
 
-    @actor_type.save
+    if @actor_type.save
+  	  flash[:success] = t('actor_type.create.success')
+    	redirect_to actor_types_path
+		else
+			flash[:error] = t('actor_type.create.error')
+			redirect_to actor_types_create_path
+		end
 
-    flash[:success] = t('actor_type.create.success')
-    redirect_to actor_types_path
   end
 
   # Gets all actor_types

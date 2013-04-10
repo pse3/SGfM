@@ -6,11 +6,13 @@ class ActorType
   field :key, :type => Symbol
   field :to_string_pattern, :type => String
 
-  validates_uniqueness_of :key
-
   has_many :information_type_decorators, class_name: 'InformationTypeDecorator', inverse_of: :actor_type
 
   after_save :update_corresponding_actors
+
+
+	validates_uniqueness_of :key
+	validates_presence_of :name, :to_string_pattern
 
 
   def self.find_by_key(key)
