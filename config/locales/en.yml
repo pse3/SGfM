@@ -71,6 +71,7 @@ en:
       relationship_reference: 'Reference'
       relationship_comment: 'Comment'
       relationship_type: 'Type'
+      admin_can_not_create_actors: "Admins can\'t create actors!"
 
     edit:
       title: 'Edit actor'
