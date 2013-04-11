@@ -4,19 +4,19 @@ describe InformationTypeDecorator do
   before {
     #create an information_type
     @itype_name = InformationType.new
-    @itype_name.key = :name
+    @itype_name.key = :name_test
     @itype_name.name = "Name"
     @itype_name.save
 
     @itype_phone = InformationType.new
-    @itype_phone.key = :phone
+    @itype_phone.key = :phone_test
     @itype_phone.name = "Telefon"
     @itype_phone.save
 
     #create an actor_type
     @atype_doctor = ActorType.new
     @atype_doctor.name = "Arzt"
-    @atype_doctor.key = :doctor
+    @atype_doctor.key = :doctor_test
     @atype_doctor.save
 
     #create some information_type_decorators

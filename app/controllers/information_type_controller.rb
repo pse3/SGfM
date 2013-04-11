@@ -62,6 +62,4 @@ class InformationTypeController < ApplicationController
   def new
   end
 
-  #todo update
-
 end

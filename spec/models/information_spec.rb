@@ -4,12 +4,12 @@ describe Information do
   before {
     #create an actor_type
     @atype = ActorType.new
-    @atype.key = :doctor
+    @atype.key = :doctor_test
     @atype.save
 
     #create an information_type
     @itype = InformationType.new
-    @itype.key = :street
+    @itype.key = :street_test
     @itype.name = 'Street'
     @itype.information_field_type = InformationFieldText.new
     @itype.save

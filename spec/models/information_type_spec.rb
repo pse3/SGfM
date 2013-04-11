@@ -18,6 +18,7 @@ describe InformationType do
     @itype_name.should_not be_nil
     @itype_phone.should_not be_nil
     @itype_name.should be_an_instance_of(InformationType)
+    InformationType.all.should include(@itype_name)
     @itype_phone.should be_an_instance_of(InformationType)
   end
 

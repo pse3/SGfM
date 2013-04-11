@@ -30,6 +30,7 @@ class ActorType
     information_types
   end
 
+  # Returns the decorators that decorates the information type with given key
   def decorator_by_key(key)
     information_type_decorators.select{|info_type_decorator| info_type_decorator.information_type == InformationType.find_by_key(key) }.first
   end

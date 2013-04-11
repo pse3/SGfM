@@ -2,53 +2,50 @@ require 'spec_helper'
 
 describe Actor do
   before {
-    #create a user
-
-    @user1 = User.new
 
     #create an information_field_type
     information_field_text = InformationFieldText.new
-    information_field_text.key = :text
+    information_field_text.key = :text_test
     information_field_text.name_translations = { :en => 'Text field', :de => 'Textfeld', :it => '???', :fr => '???' }
     information_field_text.save
 
     info_company = InformationType.new
-    info_company.key = :company
+    info_company.key = :company_test
     info_company.information_field_type = information_field_text
     info_company.name_translations = { :en => 'Company', :de =>'Firma', :it => '??', :fr => '??' }
     info_company.save
 
     #create a scope
     scope_public = BlacklistScope.new
-    scope_public.key = :public
+    scope_public.key = :public_test
     scope_public.name = 'public'
     scope_public.list = []
     scope_public.save
 
     #create some information_types
     itype_name = InformationType.new
-    itype_name.key = :name
+    itype_name.key = :name_test
     itype_name.information_field_type = information_field_text
     itype_name.name = "Name"
     itype_name.scope = scope_public
     itype_name.save
 
     itype_phone = InformationType.new
-    itype_phone.key = :phone
+    itype_phone.key = :phone_test
     itype_phone.information_field_type = information_field_text
     itype_phone.name = "Telefon"
     itype_phone.scope = scope_public
     itype_phone.save
 
     itype_address = InformationType.new
-    itype_address.key = :address
+    itype_address.key = :address_test
     itype_address.information_field_type = information_field_text
     itype_address.name = "Adresse"
     itype_address.scope = scope_public
     itype_address.save
 
     itype_email = InformationType.new
-    itype_email.key = :email
+    itype_email.key = :email_test
     itype_email.information_field_type = information_field_text
     itype_email.name = "Email"
     itype_email.scope = scope_public
@@ -57,7 +54,7 @@ describe Actor do
     #create some actor_types
     @atype_doctor = ActorType.new
     @atype_doctor.name = "Arzt"
-    @atype_doctor.key = :doctor
+    @atype_doctor.key = :doctor_test
     @itypedec_name = InformationTypeDecorator.create(itype_name, @atype_doctor, true, true)
     @itypedec_phone = InformationTypeDecorator.create(itype_phone, @atype_doctor, true, true)
     @atype_doctor.to_string_pattern = "|:name|//|:phone|"
@@ -110,23 +107,23 @@ describe Actor do
     information.value = '999'
     @actor.save
     information.save
-    @actor.find_information_by_key(:phone).should be(information)
+    @actor.find_information_by_key(:phone_test).should be(information)
     expect(information.value).to eq('999')
   end
 
   it "finds relationships by key" do
     rtype = RelationshipType.new
-    rtype.key = :mother
+    rtype.key = :mother_test
     relation1 = Relationship.new
     relation1.relationship_type = rtype
     relation1.actor = @actor
     rtype = RelationshipType.new
-    rtype.key = :father
+    rtype.key = :father_test
     relation2 = Relationship.new
     relation2.relationship_type = rtype
     relation2.actor = @actor
-    @actor.find_relationship_by_key(:mother).should be(relation1)
-    @actor.find_relationship_by_key(:father).should be(relation2)
+    @actor.find_relationship_by_key(:mother_test).should be(relation1)
+    @actor.find_relationship_by_key(:father_test).should be(relation2)
   end
 
   it "displays correct to_string_field" do
