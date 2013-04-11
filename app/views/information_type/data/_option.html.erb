@@ -5,29 +5,25 @@
       <div class='controls'>
         <div class='input-prepend'>
           <span class='add-on'>en</span>
-          <%= f.text_field :en, :placeholder => t('lang.en'), :class => 'span6', :required => true %>
+          <%= f.text_field :en, :placeholder => t('lang.en'), :name => 'information_type[information_field_type_data][en][]', :class => 'span6', :required => true %>
         </div>
         <div class='input-prepend'>
           <span class='add-on'>de</span>
-          <%= f.text_field :de, :placeholder => t('lang.de'), :class => 'span6', :required => true %>
+          <%= f.text_field :de, :placeholder => t('lang.de'), :name => 'information_type[information_field_type_data][de][]', :class => 'span6', :required => true %>
         </div>
         <div class='input-prepend'>
           <span class='add-on'>fr</span>
-          <%= f.text_field :fr, :placeholder => t('lang.fr'), :class => 'span6', :required => true %>
+          <%= f.text_field :fr, :placeholder => t('lang.fr'), :name => 'information_type[information_field_type_data][fr][]', :class => 'span6', :required => true %>
         </div>
         <div class='input-prepend'>
           <span class='add-on'>it</span>
-          <%= f.text_field :it, :placeholder => t('lang.it'), :class => 'span6', :required => true %>
+          <%= f.text_field :it, :placeholder => t('lang.it'), :name => 'information_type[information_field_type_data][it][]', :class => 'span6', :required => true %>
         </div>
-        <!--
-          <div class='pull-right'>
-            <% if remove_button %>
+        <div class='pull-right'>
+          <% if remove_button %>
               <%= link_to_function(raw('<i class="icon-remove"></i>'), "SGfM.form.remove_form('option',#{field_number})", :type => :button, :class => 'btn btn-danger') %>
-            <% end %>
-            <%= link_to_function(raw('<i class="icon-plus"></i><i class="icon-arrow-down"></i>'), "SGfM.form.add_form('#{information_type_option_form_path}', 'option_#{field_number}')", :type => :button, :class => 'btn') %>
-            <%= link_to_function(raw('<i class="icon-plus"></i><i class="icon-arrow-up"></i>'), "SGfM.form.add_form_before('#{information_type_option_form_path}', 'option_#{field_number}')", :type => :button, :class => 'btn') %>
-          </div>
-        -->
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

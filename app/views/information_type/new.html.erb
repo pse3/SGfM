@@ -46,7 +46,7 @@
   <div class="control-group">
     <%= f.label(:information_field_type, t('information_type.new.field_type'), class: 'control-label')%>
     <div class="controls">
-      <%= f.collection_select(:information_field_type, information_field_types, :key, :name, {}, {onchange: "SGfM.information_type.render_options_form(\"#{information_type_data_form_path}\", this.value)"}) %>
+      <%= f.collection_select(:information_field_type, information_field_types, :key, :name, {}, {onchange: "SGfM.information_type.render_options_form(\"#{information_type_data_form_path}\", this.value)", id: 'data-select'}) %>
     </div>
   </div>
 
@@ -63,3 +63,9 @@
     <%= f.submit(t('information_type.new.create_information_type'), :class => 'btn btn-primary') %>
   </div>
 <% end %>
+
+<script>
+  $('document').ready(function() {
+    SGfM.information_type.render_options_form("<%= information_type_data_form_path %>", $('#data-select').val());
+  })
+</script>

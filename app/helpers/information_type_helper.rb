@@ -20,20 +20,8 @@ module InformationTypeHelper
       InformationFieldText => lambda { |data| },
       InformationFieldEmail => lambda { |data| },
       InformationFieldDate => lambda { |data| },
-      InformationFieldSingleSelect => lambda { |data|
-        result ={}
-        data.each do |key, value|
-          result[key] = value.split(%r{,\s*})
-        end
-        result
-      },
-      InformationFieldMultipleSelect => lambda { |data|
-        result ={}
-        data.each do |key, value|
-          result[key] = value.split(%r{,\s*})
-        end
-        result
-      }
+      InformationFieldSingleSelect => lambda { |data| },
+      InformationFieldMultipleSelect => lambda { |data| }
   }
 
   def self.get_partial(information_field_type)
