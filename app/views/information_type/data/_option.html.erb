@@ -5,7 +5,7 @@
       <div class='controls'>
         <div class='input-prepend'>
           <span class='add-on'>en</span>
-          <%= f.text_field :en, :placeholder => t('lang.en'), :name => 'information_type[information_field_type_data][en][]', :class => 'span6', :required => true %>
+          <%= f.text_field :en, :placeholder => t('lang.en'), :name => 'information_type[information_field_type_data][en][]', :value => translations ? translations[:en][:field_number] : nil, :class => 'span6', :required => true %>
         </div>
         <div class='input-prepend'>
           <span class='add-on'>de</span>

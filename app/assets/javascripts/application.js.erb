@@ -60,8 +60,8 @@ SGfM.actor = {
 };
 
 SGfM.information_type = {
-  render_options_form : function(controller_path, information_field_type_key) {
-    SGfM.replace_form(controller_path, '#data-options', {information_field_type: information_field_type_key});
+  render_options_form : function(controller_path, information_field_type_key, information_type_id) {
+    SGfM.replace_form(controller_path, '#data-options', {information_type_id : information_type_id, information_field_type: information_field_type_key});
   }
 };
 
