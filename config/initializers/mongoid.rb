@@ -67,8 +67,8 @@ unless Rails.env == :production
   info_medical_specialisations = InformationType.new
   info_medical_specialisations.key = :medical_specialisations
   info_medical_specialisations.information_field_type = information_field_multiple_select
-  info_medical_specialisations.data_translations = { :de => ['Frauenarzt', 'Kinderarzt', 'Urologoe' ],
-                                                     :en => ['Womendoctor', 'Childdoctor', 'Penisdoctor'],
+  info_medical_specialisations.data_translations = { :de => ['Gynokologe', 'Kinderarzt', 'Urologoe' ],
+                                                     :en => ['gynecologist', 'pediatrist', 'urologist'],
                                                      :fr => ['??', '??', '??'],
                                                      :it => ['??', '??', '??'] }
   info_medical_specialisations.name_translations = {:en => 'Medical specialisations', :de => 'Fachgebiete', :it => '??', :fr => '??' }
@@ -199,9 +199,15 @@ unless Rails.env == :production
   relation_works_with.save
 
   relation_other = RelationshipType.new
+  relation_other.key = :assign_to
+  relation_other.name_translations = { :en => 'assign to', :de =>'Überweisung an', :it => '??', :fr => '??' }
+  relation_other.save
+
+  relation_other = RelationshipType.new
   relation_other.key = :other
   relation_other.name_translations = { :en => 'other', :de =>'Andere', :it => '??', :fr => '??' }
   relation_other.save
+
 
   # Create a User and Admin
   user = User.new
