@@ -12,7 +12,7 @@ module InformationTypeHelper
       InformationFieldText => 'information_type/data/no_options',
       InformationFieldEmail => 'information_type/data/no_options',
       InformationFieldDate => 'information_type/data/no_options',
-      InformationFieldSingleSelect => 'information_type/data/localized_options',
+      InformationFieldSingleSelect => 'information_type/data/initial_option',
       InformationFieldMultipleSelect => 'information_type/data/localized_options'
   }
 

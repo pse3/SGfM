@@ -13,6 +13,10 @@ class AjaxController < ApplicationController
     render :partial => InformationTypeHelper.get_partial(information_type)
   end
 
+  def information_type_option_form
+    render_partial 'information_type/data/option', {:remove_button => true}
+  end
+
   private
   def render_partial(file, locals = {})
     locals[:field_number] = Random.new.rand(1...100000)

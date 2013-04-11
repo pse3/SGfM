@@ -29,7 +29,18 @@ var SGfM = {
         jQuery(id).after(data); <!-- if you use before here, the relationship reference shit will break!!!!!!-->
       }
     });
+  },
+  add_form_before : function(controller_path, id) {
+    jQuery.ajax({
+      url: controller_path,
+      type: 'GET',
+      dataType: 'html',
+      success: function(data) {
+        jQuery(id).before(data); <!-- if you use before here, the relationship reference shit will break!!!!!!-->
+      }
+    });
   }
+
 }
 
 
@@ -65,6 +76,9 @@ SGfM.information_type = {
 SGfM.form = {
   add_form : function(controller_path,where) {
     SGfM.add_form(controller_path, '#' + where);
+  },
+  add_form_before : function(controller_path, where) {
+    SGfM.add_form_before(controller_path, '#' + where);
   },
   remove_form : function(id,field_number) {
     SGfM.remove_form('#' + id, field_number);

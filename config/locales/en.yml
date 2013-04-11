@@ -160,6 +160,7 @@ en:
       field_type: 'Field type'
       field_type_data: 'Field type data'
       field_type_data_placeholder: 'e.g. option 1, option 2, option 3'
+      option: 'Option'
 
     edit:
       title: 'Edit information type'
