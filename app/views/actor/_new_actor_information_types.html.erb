@@ -17,10 +17,10 @@
                 <% else %>
                     <% first = true %>
                     <%# f.collection_select("scope[#{information_type.key}]", @scopes, :key, :name)%>
-                    <div class="btn-group" data-toggle-name="<%= "scope[#{information_type.key}]" %>" data-toggle="buttons-radio" >
+                    <div class="btn-group" data-toggle-name="<%= "actor[scope][#{information_type.key}]" %>" data-toggle="buttons-radio" >
                       <% @scopes.each do |scope| %>
                         <% if first %>
-                          <input type="hidden" name="<%= "scope[#{information_type.key}]" %>" value="<%= scope.key %>"/>
+                          <input type="hidden" name="<%= "actor[scope][#{information_type.key}]" %>" value="<%= scope.key %>"/>
                         <% end %>
 
                         <button type="button" value="<%= scope.key %>" class="btn  <%= 'active' if first %>" ><%=  scope.name %></button>
