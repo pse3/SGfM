@@ -1,9 +1,7 @@
 <div id="data-options">
   <% if information_type %>
-    <% information_type.data_translations.each_value do |value| %>
-      <% value.each_index do |index| %>
-        <%= render :partial => 'information_type/data/option', :locals => {:field_number => 0, :remove_button => !index.zero?, :translations => value} %>
-      <% end %>
+    <% information_type.data.each_index do |index| %>
+      <%= render(:partial => 'information_type/data/option', :locals => {:field_number => index, :remove_button => !index.zero?, :translations => information_type.data_translations}) %>
     <% end %>
   <% else %>
     <%= render :partial => 'information_type/data/option', :locals => {:field_number => 0, :remove_button => false, :translations => nil} %>

@@ -13,15 +13,15 @@ module InformationTypeHelper
       InformationFieldEmail => 'information_type/data/no_options',
       InformationFieldDate => 'information_type/data/no_options',
       InformationFieldSingleSelect => 'information_type/data/initial_option',
-      InformationFieldMultipleSelect => 'information_type/data/localized_options'
+      InformationFieldMultipleSelect => 'information_type/data/initial_option'
   }
 
   @parse_mapping = {
       InformationFieldText => lambda { |data| },
       InformationFieldEmail => lambda { |data| },
       InformationFieldDate => lambda { |data| },
-      InformationFieldSingleSelect => lambda { |data| },
-      InformationFieldMultipleSelect => lambda { |data| }
+      InformationFieldSingleSelect => lambda { |data| data },
+      InformationFieldMultipleSelect => lambda { |data| data }
   }
 
   def self.get_partial(information_field_type)
