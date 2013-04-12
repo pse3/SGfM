@@ -15,7 +15,14 @@
                       <option><%= information_type.scope.name %></option>
                     </select>
                 <% else %>
-                    <%= f.collection_select("scope[#{information_type.key}]", @scopes, :key, :name)%>
+                    <% first = true %>
+                    <%# f.collection_select("scope[#{information_type.key}]", @scopes, :key, :name)%>
+                    <div class="btn-group" data-toggle-name="<%= "scope[#{information_type.key}]" %>" data-toggle="buttons-radio" >
+                      <% @scopes.each do |scope| %>
+                        <button type="button" value="<%= scope.key %>" class="btn  <%= 'active' if first %>" ><%=  scope.name %></button>
+                        <% first = false %>
+                      <% end %>
+                    </div>
                 <% end %>
               </div>
             </div>
