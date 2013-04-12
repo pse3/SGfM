@@ -39,6 +39,11 @@ en:
       profile: 'Profile'
       actors: 'Your Actors'
       settings: 'Settings'
+  csv_import:
+    file:
+      upload:
+        success: '%s was uploaded successfully!'
+        failure: 'An unknown error ocurred!'
 
 
 # Translations for all actor-pages, sorted by page structure
@@ -128,9 +133,11 @@ en:
     create:
       title: 'Created actor type'
       success: 'You have successfully created an actor type!'
+      failure: 'An unknown error ocurred!'
 
     update:
       success: 'Actor type successfully updated!'
+      failure: 'An unknown error ocurred!'
 
 
 # Translations for all information_type-pages, sorted by page structure
@@ -234,9 +241,11 @@ en:
 
     create:
       success: 'Successfully created relationship'
+      failure: 'An unknown error ocurred!'
 
     update:
       success: 'Successfully updated relationship'
+      failure: 'An unknown error ocurred!'
 
     destroy:
       success: 'Successfully deleted relationship'
@@ -272,9 +281,11 @@ en:
 
     create:
       success: 'RelationshipType successfully created!'
+      failure: 'An unknown error ocurred!'
 
     update:
       success: 'Relationship type successfully updated!'
+      failure: 'An unknown error ocurred!'
 
     destroy:
       success: 'Successfully deleted relationship'
