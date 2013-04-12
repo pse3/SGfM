@@ -15,7 +15,7 @@ class ActorTypeController < ApplicationController
       searchable = params[:information_type_decorator][:searchable]
       keys.each_with_index do |key, i|
         info_type = InformationType.find_by_key(key.to_sym)
-        InformationTypeDecorator.create(info_type, @actor_type, required[i], searchable[i])
+        InformationTypeDecorator.create(info_type, actor_type, required[i], searchable[i])
       end
     end
 
@@ -23,7 +23,7 @@ class ActorTypeController < ApplicationController
       flash[:success] = t('actor_type.create.success')
       redirect_to actor_types_path
     else
-      flash[:failure] = t('actor_type.create.failure')
+      flash[:error] = t('actor_type.create.failure')
       redirect_to create_actor_type_path
     end
   end
