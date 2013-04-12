@@ -42,7 +42,7 @@ class Actor
   def update_to_string_field
     final_parsed = self.actor_type.to_string_pattern
     informations.each do |information|
-      final_parsed = final_parsed.gsub("|:#{information.information_type.key.to_s}|", information.value_to_s)
+      final_parsed = final_parsed.gsub("|:#{information.information_type.key.to_s}|", information.value_to_s) if information.visible?(:User)
     end
     self.to_string_field = final_parsed
   end

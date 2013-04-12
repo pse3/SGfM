@@ -2,11 +2,11 @@ class ActorController < ApplicationController
 	include ScopesHelper
 
   before_filter :authenticate_login!
-  before_filter :ensure_user_owns_actor!, :only => [:edit, :update]
+  before_filter  :owns_actor_or_is_admin!, :only => [:edit, :update]
 
   # Creates a Actor with chosen name and type
   def create
-    user = current_login.account
+    user = current_account
     @actor = Actor.new
     @actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
     @actor.actor_type = @actor_type
@@ -57,7 +57,7 @@ class ActorController < ApplicationController
 		if current_login.is_admin?
 			actors = Actor.all
 		else
-			actors = current_login.account.actors
+			actors = current_account.actors
 		end
 
 		@actors_hash = Hash.new{|h, k| h[k] = []}
@@ -66,14 +66,22 @@ class ActorController < ApplicationController
 		end
 
 		@actors_hash
+    if current_login.is_admin?
+      render('actor/admin_list')
+    else
+      render('actor/user_list')
+    end
 	end
 
 	def edit
 		@actor = Actor.find(params[:id])
 	end
 
-	# Doesn't do anything
 	def new
+    unless current_login.is_user?
+      flash[:error] = t('actor.new.admin_can_not_create_actors')
+      redirect_to actors_path
+    end
 	end
 
 	def update
@@ -92,6 +100,7 @@ class ActorController < ApplicationController
 		redirect_to actors_path
 	end
 
+  # TODO move this to ajaxController!
 	def information_types_for_actor_type
 		key = params[:actor_type_key]
 		actor_type = ActorType.find_by_key(key)
@@ -105,6 +114,11 @@ class ActorController < ApplicationController
 	def show
 		@actor = Actor.find(params[:id])
 		@informations = scope_array(@actor.informations, current_account)
+    if login_owns_actor(current_login, @actor) or current_login.is_admin?
+      render('actor/internal_show')
+    else
+      render('actor/external_show')
+    end
 	end
 
 end

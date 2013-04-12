@@ -39,6 +39,11 @@ en:
       profile: 'Profile'
       actors: 'Your Actors'
       settings: 'Settings'
+  csv_import:
+    file:
+      upload:
+        success: '%s was uploaded successfully!'
+        failure: 'An unknown error ocurred!'
 
 
 # Translations for all actor-pages, sorted by page structure
@@ -71,6 +76,7 @@ en:
       relationship_reference: 'Reference'
       relationship_comment: 'Comment'
       relationship_type: 'Type'
+      admin_can_not_create_actors: "Admins can\'t create actors!"
 
     edit:
       title: 'Edit actor'
@@ -128,9 +134,11 @@ en:
     create:
       title: 'Created actor type'
       success: 'You have successfully created an actor type!'
+      failure: 'An unknown error ocurred!'
 
     update:
       success: 'Actor type successfully updated!'
+      failure: 'An unknown error ocurred!'
 
 
 # Translations for all information_type-pages, sorted by page structure
@@ -160,6 +168,9 @@ en:
       field_type: 'Field type'
       field_type_data: 'Field type data'
       field_type_data_placeholder: 'e.g. option 1, option 2, option 3'
+      option: 'Option'
+      data:
+        new_option: 'Add option'
 
     edit:
       title: 'Edit information type'
@@ -192,6 +203,7 @@ en:
          type_table: 'Type'
          list_contents_table: 'List contents'
          new_scope: 'Create new Scope'
+         actions_table: 'Actions'
       new:
          title: 'Create new scope'
          type: 'Type'
@@ -231,9 +243,11 @@ en:
 
     create:
       success: 'Successfully created relationship'
+      failure: 'An unknown error ocurred!'
 
     update:
       success: 'Successfully updated relationship'
+      failure: 'An unknown error ocurred!'
 
     destroy:
       success: 'Successfully deleted relationship'
@@ -269,9 +283,11 @@ en:
 
     create:
       success: 'RelationshipType successfully created!'
+      failure: 'An unknown error ocurred!'
 
     update:
       success: 'Relationship type successfully updated!'
+      failure: 'An unknown error ocurred!'
 
     destroy:
       success: 'Successfully deleted relationship'
