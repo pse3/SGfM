@@ -4,10 +4,10 @@ class ActorTypeController < ApplicationController
 
 	# Creates an ActorType with chosen name and InformationTypes
   def create
-    @actor_type = ActorType.new
-    @actor_type.key = params[:actor_type][:name][:en].downcase.tr(' ', '_')
-    @actor_type.name_translations = params[:actor_type][:name]
-    @actor_type.to_string_pattern = params[:actor_type][:to_string_pattern]
+    actor_type = ActorType.new
+    actor_type.key = params[:actor_type][:name][:en].downcase.tr(' ', '_')
+    actor_type.name_translations = params[:actor_type][:name]
+    actor_type.to_string_pattern = params[:actor_type][:to_string_pattern]
 
     if params[:information_type_decorator]
       keys = params[:information_type_decorator][:information_type]
@@ -15,23 +15,24 @@ class ActorTypeController < ApplicationController
       searchable = params[:information_type_decorator][:searchable]
       keys.each_with_index do |key, i|
         info_type = InformationType.find_by_key(key.to_sym)
-        InformationTypeDecorator.create(info_type, @actor_type, required[i], searchable[i])
+        InformationTypeDecorator.create(info_type, actor_type, required[i], searchable[i])
       end
     end
 
-    @actor_type.save
-
-    flash[:success] = t('actor_type.create.success')
-    redirect_to actor_types_path
+    if actor_type.save
+      flash[:success] = t('actor_type.create.success')
+      redirect_to actor_types_path
+    else
+      flash[:error] = t('actor_type.create.failure')
+      redirect_to create_actor_type_path
+    end
   end
 
   # Gets all actor_types
   # If there are none, return an empty array
   def list
     @actor_types = ActorType.all
-    if @actor_types.nil?
-      return Array.new
-    end
+    @actor_type = Array.new unless @actor_type
   end
 
   # Find information_type with given id
@@ -69,10 +70,12 @@ class ActorTypeController < ApplicationController
       end
     end
 
-    @actor_type.save
-
-    flash[:success] = t('actor_type.update.success')
-    redirect_to actor_types_path
+    if @actor_type.save
+      flash[:success] = t('actor_type.update.success')
+      redirect_to actor_types_path
+    else
+      flash[:false] = t('actor_type.update.failure')
+      redirect_to edit_actor_type_path(@actor_type)
+    end
   end
-
 end

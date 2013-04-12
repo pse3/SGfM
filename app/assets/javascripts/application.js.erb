@@ -15,46 +15,70 @@
 //= require bootstrap
 //= require select2
 
-
+//TODO javascript conventions are camlcase.
 var SGfM = {
   remove_form : function(id, field_number) {
     $(id + "_" + field_number).remove();
   },
-  add_form : function(controller_path, id) {
+  add_form : function(controller_path, id, html_data) {
+    SGfM.get_ajax(controller_path, html_data, function(data){
+      jQuery(id).after(data);
+    });
+  },
+  insert_form : function(controller_path, id, html_data) {
+    SGfM.get_ajax(controller_path, html_data, function(data) {
+      jQuery(id).html(data);
+    });
+  },
+  replace_form : function(controller_path, id, html_data) {
+    SGfM.get_ajax(controller_path, html_data, function(data) {
+      jQuery(id).replaceWith(data);
+    });
+  },
+  add_form_before : function(controller_path, id, html_data) {
+    SGfM.get_ajax(controller_path, html_data, function(data){
+      jQuery(id).before(data);
+    });
+  },
+  get_ajax : function(controller_path, html_data, onSuccess) {
+    html_data = html_data || {};
     jQuery.ajax({
       url: controller_path,
       type: 'GET',
       dataType: 'html',
-      success: function(data) {
-        jQuery(id).after(data); <!-- if you use before here, the relationship reference shit will break!!!!!!-->
-      }
+      data: html_data,
+      success: onSuccess
     });
   }
-}
+};
 
 
 SGfM.actor = {
   render_matching_form : function(controller_path, actor_type_key) {
-    jQuery.ajax({
-      url: controller_path,
-      type: 'GET',
-      data: {"actor_type_key" : actor_type_key},
-      dataType: 'html',
-      success: function(data) {
-        jQuery('#information-types-form').html(data);
-      }
-    });
+    SGfM.insert_form(controller_path, '#information-types-form', {actor_type_key: actor_type_key});
   }
-}
+};
+
+SGfM.information_type = {
+  render_options_form : function(controller_path, information_field_type_key, information_type_id) {
+    SGfM.replace_form(controller_path, '#data-options', {information_type_id : information_type_id, information_field_type: information_field_type_key});
+  }
+};
 
 <!-- always use this one -->
 SGfM.form = {
   add_form : function(controller_path,where) {
     SGfM.add_form(controller_path, '#' + where);
   },
+  add_form_before : function(controller_path, where) {
+    SGfM.add_form_before(controller_path, '#' + where);
+  },
   remove_form : function(id,field_number) {
-    SGfM.remove_form('#' + id, field_number)
+    SGfM.remove_form('#' + id, field_number);
+  },
+  replace_form : function(id, data) {
+    jQuery('#' + id).replaceWith(data)
   }
-}
+};
 
 
