@@ -12,16 +12,15 @@ class Actor
   field :search_field, :type => String
   field :to_string_field, :type => String
 
-  belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced
+	belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced
   embeds_many :informations, class_name: 'Information'                                  #embedded
   has_many :relationships, class_name: 'Relationship'                                  	#embedded
   belongs_to :owner, class_name: 'User'                                                 #embedded
 
-	validates_presence_of :search_field, :to_string_field, :actor_type, :owner
-
   before_save :update_search_field, :update_to_string_field
   search_in :search_field
 
+	#validates_presence_of :actor_type, :owner Todo: doesnt work -.-
 
   def initialize
     super

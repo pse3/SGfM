@@ -8,6 +8,7 @@ class InformationType
   field :data, :type => Array, :localize => true # Store data that the information_field_type may can chose from *like list of tags*
 
   validates_uniqueness_of :key
+	validates_presence_of :name
 
   belongs_to :information_field_type, :class_name => 'InformationFieldType', :inverse_of => nil  #referenced / one way relationship
 
