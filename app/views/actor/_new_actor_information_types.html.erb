@@ -19,6 +19,10 @@
                     <%# f.collection_select("scope[#{information_type.key}]", @scopes, :key, :name)%>
                     <div class="btn-group" data-toggle-name="<%= "scope[#{information_type.key}]" %>" data-toggle="buttons-radio" >
                       <% @scopes.each do |scope| %>
+                        <% if first %>
+                          <input type="hidden" name="<%= "scope[#{information_type.key}]" %>" value="<%= scope.key %>"/>
+                        <% end %>
+
                         <button type="button" value="<%= scope.key %>" class="btn  <%= 'active' if first %>" ><%=  scope.name %></button>
                         <% first = false %>
                       <% end %>
@@ -31,3 +35,18 @@
 
     <%= f.hidden_field(:actor_type_key, value: actor_type_key) %>
 <% end %>
+
+<script>
+  //todo: pack this in a separate file.
+  $('div.btn-group[data-toggle-name]').each(function () {
+    var group = $(this);
+    var form = group.parents('form').eq(0);
+    var name = group.attr('data-toggle-name');
+    var hidden = $('input[name="' + name + '"]', form);
+    $('button', group).each(function () {
+      $(this).on('click', function () {
+        hidden.val($(this).val());
+      });
+    });
+  });
+</script>
