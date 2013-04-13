@@ -31,6 +31,7 @@ describe ActorType do
     @itypedec_phone = InformationTypeDecorator.create(@itype_phone, @atype_doctor, true, true)
     InformationTypeDecorator.create(@itype_address, @atype_doctor, true, true)
     InformationTypeDecorator.create(@itype_email, @atype_doctor, true, true)
+    @atype_doctor.to_string_pattern = "|:name|//|:phone|"
     @atype_doctor.save
 
     @atype_hospital = ActorType.new
@@ -39,6 +40,7 @@ describe ActorType do
     InformationTypeDecorator.create(@itype_name, @atype_hospital, true, true)
     InformationTypeDecorator.create(@itype_phone, @atype_hospital, true, true)
     InformationTypeDecorator.create(@itype_address, @atype_hospital, true, true)
+    @atype_hospital.to_string_pattern = "|:name|//|:phone|"
     @atype_hospital.save
 
     #create an actor

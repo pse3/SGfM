@@ -13,9 +13,20 @@ describe Relationship do
     @relation_other.name_translations = { :en => 'other', :de =>'Andere', :it => '??', :fr => '??' }
     @relation_other.save
 
+
+    #create some actor_types
+    @atype_doctor = ActorType.new
+    @atype_doctor.name = "Arzt"
+    @atype_doctor.key = :doctor_test
+    @atype_doctor.to_string_pattern = "|:name|//|:phone|"
+    @atype_doctor.save
+
     #create some actors
     @actor_karl = Actor.new
+    @actor_karl.actor_type = @atype_doctor
     @actor_peter = Actor.new
+    @actor_peter.actor_type = @atype_doctor
+
 
     #create some relationships between karl and peter
     @relationship1 = Relationship.new

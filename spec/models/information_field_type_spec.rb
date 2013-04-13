@@ -5,9 +5,11 @@ describe InformationFieldType do
     #create some information field types
     @emailfield = InformationFieldEmail.new
     @emailfield.key = :email_test
+    @emailfield.name = 'Email'
     @emailfield.save
     @textfield = InformationFieldText.new
     @textfield.key = :text_test
+    @textfield.name = 'Text'
     @textfield.save
   }
 
