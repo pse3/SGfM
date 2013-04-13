@@ -126,15 +126,11 @@ describe Actor do
     @actor.find_relationship_by_key(:father_test).should be(relation2)
   end
 
-  it "displays correct to_string_field" do
-    #todo this fails
+  it "displays correct to_string_field" #todo this fails
     #expect(@actor.to_s).to eq('peter//999')
-  end
-  it "updates to_string_field" do
-    #todo this fails
+  it "updates to_string_field" #todo this fails
     #@atype_doctor.to_string_pattern = "|:name|"
     #expect(@actor.to_s).to eq('peter')
-  end
   it "updates search_field"
 
 end
