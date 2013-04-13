@@ -97,6 +97,7 @@ en:
       new_actor_type: 'Create new actor type'
       name_table: 'Name'
       key_table: 'Key'
+      actions_table: 'Actions'
 
     show:
       title: '%{actor_type}'
