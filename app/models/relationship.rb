@@ -9,12 +9,13 @@ class Relationship
   field :created_at, :type => DateTime
   field :changed_a, :type => DateTime
 
-  belongs_to :creator, :class_name => 'User', :inverse_of => nil                                #referenced / one way relationship                                                                                                                                                                                                                                                 #embedded
+  belongs_to :creator, :class_name => 'User', :inverse_of => nil                                #referenced / one way relationship                                                                                                                                                                                                                                              #embedded
   belongs_to :relationship_type, :class_name => 'RelationshipType', :inverse_of => nil          #referenced / one way relationship
   belongs_to :scope, :class_name => 'Scope', :inverse_of => nil                                 #referenced
   belongs_to :actor, :class_name => 'Actor', :inverse_of => :relationships                      #embedded
   belongs_to :reference, :class_name => 'Actor', :inverse_of => nil                             #referenced / one way relationship
 
+	validates_presence_of :relationship_type, :actor, :reference #, :creator  TODO: @urs: creator isn't set in controller? wanted to validate it, but it fails.
 
   def initialize
     super

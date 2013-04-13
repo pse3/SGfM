@@ -10,6 +10,9 @@ class InformationTypeDecorator
   belongs_to :actor_type, :class_name => 'ActorType'
   belongs_to :information_type, :class_name => 'InformationType', :inverse_of => nil
 
+
+	validates_presence_of :actor_type, :information_type #, :index
+
   # Creates a new InformationTypeDecorator object with arguments
   # @param info_type InformationType that need decorating
   # @param actor_type ActorType that the decorator belongs to

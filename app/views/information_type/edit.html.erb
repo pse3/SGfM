@@ -45,37 +45,11 @@
   <div class="control-group">
     <%= f.label(:information_field_type, t('information_type.edit.field_type'), class: 'control-label')%>
     <div class="controls">
-      <%= f.collection_select(:information_field_type, information_field_types, :key, :name, {:selected => @information_type.information_field_type.key}) %>
+      <%= f.collection_select(:information_field_type, information_field_types, :key, :name, {:selected => @information_type.information_field_type.key}, {:onchange => "SGfM.information_type.render_options_form(\"#{information_type_data_form_path}\", this.value)", :id => 'data-select'}) %>
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :'information_field_type_data[en]', "#{t('information_type.edit.field_type_data')} (#{t('lang.en')})", class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field(:'information_field_type_data[en]', :value => @information_type.data_translations['en'] ? @information_type.data_translations['en'].join(', ') : nil, :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :'information_field_type_data[de]', "#{t('information_type.edit.field_type_data')} (#{t('lang.de')})", class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field(:'information_field_type_data[de]', :value => @information_type.data_translations['de'] ? @information_type.data_translations['de'].join(', ') : nil, :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :'information_field_type_data[fr]', "#{t('information_type.edit.field_type_data')} (#{t('lang.fr')})", class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field(:'information_field_type_data[fr]', :value => @information_type.data_translations['fr'] ? @information_type.data_translations['fr'].join(', ') : nil, :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :'information_field_type_data[it]', "#{t('information_type.edit.field_type_data')} (#{t('lang.it')})", class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field(:'information_field_type_data[it]', :value => @information_type.data_translations['it'] ? @information_type.data_translations['it'].join(', ') : nil, :placeholder => "#{t('information_type.edit.field_type_data_placeholder')}") %>
-    </div>
-  </div>
+  <div id="data-options"></div>
 
   <div class="control-group">
     <%= f.label(t('information_type.edit.predefined_scope'), class: 'control-label')%>
@@ -92,3 +66,9 @@
     <%= f.submit(t('information_type.edit.update_information_type'), :class => 'btn btn-primary') %>
   </div>
 <% end %>
+
+<script>
+  $('document').ready(function() {
+    SGfM.information_type.render_options_form("<%= information_type_data_form_path %>", $('#data-select').val(), "<%= @information_type.id %>");
+  })
+</script>

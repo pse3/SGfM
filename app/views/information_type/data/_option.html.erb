@@ -1,0 +1,46 @@
+<%= content_tag :div, :id => "option_#{field_number}" do %>
+  <%= fields_for :data do |f| %>
+    <div class='control-group'>
+      <%= f.label :en, t('information_type.new.option'), :class => 'control-label' %>
+      <div class='controls'>
+        <div class='input-prepend'>
+          <span class='add-on'>en</span>
+          <% if local_assigns[:translations] %>
+            <%= f.text_field :en, :placeholder => t('lang.en'), :name => 'information_type[information_field_type_data][en][]', :value => translations['en'][field_number], :class => 'span6', :required => true %>
+          <% else %>
+            <%= f.text_field :en, :placeholder => t('lang.en'), :name => 'information_type[information_field_type_data][en][]', :class => 'span6', :required => true %>
+          <% end %>
+        </div>
+        <div class='input-prepend'>
+          <span class='add-on'>de</span>
+          <% if local_assigns[:translations] %>
+            <%= f.text_field :de, :placeholder => t('lang.de'), :name => 'information_type[information_field_type_data][de][]', :value => translations['de'][field_number], :class => 'span6', :required => true %>
+          <% else %>
+            <%= f.text_field :de, :placeholder => t('lang.de'), :name => 'information_type[information_field_type_data][de][]', :class => 'span6', :required => true %>
+          <% end %>
+        </div>
+        <div class='input-prepend'>
+          <span class='add-on'>fr</span>
+          <% if local_assigns[:translations] %>
+            <%= f.text_field :fr, :placeholder => t('lang.fr'), :name => 'information_type[information_field_type_data][fr][]', :value => translations['fr'][field_number], :class => 'span6', :required => true %>
+          <% else %>
+            <%= f.text_field :fr, :placeholder => t('lang.fr'), :name => 'information_type[information_field_type_data][fr][]', :class => 'span6', :required => true %>
+          <% end %>
+        </div>
+        <div class='input-prepend'>
+          <span class='add-on'>it</span>
+          <% if local_assigns[:translations] %>
+            <%= f.text_field :it, :placeholder => t('lang.it'), :name => 'information_type[information_field_type_data][it][]', :value => translations['it'][field_number], :class => 'span6', :required => true %>
+          <% else %>
+            <%= f.text_field :it, :placeholder => t('lang.it'), :name => 'information_type[information_field_type_data][it][]', :class => 'span6', :required => true %>
+          <% end %>
+        </div>
+        <div class='pull-right'>
+          <% if local_assigns[:remove_button] %>
+              <%= link_to_function(raw('<i class="icon-remove"></i>'), "SGfM.form.remove_form('option',#{field_number})", :type => :button, :class => 'btn btn-danger') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

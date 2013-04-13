@@ -1,0 +1,13 @@
+<div id="data-options">
+  <% if information_type %>
+    <% information_type.data.each_index do |index| %>
+      <%= render(:partial => 'information_type/data/option', :locals => {:field_number => index, :remove_button => !index.zero?, :translations => information_type.data_translations}) %>
+    <% end %>
+  <% else %>
+    <%= render :partial => 'information_type/data/option', :locals => {:field_number => 0, :remove_button => false, :translations => nil} %>
+  <% end %>
+  <div id="intial-option"></div>
+  <p>
+    <%= link_to_function(t('information_type.new.data.new_option'), "SGfM.form.add_form_before('#{information_type_option_form_path}', 'intial-option')", :type => :button, :class => 'btn') %>
+  </p>
+</div>

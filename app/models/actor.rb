@@ -12,16 +12,15 @@ class Actor
   field :search_field, :type => String
   field :to_string_field, :type => String
 
-  belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced
+	belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced
   embeds_many :informations, class_name: 'Information'                                  #embedded
   has_many :relationships, class_name: 'Relationship'                                  	#embedded
   belongs_to :owner, class_name: 'User'                                                 #embedded
 
-	#validates :informations, informations_not_empty: true #TODO: Do we still need this validation?
-
   before_save :update_search_field, :update_to_string_field
   search_in :search_field
 
+	#validates_presence_of :actor_type, :owner Todo: doesnt work -.-
 
   def initialize
     super
@@ -43,7 +42,7 @@ class Actor
   def update_to_string_field
     final_parsed = self.actor_type.to_string_pattern
     informations.each do |information|
-      final_parsed = final_parsed.gsub("|:#{information.information_type.key.to_s}|", information.value_to_s)
+      final_parsed = final_parsed.gsub("|:#{information.information_type.key.to_s}|", information.value_to_s) if information.visible?(:User)
     end
     self.to_string_field = final_parsed
   end

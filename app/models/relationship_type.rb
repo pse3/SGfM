@@ -6,6 +6,7 @@ class RelationshipType
   field :key, :type => Symbol
 
   validates_uniqueness_of :key
+	validates_presence_of :name
 
   def self.find_by_key(key)
     RelationshipType.find_by(key: key)
