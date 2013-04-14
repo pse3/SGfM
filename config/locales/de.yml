@@ -5,6 +5,12 @@ de:
   yes: 'Ja'
   no: 'Nein'
 
+  lang:
+    en: 'Englisch'
+    de: 'Deutsch'
+    it: 'Italienisch'
+    fr: 'Französisch'
+
   form:
     email: 'Email'
     password: 'Passwort'
@@ -12,7 +18,7 @@ de:
     current_password: 'Aktuelles Passwort'
     remember: 'Automatisch einloggen'
     submit: 'Absenden'
-    update: 'Aktualisieren'
+    create: 'Erstellen'
     update: 'Aktualisieren'
     cancel: 'Abbrechen'
 
@@ -23,8 +29,9 @@ de:
     forgot_password: 'Passwort vergessen?'
 
   flash:
-    no_admin_rights: 'Access denied'
-
+    no_admin_rights: 'Keine Berechtigung'
+    not_owner_of_actor: 'Sie können diesen Akteur nicht bearbeiten'
+    not_owner_of_relationship: 'Sie können diese Beziehung nicht bearbeiten'
 
   application:
     menu:
@@ -38,20 +45,32 @@ de:
     list:
       title: 'Ihre Akteure'
       new_actor: 'Neuen Akteur erstellen'
-      name_table: 'Name'
-      type_table: 'Typ'
+      name_table: 'Wer'
 
     show:
       title: '%{actor}'
       type: 'Typ'
       edit_actor: 'Bearbeiten'
-      field_table: 'Feldname'
-      value_table: 'Wert'
+      add_relationship: 'Beziehung hinzufügen'
+      information_type: 'Information'
+      information_value: 'Wert'
+      relationship_type: 'Typ'
+      relationship_reference: 'Referenzierter Akteur'
+      relationship_comment: 'Kommentar'
+      actions_table: 'Aktionen'
 
     new:
       title: 'Neuen Akteur erstellen'
       select_type: 'Typ auswählen'
       create_actor: 'erstellen'
+      add_relationship: 'Beziehung hinzufügen'
+      remove_relationship: 'entfernten'
+      actor_type_data: 'Akteurtyp Daten'
+      relationship_data: 'Beziehungs Daten'
+      relationship_reference: 'Referenz'
+      relationship_comment: 'Kommentar'
+      relationship_type: 'Typ'
+      admin_can_not_create_actors: "Admins können keine Atkeure hinzufügen!"
 
     edit:
       title: 'Bearbeiten'
@@ -68,7 +87,7 @@ de:
 # Translations for all actor_type-pages, sorted by page structure
   actor_type:
     list:
-      title: 'Alle Akteurtypen'
+      title: 'Akteurtypen'
       new_actor_type: 'Neuen Akteurtyp erstellen'
       name_table: 'Name'
       key_table: 'Schlüssel'
@@ -86,36 +105,45 @@ de:
     new:
       title: 'Neuen Akteurtyp erstellen'
       create_actor_type: 'Erstellen'
-      information_types: 'Informationstypen'
-      add_information_type: 'Bratwurst hinzufügen'
-      remove_information_type: 'Bratwurst entfernen'
-      scope: 'Privatsphäre voreinstellen'
-      optional: 'Bratwurst benötigt'
-      searchable: 'Durchsuchbar'
+      basics: 'Grundinformationen'
+      information_types: 'InformationTypen'
+      add_information_type: 'InformationTyp hinzufügen'
+      remove_information_type: 'InformationTyp entfernen'
+      scope: 'Sichtbarkeitsbereich vordefinieren'
+      optional: 'Pflichtinformation'
+      searchable: 'Suchbar'
       key: 'Schlüssel'
-      name_en: 'Name (englisch)'
-      name_de: 'Name (deutsch)'
-      name_fr: 'Name (französisch)'
-      name_it: 'Name (italienisch)'
+      to_string_pattern: 'ToString Repräsentation'
+      to_string_pattern_explanation: 'Verwende |:infotypekey| um eine Information anzuzeigen'
+      name: 'Name'
 
     edit:
       title: 'Akteurtyp bearbeiten'
+      name: 'Name'
+      to_string_pattern: 'ToString Repräsentation'
+      to_string_pattern_explanation: 'Verwende |:infotypekey| um eine Information anzuzeigen'
+      basics: 'Grundinformationen'
+      information_types: 'InformationTypen'
 
     create:
-      title: 'Akteurtyp erstellt'
+      title: 'Akteuryp erstellt'
       success: 'Sie haben erfolgreich einen neuen Akteurtyp erstellt!'
+      failure: 'Ein unbekannter Fehler ist aufgetreten!'
 
     update:
       success: 'Akteurtyp wurde erfolgreich aktualisiert!'
+      failure: 'Ein unbekannter Fehler ist aufgetreten!'
 
 
 # Translations for all actor_type-pages, sorted by page structure
   information_type:
     list:
-     title: 'Informationstypen'
-     new_information_type: 'Neuen Informationstyp erstellen'
-     name_table: 'Name'
-     key_table: 'Schlüssel'
+      title: 'Informationstypen'
+      new_information_type: 'Neuen Informationstyp erstellen'
+      name_table: 'Name'
+      key_table: 'Schlüssel'
+      field_type_table: 'Datenfeldtyp'
+      actions_table: 'Aktionen'
 
     show:
       title: '%{information_type}'
@@ -128,14 +156,140 @@ de:
       title: 'Neuen Informationstyp erstellen'
       name: 'Name'
       key: 'Schlüssel'
+      predefined_scope: 'Vordefinierter Sichtbarkeitsbereich'
+      predefined_scope_prompt: 'Kein'
       create_information_type: 'Erstellen'
+      field_type: 'Datentyp'
+      field_type_data: 'Datentyp Wert'
+      field_type_data_placeholder: 'z.B. Option 1, Option 2, Option 3'
+      option: 'Option'
+      data:
+        new_option: 'Option hinzufügen'
+
+    edit:
+      title: 'Informationstyp bearbeiten'
+      name: 'Name'
+      key: 'Schlüssel'
+      predefined_scope: 'Vordefinierter Sichtbarkeitsbereich'
+      predefined_scope_prompt: 'Kein'
+      update_information_type: 'Bearbeiten'
+      field_type: 'Datentyp'
+      field_type_data: 'Datentyp Wert'
+      field_type_data_placeholder: 'z.B. Option 1, Option 2, Option 3'
 
     create:
       title: 'Informationstyp erstellt'
-      success: 'Sie haben erfolgreich einen neuen Informationstyp erstellt!'
+      success: 'Informationstyp wurde erfolgreich erstellt!'
+      failure: 'Ein unbekannter Fehler ist aufgetreten!'
 
     update:
       success: 'Informationstyp wurde erfolgreich aktualisiert!'
+      failure: 'Ein unbekannter Fehler ist aufgetreten!'
+
+
+#Translation for all Scope-Pages
+  scopes:
+      list:
+         title: 'Sichtbarkeitsbereiche'
+         name_table: 'Name'
+         key_table: 'Schlüssel'
+         type_table: 'Typ'
+         list_contents_table: 'Listeninhalt'
+         new_scope: 'Neuen Sichtbarkeitsbereich erstellen'
+         actions_table: 'Aktionen'
+
+      new:
+         title: 'Neuen Sichtbarkeitsbereich erstellen'
+         type: 'Typ'
+         name: 'Name'
+         key: 'Schlüssel'
+         list: 'Accounttypen Liste'
+         create_scope: 'Erstellen'
+
+      create:
+        success: 'Sichtbarkeitsbereich wurde erfolgreich erstellt!'
+        failure: 'Ein unbekannter Fehler ist aufgetreten!'
+
+      edit:
+        title: 'Sichtbarkeitsbereich bearbeiten'
+        name: 'Name'
+        list: 'Accounttypen Liste'
+        save_scope: 'Speichern'
+
+      update:
+        success: 'Sichtbarkeitsbereich wurde erfolgreich bearbeitet!'
+        failure: 'Ein unbekannter Fehler ist aufgetreten!'
+
+      destroy:
+        confirmation: 'Möchten Sie wirklich diesen Sichtbarkeitsbereich löschen?'
+        success: 'Sichtbarkeitsbereich wurde erfolgreich entfernt!'
+        failure: 'Ein unbekannter Fehler ist aufgetreten!'
+
+
+# Translations for all relationship-pages, sorted by page structure
+  relationship:
+    new:
+      title: 'Eine Beziehung für %{actor} erstellen'
+      relationship_type: 'Typ'
+      relationship_reference: 'Referenzierter Akteur'
+      relationship_comment: 'Kommentar'
+
+    edit:
+      title: 'Beziehung von %{actor} bearbeiten'
+      relationship_type: 'Typ'
+      relationship_reference: 'Referenzierter Akteur'
+      relationship_comment: 'Kommentar'
+
+    create:
+      success: 'Beziehung wurde erfolgreich erstellt!'
+      failure: 'Ein unbekannter Fehler ist aufgetreten!'
+
+    update:
+      success: 'Beziehung wurde erfolgreich bearbeitet!'
+      failure: 'Ein unbekannter Fehler ist aufgetreten!'
+
+    destroy:
+      success: 'Beziehung wurde erfolgreich entfernt!'
+
+
+# Translations for all actor_type-pages, sorted by page structure
+  relationship_type:
+    list:
+      title: 'Beziehungstypen'
+      new_relationship_type: 'Neuen Beziehungstyp erstellen'
+      name_table: 'Name'
+      key_table: 'Schlüssel'
+      actions_table: 'Aktionen'
+      sure_to_delete: 'Sind Sie sicher, dass Sie diesen Beziehungstyp löschen wollen? Alle bestehenden Beziehungen dieses Typs werden gelöscht!'
+
+    show:
+      title: '%{relationship_type}'
+      field_table: 'Datentyp'
+      value_table: 'Wert'
+      name: 'Name'
+      edit_relationship_type: 'Beziehungstyp bearbeiten'
+
+    new:
+      title: 'Neuen Beziehungstyp erstellen'
+      name: 'Name'
+      key: 'Schlüssel'
+      create_relationship_type: 'Erstellen'
+
+    edit:
+      title: 'Beziehungstyp bearbeiten'
+      type: 'Typ'
+      name: 'Name'
+
+    create:
+      success: 'Beziehungstyp wurde erfolgreich erstellt!'
+      failure: 'Ein unbekannter Fehler ist aufgetreten!'
+
+    update:
+      success: 'Beziehungstyp wurde erfolgreich bearbeitet!'
+      failure: 'Ein unbekannter Fehler ist aufgetreten!'
+
+    destroy:
+      success: 'Beziehungstyp wurde erfolgreich entfernt!'
 
 
 # Translations for all login-pages, sorted by page structure
@@ -185,16 +339,18 @@ de:
   csv_import:
     file:
       new:
-        title: "Neue CSV Datei hochladen"
+        title: 'Neue CSV Datei hochladen'
       upload:
-        success_message: "%{file_name} erfolgreich hochgeladen"
+        success: '%{file_name} erfolgreich importiert!'
+        failure: 'Ein unbekannter Fehler ist aufgetreten!'
       list:
-        title: "Verfügbare CSV Dateien"
-        column_file: "Dateiname"
-        column_uploaded: "hinzugefügt am"
-        column_imported: "importiert am"
-        column_import: "importieren"
-        link_new: "Datei hochladen"
+        title: 'Verfügbare CSV Dateien'
+        column_file: 'Dateiname'
+        column_uploaded: 'hinzugefügt am'
+        column_imported: 'importiert am'
+        column_import: 'importieren'
+        link_new: 'Datei hochladen'
+
 
 # Translations for date and time
   date:
@@ -293,8 +449,6 @@ de:
       month: Monat
       second: Sekunden
       year: Jahr
-
-
   time:
     am: vormittags
     formats:

@@ -13,7 +13,7 @@
                 <%= information_type.information_field_type.form(info_form, information_type.key, { :placeholder => information_type.name, :data => information_type.data, :required => information_type.required }) %>
                 <% if information_type.scope %>
                   <div class="btn-group" data-toggle-name="<%= "actor[scope][#{information_type.key}]" %>" data-toggle="buttons-radio" >                      <option><%= information_type.scope.name %></option>
-                    <button type="button" value="<%= scope.key %>" class="btn active" disabled><%=  scope.name %></button>
+                    <button type="button" value="<%= information_type.scope.key %>" class="btn active" disabled><%=  information_type.scope.name %></button>
                   </div>
                 <% else %>
                     <% first = true %>

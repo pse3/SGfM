@@ -33,17 +33,11 @@ en:
     not_owner_of_actor: 'You can not edit this actor'
     not_owner_of_relationship: 'You can not edit this relationship'
 
-
   application:
     menu:
       profile: 'Profile'
       actors: 'Your Actors'
       settings: 'Settings'
-  csv_import:
-    file:
-      upload:
-        success: '%s was uploaded successfully!'
-        failure: 'An unknown error ocurred!'
 
 
 # Translations for all actor-pages, sorted by page structure
@@ -145,12 +139,12 @@ en:
 # Translations for all information_type-pages, sorted by page structure
   information_type:
     list:
-     title: 'InformationTypes'
-     new_information_type: 'Create new information type'
-     name_table: 'Name'
-     key_table: 'Key'
-     field_type_table: 'Field Type'
-     actions_table: 'Actions'
+      title: 'InformationTypes'
+      new_information_type: 'Create new information type'
+      name_table: 'Name'
+      key_table: 'Key'
+      field_type_table: 'Field Type'
+      actions_table: 'Actions'
 
     show:
       title: '%{information_type}'
@@ -184,7 +178,6 @@ en:
       field_type_data: 'Field type data'
       field_type_data_placeholder: 'e.g. option 1, option 2, option 3'
 
-
     create:
       title: 'Created information type'
       success: 'You have successfully created an information type!'
@@ -193,6 +186,7 @@ en:
     update:
       success: 'Edited informaton successfully!'
       failure: 'There was an unknown error!'
+
 
 #Translation for all Scope-Pages
   scopes:
@@ -205,6 +199,7 @@ en:
          list_contents_table: 'List contents'
          new_scope: 'Create new Scope'
          actions_table: 'Actions'
+
       new:
          title: 'Create new scope'
          type: 'Type'
@@ -212,21 +207,25 @@ en:
          key: 'Key'
          list: 'Account-types list'
          create_scope: 'Create'
+
       create:
         success: 'You successfully created a scope!'
-        error: 'Oops. Something went wrong. Please retry!'
+        failure: 'There was an unknown error!'
+
       edit:
         title: 'Edit scope'
         name: 'Name'
         list: 'Account-types list'
         save_scope: 'Save'
+
       update:
         success: 'You successfully edited a scope!'
-        error: 'Oops. Something went wrong. Please retry!'
+        failure: 'There was an unknown error!'
+
       destroy:
         confirmation: 'Do you really want to delete a scope?'
         success: 'You successfully deleted a scope!'
-        error: 'Oops. Something went wrong. Please retry!'
+        failure: 'There was an unknown error!'
 
 # Translations for all relationship-pages, sorted by page structure
   relationship:
@@ -336,6 +335,23 @@ en:
       confirmation_inst: "Didn't receive confirmation instructions?"
       unlock_inst: "Didn't receive unlock instructions?"
       sign_in_with: 'Sign in with %{provider}'
+
+# Translations for all CSV import pages
+  csv_import:
+    file:
+      new:
+        title: 'Upload a CSV file'
+      upload:
+        success: '%{file_name} was uploaded successfully!'
+        failure: 'An unknown error occurred!'
+      list:
+        title: 'Available CSV files'
+        column_file: 'File Name'
+        column_uploaded: 'Date Added'
+        column_imported: 'Date Imported'
+        column_import: 'Import'
+        link_new: 'Upload a file'
+
 
 # Translations for Date and Time
   date:
