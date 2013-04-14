@@ -204,6 +204,17 @@ unless Rails.env == :production
   actor_hospital.to_string_pattern = '|:company|//|:canton|'
   actor_hospital.save
 
+
+  actor_import_test = ActorType.new
+  actor_import_test.key = :import_test
+  InformationTypeDecorator.create(info_last_name, actor_import_test, true, true)
+  InformationTypeDecorator.create(info_phone, actor_import_test, false, true)
+  InformationTypeDecorator.create(info_email, actor_import_test, false, true)
+  InformationTypeDecorator.create(info_street, actor_import_test, true, true)
+  actor_import_test.name_translations = { :en => 'Import Test', :de =>'Import Test', :it => 'Import Test', :fr => 'Import Test' }
+  actor_import_test.to_string_pattern = '|:last_name|'
+  actor_import_test.save
+
   # Create some RelationshipTypes
   relation_works_with = RelationshipType.new
   relation_works_with.key = :works_with

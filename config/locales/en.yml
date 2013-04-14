@@ -351,6 +351,20 @@ en:
         column_imported: 'Date Imported'
         column_import: 'Import'
         link_new: 'Upload a file'
+    import:
+      new:
+        file: 'File'
+        actor_type: 'Actor Type'
+        start: 'start import'
+        title: 'Create Import'
+        infos:
+          title: 'Informations'
+          index: 'Index (in CSV File)'
+          info: 'Information'
+          add_row: 'Add Information'
+      delete_row: 'remove'
+      success: '%{file_name} was successfully imported!'
+
 
 
 # Translations for Date and Time

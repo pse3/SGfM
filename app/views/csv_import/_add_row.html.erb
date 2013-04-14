@@ -1,0 +1,11 @@
+<%= fields_for(:infos) do |f| %>
+    <%= f.fields_for(id) do |fi| %>
+        <tr>
+            <td><%= fi.select(:key, @information_types.collect { |i| [i.name, i.key] }) %></td>
+            <td><%= fi.text_field(:index, :value => id, :required => true) %></td>
+            <td class="delete">
+                <span class="btn btn-danger"><%=  t('csv_import.import.delete_row') %></span>
+            </td>
+        </tr>
+    <% end %>
+<% end %>
