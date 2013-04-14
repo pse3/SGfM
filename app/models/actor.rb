@@ -32,7 +32,7 @@ class Actor
 	end
 
   def find_relationship_by_key(key)
-    self.relationship.detect{ |relationship| relationship.relationship_type.key == key }
+    self.relationships.detect{ |relationship| relationship.relationship_type.key == key }
   end
 
   def to_s

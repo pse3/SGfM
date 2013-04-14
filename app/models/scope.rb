@@ -12,8 +12,6 @@ class Scope
 	validates_presence_of :name
 	validate :list_elements_proper
 
-	#no mappings needed! (yet)
-
 	#Returns all types of scopes in a list. (That means it returns the Class-Objects)
 	def self.all_types
 		 Scope.descendants

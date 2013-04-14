@@ -1,4 +1,5 @@
 module Scoped
+  #todo comment methods that aren't clear
 
   def self.included(base)
     base.extend ClassMethods

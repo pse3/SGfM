@@ -47,8 +47,4 @@ class Information
     self.information_type_decorator.required
   end
 
-  def index
-    self.information_type_decorator.index
-  end
-
 end
