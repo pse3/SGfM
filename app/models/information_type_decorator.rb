@@ -24,7 +24,6 @@ class InformationTypeDecorator
     info_type_dec.required = required
     info_type_dec.searchable = searchable
     info_type_dec.actor_type = actor_type
-    info_type_dec.scope = info_type.scope
     info_type_dec.save
     info_type_dec
   end
