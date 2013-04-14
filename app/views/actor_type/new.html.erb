@@ -43,7 +43,7 @@
   <div class="control-group">
     <%= f.label(:'to_string_pattern', t('actor_type.new.to_string_pattern'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:'to_string_pattern', :placeholder => t('actor_type.new.to_string_pattern'), :required => true, :pattern => '(\|:.+\|( )*)*') %>
+      <%= f.text_field(:'to_string_pattern', :placeholder => t('actor_type.new.to_string_pattern'), :required => true) %>
       <span class="help-block"><%= t('actor_type.new.to_string_pattern_explanation') %></span>
     </div>
   </div>
