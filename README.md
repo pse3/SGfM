@@ -30,7 +30,7 @@ Run
 __Windows__
 * Enter <code>C:\mongodb\bin\mongod.exe</code> in console to start MongoDB
 * Navigate to project folder in console
-* Enter <code>rails s/code> in console to start server
+* Enter <code>rails s</code> in console to start server
 
 __Mac OS X, Linux__
 * Enter <code>mongod</code> in terminal to start MongoDB 
