@@ -14,6 +14,8 @@ class Information
 
   inherit_scope_from :information_type_decorator
 
+	validates_presence_of :value_of_this_information, :if => :required?
+	validates_presence_of :scope
 
   def initialize
     super
@@ -43,10 +45,6 @@ class Information
 
   def required?
     self.information_type_decorator.required
-  end
-
-  def index
-    self.information_type_decorator.index
   end
 
 end

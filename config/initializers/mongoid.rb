@@ -67,11 +67,12 @@ unless Rails.env == :production
   info_medical_specialisations = InformationType.new
   info_medical_specialisations.key = :medical_specialisations
   info_medical_specialisations.information_field_type = information_field_multiple_select
-  info_medical_specialisations.data_translations = { :de => ['Frauenarzt', 'Kinderarzt', 'Urologoe' ],
-                                                     :en => ['Womendoctor', 'Childdoctor', 'Penisdoctor'],
+  info_medical_specialisations.data_translations = { :de => ['Gynokologe', 'Kinderarzt', 'Urologoe' ],
+                                                     :en => ['gynecologist', 'pediatrist', 'urologist'],
                                                      :fr => ['??', '??', '??'],
                                                      :it => ['??', '??', '??'] }
   info_medical_specialisations.name_translations = {:en => 'Medical specialisations', :de => 'Fachgebiete', :it => '??', :fr => '??' }
+  info_medical_specialisations.scope = scope_public
   info_medical_specialisations.save
 
   info_gender = InformationType.new
@@ -82,12 +83,14 @@ unless Rails.env == :production
                                     :fr => ['??', '??'],
                                     :it => ['??', '??'] }
   info_gender.name_translations = { :en => 'Gender', :de =>'Geschlecht', :it => '??', :fr => '??' }
+  info_gender.scope = scope_public
   info_gender.save
 
   info_company = InformationType.new
   info_company.key = :company
   info_company.information_field_type = information_field_text
   info_company.name_translations = { :en => 'Company', :de =>'Firma', :it => '??', :fr => '??' }
+  info_company.scope = scope_public
   info_company.save
 
   info_first_name = InformationType.new
@@ -108,54 +111,63 @@ unless Rails.env == :production
   info_phone.key = :phone
   info_phone.information_field_type = information_field_text
   info_phone.name_translations = { :en => 'Phone', :de =>'Telefon', :it => 'Telefono', :fr => 'Téléphone' }
+  info_phone.scope = scope_public
   info_phone.save
 
   info_mobile = InformationType.new
   info_mobile.key = :mobile
   info_mobile.information_field_type = information_field_text
   info_mobile.name_translations = { :en => 'Mobile', :de =>'Mobil', :it => '??', :fr => '??' }
+  info_mobile.scope = scope_public
   info_mobile.save
 
   info_fax = InformationType.new
   info_fax.key = :fax
   info_fax.information_field_type = information_field_text
   info_fax.name_translations = { :en => 'Fax', :de =>'Fax', :it => '??', :fr => '??' }
+  info_fax.scope = scope_public
   info_fax.save
 
   info_street = InformationType.new
   info_street.key = :street
   info_street.information_field_type = information_field_text
   info_street.name_translations = { :en => 'Street', :de =>'Strasse', :it => '??', :fr => '??' }
+  info_street.scope = scope_public
   info_street.save
 
   info_street_number = InformationType.new
   info_street_number.key = :street_number
   info_street_number.information_field_type = information_field_text
   info_street_number.name_translations = { :en => 'Street number', :de =>'Strassennummer', :it => '??', :fr => '??' }
+  info_street_number.scope = scope_public
   info_street_number.save
 
   info_zip_code = InformationType.new
   info_zip_code.key = :zip_code
   info_zip_code.information_field_type = information_field_text
   info_zip_code.name_translations = { :en => 'ZIP', :de =>'PLZ', :it => '??', :fr => '??' }
+  info_zip_code.scope = scope_public
   info_zip_code.save
 
   info_city = InformationType.new
   info_city.key = :city
   info_city.information_field_type = information_field_text
   info_city.name_translations = { :en => 'City', :de =>'Stadt', :it => '??', :fr => '??' }
+  info_city.scope = scope_public
   info_city.save
 
   info_canton = InformationType.new
   info_canton.key = :canton
   info_canton.information_field_type = information_field_text
   info_canton.name_translations = { :en => 'Canton', :de =>'Kanton', :it => '??', :fr => '??' }
+  info_canton.scope = scope_public
   info_canton.save
 
   info_email = InformationType.new
   info_email.key = :email
   info_email.information_field_type = information_field_text
   info_email.name_translations = { :en => 'Email', :de =>'E-Mail', :it => 'Smalto', :fr => 'Émail' }
+  info_email.scope = scope_public
   info_email.save
 
 
@@ -192,6 +204,17 @@ unless Rails.env == :production
   actor_hospital.to_string_pattern = '|:company|//|:canton|'
   actor_hospital.save
 
+
+  actor_import_test = ActorType.new
+  actor_import_test.key = :import_test
+  InformationTypeDecorator.create(info_last_name, actor_import_test, true, true)
+  InformationTypeDecorator.create(info_phone, actor_import_test, false, true)
+  InformationTypeDecorator.create(info_email, actor_import_test, false, true)
+  InformationTypeDecorator.create(info_street, actor_import_test, true, true)
+  actor_import_test.name_translations = { :en => 'Import Test', :de =>'Import Test', :it => 'Import Test', :fr => 'Import Test' }
+  actor_import_test.to_string_pattern = '|:last_name|'
+  actor_import_test.save
+
   # Create some RelationshipTypes
   relation_works_with = RelationshipType.new
   relation_works_with.key = :works_with
@@ -199,9 +222,15 @@ unless Rails.env == :production
   relation_works_with.save
 
   relation_other = RelationshipType.new
+  relation_other.key = :assign_to
+  relation_other.name_translations = { :en => 'assign to', :de =>'Überweisung an', :it => '??', :fr => '??' }
+  relation_other.save
+
+  relation_other = RelationshipType.new
   relation_other.key = :other
   relation_other.name_translations = { :en => 'other', :de =>'Andere', :it => '??', :fr => '??' }
   relation_other.save
+
 
   # Create a User and Admin
   user = User.new

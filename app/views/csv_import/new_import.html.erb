@@ -1,0 +1,35 @@
+<%= content_for :admin_tab_bar do %>
+    <% render :partial => 'shared/menuebar', :locals => {:actor_type => "", :info_type => "", :import => "active",
+                                                         :scope => "", :relationship_type => ""} %>
+<% end %>
+
+<% content_for :header do %>
+    <%= javascript_include_tag 'csv_import/new_import' %>
+<% end %>
+
+<% @page_title = t('csv_import.import.new.title') %>
+
+<h3><%=  t('csv_import.import.new.file') %></h3>
+<p><%= @csv_file.file_name %></p>
+
+<%= form_for(@csv_file, :url => {:action => :import, :method => :post}) do |f| %>
+    <h3><%=  t('csv_import.import.new.actor_type') %></h3>
+        <div class="controls">
+            <%= f.select(:actor_type, @actor_types.collect { |a| [a.to_s, a.key] }) %>
+        </div>
+
+    <h3><%=  t('csv_import.import.new.infos.title') %></h3>
+    <table class="table table-hover" id="information_table">
+        <tr>
+            <th><%= t('csv_import.import.new.infos.info')  %></th>
+            <th><%= t('csv_import.import.new.infos.index')  %></th>
+            <th></th>
+        </tr>
+    </table>
+
+    <div id="add_row" class="btn"><%= t('csv_import.import.new.infos.add_row')  %></div>
+
+    <div class="form-actions">
+        <%= submit_tag(t('csv_import.import.new.start'), :class => 'btn btn-primary') %>
+    </div>
+<% end %>

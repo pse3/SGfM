@@ -12,8 +12,9 @@ class InformationTypeController < ApplicationController
     end
     information_type.information_field_type= InformationFieldType.find_by_key params[:information_type][:information_field_type]
     #TODO make the view receive the data form via ajax so it is only displayed when needed
-    information_type.data_translations= information_type.information_field_type.parse_data(params[:information_type][:information_field_type_data])
-
+    if params[:information_type][:information_field_type_data]
+      information_type.data_translations= InformationTypeHelper.parse_data(params[:information_type][:information_field_type_data], information_type.information_field_type)
+    end
 		if	information_type.save
       flash[:success] = t('information_type.create.success')
       redirect_to information_types_path
@@ -43,7 +44,7 @@ class InformationTypeController < ApplicationController
     params[:information_type][:scope] = Scope.find_by key: params[:information_type][:scope] if params[:information_type][:scope].size > 0  # dont check empty string
     information_type.update_attributes(params[:information_type])
     information_type.name_translations = params[:information_type][:name]
-    information_type.data_translations = information_type.information_field_type.parse_data(params[:information_type][:information_field_type_data])
+    information_type.data_translations = InformationTypeHelper.parse_data(params[:information_type][:information_field_type_data], information_type.information_field_type)
     if information_type.save
       flash[:sucess] = t('information_type.update.success')
       redirect_to information_types_path
@@ -61,7 +62,5 @@ class InformationTypeController < ApplicationController
   # Does nothing
   def new
   end
-
-  #todo update
 
 end

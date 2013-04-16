@@ -67,13 +67,16 @@ SGfM::Application.routes.draw do
     post    'csv_import/file/upload'  => 'csv_import#upload_csv_file',  as: 'upload_csv_file'
     get     'csv_import/file/list'    => 'csv_import#list_csv_files',   as: 'list_csv_files'
     delete  'csv_import/file/:id'     => 'csv_import#delete_csv_file',  as: 'delete_csv_file'
-    post    'csv_import/import/:id'   => 'csv_import#import',  as: 'import_csv_file'
+    put    'csv_import/import/execute/:id'   => 'csv_import#import',  as: 'import_csv_file'
+    get     'csv_import/import/new/:id'   => 'csv_import#new_import',  as: 'new_import'
+    get     'csv_import/import/add_row/:id'   => 'csv_import#add_row',  as: 'add_row'
 
     # AJAX routes
     get   '/information_types_for_actor_type' => 'actor#information_types_for_actor_type', as: 'information_types_for_actor_type'
-    get   '/add_relationship_form' =>            'ajax#add_relationship_form',             as: 'add_relationship_form'
-    get   '/add_information_type_form' =>        'ajax#add_information_type_form',         as: 'add_information_type_form'
-
+    get   '/add_relationship_form'            => 'ajax#add_relationship_form',             as: 'add_relationship_form'
+    get   '/add_information_type_form'        => 'ajax#add_information_type_form',         as: 'add_information_type_form'
+    get   '/information_type_data_form'       => 'ajax#information_type_data_form',        as: 'information_type_data_form'
+    get   '/information_type_option_form'     => 'ajax#information_type_option_form',      as: 'information_type_option_form'
     # Root
     root :to => 'home#index', as: 'home'
 

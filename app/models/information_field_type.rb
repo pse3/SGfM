@@ -6,10 +6,7 @@ class InformationFieldType
   field :name, :type => String, :localize => true
 
   validates_uniqueness_of :key
-
-  def parse_data(data)
-    #just implementing for children
-  end
+	validates_presence_of :name
 
   def self.find_by_key(key)
     InformationFieldType.find_by(key: key)

@@ -19,7 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
   def set_account
     if login_signed_in?
       @user = User.new
-      current_login.account=@user
+      current_login.account = @user
       @user.save
       current_login.save
     end

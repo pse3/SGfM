@@ -33,7 +33,6 @@ en:
     not_owner_of_actor: 'You can not edit this actor'
     not_owner_of_relationship: 'You can not edit this relationship'
 
-
   application:
     menu:
       profile: 'Profile'
@@ -71,6 +70,7 @@ en:
       relationship_reference: 'Reference'
       relationship_comment: 'Comment'
       relationship_type: 'Type'
+      admin_can_not_create_actors: "Admins can\'t create actors!"
 
     edit:
       title: 'Edit actor'
@@ -91,6 +91,7 @@ en:
       new_actor_type: 'Create new actor type'
       name_table: 'Name'
       key_table: 'Key'
+      actions_table: 'Actions'
 
     show:
       title: '%{actor_type}'
@@ -128,20 +129,22 @@ en:
     create:
       title: 'Created actor type'
       success: 'You have successfully created an actor type!'
+      failure: 'An unknown error ocurred!'
 
     update:
       success: 'Actor type successfully updated!'
+      failure: 'An unknown error ocurred!'
 
 
 # Translations for all information_type-pages, sorted by page structure
   information_type:
     list:
-     title: 'InformationTypes'
-     new_information_type: 'Create new information type'
-     name_table: 'Name'
-     key_table: 'Key'
-     field_type_table: 'Field Type'
-     actions_table: 'Actions'
+      title: 'InformationTypes'
+      new_information_type: 'Create new information type'
+      name_table: 'Name'
+      key_table: 'Key'
+      field_type_table: 'Field Type'
+      actions_table: 'Actions'
 
     show:
       title: '%{information_type}'
@@ -160,6 +163,9 @@ en:
       field_type: 'Field type'
       field_type_data: 'Field type data'
       field_type_data_placeholder: 'e.g. option 1, option 2, option 3'
+      option: 'Option'
+      data:
+        new_option: 'Add option'
 
     edit:
       title: 'Edit information type'
@@ -172,7 +178,6 @@ en:
       field_type_data: 'Field type data'
       field_type_data_placeholder: 'e.g. option 1, option 2, option 3'
 
-
     create:
       title: 'Created information type'
       success: 'You have successfully created an information type!'
@@ -181,6 +186,7 @@ en:
     update:
       success: 'Edited informaton successfully!'
       failure: 'There was an unknown error!'
+
 
 #Translation for all Scope-Pages
   scopes:
@@ -192,6 +198,8 @@ en:
          type_table: 'Type'
          list_contents_table: 'List contents'
          new_scope: 'Create new Scope'
+         actions_table: 'Actions'
+
       new:
          title: 'Create new scope'
          type: 'Type'
@@ -199,21 +207,25 @@ en:
          key: 'Key'
          list: 'Account-types list'
          create_scope: 'Create'
+
       create:
         success: 'You successfully created a scope!'
-        error: 'Oops. Something went wrong. Please retry!'
+        failure: 'There was an unknown error!'
+
       edit:
         title: 'Edit scope'
         name: 'Name'
         list: 'Account-types list'
         save_scope: 'Save'
+
       update:
         success: 'You successfully edited a scope!'
-        error: 'Oops. Something went wrong. Please retry!'
+        failure: 'There was an unknown error!'
+
       destroy:
         confirmation: 'Do you really want to delete a scope?'
         success: 'You successfully deleted a scope!'
-        error: 'Oops. Something went wrong. Please retry!'
+        failure: 'There was an unknown error!'
 
 # Translations for all relationship-pages, sorted by page structure
   relationship:
@@ -231,9 +243,11 @@ en:
 
     create:
       success: 'Successfully created relationship'
+      failure: 'An unknown error ocurred!'
 
     update:
       success: 'Successfully updated relationship'
+      failure: 'An unknown error ocurred!'
 
     destroy:
       success: 'Successfully deleted relationship'
@@ -269,9 +283,11 @@ en:
 
     create:
       success: 'RelationshipType successfully created!'
+      failure: 'An unknown error ocurred!'
 
     update:
       success: 'Relationship type successfully updated!'
+      failure: 'An unknown error ocurred!'
 
     destroy:
       success: 'Successfully deleted relationship'
@@ -319,6 +335,37 @@ en:
       confirmation_inst: "Didn't receive confirmation instructions?"
       unlock_inst: "Didn't receive unlock instructions?"
       sign_in_with: 'Sign in with %{provider}'
+
+# Translations for all CSV import pages
+  csv_import:
+    file:
+      new:
+        title: 'Upload a CSV file'
+      upload:
+        success: '%{file_name} was uploaded successfully!'
+        failure: 'An unknown error occurred!'
+      list:
+        title: 'Available CSV files'
+        column_file: 'File Name'
+        column_uploaded: 'Date Added'
+        column_imported: 'Date Imported'
+        column_import: 'Import'
+        link_new: 'Upload a file'
+    import:
+      new:
+        file: 'File'
+        actor_type: 'Actor Type'
+        start: 'start import'
+        title: 'Create Import'
+        infos:
+          title: 'Informations'
+          index: 'Index (in CSV File)'
+          info: 'Information'
+          add_row: 'Add Information'
+      delete_row: 'remove'
+      success: '%{file_name} was successfully imported!'
+
+
 
 # Translations for Date and Time
   date:

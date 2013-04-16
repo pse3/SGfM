@@ -15,6 +15,8 @@ module CsvImport
     field :uploaded, :type => DateTime
     field :imported, :type => DateTime
 
+    attr_accessor :actor_type, :infos
+
     def initialize
       super
       self.uploaded = DateTime.now

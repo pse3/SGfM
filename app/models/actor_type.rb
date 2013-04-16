@@ -6,12 +6,14 @@ class ActorType
   field :key, :type => Symbol
   field :to_string_pattern, :type => String
 
-  validates_uniqueness_of :key
-
   has_many :information_type_decorators, class_name: 'InformationTypeDecorator', inverse_of: :actor_type
 
   after_save :update_corresponding_actors
 
+
+	validates_uniqueness_of :key
+	validates_presence_of :name, :to_string_pattern
+	#validates_format_of :to_string_pattern, :with => /(\|:.+\|( )*)*/ Doesn't seem to work. No idea why.
 
   def self.find_by_key(key)
     ActorType.find_by(key: key)
@@ -30,6 +32,7 @@ class ActorType
     information_types
   end
 
+  # Returns the decorators that decorates the information type with given key
   def decorator_by_key(key)
     information_type_decorators.select{|info_type_decorator| info_type_decorator.information_type == InformationType.find_by_key(key) }.first
   end

@@ -1,4 +1,5 @@
 module ScopesHelper
+
 	def list_account_types
 		['Self'] + Login.account_types
 	end
@@ -15,4 +16,5 @@ module ScopesHelper
     end
     result
   end
+
 end

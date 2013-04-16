@@ -16,11 +16,15 @@
   <tr>
     <th><%= t('actor_type.list.name_table') %></th>
     <th><%= t('actor_type.list.key_table') %></th>
+    <th><%= t('actor_type.list.actions_table') %></th>
   </tr>
   <% for actor_type in @actor_types %>
     <tr>
       <td><%= link_to(actor_type.name, show_actor_type_path(actor_type)) %></td>
       <td><%= actor_type.key %></td>
+      <td>
+        <%= link_to raw('<i class="icon-edit"></i>'), edit_actor_type_path(actor_type) %>
+      </td>
     </tr>
   <% end %>
 </table>
