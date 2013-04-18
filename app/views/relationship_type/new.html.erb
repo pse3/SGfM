@@ -17,6 +17,15 @@
     </div>
   <% end %>
 
+  <% [:en, :de, :fr, :it].each do |current_locale| %>
+    <div class="control-group">
+      <%= f.label("question_translations[#{current_locale}]", "#{t('relationship_type.new.question')} (#{t("lang.#{current_locale}")})", class: 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(:"question_translations[#{current_locale}]", :placeholder => t('relationship_type.new.question'), :required => true, class: 'span8') %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="form-actions">
     <%= f.submit(t('relationship_type.new.create_relationship_type'), :class => 'btn btn-primary') %>
   </div>

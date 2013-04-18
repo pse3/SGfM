@@ -273,6 +273,7 @@ en:
     new:
       title: 'Create new RelationshipType'
       name: 'Name'
+      question: 'Question'
       key: 'Key'
       create_relationship_type: 'Create'
 
