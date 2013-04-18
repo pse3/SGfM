@@ -8,33 +8,14 @@
 
 <%= form_for(:relationship_type, :url => create_relationship_type_path, :html => {:class => 'form-horizontal'}) do |f| %>
 
-  <div class="control-group">
-    <%= f.label('name[en]', "#{t('relationship_type.new.name')} (#{t('lang.en')})", class: 'control-label') %>
-    <div class="controls">
-      <%= f.text_field(:'name[en]', :placeholder => t('relationship_type.new.name'), :required => true) %>
+  <% [:en, :de, :fr, :it].each do |current_locale| %>
+    <div class="control-group">
+      <%= f.label("name_translations[#{current_locale}]", "#{t('relationship_type.new.name')} (#{t("lang.#{current_locale}")})", class: 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(:"name_translations[#{current_locale}]", :placeholder => t('relationship_type.new.name'), :required => true) %>
+      </div>
     </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label('name[de]', "#{t('relationship_type.new.name')} (#{t('lang.de')})", class: 'control-label') %>
-    <div class="controls">
-      <%= f.text_field(:'name[de]', :placeholder => t('relationship_type.new.name'), :required => true) %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label('name[fr]', "#{t('relationship_type.new.name')} (#{t('lang.fr')})", class: 'control-label') %>
-    <div class="controls">
-      <%= f.text_field(:'name[fr]', :placeholder => t('relationship_type.new.name'), :required => true) %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label('name[it]', "#{t('relationship_type.new.name')} (#{t('lang.it')})", class: 'control-label') %>
-    <div class="controls">
-      <%= f.text_field(:'name[it]', :placeholder => t('relationship_type.new.name'), :required => true) %>
-    </div>
-  </div>
+  <% end %>
 
   <div class="form-actions">
     <%= f.submit(t('relationship_type.new.create_relationship_type'), :class => 'btn btn-primary') %>

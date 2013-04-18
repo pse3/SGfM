@@ -219,16 +219,34 @@ unless Rails.env == :production
   relation_works_with = RelationshipType.new
   relation_works_with.key = :works_with
   relation_works_with.name_translations = { :en => 'works with', :de =>'arbeitet mit', :it => '??', :fr => '??' }
+  relation_works_with.question_translations = {
+      :en => 'With whom do you work?',
+      :de => 'Mit wem arbeitet Ihr?',
+      :it => '??',
+      :fr => '??'
+  }
   relation_works_with.save
 
-  relation_other = RelationshipType.new
-  relation_other.key = :assign_to
-  relation_other.name_translations = { :en => 'assign to', :de =>'Überweisung an', :it => '??', :fr => '??' }
-  relation_other.save
+  relation_assigns = RelationshipType.new
+  relation_assigns.key = :assign_to
+  relation_assigns.name_translations = { :en => 'assign to', :de =>'Überweisung an', :it => '??', :fr => '??' }
+  relation_assigns.question_translations = {
+      :en => 'To whom do you assign patients?',
+      :de => 'An wen überweist Ihr Patienten?',
+      :it => '??',
+      :fr => '??'
+  }
+  relation_assigns.save
 
   relation_other = RelationshipType.new
   relation_other.key = :other
   relation_other.name_translations = { :en => 'other', :de =>'Andere', :it => '??', :fr => '??' }
+  relation_other.question_translations = {
+      :en => 'Do you have other relations you want to mention?',
+      :de => 'Haben Sie andere Beziehungen, die Sie angeben möchten?',
+      :it => '??',
+      :fr => '??'
+  }
   relation_other.save
 
 
