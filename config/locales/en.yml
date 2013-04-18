@@ -63,6 +63,7 @@ en:
       title: 'Create new actor'
       select_type: 'Select a type'
       type_title: 'Select a type'
+      choose_type: 'Choose a type'
       information_title: 'Add information about yourself'
       create_actor: 'Create'
       add_relationship: 'Add relationship'

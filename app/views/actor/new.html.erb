@@ -1,50 +1,57 @@
 <% @page_title = t('actor.new.title') %>
 
-<%= form_for(:actor, :url => create_actor_path, :method => :post, :html => { :class => 'form-horizontal' }) do |f| %>
-  <div class="wizard" id="new-actor-wizard">
-    <div class="wizard-card" data-cardname="type-card">
-      <%= content_tag(:h3, t('actor.new.type_title')) %>
-
-      <div class="control-group">
-        <%= f.label(:actor_type, t('actor.new.select_type'), class: 'control-label') %>
-        <div class="controls">
-          <%= f.collection_select(:actor_type, list_actor_types, :key, :name, {}, {:id => 'actor-type-select',:onchange => "SGfM.actor.render_matching_form('"+information_types_for_actor_type_path+"',this.value)"}) %>
+<div class="row-fluid acc-wizard">
+  <div class="span3" style="padding-left: 2em;">
+    <ol class="acc-wizard-sidebar">
+      <li class="acc-wizard-todo"><a href="#actor-type"><%= t('actor.new.type_title')%></a></li>
+      <li class="acc-wizard-todo"><a href="#information"><%= t 'actor.new.information_title' %></a></li>
+    </ol>
+  </div>
+  <div class="span9">
+    <div class="accordion" id="new-actor">
+      <div class="accordion-group">
+        <div class="accordion-heading ">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#new-actor" href="#actor-type">
+            <%= t 'actor.new.type_title' %>
+          </a>
         </div>
-      </div>
+        <div id="actor-type" class="accordion-body collapse in">
+          <div class="accordion-inner">
+            <form id="form-actor-type">
+            </form>
+          </div> <!--/.accordion-inner -->
+        </div> <!-- /#prerequisites -->
+      </div> <!-- /.accordion-group -->
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#new-actor" href="#information">
+            <%=t 'actor.new.information_title' %>
+          </a>
+        </div>
+        <div id="information" class="accordion-body collapse in">
+          <div class="accordion-inner">
+            <form id="form-information">
+            </form>
+          </div> <!--/.accordion-inner -->
+        </div> <!-- /#addwizard -->
+      </div> <!-- /.accordion-group -->
     </div>
-
-    <div class='wizard-card' data-cardname='information-card'>
-      <%= content_tag(:h3, t('actor.new.information_title')) %>
-      <div id="information-types-form"></div>
-    </div>
   </div>
-
-<!--
-  <div class="page-header">
-    <h1><small><%= t('actor.new.relationship_data') %></small></h1>
-  </div>
-
-  <div id="relationship-form"></div>
-
-  <div class="control-group">
-    <p>
-      <%= button_to_function(t('actor.new.add_relationship'),
-                             "SGfM.form.add_form(\"#{add_relationship_form_path}\",'relationship-form')",
-                             :type => :button, :class => 'btn btn-medium') %>
-    </p>
-  </div>
-
--->
-
-<% end %>
-
+</div>
 
 <script>
-  $('document').ready(function() {
-    SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path%>',$('#actor-type-select').val());
-    var options = {submitUrl: '<%= create_actor_path %>'};
-    var wizard = $('#new-actor-wizard').wizard(options);
-    wizard.show();
+
+  function onNext(parent, panel) {
+    hash = "#" + panel.id;
+    $(".acc-wizard-sidebar",$(parent))
+            .children("li")
+            .children("a[href='" + hash + "']")
+            .parent("li")
+            .removeClass("acc-wizard-todo")
+            .addClass("acc-wizard-completed");
+  }
+
+  $(window).load(function() {
+    $(".acc-wizard").accwizard({onNext: onNext});
   });
 </script>
-
