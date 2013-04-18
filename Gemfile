@@ -9,10 +9,6 @@ gem 'mocha', :require => false
 gem 'minitest-reporters', :require => false
 gem 'rspec-rails', :require => false
 gem 'capybara'
-# for Server
-gem 'execjs'
-gem 'therubyracer'
-# end
 gem "select2-rails" # Added by urs, needed to allow easy dropdown autocomplete box for relationship references
 gem 'mongoid_search'
 
@@ -21,6 +17,10 @@ gem 'mongoid_search'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
+# for Server (if no JS-compiler is preinstalled)
+# gem 'execjs'
+# gem 'therubyracer'
+# end
 
 # Gems used only for assets and not required
 # in production environments by default.
