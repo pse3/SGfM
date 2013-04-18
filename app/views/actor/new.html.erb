@@ -1,5 +1,4 @@
 <% @page_title = t('actor.new.title') %>
-
 <div class="row-fluid acc-wizard">
   <div class="span3" style="padding-left: 2em;">
     <ol class="acc-wizard-sidebar">
@@ -17,8 +16,14 @@
         </div>
         <div id="actor-type" class="accordion-body collapse in">
           <div class="accordion-inner">
-            <form id="form-actor-type">
-            </form>
+            <%= form_for(:actor, :url => create_actor_path, :method => :post, :html => { :class => 'form-horizontal', :id => 'form-actor-type' }) do |f| %>
+              <div class="control-group">
+                <%= f.label(:actor_type, t('actor.new.select_type'), class: 'control-label') %>
+                <div class="controls">
+                  <%= f.collection_select(:actor_type, list_actor_types, :key, :name, {}, {:id => 'actor-type-select',:onchange => "SGfM.actor.render_matching_form('"+information_types_for_actor_type_path+"',this.value)"}) %>
+                </div>
+              </div>
+            <% end %>
           </div> <!--/.accordion-inner -->
         </div> <!-- /#prerequisites -->
       </div> <!-- /.accordion-group -->
@@ -31,6 +36,7 @@
         <div id="information" class="accordion-body collapse in">
           <div class="accordion-inner">
             <form id="form-information">
+              <div id="information-types-form"></div>
             </form>
           </div> <!--/.accordion-inner -->
         </div> <!-- /#addwizard -->
@@ -53,5 +59,9 @@
 
   $(window).load(function() {
     $(".acc-wizard").accwizard({onNext: onNext});
+  });
+
+  $('document').ready(function() {
+    SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path%>',$('#actor-type-select').val());
   });
 </script>
