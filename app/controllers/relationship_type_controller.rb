@@ -33,7 +33,7 @@ class RelationshipTypeController < ApplicationController
 
   def update
     @relationship_type = RelationshipType.find(params[:id])
-    @relationship_type.name_translations = params[:relationship_type][:name]
+    @relationship_type.update_attributes(params[:relationship_type])
 
     if @relationship_type.save
       flash[:success] = t('relationship_type.update.success')
