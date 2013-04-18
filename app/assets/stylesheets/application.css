@@ -13,7 +13,6 @@
  *= require bootstrap-responsive
  *= require header
  *= require select2
- *= require bootstrap-application-wizard-rails
  */
 .bottom-margin {
     margin-bottom:15px;

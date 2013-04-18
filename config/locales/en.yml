@@ -62,6 +62,8 @@ en:
     new:
       title: 'Create new actor'
       select_type: 'Select a type'
+      type_title: 'Select a type'
+      information_title: 'Add information about yourself'
       create_actor: 'Create'
       add_relationship: 'Add relationship'
       remove_relationship: 'Remove'
@@ -79,6 +81,7 @@ en:
     create:
       title: 'Created Actor'
       success: 'You have successfully created an actor!'
+      failure: 'An unknown error occured!'
 
     update:
       success: 'Actor successfully updated!'

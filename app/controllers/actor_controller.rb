@@ -7,13 +7,13 @@ class ActorController < ApplicationController
   # Creates a Actor with chosen name and type
   def create
     user = current_account
-    @actor = Actor.new
-    @actor_type = ActorType.find_by_key(params[:actor][:actor_type_key].to_sym)
-    @actor.actor_type = @actor_type
+    actor = Actor.new
+    actor_type = ActorType.find_by_key(params[:actor][:actor_type].to_sym)
+    actor.actor_type = actor_type
 
     if params[:actor][:information]
       params[:actor][:information].each_key do |key|
-        info_type_decorator = @actor_type.decorator_by_key(key.to_sym)
+        info_type_decorator = actor_type.decorator_by_key(key.to_sym)
         information = Information.new
         information.information_type_decorator = info_type_decorator
         information.value=(params[:actor][:information][info_type_decorator.key])
@@ -38,15 +38,15 @@ class ActorController < ApplicationController
       end
     end
 
-		user.actors.push(@actor)
-		@actor.save
+		user.actors.push(actor)
+		actor.save
 		user.save
 
-		if @actor.valid?
+		if actor.valid?
 			flash[:success] = t('actor.create.success')
 			redirect_to actors_path
 		else
-			flash[:error] = t('actor_create.error')
+			flash[:error] = t('actor.create.failure')
 			redirect_to actors_create_path
 		end
 	end
