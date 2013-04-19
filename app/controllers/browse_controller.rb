@@ -19,8 +19,8 @@ class BrowseController < ApplicationController
   def show
 
     @actor = Actor.find(params[:id])
-    @guest = :guest
-    @informations = scope_array(@actor.informations, @guest)
+    @viewer = current_account || :guest
+    @informations = scope_array(@actor.informations, @viewer)
 
     @options = Hash.new
 
@@ -35,5 +35,7 @@ class BrowseController < ApplicationController
     render('browse/show')
 
   end
+
+
 
 end

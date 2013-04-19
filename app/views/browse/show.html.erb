@@ -1,54 +1,58 @@
-<% @page_title = t('actor.show.title', :actor => @actor.to_s) %>
+<% @page_title = t('browse.show.title', :actor => @actor.to_s, :actor_type => @actor.actor_type.name) %>
+
+<h1><small><%= t('browse.show.details') %></small></h1>
 
 <table class="table table-hover">
-  <tr>
-    <th class="span2"><%= @actor.actor_type.name %></th>
-    <th class="span2"></th>
-    <th class="span6"></th>
-  </tr>
-
-
-
   <% @informations.each do |info| %>
       <tr>
-        <td><%= info.information_type_decorator.name %></td>
-        <td><%= info.value_to_s %></td>
-        <td></td>
+        <td class="span2"><strong><%= info.information_type_decorator.name %></strong></td>
+        <td class="span2"><%= info.value_to_s %></td>
+        <td class="span6"></td>
       </tr>
       <tr></tr>
   <% end %>
   <tr>
 </table>
 
-<table class="table table-hover">
-  <th class="span2"><%= t('browse.show.relationships') %></th>
-  <th class="span2"></th>
-  <th class="span6"></th>
-  </tr>
+<h1><small><%= t('browse.show.relationships') %></small></h1>
 
+<table class="table table-hover">
   <% @actor.relationships.each do |relationship| %>
       <tr>
-        <td><%= relationship.relationship_type.to_s %></td>
-        <td><%= link_to(relationship.reference.to_s, browse_actor_path(relationship.reference)) %></td>
-        <td><%= relationship.comment.to_s %></td>
+        <td class="span2"><%= relationship.relationship_type.to_s %></td>
+        <td class="span2"><%= link_to(relationship.reference.to_s, browse_actor_path(relationship.reference)) %></td>
+        <td class="span6"><%= relationship.comment.to_s %></td>
       </tr>
+  <% end %>
+  <% unless current_account.nil?%>
+      <tr>
+        <td>Add relationship to this actor</td>
+      </tr>
+  <% end %>
+  <% if @actor.relationships.empty? %>
+    <tr>
+        <td><%= t('browse.show.none_declared') %></td>
+    </tr>
   <% end %>
 </table>
 
+<h1><small><%= t('browse.show.options') %></small></h1>
 <table class="table table-hover">
-  <th class="span8"><%= t('browse.show.options') %></th>
-  <th class="span1"></th>
-  <th class="span1"></th>
   <% if @options[:email] %>
       <tr>
-        <td><%= mail_to(@options[:email], t('browse.show.send_email')) %></td>
+        <td class="span8"><%= mail_to(@options[:email], t('browse.show.send_email')) %></td>
+        <td class="span1"></td>
+        <td class="span1"></td>
       </tr>
   <% end %>
   <% if @options[:street] and @options[:zip_code]%>
       <tr>
-        <td><%= link_to(t('browse.show.find_on_google_maps'), @maps_query) %></td>
+        <td class="span1"><%= link_to(t('browse.show.find_on_google_maps'), @maps_query) %></td>
+        <td class="span1"></td>
+        <td class="span1"></td>
       </tr>
   <% end %>
+
   <tr>
   </tr>
 </table>

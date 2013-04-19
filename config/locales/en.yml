@@ -365,6 +365,17 @@ en:
       delete_row: 'remove'
       success: '%{file_name} was successfully imported!'
 
+# Translations for all browse pages
+  browse:
+    show:
+      details: 'Details'
+      relationships: 'Relationships'
+      options: 'Options'
+      title: '%{actor} (%{actor_type})'
+      none_declared: 'None declared'
+    list:
+      title: 'Browse'
+      name_table: 'Who'
 
 
 # Translations for Date and Time

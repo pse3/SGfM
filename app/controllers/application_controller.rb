@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_account
-    current_login.account
+    current_login.nil? ? nil : current_login.account
   end
 
   def authenticate_admin!
