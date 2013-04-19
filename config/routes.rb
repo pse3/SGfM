@@ -9,6 +9,11 @@ SGfM::Application.routes.draw do
 
     get   'logins/show' => 'logins#show'
 
+    # Browse routes
+    get   'browse'          => 'browse#list',    as: 'browse'
+    get   'browse_actor/:id'=> 'browse#show',    as: 'browse_actor'
+
+
     # Actor routes
     get   'actors'          => 'actor#list',    as: 'actors'
     get   'actors/create'   => 'actor#new',     as: 'create_actor'
