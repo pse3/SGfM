@@ -3,7 +3,9 @@ class BrowseController < ApplicationController
 
   def list
 
-    actors = Actor.all
+    query = params[:query]
+    actors = Actor.full_text_search(query, match: :all)
+
 
     @actors_hash = Hash.new{|h, k| h[k] = []}
     actors.each do |actor|

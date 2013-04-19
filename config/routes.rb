@@ -12,6 +12,8 @@ SGfM::Application.routes.draw do
     # Browse routes
     get   'browse'          => 'browse#list',    as: 'browse'
     get   'browse_actor/:id'=> 'browse#show',    as: 'browse_actor'
+    post 'browse' => 'browse#list'
+
 
 
     # Actor routes

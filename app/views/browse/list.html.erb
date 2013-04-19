@@ -1,9 +1,10 @@
 <% @page_title = t('browse.list.title') %>
 
-<form class="form-search">
-  <input type="text" class="input-medium search-query">
-  <button type="submit" class="btn">Search</button>
-</form>
+<%= form_tag(browse_path, :method => "get") do %>
+    <%= text_field_tag(:query, params[:query], :class => "input-medium search-query") %>
+    <%= submit_tag("Search", :class => "btn btn-default") %>
+<% end %>
+
 
 
 <div class="tabbable tabs-left">
