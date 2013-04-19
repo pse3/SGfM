@@ -376,7 +376,7 @@ de:
       title: '%{actor} (%{actor_type})'
       none_declared: 'Keine deklariert'
       email: 'E-Mail senden'
-      maps: 'Auf Google Maps finden'
+      map: 'Auf Google Maps finden'
     list:
       title: 'Suche'
       name_table: 'Treffer'

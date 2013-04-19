@@ -376,7 +376,7 @@ en:
       title: '%{actor} (%{actor_type})'
       none_declared: 'None declared'
       email: 'Send Email'
-      maps: 'Find on Google Maps'
+      map: 'Find on Google Maps'
     list:
       title: 'Search'
       name_table: 'Results'
