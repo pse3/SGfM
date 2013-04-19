@@ -38,6 +38,7 @@ de:
       profile: 'Profil'
       actors: 'Ihre Akteure'
       settings: 'Einstellungen'
+      search: 'Suche'
 
 
 # Translations for all actor-pages, sorted by page structure
@@ -91,6 +92,7 @@ de:
       new_actor_type: 'Neuen Akteurtyp erstellen'
       name_table: 'Name'
       key_table: 'Schlüssel'
+      actions_table: 'Aktionen'
 
     show:
       title: '%{actor_type}'
@@ -363,6 +365,26 @@ de:
               add_row: 'Information hinzufügen'
           delete_row: 'entfernen'
           success: '%{file_name} wurde erfolgreich importiert!'
+
+
+# Translations for all search pages
+  search:
+    show:
+      details: 'Angaben'
+      relationships: 'Beziehungen'
+      options: 'Optionen'
+      title: '%{actor} (%{actor_type})'
+      none_declared: 'Keine deklariert'
+      send_email: 'E-Mail senden'
+      google_maps: 'Auf Google Maps finden'
+    list:
+      title: 'Suche'
+      name_table: 'Treffer'
+      search: 'Suchen'
+      no_results: 'Ihre Suche ergab keine Treffer.'
+      enter_query: 'Bitte geben Sie einen Suchbegriff ein.'
+      too_short: 'Der Suchbegriff war zu kurz. Er muss mindestens 3 Zeichen enthalten.'
+      found: 'Ihre Suche ergab %{amount} Treffer!'
 
 
 # Translations for date and time

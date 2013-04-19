@@ -9,12 +9,6 @@ SGfM::Application.routes.draw do
 
     get   'logins/show' => 'logins#show'
 
-    # Browse routes
-    get   'browse'          => 'browse#list',    as: 'browse'
-    get   'browse_actor/:id'=> 'browse#show',    as: 'browse_actor'
-    post 'browse' => 'browse#list'
-
-
 
     # Actor routes
     get   'actors'          => 'actor#list',    as: 'actors'
@@ -66,7 +60,13 @@ SGfM::Application.routes.draw do
 		delete 'scopes/destroy/:id' => 'scopes#destroy', as: 'delete_scope'
 
 
-		# Development routes
+    # Search routes
+    get   'search'          => 'search#list',    as: 'search'
+    get   'search_actor/:id'=> 'search#show',    as: 'search_actor'
+    post 'search' => 'search#list'
+
+
+    # Development routes
     get   'all/reset' => 'application#reset_all', as: 'reset_all'
 
     # CSV Import routes
