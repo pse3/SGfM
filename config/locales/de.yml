@@ -375,8 +375,8 @@ de:
       options: 'Optionen'
       title: '%{actor} (%{actor_type})'
       none_declared: 'Keine deklariert'
-      send_email: 'E-Mail senden'
-      google_maps: 'Auf Google Maps finden'
+      email: 'E-Mail senden'
+      maps: 'Auf Google Maps finden'
     list:
       title: 'Suche'
       name_table: 'Treffer'

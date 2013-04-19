@@ -2,12 +2,12 @@
 
 <p class="pull-right">
   <% if @options[:email] %>
-      <%=  mail_to(@options[:email], t('search.show.send_email'),
-                  :type => :button, :class => 'btn btn') %>
+      <%=  mail_to(@options[:email], t('search.show.email'),
+                  :type => :button, :class => 'btn btn-small pull-right') %>
   <% end %>
   <% if @options[:street] and @options[:zip_code]%>
       <%=  link_to(t('search.show.map'), @maps_query,
-                   :type => :button, :class => 'btn btn') %>
+                   :type => :button, :class => 'btn btn-small pull-right') %>
   <% end %>
 </p>
 <h1><small><%= t('search.show.details') %></small></h1>
@@ -44,12 +44,4 @@
         <td><%= t('search.show.none_declared') %></td>
     </tr>
   <% end %>
-</table>
-
-<h1><small><%= t('search.show.options') %></small></h1>
-<table class="table table-hover">
-
-
-  <tr>
-  </tr>
 </table>
