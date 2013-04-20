@@ -238,6 +238,7 @@ unless Rails.env == :production
                     :password => 'test1234',
                     :password_confirmation => 'test1234')
   login.account = user
+  login.confirmed_at = Time.now
   user.save
 
   login.save
@@ -246,6 +247,7 @@ unless Rails.env == :production
                     :password => 'test1234',
                     :password_confirmation => 'test1234')
   login.account = admin
+  login.confirmed_at = Time.now
   admin.save
   login.save
 
