@@ -59,6 +59,8 @@ en:
       relationship_reference: 'Referenced Actor'
       relationship_comment: 'Comment'
       actions_table: 'Actions'
+      add_another_actor: 'Add another actor'
+      more: "More..."
 
     new:
       title: 'Create new actor'
