@@ -5,7 +5,8 @@ SGfM::Application.routes.draw do
     # Devise routes
     devise_for :logins, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => {:sign_up => 'signup',
                                                                                                           :sign_in => 'login',
-                                                                                                          :sign_out => 'logout'}
+                                                                                                          :sign_out => 'logout',
+                                                                                                          :confirmations => 'confirmations'}
 
     get   'logins/show' => 'logins#show'
 

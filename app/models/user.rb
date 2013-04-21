@@ -9,6 +9,17 @@ class User
 
 	def user_type
 		self.login.account_type
-	end
+  end
+
+  def password_required?
+    super if confirmed?
+  end
+
+  def password_match?
+    elf.errors[:password] << "can't be blank" if password.blank?
+    self.errors[:password_confirmation] << "can't be blank" if password_confirmation.blank?
+    self.errors[:password_confirmation] << "does not match password" if password != password_confirmation
+    password == password_confirmation && !password.blank?
+  end
 
 end
