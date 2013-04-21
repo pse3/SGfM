@@ -35,7 +35,7 @@ class InformationTypeController < ApplicationController
   end
 
   def edit
-    @information_type = InformationType.find_by id: params[:id]
+    @information_type = InformationType.find_by(id: params[:id])
   end
 
   def update
@@ -52,6 +52,18 @@ class InformationTypeController < ApplicationController
       flash[:error] = t('information_type.update.failure')
       redirect_to edit_information_type(information_type)
     end
+  end
+
+  def destroy
+    @information_type = InformationType.find_by(id: params[:id])
+    @informations = Information.where( :information_type => @information_type)
+    @information_type.destroy
+    @informations.each do |information|
+      information.destroy
+    end
+
+    flash[:success] = t('information_type.destroy.success')
+    redirect_to(information_types_path)
   end
 
   # Find information_type with given id

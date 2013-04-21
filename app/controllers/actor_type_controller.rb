@@ -76,4 +76,16 @@ class ActorTypeController < ApplicationController
     redirect_to actor_types_path
   end
 
+  def destroy
+    @actor_type = ActorType.find(params[:id])
+    @actors = Actor.where( :actor_type => @actor_type)
+    @actor_type.destroy
+    @actors.each do |actor|
+      actor.destroy
+    end
+
+    flash[:success] = t('actor_type.destroy.success')
+    redirect_to(actor_types_path)
+  end
+
 end

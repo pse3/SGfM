@@ -93,6 +93,7 @@ en:
       name_table: 'Name'
       key_table: 'Key'
       actions_table: 'Actions'
+      sure_to_delete: 'Are you sure to delete this entry? All existing actors with this type will be deleted!'
 
     show:
       title: '%{actor_type}'
@@ -136,6 +137,9 @@ en:
       success: 'Actor type successfully updated!'
       failure: 'An unknown error ocurred!'
 
+    destroy:
+     success: 'Successfully deleted actor type'
+
 
 # Translations for all information_type-pages, sorted by page structure
   information_type:
@@ -146,6 +150,7 @@ en:
       key_table: 'Key'
       field_type_table: 'Field Type'
       actions_table: 'Actions'
+      sure_to_delete: 'Are you sure to delete this entry? All existing Informations with this type will be deleted!'
 
     show:
       title: '%{information_type}'
@@ -187,6 +192,9 @@ en:
     update:
       success: 'Edited informaton successfully!'
       failure: 'There was an unknown error!'
+
+    destroy:
+      success: 'Successfully deleted information type'
 
 
 #Translation for all Scope-Pages
@@ -291,7 +299,7 @@ en:
       failure: 'An unknown error ocurred!'
 
     destroy:
-      success: 'Successfully deleted relationship'
+      success: 'Successfully deleted relationship type'
 
 
 # Translations for all login-pages, sorted by page structure
