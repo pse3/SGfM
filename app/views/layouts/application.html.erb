@@ -30,7 +30,6 @@
 
             <!-- nav-bar menu left -->
             <ul class="nav">
-              <li><%= link_to(t('home.index.title'), home_path) %></li>
               <% if login_signed_in? %>
                 <li class="divider-vertical"></li>
                 <li><%= link_to(t('application.menu.actors'), actors_path) %></li>
