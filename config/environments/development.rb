@@ -30,5 +30,8 @@ SGfM::Application.configure do
   config.assets.debug = true
 
   # actionmailer redirect, check console for output
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_deliveries = true
+  #config.action_mailer.delivery_method = :sendmail #:smtp
+  config.action_mailer.default_url_options = { :host => 'dev.pse3.iam.unibe.ch', :locale =>I18n.locale }
 end

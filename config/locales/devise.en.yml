@@ -8,6 +8,7 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
       resend_confirmation: "Resend confirmation instructions"
       send: "send"
+      setPW: "Please choose your password"
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account was not activated yet."
