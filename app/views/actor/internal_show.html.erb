@@ -44,11 +44,12 @@
       </tr>
   <% end %>
 </table>
+<% if current_account.actors.size == 1 %>
+    <div>   <!-- Not actually a dropdown. Just for styling !-->
+      <a href="#options"  data-toggle="collapse" data-target="#options"><small><%= t('actor.show.more')%></small></a>
+    </div>
 
-<div>   <!-- Not actually a dropdown. Just for styling !-->
-  <a href="#options"  data-toggle="collapse" data-target="#options"><small><%= t('actor.show.more')%></small></a>
-</div>
-
-<div id="options" class="collapse">
-  <a href=" <%=create_actor_path%>" class="btn btn-mini"><%= t('actor.show.add_another_actor') %></a>
-</div>
+    <div id="options" class="collapse">
+      <a href=" <%=create_actor_path%>" class="btn btn-mini"><%= t('actor.show.add_another_actor') %></a>
+    </div>
+<% end %>
