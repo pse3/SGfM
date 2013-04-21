@@ -117,7 +117,7 @@ class ActorController < ApplicationController
     if login_owns_actor(current_login, @actor) or current_login.is_admin?
       render('actor/internal_show')
     else
-      render('actor/external_show')
+      redirect_to(search_actor_path)
     end
 	end
 
