@@ -375,7 +375,7 @@ en:
       details: 'Details'
       relationships: 'Relationships'
       options: 'Options'
-      title: '%{actor} (%{actor_type})'
+      title: '%{actor}'
       none_declared: 'None declared'
       email: 'Send Email'
       map: 'Find on Google Maps'

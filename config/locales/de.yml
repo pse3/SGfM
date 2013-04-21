@@ -373,7 +373,7 @@ de:
       details: 'Angaben'
       relationships: 'Beziehungen'
       options: 'Optionen'
-      title: '%{actor} (%{actor_type})'
+      title: '%{actor}'
       none_declared: 'Keine deklariert'
       email: 'E-Mail senden'
       map: 'Auf Google Maps finden'
