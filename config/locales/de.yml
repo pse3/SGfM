@@ -59,6 +59,11 @@ de:
       relationship_reference: 'Referenzierter Akteur'
       relationship_comment: 'Kommentar'
       actions_table: 'Aktionen'
+      details: 'Angaben'
+      relationships: 'Beziehungen'
+      add_another_actor: 'Weiteren Akteur hinzufügen'
+      more: 'Mehr...'
+
 
     new:
       title: 'Neuen Akteur erstellen'
