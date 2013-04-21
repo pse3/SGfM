@@ -47,3 +47,10 @@
 <p class="pull-right">
   <%= link_to(t('actor.show.add_relationship'), create_relationship_path(@actor), :class => 'btn btn-small pull-right') %>
 </p>
+<div>   <!-- Not actually a dropdown. Just for styling !-->
+  <a href="#options"  data-toggle="collapse" data-target="#options"><small>More...</small></a>
+</div>
+
+<div id="options" class="collapse">
+  <a href=" <%=create_actor_path%>" class="btn btn-mini">Create another actor</a>
+</div>
