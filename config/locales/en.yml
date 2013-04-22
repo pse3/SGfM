@@ -38,6 +38,7 @@ en:
       profile: 'Profile'
       actors: 'Your Actors'
       settings: 'Settings'
+      search: 'Search'
 
 
 # Translations for all actor-pages, sorted by page structure
@@ -58,6 +59,10 @@ en:
       relationship_reference: 'Referenced Actor'
       relationship_comment: 'Comment'
       actions_table: 'Actions'
+      details: 'Details'
+      relationships: 'Relationships'
+      add_another_actor: 'Add another actor'
+      more: 'More...'
 
     new:
       title: 'Create new actor'
@@ -365,6 +370,23 @@ en:
       delete_row: 'remove'
       success: '%{file_name} was successfully imported!'
 
+
+# Translations for all search pages
+  search:
+    show:
+      details: 'Details'
+      options: 'Options'
+      title: '%{actor}'
+      email: 'Send Email'
+      map: 'Find on Google Maps'
+    list:
+      title: 'Search'
+      name_table: 'Results'
+      search: 'Search'
+      no_results: "Your search query didn't match any actors."
+      enter_query: 'Please enter a search query.'
+      too_short: 'The query was too short. It must contain at least 3 characters.'
+      found: 'Your search returned %{amount} result(s)!'
 
 
 # Translations for Date and Time

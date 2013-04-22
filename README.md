@@ -5,20 +5,20 @@ Install (local)
 -------
 
 __Windows__
-* Install Ruby (Version 1.8.7 or later)
+* Install Ruby (Version 1.9.3 or later)
 * Install MongoDB (http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/)
 * Install the Devkit (https://github.com/oneclick/rubyinstaller/wiki/Development-Kit)
 * Enter <code>gem install bundler</code> in console
 * Navigate to project folder and enter <code>bundle install</code> in console
 
 __Mac OS X__
-* Install Ruby (Version 1.8.7 or later)
+* Install Ruby (Version 1.9.3 or later)
 * Install MongoDB (http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/)
 * Enter <code>sudo gem install bundler</code> in terminal
 * Navigate to project folder and enter <code>sudo bundle install</code> in terminal
 
 __Linux__
-* Install Ruby (Version 1.8.7 or later)
+* Install Ruby (Version 1.9.3 or later)
 * Install MongoDB (http://docs.mongodb.org/manual/tutorial/install-mongodb-on-linux/)
 * Enter <code>sudo gem install bundler</code> in terminal
 * Navigate to project folder and enter <code>sudo bundle install</code> in terminal

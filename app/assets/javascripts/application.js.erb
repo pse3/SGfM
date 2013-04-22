@@ -20,11 +20,6 @@ var SGfM = {
   remove_form : function(id, field_number) {
     $(id + "_" + field_number).remove();
   },
-  add_form : function(controller_path, id, html_data) {
-    SGfM.get_ajax(controller_path, html_data, function(data){
-      jQuery(id).after(data);
-    });
-  },
   insert_form : function(controller_path, id, html_data) {
     SGfM.get_ajax(controller_path, html_data, function(data) {
       jQuery(id).html(data);
@@ -35,7 +30,7 @@ var SGfM = {
       jQuery(id).replaceWith(data);
     });
   },
-  add_form_before : function(controller_path, id, html_data) {
+  add_form : function(controller_path, id, html_data) {
     SGfM.get_ajax(controller_path, html_data, function(data){
       jQuery(id).before(data);
     });
@@ -67,11 +62,8 @@ SGfM.information_type = {
 
 <!-- always use this one -->
 SGfM.form = {
-  add_form : function(controller_path,where) {
+  add_form : function(controller_path, where) {
     SGfM.add_form(controller_path, '#' + where);
-  },
-  add_form_before : function(controller_path, where) {
-    SGfM.add_form_before(controller_path, '#' + where);
   },
   remove_form : function(id,field_number) {
     SGfM.remove_form('#' + id, field_number);
