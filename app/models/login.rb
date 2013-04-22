@@ -10,7 +10,8 @@ class Login
   # :token_authenticatable, ,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+         :async
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
