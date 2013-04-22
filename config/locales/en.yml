@@ -370,6 +370,16 @@ en:
       delete_row: 'remove'
       success: '%{file_name} was successfully imported!'
 
+#Translations for Ivitations
+  invitation:
+    list:
+      invite_selected: 'Invite!'
+      column:
+        name: 'Name'
+        email: 'Email'
+        link: 'Edit'
+    list_uninvited:
+      title: 'Uninvited Actors'
 
 # Translations for all search pages
   search:
