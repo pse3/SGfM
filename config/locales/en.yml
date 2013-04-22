@@ -375,10 +375,8 @@ en:
   search:
     show:
       details: 'Details'
-      relationships: 'Relationships'
       options: 'Options'
       title: '%{actor}'
-      none_declared: 'None declared'
       email: 'Send Email'
       map: 'Find on Google Maps'
     list:
