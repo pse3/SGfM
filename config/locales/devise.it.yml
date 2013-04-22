@@ -39,6 +39,8 @@ it:
       send_instructions: "Riceverai un messaggio email con le istruzioni per confermare il tuo account entro qualche minuto."
       send_paranoid_instructions: "Se la tua email esiste nel nostro database, entro qualche minuto riceverai un messaggio email con le istruzioni per confermare il tuo account."
       confirmed: "Il tuo account è stato correttamente confermato. Ora sei collegato."
+      resend_confirmation: "Resend confirmation instructions"
+      send: "send"
     registrations:
       signed_up: "Benvenuto! Ti sei registrato correttamente."
       signed_up_but_unconfirmed: "Ti sei registrato correttamente. Tuttavia non puoi effettuare l'accesso perchè il tuo account è da confermare. Per favore apri il link che hai ricevuto tramite email per attivare il tuo account."
