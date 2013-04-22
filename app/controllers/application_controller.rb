@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(login)
-    '/' + I18n.locale.to_s + '/logins/show'
+    '/' + I18n.locale.to_s + '/'
   end
 
   def reset_all
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_account
-    current_login.account
+    current_login.nil? ? nil : current_login.account
   end
 
   def authenticate_admin!
