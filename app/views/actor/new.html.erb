@@ -1,67 +1,63 @@
 <% @page_title = t('actor.new.title') %>
-<div class="row-fluid acc-wizard">
-  <div class="span3" style="padding-left: 2em;">
-    <ol class="acc-wizard-sidebar">
-      <li class="acc-wizard-todo"><a href="#actor-type"><%= t('actor.new.type_title')%></a></li>
-      <li class="acc-wizard-todo"><a href="#information"><%= t 'actor.new.information_title' %></a></li>
-    </ol>
-  </div>
-  <div class="span9">
-    <div class="accordion" id="new-actor">
-      <div class="accordion-group">
-        <div class="accordion-heading ">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#new-actor" href="#actor-type">
-            <%= t 'actor.new.type_title' %>
-          </a>
+
+<%= form_for(:actor, :url => create_actor_path, :method => :post, :html => { :class => 'form-horizontal'}) do |f| %>
+  <div class="accordion" id="new-actor">
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <%= content_tag(:p, t('actor.new.type_title'), :class => 'lead', :id => 'title-actor-type') %>
+      </div>
+      <div id="actor-type" class="accordion-body collapse in">
+        <div class="accordion-inner">
+          <%= render :partial => 'actor/actor_type'%>
+          <%= link_to_function(t('actor.new.next_button'), 'transition1()', :type => :btn, :class => 'btn btn-info') %>
         </div>
-        <div id="actor-type" class="accordion-body collapse in">
-          <div class="accordion-inner">
-            <%= form_for(:actor, :url => create_actor_path, :method => :post, :html => { :class => 'form-horizontal', :id => 'form-actor-type' }) do |f| %>
-              <div class="control-group">
-                <%= f.label(:actor_type, t('actor.new.select_type'), class: 'control-label') %>
-                <div class="controls">
-                  <%= f.collection_select(:actor_type, list_actor_types, :key, :name, {}, {:id => 'actor-type-select',:onchange => "SGfM.actor.render_matching_form('"+information_types_for_actor_type_path+"',this.value)"}) %>
-                </div>
-              </div>
-            <% end %>
-          </div> <!--/.accordion-inner -->
-        </div> <!-- /#prerequisites -->
-      </div> <!-- /.accordion-group -->
-      <div class="accordion-group">
-        <div class="accordion-heading">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#new-actor" href="#information">
-            <%=t 'actor.new.information_title' %>
-          </a>
-        </div>
-        <div id="information" class="accordion-body collapse in">
-          <div class="accordion-inner">
-            <form id="form-information">
-              <div id="information-types-form"></div>
-            </form>
-          </div> <!--/.accordion-inner -->
-        </div> <!-- /#addwizard -->
-      </div> <!-- /.accordion-group -->
+      </div>
     </div>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <%= content_tag(:p, t('actor.new.information_title'), :id => 'title-information') %>
+      </div>
+      <div id="information" class="accordion-body collapse in">
+        <div class="accordion-inner">
+          <div id="information-types-form"></div>
+          <%= link_to_function(t('actor.new.next_button'), 'transition2()', :type => :btn, :class => 'btn btn-info') %>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <%= content_tag(:p, t('actor.new.submit_title'), :id => 'title-submit') %>
+      </div>
+      <div id="submit" class="accordion-body collapse in">
+        <div class="accordion-inner">
+          <%= f.submit(t('actor.new.create_actor'), class: 'btn btn-large btn-primary') %>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
+<% end %>
 
 <script>
-
-  function onNext(parent, panel) {
-    hash = "#" + panel.id;
-    $(".acc-wizard-sidebar",$(parent))
-            .children("li")
-            .children("a[href='" + hash + "']")
-            .parent("li")
-            .removeClass("acc-wizard-todo")
-            .addClass("acc-wizard-completed");
+  function transition1() {
+    $('#actor-type').collapse('hide');
+    $('#title-actor-type').removeClass('lead');
+    $('#information').collapse('show');
+    $('#title-information').addClass('lead');
   }
-
-  $(window).load(function() {
-    $(".acc-wizard").accwizard({onNext: onNext});
-  });
-
+  function transition2() {
+    $('#information').collapse('hide');
+    $('#title-information').removeClass('lead');
+    $('#submit').collapse('show');
+    $('#title-submit').addClass('lead');
+  }
+  function transition1back() {
+    $('#information').collapse('hide');
+    $('#actor-type').collapse('show');
+  }
   $('document').ready(function() {
+    $('#information').collapse();
+    $('#submit').collapse();
     SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path%>',$('#actor-type-select').val());
-  });
+  })
 </script>
