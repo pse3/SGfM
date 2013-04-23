@@ -82,6 +82,7 @@ en:
       submit_title: 'Submit'
       next_button: 'Next'
       back_button: 'Back'
+      beginning_button: 'First Step'
 
     edit:
       title: 'Edit actor'
