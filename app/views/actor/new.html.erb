@@ -1,6 +1,6 @@
 <% @page_title = t('actor.new.title') %>
 
-<%= form_for(:actor, :url => create_actor_path, :method => :post, :html => { :class => 'form-horizontal'}) do |f| %>
+<%= form_for(:actor, :url => create_actor_path, :method => :post, :html => { :class => 'form-horizontal', :onsubmit => 'on_submit()'}) do |f| %>
   <div class="accordion" id="new-actor">
     <div class="accordion-group">
       <div class="accordion-heading">

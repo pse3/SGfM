@@ -39,6 +39,17 @@
 <% end %>
 
 <script>
+  function on_submit() {
+    if(validationfails){
+      transition(<%= raw "\"rel#{relationship_types.length}\""%>, 'information');
+      return false;
+    }
+    else  {
+      document.form.submit();
+      return true;
+    }
+  }
+
   $('document').ready(function() {
     for(var i = 0; i < <%= relationship_types.length + 1 %>; i++) {
       $('#rel' + i).collapse('hide');
