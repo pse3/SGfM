@@ -5,7 +5,7 @@ class ActorTypeController < ApplicationController
 	# Creates an ActorType with chosen name and InformationTypes
   def create
 
-    params[:actor_type][:key].key = params[:actor_type][:name][:en].downcase.tr(' ', '_')
+    params[:actor_type][:key] = params[:actor_type][:name_translations][:en].downcase.tr(' ', '_')
     actor_type = ActorType.new params[:actor_type]
 
     if params[:information_type_decorator]
@@ -15,6 +15,14 @@ class ActorTypeController < ApplicationController
       keys.each_with_index do |key, i|
         info_type = InformationType.find_by_key(key.to_sym)
         InformationTypeDecorator.create(info_type, actor_type, required[i], searchable[i])
+      end
+    end
+
+    if params[:predefined_questions][:relationship_types]
+      params[:predefined_questions][:relationship_types].each do |relationship_type|
+        if relationship_type.length > 0
+          actor_type.predefined_questions.push(RelationshipType.find_by :key => relationship_type)
+        end
       end
     end
 
