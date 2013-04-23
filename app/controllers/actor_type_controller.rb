@@ -4,10 +4,9 @@ class ActorTypeController < ApplicationController
 
 	# Creates an ActorType with chosen name and InformationTypes
   def create
-    actor_type = ActorType.new
-    actor_type.key = params[:actor_type][:name][:en].downcase.tr(' ', '_')
-    actor_type.name_translations = params[:actor_type][:name]
-    actor_type.to_string_pattern = params[:actor_type][:to_string_pattern]
+
+    params[:actor_type][:key].key = params[:actor_type][:name][:en].downcase.tr(' ', '_')
+    actor_type = ActorType.new params[:actor_type]
 
     if params[:information_type_decorator]
       keys = params[:information_type_decorator][:information_type]

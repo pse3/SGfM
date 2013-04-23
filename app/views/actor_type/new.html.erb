@@ -13,30 +13,30 @@
   </div>
 
   <div class="control-group">
-    <%= f.label(:'name[en]', "#{t('actor_type.new.name')} (#{t('lang.en')})", :class => 'control-label') %>
+    <%= f.label(:'name_translations[en]', "#{t('actor_type.new.name')} (#{t('lang.en')})", :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:'name[en]', :placeholder => t('actor_type.new.name'), :required => true) %>
+      <%= f.text_field(:'name_translations[en]', :placeholder => t('actor_type.new.name'), :required => true) %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label(:'name[de]', "#{t('actor_type.new.name')} (#{t('lang.de')})", :class => 'control-label') %>
+    <%= f.label(:'name_translations[de]', "#{t('actor_type.new.name')} (#{t('lang.de')})", :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:'name[de]', :placeholder => t('actor_type.new.name'), :required => true) %>
+      <%= f.text_field(:'name_translations[de]', :placeholder => t('actor_type.new.name'), :required => true) %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label(:'name[fr]', "#{t('actor_type.new.name')} (#{t('lang.fr')})", :class => 'control-label') %>
+    <%= f.label(:'name_translations[fr]', "#{t('actor_type.new.name')} (#{t('lang.fr')})", :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:'name[fr]', :placeholder => t('actor_type.new.name'), :required => true) %>
+      <%= f.text_field(:'name_translations[fr]', :placeholder => t('actor_type.new.name'), :required => true) %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label(:'name[it]', "#{t('actor_type.new.name')} (#{t('lang.it')})", :class => 'control-label') %>
+    <%= f.label(:'name_translations[it]', "#{t('actor_type.new.name')} (#{t('lang.it')})", :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:'name[it]', :placeholder => t('actor_type.new.name'), :required => true) %>
+      <%= f.text_field(:'name_translations[it]', :placeholder => t('actor_type.new.name'), :required => true) %>
     </div>
   </div>
 
@@ -61,6 +61,17 @@
                              "SGfM.form.add_form(\"#{add_information_type_form_path}\",'information-type-form')",
                              :type => :button, :class => 'btn btn-medium') %>
     </p>
+  </div>
+
+  <div class="page-header">
+    <h1><small><%= t('actor_type.new.relationship_types') %></small></h1>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label(:relationship_types, t('actor_type.new.relationship_types'), :class => 'control-label') %>
+    <div class='controls'>
+      <%= f.collection_select(:relationship_types, RelationshipType.all(), :key, :name, {}, {:multiple => true}) %>
+    </div>
   </div>
 
   <div class="form-actions">

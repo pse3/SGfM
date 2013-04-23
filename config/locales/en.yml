@@ -123,6 +123,7 @@ en:
       to_string_pattern: 'ToString representation'
       to_string_pattern_explanation: 'Use |:infotypekey| to display a information'
       name: 'Name'
+      relationship_types: 'Add predefined questions'
 
     edit:
       title: 'Edit actor type'
