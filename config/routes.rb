@@ -85,6 +85,7 @@ SGfM::Application.routes.draw do
     get   '/add_information_type_form'        => 'ajax#add_information_type_form',         as: 'add_information_type_form'
     get   '/information_type_data_form'       => 'ajax#information_type_data_form',        as: 'information_type_data_form'
     get   '/information_type_option_form'     => 'ajax#information_type_option_form',      as: 'information_type_option_form'
+    get   '/predefined_questions'             => 'ajax#predefined_questions',              as: 'predefined_questions'
     # Root
     root :to => 'home#index', as: 'home'
 

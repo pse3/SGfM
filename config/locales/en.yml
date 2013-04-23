@@ -81,6 +81,7 @@ en:
       admin_can_not_create_actors: "Admins can\'t create actors!"
       submit_title: 'Submit'
       next_button: 'Next'
+      back_button: 'Back'
 
     edit:
       title: 'Edit actor'

@@ -19,6 +19,11 @@ class AjaxController < ApplicationController
     render_partial 'information_type/data/option', {:remove_button => true}
   end
 
+  def predefined_questions
+    actor_type = ActorType.find_by :key => params[:actor_type]
+    render :partial => 'actor/predefined_questions', :locals => {relationship_types => actor_type.predefined_questions}
+  end
+
   private
   def render_partial(file, locals = {})
     #TODO remove random

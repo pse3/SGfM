@@ -20,10 +20,11 @@
       <div id="information" class="accordion-body collapse in">
         <div class="accordion-inner">
           <div id="information-types-form"></div>
-          <%= link_to_function(t('actor.new.next_button'), 'transition2()', :type => :btn, :class => 'btn btn-info') %>
+          <%= link_to_function(t('actor.new.back_button'), 'transition1back()', :type => :btn, :class => 'btn btn-info') %>
         </div>
       </div>
     </div>
+    <div id="predefined-questions-form"></div>
     <div class="accordion-group">
       <div class="accordion-heading">
         <%= content_tag(:p, t('actor.new.submit_title'), :id => 'title-submit') %>
@@ -39,22 +40,25 @@
 <% end %>
 
 <script>
+  function actor_type_selected() {
+    var val = $('#actor-type-select option:selected').val();
+    SGfM.actor.render_matching_form(<%= raw "\"#{information_types_for_actor_type_path}\"" %>, val);
+    SGfM.insert_form(<%= raw("\"#{predefined_questions_path}\"") %>, '#predefined-questions-form', {actor_type: val});
+  }
+  function transition(old_one, new_one) {
+    $('#' + old_one).collapse('hide');
+    $('#title-' + old_one).removeClass('lead');
+    $('#' + new_one).collapse('show');
+    $('#title-' + new_one).addClass('lead');
+  }
   function transition1() {
-    $('#actor-type').collapse('hide');
-    $('#title-actor-type').removeClass('lead');
-    $('#information').collapse('show');
-    $('#title-information').addClass('lead');
+    transition('actor-type', 'information');
   }
-  function transition2() {
-    $('#information').collapse('hide');
-    $('#title-information').removeClass('lead');
-    $('#submit').collapse('show');
-    $('#title-submit').addClass('lead');
-  }
+
   function transition1back() {
-    $('#information').collapse('hide');
-    $('#actor-type').collapse('show');
+    transition('information', 'actor-type');
   }
+
   $('document').ready(function() {
     $('#information').collapse();
     $('#submit').collapse();
