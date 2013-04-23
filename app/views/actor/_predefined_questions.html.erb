@@ -9,12 +9,36 @@
         <div class="accordion-inner">
           <%= f.fields_for(:"#{relationship_type.key}") do |ff| %>
             <div class="page-header">
-              <h1><small><%= relationsip_type.question %></small></h1>
+              <h1><small><%= relationship_type.question %></small></h1>
             </div>
-
+            <% if index == 0 %>
+              <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{index}\", \"information\")", :type => :btn, :class => 'btn btn-info') %>
+            <% else %>
+              <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{index}\", \"rel#{index - 1}\")", :type => :btn, :class => 'btn btn-info') %>
+            <% end %>
+            <%= link_to_function(t('actor.new.next_button'), "transition(\"rel#{index}\", \"rel#{index + 1}\")", :type => :btn, :class => 'btn btn-info') %>
           <% end %>
         </div>
       <% end %>
     </div>
   <% end %>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <%= content_tag(:p, t('actor.new.submit_title'), :id => "title-rel#{relationship_types.length}") %>
+    </div>
+    <%=content_tag(:div, class: 'accordion-body collapse in', id: "rel#{relationship_types.length}") do %>
+      <div class="accordion-inner">
+        <%= f.submit(t('actor.new.create_actor'), class: 'btn btn-large btn-primary') %>
+      </div>
+    <% end %>
+  </div>
+
 <% end %>
+
+<script>
+  $('document').ready(function() {
+    for(var i = 0; i < <%= relationship_types.length + 1 %>; i++) {
+      $('#rel' + i).collapse('hide');
+    }
+  })
+</script>

@@ -21,21 +21,11 @@
         <div class="accordion-inner">
           <div id="information-types-form"></div>
           <%= link_to_function(t('actor.new.back_button'), 'transition1back()', :type => :btn, :class => 'btn btn-info') %>
+          <%= link_to_function(t('actor.new.next_button'), 'transition("information", "rel0")', :type => :btn, :class => 'btn btn-info') %>
         </div>
       </div>
     </div>
     <div id="predefined-questions-form"></div>
-    <div class="accordion-group">
-      <div class="accordion-heading">
-        <%= content_tag(:p, t('actor.new.submit_title'), :id => 'title-submit') %>
-      </div>
-      <div id="submit" class="accordion-body collapse in">
-        <div class="accordion-inner">
-          <%= f.submit(t('actor.new.create_actor'), class: 'btn btn-large btn-primary') %>
-        </div>
-      </div>
-    </div>
-
   </div>
 <% end %>
 
@@ -61,7 +51,8 @@
 
   $('document').ready(function() {
     $('#information').collapse();
-    $('#submit').collapse();
-    SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path%>',$('#actor-type-select').val());
+    var val = $('#actor-type-select option:selected').val();
+    SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path%>', val);
+    SGfM.insert_form(<%= raw("\"#{predefined_questions_path}\"") %>, '#predefined-questions-form', {actor_type: val});
   })
 </script>
