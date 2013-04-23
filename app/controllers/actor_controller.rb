@@ -112,12 +112,23 @@ class ActorController < ApplicationController
 
 	# Find actor with given id
 	def show
-		@actor = Actor.find(params[:id])
+		actor_count = current_account.actors.size
+		if !params[:id].nil?
+			@actor = Actor.find(params[:id])
+		elsif actor_count > 1
+			redirect_to list_path
+			return #todo don't know if elegant enough
+		elsif actor_count < 1
+			redirect_to create_actor_path
+			return #todo don't know if elegant enough
+		else
+			@actor = Actor.where(owner: current_account.id).first
+		end
 		@informations = scope_array(@actor.informations, current_account)
     if login_owns_actor(current_login, @actor) or current_login.is_admin?
       render('actor/internal_show')
     else
-      render('actor/external_show')
+      redirect_to(search_actor_path)
     end
 	end
 

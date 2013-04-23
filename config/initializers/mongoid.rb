@@ -18,11 +18,6 @@ unless Rails.env == :production
   Scope.delete_all
 
   #create some scopes
-  scope_private = WhitelistScope.new
-  scope_private.key = :private
-  scope_private.name_translations = { :en => 'private', :de => 'privat', :it => 'privato', :fr => 'privé' }
-  scope_private.list = [:Self]
-  scope_private.save
 
   scope_stats = WhitelistScope.new
   scope_stats.key = :statistics
@@ -35,6 +30,12 @@ unless Rails.env == :production
   scope_public.name_translations = { :en => 'public', :de => 'öffentlich', :it => 'pubblico', :frc=> 'public' }
   scope_public.list = []
   scope_public.save
+
+  scope_private = WhitelistScope.new
+  scope_private.key = :private
+  scope_private.name_translations = { :en => 'private', :de => 'privat', :it => 'privato', :fr => 'privé' }
+  scope_private.list = [:Self]
+  scope_private.save
 
   #create the information field types
   information_field_text = InformationFieldText.new
@@ -250,13 +251,21 @@ unless Rails.env == :production
   relation_other.save
 
 
-  # Create a User and Admin
+  # Create some Users and an Admin
+
   user = User.new
   login = Login.new(:email => 'email@domain.ch',
                     :password => 'test1234',
                     :password_confirmation => 'test1234')
   login.account = user
   user.save
+
+  user2 = User.new
+  login = Login.new(:email => 'user@domain.ch',
+                    :password => 'test1234',
+                    :password_confirmation => 'test1234')
+  login.account = user2
+  user2.save
 
   login.save
   admin = Admin.new

@@ -30,7 +30,6 @@
 
             <!-- nav-bar menu left -->
             <ul class="nav">
-              <li><%= link_to(t('home.index.title'), home_path) %></li>
               <% if login_signed_in? %>
                 <li class="divider-vertical"></li>
                 <li><%= link_to(t('application.menu.actors'), actors_path) %></li>
@@ -39,6 +38,9 @@
                    <li> <%= link_to(t('home.admin'), actor_types_path) %></li>
                 <% end %>
               <% end %>
+              <li class="divider-vertical"></li>
+              <li><%= link_to(t('application.menu.search'), search_path) %></li>
+              <li class="divider-vertical"></li>
             </ul>
 
             <!-- nav-bar menu right -->
@@ -109,6 +111,9 @@
       </div>
     </div>
 
+  <div id="bottom">
+    <!-- A reference point. Do not fill this div with content. Keep it at the bottom all the time. -->
+  </div>
   </body>
 </html>
 
