@@ -20,7 +20,7 @@ class ActorController < ApplicationController
         unless info_type_decorator.scope
           information.scope = Scope.find_by(key: params[:actor][:scope][info_type_decorator.key].to_sym)
         end
-        information.actor = @actor
+        information.actor = actor
       end
     end
 
@@ -31,7 +31,7 @@ class ActorController < ApplicationController
       types.each_with_index do |relationship_type,i|
         relation = Relationship.new
         relation.relationship_type = RelationshipType.find_by_key(relationship_type.to_sym)
-        relation.actor = @actor
+        relation.actor = actor
         relation.comment = comments[i]
         relation.reference = references[i]
         relation.save
