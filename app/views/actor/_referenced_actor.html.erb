@@ -1,15 +1,15 @@
-<%= content_tag(:div, id: "rel#{key}#{field_number}") do %>
+<%= content_tag(:div, id: "rel#{key}_#{field_number}") do %>
   <%= fields_for(:relationships) do |f| %>
     <%= f.fields_for(:"#{key}") do |ff| %>
       <div class="control-group">
-        <%= ff.label(:'[]', t('actor.new.relationship_reference'), class: 'control-label') %>
+        <%= ff.label(:"#{key}#{field_number}", t('actor.new.relationship_reference'), class: 'control-label') %>
         <div class="controls">
-          <%= ff.hidden_field(:'[]', :id => "sel#{key}#{field_number}") %>
-          <p class="pull-right">
-            <%= link_to_function(raw("<i class='icon-remove icon-white'></i>"),
-                                 "SGfM.remove_form(\"rel#{key}#{field_number}\")",
-                                 :type => :button, :class => 'btn btn-danger') %>
-          </p>
+          <%= ff.hidden_field(:"#{key}#{field_number}", :id => "sel#{key}#{field_number}") %>
+          <% if local_assigns[:remove] %>
+            <p class='pull-right'>
+              <%= link_to_function(raw("<i class='icon-remove icon-white'></i>"), "SGfM.form.remove_form(\"rel#{key}\", #{field_number})", type: :btn, class: 'btn btn-danger') %>
+            </p>
+          <% end %>
         </div>
       </div>
     <% end %>
@@ -18,7 +18,7 @@
 
 <script>
   $('document').ready(function() {
-    $(<%= "#sel#{key}#{field_number}" %>).select2({
+    $(<%= raw("\"#sel#{key}#{field_number}\"") %>).select2({
       width: '500',
       data:{ results: data },
       formatSelection: format,

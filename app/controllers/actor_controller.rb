@@ -24,17 +24,17 @@ class ActorController < ApplicationController
       end
     end
 
-    if params[:relationship]
-      references = params[:relationship][:reference]
-      types = params[:relationship][:relationship_type]
-      comments = params[:relationship][:comment]
-      types.each_with_index do |relationship_type,i|
-        relation = Relationship.new
-        relation.relationship_type = RelationshipType.find_by_key(relationship_type.to_sym)
-        relation.actor = actor
-        relation.comment = comments[i]
-        relation.reference = references[i]
-        relation.save
+    if params[:relationships]
+      params[:relationships].each_key do |key|
+        relationship_type = RelationshipType.find_by key: key
+        params[:relationships][key].each_value do |value|
+          reference = Actor.find_by id: value
+          relationship = Relationship.new
+          relationship.relationship_type = relationship_type
+          relationship.actor = actor
+          relationship.reference = reference
+          relationship.save
+        end
       end
     end
 

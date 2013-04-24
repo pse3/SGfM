@@ -25,7 +25,7 @@ class AjaxController < ApplicationController
   end
 
   def referenced_actor
-    render_partial 'actor/referenced_actor', :key => params[:key]
+    render_partial 'actor/referenced_actor', :key => params[:key], :remove => true
   end
 
   private
