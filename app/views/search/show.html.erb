@@ -1,4 +1,5 @@
-<% @page_title = t('search.show.title', :actor => @actor.to_s, :actor_type => @actor.actor_type.name) %>
+<% @page_title = t('search.show.title', :actor => @actor.to_s) %>
+<span class="label"><%= @actor.actor_type.name %></span>
 
 <p class="pull-right">
   <% if @options[:email] %>
@@ -22,26 +23,4 @@
       <tr></tr>
   <% end %>
   <tr>
-</table>
-
-<h1><small><%= t('search.show.relationships') %></small></h1>
-
-<table class="table table-hover">
-  <% @actor.relationships.each do |relationship| %>
-      <tr>
-        <td class="span2"><%= relationship.relationship_type.to_s %></td>
-        <td class="span2"><%= link_to(relationship.reference.to_s, browse_actor_path(relationship.reference)) %></td>
-        <td class="span6"><%= relationship.comment.to_s %></td>
-      </tr>
-  <% end %>
-  <% unless current_account.nil?%>
-      <tr>
-        <td>Add relationship to this actor</td>
-      </tr>
-  <% end %>
-  <% if @actor.relationships.empty? %>
-    <tr>
-        <td><%= t('search.show.none_declared') %></td>
-    </tr>
-  <% end %>
 </table>

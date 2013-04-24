@@ -60,6 +60,10 @@ en:
       relationship_reference: 'Referenced Actor'
       relationship_comment: 'Comment'
       actions_table: 'Actions'
+      details: 'Details'
+      relationships: 'Relationships'
+      add_another_actor: 'Add another actor'
+      more: 'More...'
 
     new:
       title: 'Create new actor'
@@ -383,10 +387,8 @@ en:
   search:
     show:
       details: 'Details'
-      relationships: 'Relationships'
       options: 'Options'
-      title: '%{actor} (%{actor_type})'
-      none_declared: 'None declared'
+      title: '%{actor}'
       email: 'Send Email'
       map: 'Find on Google Maps'
     list:

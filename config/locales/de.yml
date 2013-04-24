@@ -59,6 +59,11 @@ de:
       relationship_reference: 'Referenzierter Akteur'
       relationship_comment: 'Kommentar'
       actions_table: 'Aktionen'
+      details: 'Angaben'
+      relationships: 'Beziehungen'
+      add_another_actor: 'Weiteren Akteur hinzufügen'
+      more: 'Mehr...'
+
 
     new:
       title: 'Neuen Akteur erstellen'
@@ -371,10 +376,8 @@ de:
   search:
     show:
       details: 'Angaben'
-      relationships: 'Beziehungen'
       options: 'Optionen'
-      title: '%{actor} (%{actor_type})'
-      none_declared: 'Keine deklariert'
+      title: '%{actor}'
       email: 'E-Mail senden'
       map: 'Auf Google Maps finden'
     list:

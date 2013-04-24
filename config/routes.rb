@@ -11,12 +11,13 @@ SGfM::Application.routes.draw do
 
 
     # Actor routes
-    get     'actors'              => 'actor#list',     as: 'actors'
-    get     'actors/create'       => 'actor#new',      as: 'create_actor'
-    post    'actors/create'       => 'actor#create'
-    get     'actors/:id'          => 'actor#show',     as: 'show_actor'
-    get     'actors/edit/:id'     => 'actor#edit',     as: 'edit_actor'
-    post    'actors/edit/:id'     => 'actor#update',   as: 'update_actor'
+    get   'actors'          => 'actor#show',    as: 'actors'
+		get   'actors/all'      => 'actor#list', as: 'list'
+		get   'actors/create'   => 'actor#new',     as: 'create_actor'
+    post  'actors/create'   => 'actor#create'
+    get   'actors/:id'      => 'actor#show',    as: 'show_actor'
+    get   'actors/edit/:id' => 'actor#edit',    as: 'edit_actor'
+    post  'actors/edit/:id' => 'actor#update',  as: 'update_actor'
     delete  'actors/destroy/:id'  => 'actor#destroy',  as: 'delete_actor'
 
     # Relationship routes
