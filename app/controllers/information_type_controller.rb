@@ -35,7 +35,7 @@ class InformationTypeController < ApplicationController
   end
 
   def edit
-    @information_type = InformationType.find_by id: params[:id]
+    @information_type = InformationType.find_by(id: params[:id])
   end
 
   def update
@@ -46,12 +46,24 @@ class InformationTypeController < ApplicationController
     information_type.name_translations = params[:information_type][:name]
     information_type.data_translations = InformationTypeHelper.parse_data(params[:information_type][:information_field_type_data], information_type.information_field_type)
     if information_type.save
-      flash[:sucess] = t('information_type.update.success')
+      flash[:success] = t('information_type.update.success')
       redirect_to information_types_path
     else
       flash[:error] = t('information_type.update.failure')
       redirect_to edit_information_type(information_type)
     end
+  end
+
+  def destroy
+    @information_type = InformationType.find_by(id: params[:id])
+    @informations = Information.where( :information_type_decorator => @information_type)
+    @information_type.destroy
+    @informations.each do |information|
+      information.destroy
+    end
+
+    flash[:success] = t('information_type.destroy.success')
+    redirect_to(information_types_path)
   end
 
   # Find information_type with given id
