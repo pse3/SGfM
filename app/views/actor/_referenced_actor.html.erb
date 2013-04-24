@@ -6,6 +6,9 @@
         <div class="controls">
           <%= ff.hidden_field(:'[]', :id => "sel#{key}#{field_number}") %>
           <p class="pull-right">
+            <%= link_to_function(raw("<i class='icon-remove icon-white'></i>"),
+                                 "SGfM.remove_form(\"rel#{key}#{field_number}\")",
+                                 :type => :button, :class => 'btn btn-danger') %>
           </p>
         </div>
       </div>
