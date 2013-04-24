@@ -119,6 +119,19 @@ class ActorController < ApplicationController
     else
       redirect_to(search_actor_path)
     end
-	end
+  end
+
+  def destroy
+    actor = Actor.find(params[:id])
+
+    relationships = Relationship.where(:reference => actor.id)
+    relationships.each do |relationship|
+      relationship.destroy
+    end
+    actor.destroy
+
+    flash[:success] = t('actor.destroy.success')
+    redirect_to(actors_path)
+  end
 
 end

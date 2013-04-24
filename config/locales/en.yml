@@ -47,6 +47,7 @@ en:
       title: 'Your actors'
       new_actor: 'Create new actor'
       name_table: 'Who'
+      sure_to_delete: 'Are you sure to delete this actor?'
 
     show:
       title: '%{actor}'
@@ -83,6 +84,9 @@ en:
 
     update:
       success: 'Actor successfully updated!'
+
+    destroy:
+      success: 'Successfully deleted actor'
 
 
 # Translations for all actor_type-pages, sorted by page structure
