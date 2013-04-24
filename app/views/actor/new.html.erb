@@ -38,8 +38,8 @@
   function transition(old_one, new_one) {
     $('#' + old_one).collapse('hide');
     $('#title-' + old_one).removeClass('lead');
-    $('#' + new_one).collapse('show');
     $('#title-' + new_one).addClass('lead');
+    $('#' + new_one).collapse('show').goTo();
   }
   function transition1() {
     transition('actor-type', 'information');

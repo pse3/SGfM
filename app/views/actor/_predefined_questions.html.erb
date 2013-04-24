@@ -11,6 +11,7 @@
             <div class="page-header">
               <h1><small><%= relationship_type.question %></small></h1>
             </div>
+            <%= render :partial => 'actor/referenced_actor', :locals => {:f => ff, :index => index}%>
             <% if index == 0 %>
               <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{index}\", \"information\")", :type => :btn, :class => 'btn btn-info') %>
             <% else %>
@@ -39,20 +40,23 @@
 <% end %>
 
 <script>
-  function on_submit() {
-    if(validationfails){
-      transition(<%= raw "\"rel#{relationship_types.length}\""%>, 'information');
-      return false;
-    }
-    else  {
-      document.form.submit();
-      return true;
-    }
-  }
+  //select 2
+  var data = [<%= raw(Actor.all.map { |a| "{id:'#{a.id}',text:'#{a.to_s}'}" }.join(', ')) %>];
+  function format(item) { return item.text; }
 
   $('document').ready(function() {
     for(var i = 0; i < <%= relationship_types.length + 1 %>; i++) {
       $('#rel' + i).collapse('hide');
     }
+
+    for(i = 0; i < <%= relationship_types.length%>; i++) {
+      $("#sel" + i).select2({
+        width: '500',
+        data:{ results: data },
+        formatSelection: format,
+        formatResult: format
+      });
+    }
   })
+
 </script>
