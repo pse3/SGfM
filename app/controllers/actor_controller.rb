@@ -142,7 +142,7 @@ class ActorController < ApplicationController
     actor.destroy
 
     flash[:success] = t('actor.destroy.success')
-    redirect_to(actors_path)
+    redirect_to(list_path)
   end
 
 end
