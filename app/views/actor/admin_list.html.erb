@@ -17,10 +17,12 @@
         <table class="table table-hover">
           <tr>
             <th><%= t('actor.list.name_table') %></th>
+            <th></th>
           </tr>
           <% @actors_hash[type].each do |actor| %>
             <tr>
               <td><%= link_to(actor.to_s, show_actor_path(actor)) %></td>
+              <td><%= link_to(raw('<i class="icon-trash"></i>'), delete_actor_path(actor), :confirm => t('actor.list.sure_to_delete'), :method => :delete) %></td>
             </tr>
           <% end %>
         </table>
