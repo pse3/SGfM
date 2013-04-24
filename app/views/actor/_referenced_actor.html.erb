@@ -1,6 +1,25 @@
-<div class="control-group">
-  <%= f.label(:'[]', t('actor.new.relationship_reference'), class: 'control-label') %>
-  <div class="controls">
-    <%= f.hidden_field(:'[]', :id => "sel#{index}") %>
-  </div>
-</div>
+<%= content_tag(:div, id: "rel#{key}#{field_number}") do %>
+  <%= fields_for(:relationships) do |f| %>
+    <%= f.fields_for(:"#{key}") do |ff| %>
+      <div class="control-group">
+        <%= ff.label(:'[]', t('actor.new.relationship_reference'), class: 'control-label') %>
+        <div class="controls">
+          <%= ff.hidden_field(:'[]', :id => "sel#{key}#{field_number}") %>
+          <p class="pull-right">
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<script>
+  $('document').ready(function() {
+    $(<%= "#sel#{key}#{field_number}" %>).select2({
+      width: '500',
+      data:{ results: data },
+      formatSelection: format,
+      formatResult: format
+    });
+  })
+</script>

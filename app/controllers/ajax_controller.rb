@@ -24,6 +24,10 @@ class AjaxController < ApplicationController
     render :partial => 'actor/predefined_questions', :locals => {:relationship_types => actor_type.predefined_questions}
   end
 
+  def referenced_actor
+    render_partial 'actor/referenced_actor', :key => params[:key]
+  end
+
   private
   def render_partial(file, locals = {})
     #TODO remove random

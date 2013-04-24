@@ -17,8 +17,8 @@
 
 //TODO javascript conventions are camlcase.
 var SGfM = {
-  remove_form : function(id, field_number) {
-    $(id + "_" + field_number).remove();
+  remove_form : function(id) {
+    $(id).remove();
   },
   insert_form : function(controller_path, id, html_data) {
     SGfM.get_ajax(controller_path, html_data, function(data) {
@@ -66,7 +66,7 @@ SGfM.form = {
     SGfM.add_form(controller_path, '#' + where);
   },
   remove_form : function(id,field_number) {
-    SGfM.remove_form('#' + id, field_number);
+    SGfM.remove_form('#' + id + "_" + field_number);
   },
   replace_form : function(id, data) {
     jQuery('#' + id).replaceWith(data)
