@@ -376,10 +376,8 @@ de:
   search:
     show:
       details: 'Angaben'
-      relationships: 'Beziehungen'
       options: 'Optionen'
       title: '%{actor}'
-      none_declared: 'Keine deklariert'
       email: 'E-Mail senden'
       map: 'Auf Google Maps finden'
     list:
