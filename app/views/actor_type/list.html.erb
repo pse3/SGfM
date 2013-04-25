@@ -24,6 +24,7 @@
       <td><%= actor_type.key %></td>
       <td>
         <%= link_to raw('<i class="icon-edit"></i>'), edit_actor_type_path(actor_type) %>
+        <%= link_to(raw('<i class="icon-trash"></i>'), delete_actor_type_path(actor_type), :confirm => t('actor_type.list.sure_to_delete'), :method => :delete) %>
       </td>
     </tr>
   <% end %>

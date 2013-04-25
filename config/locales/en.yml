@@ -47,6 +47,7 @@ en:
       title: 'Your actors'
       new_actor: 'Create new actor'
       name_table: 'Who'
+      sure_to_delete: 'Are you sure to delete this actor?'
 
     show:
       title: '%{actor}'
@@ -67,6 +68,9 @@ en:
     new:
       title: 'Create new actor'
       select_type: 'Select a type'
+      type_title: 'Select a type'
+      choose_type: 'Choose a type'
+      information_title: 'Add information about yourself'
       create_actor: 'Create'
       add_relationship: 'Add relationship'
       remove_relationship: 'Remove'
@@ -76,6 +80,10 @@ en:
       relationship_comment: 'Comment'
       relationship_type: 'Type'
       admin_can_not_create_actors: "Admins can\'t create actors!"
+      submit_title: 'Submit'
+      next_button: 'Next'
+      back_button: 'Back'
+      beginning_button: 'First Step'
 
     edit:
       title: 'Edit actor'
@@ -84,9 +92,13 @@ en:
     create:
       title: 'Created Actor'
       success: 'You have successfully created an actor!'
+      failure: 'An unknown error occured!'
 
     update:
       success: 'Actor successfully updated!'
+
+    destroy:
+      success: 'Successfully deleted actor'
 
 
 # Translations for all actor_type-pages, sorted by page structure
@@ -97,6 +109,7 @@ en:
       name_table: 'Name'
       key_table: 'Key'
       actions_table: 'Actions'
+      sure_to_delete: 'Are you sure to delete this entry? All existing actors with this type will be deleted!'
 
     show:
       title: '%{actor_type}'
@@ -122,6 +135,7 @@ en:
       to_string_pattern: 'ToString representation'
       to_string_pattern_explanation: 'Use |:infotypekey| to display a information'
       name: 'Name'
+      relationship_types: 'Add predefined questions'
 
     edit:
       title: 'Edit actor type'
@@ -140,6 +154,9 @@ en:
       success: 'Actor type successfully updated!'
       failure: 'An unknown error ocurred!'
 
+    destroy:
+     success: 'Successfully deleted actor type'
+
 
 # Translations for all information_type-pages, sorted by page structure
   information_type:
@@ -150,6 +167,7 @@ en:
       key_table: 'Key'
       field_type_table: 'Field Type'
       actions_table: 'Actions'
+      sure_to_delete: 'Are you sure to delete this entry? All existing Informations with this type will be deleted!'
 
     show:
       title: '%{information_type}'
@@ -191,6 +209,9 @@ en:
     update:
       success: 'Edited informaton successfully!'
       failure: 'There was an unknown error!'
+
+    destroy:
+      success: 'Successfully deleted information type'
 
 
 #Translation for all Scope-Pages
@@ -278,6 +299,7 @@ en:
     new:
       title: 'Create new RelationshipType'
       name: 'Name'
+      question: 'Question'
       key: 'Key'
       create_relationship_type: 'Create'
 
@@ -285,6 +307,7 @@ en:
       title: 'Edit relationship type'
       type: 'Type'
       name: 'Name'
+      question: 'Question'
 
     create:
       success: 'RelationshipType successfully created!'
@@ -295,7 +318,7 @@ en:
       failure: 'An unknown error ocurred!'
 
     destroy:
-      success: 'Successfully deleted relationship'
+      success: 'Successfully deleted relationship type'
 
 
 # Translations for all login-pages, sorted by page structure

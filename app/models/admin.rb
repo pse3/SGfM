@@ -7,6 +7,10 @@ class Admin
 
   def user_type
     self.login.account_type
-  end
+	end
+
+	def actors
+		Actor.all
+	end
 
 end

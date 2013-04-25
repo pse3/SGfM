@@ -1,41 +1,39 @@
-
 <% @scopes = list_scopes %>
 <%= fields_for(:actor) do |f| %>
-    <% information_types.each do |information_type| %>
-        <%= f.fields_for(:information) do |info_form| %>
-            <div class="control-group">
-              <% if information_type.required %>
-                  <%=  info_form.label(information_type.key,  information_type.name+'*', class: 'control-label') %>
-              <% else %>
-                  <%= info_form.label(information_type.key,  information_type.name, class: 'control-label') %>
-              <% end %>
-              <div class="controls">
-                <%= information_type.information_field_type.form(info_form, information_type.key, { :placeholder => information_type.name, :data => information_type.data, :required => information_type.required }) %>
-                <% if information_type.scope %>
-                  <div class="btn-group" data-toggle-name="<%= "actor[scope][#{information_type.key}]" %>" data-toggle="buttons-radio" >                      <option><%= information_type.scope.name %></option>
-                    <button type="button" value="<%= information_type.scope.key %>" class="btn active" disabled><%=  information_type.scope.name %></button>
-                  </div>
-                <% else %>
-                    <% first = true %>
-                    <div class="btn-group" data-toggle-name="<%= "actor[scope][#{information_type.key}]" %>" data-toggle="buttons-radio" >
-                      <% @scopes.each do |scope| %>
-                        <% if first %>
-                          <input type="hidden" name="<%= "actor[scope][#{information_type.key}]" %>" value="<%= scope.key %>"/>
-                        <% end %>
-
-                        <button type="button" value="<%= scope.key %>" class="btn  <%= 'active' if first %>" ><%=  scope.name %></button>
-                        <% first = false %>
-                      <% end %>
-                    </div>
-                <% end %>
-              </div>
-            </div>
+  <% information_types.each do |information_type| %>
+    <%= f.fields_for(:information) do |info_form| %>
+      <div class="control-group">
+        <% if information_type.required %>
+          <%=  info_form.label(information_type.key,  information_type.name+'*', class: 'control-label') %>
+        <% else %>
+          <%= info_form.label(information_type.key,  information_type.name, class: 'control-label') %>
         <% end %>
+        <div class="controls">
+          <%= information_type.information_field_type.form(info_form, information_type.key, { :placeholder => information_type.name, :data => information_type.data, :required => information_type.required }) %>
+          <% if information_type.scope %>
+            <div class="btn-group" data-toggle-name="<%= "actor[scope][#{information_type.key}]" %>" data-toggle="buttons-radio" >                      <option><%= information_type.scope.name %></option>
+              <button type="button" value="<%= information_type.scope.key %>" class="btn active" disabled><%=  information_type.scope.name %></button>
+            </div>
+          <% else %>
+            <% first = true %>
+            <div class="btn-group" data-toggle-name="<%= "actor[scope][#{information_type.key}]" %>" data-toggle="buttons-radio" >
+              <% @scopes.each do |scope| %>
+                <% if first %>
+                  <input type="hidden" name="<%= "actor[scope][#{information_type.key}]" %>" value="<%= scope.key %>"/>
+                <% end %>
+
+                <button type="button" value="<%= scope.key %>" class="btn  <%= 'active' if first %>" ><%=  scope.name %></button>
+                <% first = false %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     <% end %>
+  <% end %>
 
-    <%= f.hidden_field(:actor_type_key, value: actor_type_key) %>
+  <%= f.hidden_field(:actor_type_key, value: actor_type_key) %>
 <% end %>
-
 <script>
   //Helps to transfer the "state" of a radiobuttons-like button-group to a hidden input field (so it can be POSTed) TODO: put this into an external file.
   $('div.btn-group[data-toggle-name]').each(function () {

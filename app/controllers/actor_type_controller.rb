@@ -4,10 +4,9 @@ class ActorTypeController < ApplicationController
 
 	# Creates an ActorType with chosen name and InformationTypes
   def create
-    actor_type = ActorType.new
-    actor_type.key = params[:actor_type][:name][:en].downcase.tr(' ', '_')
-    actor_type.name_translations = params[:actor_type][:name]
-    actor_type.to_string_pattern = params[:actor_type][:to_string_pattern]
+
+    params[:actor_type][:key] = params[:actor_type][:name_translations][:en].downcase.tr(' ', '_')
+    actor_type = ActorType.new params[:actor_type]
 
     if params[:information_type_decorator]
       keys = params[:information_type_decorator][:information_type]
@@ -16,6 +15,14 @@ class ActorTypeController < ApplicationController
       keys.each_with_index do |key, i|
         info_type = InformationType.find_by_key(key.to_sym)
         InformationTypeDecorator.create(info_type, actor_type, required[i], searchable[i])
+      end
+    end
+
+    if params[:predefined_questions][:relationship_types]
+      params[:predefined_questions][:relationship_types].each do |relationship_type|
+        if relationship_type.length > 0
+          actor_type.predefined_questions.push(RelationshipType.find_by :key => relationship_type)
+        end
       end
     end
 
@@ -74,6 +81,18 @@ class ActorTypeController < ApplicationController
 
     flash[:success] = t('actor_type.update.success')
     redirect_to actor_types_path
+  end
+
+  def destroy
+    @actor_type = ActorType.find(params[:id])
+    @actors = Actor.where( :actor_type => @actor_type)
+    @actor_type.destroy
+    @actors.each do |actor|
+      actor.destroy
+    end
+
+    flash[:success] = t('actor_type.destroy.success')
+    redirect_to(actor_types_path)
   end
 
 end

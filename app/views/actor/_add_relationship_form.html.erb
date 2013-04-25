@@ -36,12 +36,13 @@
       var data = [<%= raw(all_actors.map { |a| "{id:'#{a.id}',text:'#{a.to_s}'}" }.join(', ')) %>];
       function format(item) { return item.text; };
 
-      $("#e1").select2({
-        width: '500',
-        data:{ results: data },
-        formatSelection: format,
-        formatResult: format
-      });
+        $("#e1").select2({
+            minimumInputLength: 3,
+            width: '500',
+            data:{ results: data },
+            formatSelection: format,
+            formatResult: format
+        });
 
     });
   </script>
