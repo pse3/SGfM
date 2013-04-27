@@ -11,7 +11,7 @@ SGfM::Application.routes.draw do
 
 
     # Actor routes
-    get   'actors'          => 'actor#show',    as: 'actors'
+    get   'actors'          => 'actor#list',    as: 'actors'
 		get   'actors/all'      => 'actor#list', as: 'list'
     get   'search'          => 'actor#search',    as: 'search'
     post  'search'          => 'actor#search'

@@ -58,20 +58,26 @@ class ActorController < ApplicationController
 			actors = Actor.all
 		else
 			actors = current_account.actors
-		end
-
-		@actors_hash = Hash.new{|h, k| h[k] = []}
-		actors.each do |actor|
-			@actors_hash[actor.actor_type].push(actor)
-		end
-
-		@actors_hash
-    if current_login.is_admin?
-      render('actor/admin_list')
-    else
-      render('actor/user_list')
     end
-	end
+
+    if actors.size == 0
+      redirect_to create_actor_path
+    elsif actors.size == 1
+      @actor = actors.first
+      @informations = scope_array(@actor.informations, current_account)
+      render('actor/internal_show')
+    else
+      @actors_hash = Hash.new{|h, k| h[k] = []}
+      actors.each do |actor|
+        @actors_hash[actor.actor_type].push(actor)
+      end
+      if current_login.is_admin?
+        render('actor/admin_list')
+      else
+        render('actor/user_list')
+      end
+    end
+  end
 
 	def edit
 		@actor = Actor.find(params[:id])
@@ -140,44 +146,16 @@ class ActorController < ApplicationController
 
 	# Find actor with given id
 	def show
-    if current_login.nil?
-      @actor = Actor.find(params[:id])
-
+    @actor = Actor.find(params[:id])
+    if login_owns_actor(current_login, @actor) or is_admin(current_login)
+      @informations = scope_array(@actor.informations, current_account)
+      render('actor/internal_show')
+    else
       @viewer = current_account || :guest
       @informations = scope_array(@actor.informations, @viewer)
-
-      @options = Hash.new
-
-      @informations.each do |info|
-        @options[info.information_type_decorator.key.to_sym] = info.value_to_s unless info.value_to_s == ''
-      end
-
-      @maps_query = 'http://maps.google.com/maps?q='
-      @maps_query+=  @options[:street] + '+' unless @options[:street].nil?
-      @maps_query+=  @options[:street_number] + '+' unless @options[:street_number].nil?
-      @maps_query+=  @options[:zip_code] + '+' unless @options[:zip_code].nil?
       render('actor/external_show')
-    else
-
-      actor_count = current_account.actors.size
-      if !params[:id].nil?
-        @actor = Actor.find(params[:id])
-      elsif actor_count > 1
-        redirect_to list_path
-        return #todo don't know if elegant enough
-      elsif actor_count < 1
-        redirect_to create_actor_path
-        return #todo don't know if elegant enough
-      else
-        @actor = Actor.where(owner: current_account.id).first
-      end
-      @informations = scope_array(@actor.informations, current_account)
-      if login_owns_actor(current_login, @actor) or current_login.is_admin?
-        render('actor/internal_show')
-      else
-        render('actor/external_show')
-      end
     end
+
   end
 
   def destroy
