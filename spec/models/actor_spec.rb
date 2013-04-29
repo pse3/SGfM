@@ -6,7 +6,7 @@ describe Actor do
     #create a scope
     scope_public = BlacklistScope.new
     scope_public.key = :public_test
-    scope_public.name_translations = { :en => 'public', :de => 'öffentlich', :it => 'pubblico', :frc=> 'public' }
+    scope_public.name_translations = { :en => 'public', :de => 'entlich', :it => 'pubblico', :frc=> 'public' }
     scope_public.list = []
     scope_public.save
 
@@ -36,7 +36,7 @@ describe Actor do
     @atype_doctor.key = :doctor_test
     InformationTypeDecorator.create(itype_name, @atype_doctor, true, true)
     InformationTypeDecorator.create(itype_phone, @atype_doctor, true, true)
-    @atype_doctor.name_translations = { :en => 'Doctor', :de =>'Arzt', :it => 'Dottore', :fr => 'Médecin' }
+    @atype_doctor.name_translations = { :en => 'Doctor', :de =>'Arzt', :it => 'Dottore', :fr => 'Mdecin' }
     @atype_doctor.to_string_pattern = "|:name_test|//|:phone_test|"
     @atype_doctor.save
 
@@ -52,21 +52,61 @@ describe Actor do
     @actor = Actor.new
     @actor.actor_type = @atype_doctor
 
-    actor_name = Information.new
-    actor_name.scope = scope_public
-    actor_name.information_type_decorator = @actor.actor_type.decorator_by_key(:name_test)
-    actor_name.value = 'Name of our test actor'
-    actor_name.actor = @actor
+    @actor_name = Information.new
+    @actor_name.scope = scope_public
+    @actor_name.information_type_decorator = @actor.actor_type.decorator_by_key(:name_test)
+    @actor_name.value = 'Name of our test actor'
+    @actor_name.actor = @actor
 
-    actor_phone = Information.new
-    actor_phone.scope = scope_public
-    actor_phone.information_type_decorator = @actor.actor_type.decorator_by_key(:phone_test)
-    actor_phone.value = '033 666 77 88'
-    actor_phone.actor = @actor
+    @actor_phone = Information.new
+    @actor_phone.scope = scope_public
+    @actor_phone.information_type_decorator = @actor.actor_type.decorator_by_key(:phone_test)
+    @actor_phone.value = '033 666 77 88'
+    @actor_phone.actor = @actor
 
     @user.actors.push(@actor)
     @actor.save
     @user.save
+
+    #create actor2
+
+    @actor2 = Actor.new
+    @actor2.actor_type = @atype_doctor
+
+    @actor_name2 = Information.new
+    @actor_name2.scope = scope_public
+    @actor_name2.information_type_decorator = @actor.actor_type.decorator_by_key(:name_test)
+    @actor_name2.value = 'Name of our second test actor'
+    @actor_name2.actor = @actor2
+
+    @actor_phone2 = Information.new
+    @actor_phone2.scope = scope_public
+    @actor_phone2.information_type_decorator = @actor.actor_type.decorator_by_key(:phone_test)
+    @actor_phone2.value = '345 434 49 95'
+    @actor_phone2.actor = @actor2
+
+    @user.actors.push(@actor2)
+    @actor2.save
+    @user.save
+
+    #create relationship between actor and actor2
+    relation_works_with = RelationshipType.new
+    relation_works_with.key = :works_with_test
+    relation_works_with.name_translations = { :en => 'works with', :de =>'arbeitet mit', :it => '??', :fr => '??' }
+    relation_works_with.question_translations = {
+        :en => 'With whom do you work?',
+        :de => 'Mit wem arbeitet Ihr?',
+        :it => '??',
+        :fr => '??'
+    }
+    relation_works_with.save
+
+    @relationship1 = Relationship.new
+    @relationship1.relationship_type = RelationshipType.find_by_key(:works_with_test)
+    @relationship1.comment = 'This is another comment. Made by god! Creepy!'
+    @relationship1.actor = @actor
+    @relationship1.reference = @actor2
+    @relationship1.save
 
   end
 
@@ -83,19 +123,18 @@ describe Actor do
   let(:actor_type) { @actor.actor_type }
   specify {actor_type.should eq(@atype_doctor)}
 
+  let(:informations) {@actor.informations}
+  specify {informations.should include(@actor_name)}
+  specify {informations.should include(@actor_phone)}
+
+  let(:info_found) {@actor.find_information_by_key(:phone_test)}
+  specify {info_found.should eql(@actor_phone)}
+
+  let(:relationship) {@actor.relationships }
+  specify {relationship.should include(@relationship1)}
+
   it "sets correct time of creation when initializing" do
     @actor.created_at.should be_within(10).of(DateTime.now)
-  end
-
-  it "adds an information to actor" do
-    information = Information.new
-    information.information_type_decorator = @itypedec_name
-    information.actor = @actor
-    information.value = 'peter'
-    @actor.save
-    information.save
-    @actor.informations.should include(information)
-    expect(information.value).to eq('peter')
   end
 
   it "adds a relationship to actor" do
@@ -103,17 +142,6 @@ describe Actor do
     relation.comment = "bla"
     relation.actor = @actor
     @actor.relationships.should include(relation)
-  end
-
-  it "finds informations by key" do
-    information = Information.new
-    information.information_type_decorator = @itypedec_phone
-    information.actor = @actor
-    information.value = '999'
-    @actor.save
-    information.save
-    @actor.find_information_by_key(:phone_test).should be(information)
-    expect(information.value).to eq('999')
   end
 
   it "finds relationships by key" do
