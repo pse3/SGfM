@@ -168,7 +168,7 @@ describe Actor do
   let(:found_actors_when_no_matching) {Actor.full_text_search("Schurch", match: :all)}
   specify{found_actors_when_no_matching.empty?.should be_true}
 
-
+  #TODO: Additional tests: What happens, when the scope of an information changes, or when the information type changes, etc.
 
 
 end
