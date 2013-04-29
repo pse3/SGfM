@@ -12,7 +12,7 @@ describe RelationshipType do
     @relation_other = RelationshipType.new
     @relation_other.key = :other_test
     @relation_other.name_translations = { :en => 'other', :de =>'Andere', :it => '??', :fr => '??' }
-    @relation_works_with.question = {:en => 'english question', :de => 'german question', :it => '??', :fr => '??'}
+    @relation_other.question = {:en => 'english question', :de => 'german question', :it => '??', :fr => '??'}
     @relation_other.save
   }
 
