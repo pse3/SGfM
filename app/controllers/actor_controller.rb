@@ -1,7 +1,7 @@
 class ActorController < ApplicationController
 	include ScopesHelper
 
-  before_filter :authenticate_login!
+  before_filter :authenticate_login!, :except => [:show, :search]
   before_filter  :owns_actor_or_is_admin!, :only => [:edit, :update]
 
   # Creates a Actor with chosen name and type
@@ -58,20 +58,26 @@ class ActorController < ApplicationController
 			actors = Actor.all
 		else
 			actors = current_account.actors
-		end
-
-		@actors_hash = Hash.new{|h, k| h[k] = []}
-		actors.each do |actor|
-			@actors_hash[actor.actor_type].push(actor)
-		end
-
-		@actors_hash
-    if current_login.is_admin?
-      render('actor/admin_list')
-    else
-      render('actor/user_list')
     end
-	end
+
+    if actors.size == 0
+      redirect_to create_actor_path
+    elsif actors.size == 1
+      @actor = actors.first
+      @informations = scope_array(@actor.informations, current_account)
+      render('actor/internal_show')
+    else
+      @actors_hash = Hash.new{|h, k| h[k] = []}
+      actors.each do |actor|
+        @actors_hash[actor.actor_type].push(actor)
+      end
+      if current_login.is_admin?
+        render('actor/admin_list')
+      else
+        render('actor/user_list')
+      end
+    end
+  end
 
 	def edit
 		@actor = Actor.find(params[:id])
@@ -108,28 +114,47 @@ class ActorController < ApplicationController
 		render(:partial => 'actor/new_actor_information_types', :locals => {:actor_type_key => key,
 																																				:actor_type => actor_type,
 																																				:information_types => information_types})
-	end
+  end
+
+  # Search
+  def search
+    query = params[:query]
+
+    if query.nil?
+      @actors_hash = Hash.new
+      flash.now[:notice] = t('actor.list.enter_query')
+    elsif query.size < 3
+      @actors_hash = Hash.new
+      flash.now[:error] = t('actor.list.too_short')
+    else
+      actors = Actor.full_text_search(query, match: :all)
+      amount = 0
+      @actors_hash = Hash.new{|h, k| h[k] = []}
+      actors.each do |actor|
+        @actors_hash[actor.actor_type].push(actor)
+        amount += 1
+      end
+      if amount > 0
+        flash.now[:notice] = t('actor.list.found', :amount => amount)
+      else
+        flash.now[:error] =  t('actor.list.no_results')
+      end
+    end
+
+  end
 
 	# Find actor with given id
 	def show
-		actor_count = current_account.actors.size
-		if !params[:id].nil?
-			@actor = Actor.find(params[:id])
-		elsif actor_count > 1
-			redirect_to list_path
-			return #todo don't know if elegant enough
-		elsif actor_count < 1
-			redirect_to create_actor_path
-			return #todo don't know if elegant enough
-		else
-			@actor = Actor.where(owner: current_account.id).first
-		end
-		@informations = scope_array(@actor.informations, current_account)
-    if login_owns_actor(current_login, @actor) or current_login.is_admin?
+    @actor = Actor.find(params[:id])
+    if login_owns_actor(current_login, @actor) or is_admin(current_login)
+      @informations = scope_array(@actor.informations, current_account)
       render('actor/internal_show')
     else
-      redirect_to(search_actor_path)
+      @viewer = current_account || :guest
+      @informations = scope_array(@actor.informations, @viewer)
+      render('actor/external_show')
     end
+
   end
 
   def destroy

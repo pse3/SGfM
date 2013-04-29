@@ -19,7 +19,6 @@
 <script>
   $('document').ready(function() {
     $(<%= raw("\"#sel#{key}#{field_number}\"") %>).select2({
-      minimumInputLength: 3,
       width: '500',
       data:{ results: data },
       formatSelection: format,

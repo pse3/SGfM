@@ -48,6 +48,14 @@ en:
       new_actor: 'Create new actor'
       name_table: 'Who'
       sure_to_delete: 'Are you sure to delete this actor?'
+      title_search: 'Search'
+      name_table: 'Results'
+      search: 'Search'
+      no_results: "Your search query didn't match any actors."
+      enter_query: 'Please enter a search query.'
+      too_short: 'The query was too short. It must contain at least 3 characters.'
+      found: 'Your search returned %{amount} result(s)!'
+
 
     show:
       title: '%{actor}'
@@ -62,6 +70,7 @@ en:
       actions_table: 'Actions'
       details: 'Details'
       relationships: 'Relationships'
+      none_declared: 'None declared'
       add_another_actor: 'Add another actor'
       more: 'More...'
 
@@ -392,24 +401,6 @@ en:
           add_row: 'Add Information'
       delete_row: 'remove'
       success: '%{file_name} was successfully imported!'
-
-
-# Translations for all search pages
-  search:
-    show:
-      details: 'Details'
-      options: 'Options'
-      title: '%{actor}'
-      email: 'Send Email'
-      map: 'Find on Google Maps'
-    list:
-      title: 'Search'
-      name_table: 'Results'
-      search: 'Search'
-      no_results: "Your search query didn't match any actors."
-      enter_query: 'Please enter a search query.'
-      too_short: 'The query was too short. It must contain at least 3 characters.'
-      found: 'Your search returned %{amount} result(s)!'
 
 
 # Translations for Date and Time

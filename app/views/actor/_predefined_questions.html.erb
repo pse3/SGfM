@@ -8,11 +8,9 @@
       <%=content_tag(:div, class: 'accordion-body collapse in', id: "rel#{index}") do %>
         <div class="accordion-inner">
           <div class="page-header">
-            <h1><small><%= relationship_type.question %></small></h1>
+            <h1><small><%= relationship_type.question %>  <%= link_to_function(raw("<i class='icon-plus icon-white'></i>"), "SGfM.add_form(\"#{referenced_actor_path}\", \"#rel_#{relationship_type.key}\", {key: \"#{relationship_type.key}\"})", :type => :btn, :class => 'btn btn-info') %></small></h1>
           </div>
-          <%= render :partial => 'actor/referenced_actor', :locals => {:key => relationship_type.key, :field_number => index}%>
           <%= content_tag(:div, '', id: "rel_#{relationship_type.key}") %>
-          <%= link_to_function(raw("<i class='icon-plus icon-white'></i>"), "SGfM.add_form(\"#{referenced_actor_path}\", \"#rel_#{relationship_type.key}\", {key: \"#{relationship_type.key}\"})", :type => :btn, :class => 'btn btn-info') %>
           <% if index == 0 %>
             <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{index}\", \"information\")", :type => :btn, :class => 'btn btn-info') %>
           <% else %>
@@ -29,7 +27,11 @@
     </div>
     <%=content_tag(:div, class: 'accordion-body collapse in', id: "rel#{relationship_types.length}") do %>
       <div class="accordion-inner">
-        <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{relationship_types.length}\", \"rel#{relationship_types.length - 1}\")", :type => :btn, :class => 'btn btn-info') %>
+        <% if relationship_types.empty? %>
+          <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{relationship_types.length}\", \"information\")", :type => :btn, :class => 'btn btn-info') %>
+        <% else %>
+          <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{relationship_types.length}\", \"rel#{relationship_types.length - 1}\")", :type => :btn, :class => 'btn btn-info') %>
+        <% end %>
         <%= link_to_function(t('actor.new.beginning_button'), "transition(\"rel#{relationship_types.length}\", \"actor-type\")", :type => :btn, :class => 'btn btn-info') %>
         <br>
         <%= f.submit(t('actor.new.create_actor'), class: 'btn btn-large btn-primary') %>
@@ -51,7 +53,6 @@
 
     for(i = 0; i < <%= relationship_types.length%>; i++) {
       $("#sel" + i).select2({
-        minimumInputLength: 3,
         width: '500',
         data:{ results: data },
         formatSelection: format,
