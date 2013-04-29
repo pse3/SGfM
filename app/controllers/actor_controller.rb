@@ -122,7 +122,6 @@ class ActorController < ApplicationController
 
     if query.nil?
       @actors_hash = Hash.new
-      flash.now[:notice] = t('actor.list.enter_query')
     elsif query.size < 3
       @actors_hash = Hash.new
       flash.now[:error] = t('actor.list.too_short')

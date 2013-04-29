@@ -36,7 +36,7 @@ de:
   application:
     menu:
       profile: 'Profil'
-      actors: 'Ihre Akteure'
+      home: 'Home'
       settings: 'Einstellungen'
       search: 'Suche'
 
@@ -44,14 +44,13 @@ de:
 # Translations for all actor-pages, sorted by page structure
   actor:
     list:
-      title: 'Ihre Akteure'
+      title: 'Meine Akteure'
       new_actor: 'Neuen Akteur erstellen'
       name_table: 'Wer'
       title_search: 'Suche'
       name_table: 'Treffer'
       search: 'Suchen'
       no_results: 'Ihre Suche ergab keine Treffer.'
-      enter_query: 'Bitte geben Sie einen Suchbegriff ein.'
       too_short: 'Der Suchbegriff war zu kurz. Er muss mindestens 3 Zeichen enthalten.'
       found: 'Ihre Suche ergab %{amount} Treffer!'
 
