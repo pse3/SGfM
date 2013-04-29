@@ -90,16 +90,16 @@ describe Actor do
     @user.save
 
     #create relationship between actor and actor2
-    relation_works_with = RelationshipType.new
-    relation_works_with.key = :works_with_test
-    relation_works_with.name_translations = { :en => 'works with', :de =>'arbeitet mit', :it => '??', :fr => '??' }
-    relation_works_with.question_translations = {
+    @relation_works_with = RelationshipType.new
+    @relation_works_with.key = :works_with_test
+    @relation_works_with.name_translations = { :en => 'works with', :de =>'arbeitet mit', :it => '??', :fr => '??' }
+    @relation_works_with.question_translations = {
         :en => 'With whom do you work?',
         :de => 'Mit wem arbeitet Ihr?',
         :it => '??',
         :fr => '??'
     }
-    relation_works_with.save
+    @relation_works_with.save
 
     @relationship1 = Relationship.new
     @relationship1.relationship_type = RelationshipType.find_by_key(:works_with_test)
@@ -133,37 +133,42 @@ describe Actor do
   let(:relationship) {@actor.relationships }
   specify {relationship.should include(@relationship1)}
 
+  let(:relationship_found) {@actor.find_relationship_by_key(:works_with_test)}
+  specify {relationship_found.should eq(@relationship1)}
+
+  let(:actor_to_string) {@actor.to_s}
+  specify{actor_to_string.should eq('Name of our test actor//033 666 77 88')}
+
+  it "should update to_string_field when an information changes" do
+    @actor_phone.value = '011 111 11 11'
+    @actor_phone.save
+    @actor.save   #TODO: WATCH OUT! Do we really save our actor after an information of this actor has been changed? ...I hope so...
+    expect(@actor.to_s).to eq('Name of our test actor//011 111 11 11')
+  end
+
+  it "should update to_string_field when the string pattern changes" do
+    @atype_doctor.to_string_pattern = "|:name_test|"
+    @atype_doctor.save
+    @actor.save   #TODO: WATCH OUT! Do we really save our actor after an information of this actor has been changed? ...I hope so...
+    expect(@actor.to_s).to eq('Name of our test actor')
+  end
+
   it "sets correct time of creation when initializing" do
     @actor.created_at.should be_within(10).of(DateTime.now)
   end
 
-  it "adds a relationship to actor" do
-    relation = Relationship.new
-    relation.comment = "bla"
-    relation.actor = @actor
-    @actor.relationships.should include(relation)
-  end
+  let(:found_actors_when_matching2) {Actor.full_text_search("Name", match: :all)}
+  specify{found_actors_when_matching2.length.should eq(2)}
+  specify{found_actors_when_matching2.should include(@actor)}
+  specify{found_actors_when_matching2.should include(@actor2)}
+  let(:found_actors_when_matching1) {Actor.full_text_search("sec", match: :all)}
+  specify{found_actors_when_matching1.length.should eq(1)}
+  specify{found_actors_when_matching1.should include(@actor2)}
+  specify{found_actors_when_matching1.should_not include(@actor)}
+  let(:found_actors_when_no_matching) {Actor.full_text_search("Schurch", match: :all)}
+  specify{found_actors_when_no_matching.empty?.should be_true}
 
-  it "finds relationships by key" do
-    rtype = RelationshipType.new
-    rtype.key = :mother_test
-    relation1 = Relationship.new
-    relation1.relationship_type = rtype
-    relation1.actor = @actor
-    rtype = RelationshipType.new
-    rtype.key = :father_test
-    relation2 = Relationship.new
-    relation2.relationship_type = rtype
-    relation2.actor = @actor
-    @actor.find_relationship_by_key(:mother_test).should be(relation1)
-    @actor.find_relationship_by_key(:father_test).should be(relation2)
-  end
 
-  it "displays correct to_string_field" #todo this fails
-    #expect(@actor.to_s).to eq('peter//999')
-  it "updates to_string_field" #todo this fails
-    #@atype_doctor.to_string_pattern = "|:name|"
-    #expect(@actor.to_s).to eq('peter')
-  it "updates search_field"
+
 
 end
