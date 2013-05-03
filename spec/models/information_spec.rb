@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Information do
-  before {
+  before do
     #create an actor_type
     @atype = ActorType.new
     @atype.key = :doctor_test
@@ -19,7 +19,7 @@ describe Information do
 
     #create an information
     @information = Information.new
-  }
+  end
 
   it "creates an information" do
     @information.should_not be_nil

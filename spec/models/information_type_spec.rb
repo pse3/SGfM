@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe InformationType do
-  before {
+  before do
     #create some information_types
     @itype_name = InformationType.new
     @itype_name.key = :name_test
@@ -12,7 +12,12 @@ describe InformationType do
     @itype_phone.key = :phone_test
     @itype_phone.name = "Telefon"
     @itype_phone.save
-  }
+  end
+
+  subject{@itype_name}
+
+  it{should be_valid}
+  it{should_not be_nil}
 
   it "creates an information type" do
     @itype_name.should_not be_nil

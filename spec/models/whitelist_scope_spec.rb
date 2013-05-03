@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe WhitelistScope do
-  before {
+  before do
     #create logins
     @login_user1 = Login.new
     @login_user2 = Login.new
@@ -17,7 +17,7 @@ describe WhitelistScope do
     list = Array.new
     list.push(@user1)
     @whitelist.list = list
-  }
+  end
 
   it 'inherits from scope' do
     WhitelistScope.should < Scope

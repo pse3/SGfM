@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Relationship do
-  before {
+  before do
     # Create some relationship_types
     @relation_works_with = RelationshipType.new
     @relation_works_with.key = :works_with_test
@@ -12,7 +12,6 @@ describe Relationship do
     @relation_other.key = :other_test
     @relation_other.name_translations = { :en => 'other', :de =>'Andere', :it => '??', :fr => '??' }
     @relation_other.save
-
 
     #create some actor_types
     @atype_doctor = ActorType.new
@@ -42,7 +41,7 @@ describe Relationship do
     @relationship2.actor = @actor_peter
     @relationship2.reference = @actor_karl
     @relationship2.save
-  }
+  end
 
   it "creates a relationship" do
     @relationship1.should_not be_nil

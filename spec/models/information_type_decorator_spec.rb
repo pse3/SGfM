@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe InformationTypeDecorator do
-  before {
+  before do
     #create an information_type
     @itype_name = InformationType.new
     @itype_name.key = :name_test
@@ -23,7 +23,7 @@ describe InformationTypeDecorator do
     @itypedec_name = InformationTypeDecorator.create(@itype_name, @atype_doctor, true, true)
     @itypedec_phone = InformationTypeDecorator.create(@itype_phone, @atype_doctor, true, true)
 
-  }
+  end
 
   it "creates an information type decorator" do
     @itypedec_name.should_not be_nil
