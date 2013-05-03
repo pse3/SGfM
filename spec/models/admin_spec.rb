@@ -10,8 +10,10 @@ describe Admin do
     @admin.login = @login
   end
 
-  it 'knows its user type' do
-    expect(@admin.user_type).to eq('Admin')
+  describe '#admin' do
+    it 'knows its user type' do
+      expect(@admin.user_type).to eq('Admin')
+    end
   end
 
 end

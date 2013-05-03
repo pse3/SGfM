@@ -36,19 +36,24 @@ describe BlacklistScope do
 
   end
 
-  subject{@scope_blacklist_test}
+  describe '#blacklistscope' do
+    subject{@scope_blacklist_test}
 
-  it{should be_valid}
-  it{should_not be_nil}
+    it{should be_valid}
+    it{should_not be_nil}
 
-  it 'inherits from scope' do
-    BlacklistScope.should < Scope
+    it 'inherits from scope' do
+      BlacklistScope.should < Scope
+    end
+
+    context "when account type is on blacklist" do
+      let(:visible){@scope_blacklist_test.visible?(:User,@information_test)}
+      specify {visible.should_not be_true}
+    end
+    context "when account type is not on blacklist" do
+      let(:visible2){@scope_blacklist_test.visible?(:Admin,@information_test)}
+      specify {visible2.should be_true}
+    end
+
   end
-
-  let(:visible){@scope_blacklist_test.visible?(:User,@information_test)}
-  specify {visible.should_not be_true}
-
-  let(:visible2){@scope_blacklist_test.visible?(:Admin,@information_test)}
-  specify {visible2.should be_true}
-
 end
