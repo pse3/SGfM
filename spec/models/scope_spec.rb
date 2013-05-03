@@ -17,8 +17,6 @@ describe Scope do
   it{should respond_to(:key)}
   it{should respond_to(:name)}
   it{should respond_to(:list)}
-  it 'should be an instance of Scope' do
-    @scope.should be_an_instance_of(Scope)
-  end
+  it{should be_an_instance_of(Scope)}
 
 end

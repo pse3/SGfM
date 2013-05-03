@@ -19,5 +19,4 @@ describe User do
   it 'knows its user type' do
     expect(@user.user_type).to eq('User')
   end
-
 end

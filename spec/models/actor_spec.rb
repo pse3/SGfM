@@ -110,27 +110,24 @@ describe Actor do
 
   end
 
-  describe '#actor' do
+  subject{@actor}
+  it{should respond_to(:actor_type)}
+  it{should respond_to (:informations)}
 
-    subject{@actor}
-    it{should respond_to(:actor_type)}
-    it{should respond_to (:informations)}
+  let(:informations) {@actor.informations}
+  specify {informations.should include(@actor_name)}
+  specify {informations.should include(@actor_phone)}
 
-    let(:informations) {@actor.informations}
-    specify {informations.should include(@actor_name)}
-    specify {informations.should include(@actor_phone)}
+  let(:relationship) {@actor.relationships }
+  specify {relationship.should include(@relationship1)}
 
-    let(:relationship) {@actor.relationships }
-    specify {relationship.should include(@relationship1)}
+  context "after it is saved" do
+    it{should be_valid}
+    it{should_not be_nil}
+  end
 
-    context "after it is saved" do
-      it{should be_valid}
-      it{should_not be_nil}
-    end
-
-    it "sets correct time of creation when initializing" do
-      @actor.created_at.should be_within(10).of(DateTime.now)
-    end
+  it "sets correct time of creation when initializing" do
+    @actor.created_at.should be_within(10).of(DateTime.now)
   end
 
   describe '.find_information_by_key' do
@@ -143,12 +140,12 @@ describe Actor do
     specify {relationship_found.should eq(@relationship1)}
   end
 
-  describe '.to_s' do
+  describe '#to_s' do
     let(:actor_to_string) {@actor.to_s}
     specify{actor_to_string.should eq('Name of our test actor//033 666 77 88')}
   end
 
-  describe '.save' do
+  describe '#save' do
     context "after information change" do
       it "updates the to_string_field" do
         @actor_phone.value = '011 111 11 11'

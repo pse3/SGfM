@@ -13,12 +13,10 @@ describe InformationFieldType do
     @textfield_test.save
   end
 
-  describe "#informationfieldtype" do
-    subject{@textfield_test}
+  subject{@textfield_test}
 
-    it{should be_valid}
-    it{should_not be_nil}
-  end
+  it{should be_valid}
+  it{should_not be_nil}
 
   describe ".find_by_key" do
     it 'finds types by key' do

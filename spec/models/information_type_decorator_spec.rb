@@ -19,18 +19,12 @@ describe InformationTypeDecorator do
 
   end
 
-  describe "#informationtypedecorator" do
-    subject{@itypedec_name}
-    it{should_not be_nil}
-    it{should be_an_instance_of(InformationTypeDecorator)}
+  subject{@itypedec_name}
+  it{should_not be_nil}
+  it{should be_an_instance_of(InformationTypeDecorator)}
 
-    it "directs missing methods to its information type" do
-      @itypedec_name.key.should be(@itype_name.key)
-      @itypedec_name.name.should be(@itype_name.name)
-    end
-
+  it "directs missing methods to its information type" do
+    @itypedec_name.key.should be(@itype_name.key)
+    @itypedec_name.name.should be(@itype_name.name)
   end
-
-
-
 end

@@ -9,13 +9,11 @@ describe InformationType do
     @itype_name.save
   end
 
-  describe "#informationtype" do
-    subject{@itype_name}
+  subject{@itype_name}
 
-    it{should be_valid}
-    it{should_not be_nil}
-    it{should be_an_instance_of(InformationType)}
-  end
+  it{should be_valid}
+  it{should_not be_nil}
+  it{should be_an_instance_of(InformationType)}
 
   describe ".find_by_key" do
     it "finds information" do

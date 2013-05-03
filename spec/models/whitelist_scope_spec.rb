@@ -37,7 +37,6 @@ describe WhitelistScope do
   end
 
   subject{@scope_whitelist_test}
-
   it{should be_valid}
   it{should_not be_nil}
 
@@ -45,10 +44,14 @@ describe WhitelistScope do
     BlacklistScope.should < Scope
   end
 
-  let(:visible){@scope_whitelist_test.visible?(:Admin,@information_whitelist_test)}
-  specify {visible.should_not be_true}
+  it "doesnt does not show to account type not in list" do
+    let(:visible){@scope_whitelist_test.visible?(:Admin,@information_whitelist_test)}
+    specify {visible.should_not be_true}
+  end
 
-  let(:visible2){@scope_whitelist_test.visible?(:User,@information_whitelist_test)}
-  specify {visible2.should be_true}
+  it "does show to account type in list" do
+    let(:visible2){@scope_whitelist_test.visible?(:User,@information_whitelist_test)}
+    specify {visible2.should be_true}
+  end
 
 end
