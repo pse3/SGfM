@@ -5,7 +5,7 @@ describe Scope do
     #create a scope
     @scope = Scope.new
     @scope.name = 'Testscope'
-    @scope.key = :private
+    @scope.key = :test_scope
     @scope.list = []
     @scope.save
   end
