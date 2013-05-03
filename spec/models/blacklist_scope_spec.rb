@@ -15,9 +15,8 @@ describe BlacklistScope do
     information_field_text.save
 
     #create the information
-    information_test = Information.new
-    information_test.scope = @scope_blacklist_test
-    information_test.value = 'Testvalue'
+    @information_test = Information.new
+    @information_test.scope = @scope_blacklist_test
 
     @user1 = User.new
     @login = Login.new(:email => 'email@domain.ch',
@@ -46,10 +45,10 @@ describe BlacklistScope do
     BlacklistScope.should < Scope
   end
 
-  let(:visible){@scope_blacklist_test.visible?(:User,@login)}
+  let(:visible){@scope_blacklist_test.visible?(:User,@information_test)}
   specify {visible.should_not be_true}
 
-  it 'isnt visible to viewers in blacklist'
-  it 'is visible to viewers not in blacklist'
+  let(:visible2){@scope_blacklist_test.visible?(:Admin,@information_test)}
+  specify {visible2.should be_true}
 
 end
