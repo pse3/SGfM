@@ -3,24 +3,28 @@ require 'spec_helper'
 describe InformationFieldType do
   before do
     #create some information field types
-    @emailfield = InformationFieldEmail.new
-    @emailfield.key = :email_test
-    @emailfield.name = 'Email'
-    @emailfield.save
-    @textfield = InformationFieldText.new
-    @textfield.key = :text_test
-    @textfield.name = 'Text'
-    @textfield.save
+    @emailfield_test = InformationFieldEmail.new
+    @emailfield_test.key = :email_test
+    @emailfield_test.name = 'Email'
+    @emailfield_test.save
+    @textfield_test = InformationFieldText.new
+    @textfield_test.key = :text_test
+    @textfield_test.name = 'Text'
+    @textfield_test.save
   end
 
-  subject{@textfield}
+  describe "#informationfieldtype" do
+    subject{@textfield_test}
 
-  it{should be_valid}
-  it{should_not be_nil}
+    it{should be_valid}
+    it{should_not be_nil}
+  end
 
-  it 'finds types by key' do
-    expect(InformationFieldType.find_by_key(:email_test)).to eq(@emailfield)
-    expect(InformationFieldType.find_by_key(:text_test)).to eq(@textfield)
+  describe ".find_by_key" do
+    it 'finds types by key' do
+      expect(InformationFieldType.find_by_key(:email_test)).to eq(@emailfield_test)
+      expect(InformationFieldType.find_by_key(:text_test)).to eq(@textfield_test)
+    end
   end
 
 end
