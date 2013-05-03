@@ -45,13 +45,11 @@ describe WhitelistScope do
   end
 
   it "doesnt does not show to account type not in list" do
-    let(:visible){@scope_whitelist_test.visible?(:Admin,@information_whitelist_test)}
-    specify {visible.should_not be_true}
+    @scope_whitelist_test.visible?(:Admin,@information_whitelist_test).should_not be_true
   end
 
   it "does show to account type in list" do
-    let(:visible2){@scope_whitelist_test.visible?(:User,@information_whitelist_test)}
-    specify {visible2.should be_true}
+    @scope_whitelist_test.visible?(:User,@information_whitelist_test).should be_true
   end
 
 end
