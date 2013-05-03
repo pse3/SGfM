@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ActorType do
-  before {
+  before do
     #create some information_types
     @itype_name = InformationType.new
     @itype_name.name = "Name"
@@ -46,19 +46,22 @@ describe ActorType do
     #create an actor
     @actor = Actor.new
     @actor.actor_type = @atype_doctor
-  }
-
-  it 'creates an actor type' do
-    @atype_doctor.should_not be_nil
   end
+
+  subject{@actor}
+
+  it {should be_valid}
+  it {should_not be_nil}
+
+  let(:actor_type){@actor.actor_type}
+  specify {actor_type.should eq(@atype_doctor)}
+
+  let(:atype_name){@atype_doctor.name}
+  specify {atype_name.should eq('Arzt')}
 
   it "assigns a key for an actor type" do
     @atype_doctor.key.should be(:doctor_test)
     @atype_hospital.key.should be(:hospital_test)
-  end
-
-  it "assigns a name for an actor type" do
-    expect(@atype_doctor.name).to eq('Arzt')
   end
 
   it "finds actor type by key" do
