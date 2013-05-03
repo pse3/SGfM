@@ -3,7 +3,7 @@ require 'spec_helper'
 describe BlacklistScope do
   before do
     @scope_public_test = BlacklistScope.new
-    @scope_public_test.key = :public
+    @scope_public_test.key = :public_scope_test
     @scope_public_test.name_translations = { :en => 'public', :de => 'oeffentlich', :it => 'pubblico', :frc=> 'public' }
     @scope_public_test.list = []
     @scope_public_test.save
