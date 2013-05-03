@@ -43,30 +43,31 @@ describe Relationship do
     @relationship2.save
   end
 
-  it "creates a relationship" do
-    @relationship1.should_not be_nil
-    @relationship2.should_not be_nil
-    @relationship1.should be_an_instance_of(Relationship)
-    @relationship2.should be_an_instance_of(Relationship)
-  end
+  describe "#relationship" do
+    subject{@relationship1}
 
-  it "sets correct time of creation" do
-    @relationship1.created_at.should be_within(10).of(DateTime.now)
-    @relationship2.created_at.should be_within(10).of(DateTime.now)
-  end
+    it{should_not be_nil}
+    it{should be_valid}
+    it{should be_an_instance_of(Relationship)}
 
-  it "stores correct actors" do
-    @relationship1.actor.should be(@actor_karl)
-    @relationship2.actor.should be(@actor_peter)
-    @relationship1.reference.should be(@actor_peter)
-    @relationship2.reference.should be(@actor_karl)
-  end
+    it "sets correct time of creation" do
+      @relationship1.created_at.should be_within(10).of(DateTime.now)
+      @relationship2.created_at.should be_within(10).of(DateTime.now)
+    end
 
-  it 'stores comments' do
-    @relationship1.comment.should_not be_nil
-    @relationship2.comment.should_not be_nil
-    expect(@relationship1.comment).to eq('This is a comment. Made by god!')
-    expect(@relationship2.comment).to eq('This is also a comment. Made by me!')
-  end
+    it "stores correct actors" do
+      @relationship1.actor.should be(@actor_karl)
+      @relationship2.actor.should be(@actor_peter)
+      @relationship1.reference.should be(@actor_peter)
+      @relationship2.reference.should be(@actor_karl)
+    end
 
+    it 'stores comments' do
+      @relationship1.comment.should_not be_nil
+      @relationship2.comment.should_not be_nil
+      expect(@relationship1.comment).to eq('This is a comment. Made by god!')
+      expect(@relationship2.comment).to eq('This is also a comment. Made by me!')
+    end
+
+  end
 end
