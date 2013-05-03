@@ -14,20 +14,10 @@ describe BlacklistScope do
     information_field_text.name_translations = { :en => 'Text field', :de => 'Textfeld', :it => '???', :fr => '???' }
     information_field_text.save
 
-    #create the information type
-    itype_test = InformationType.new
-    itype_test.key = :itype_test_key
-    itype_test.information_field_type = information_field_text
-    itype_test.name_translations = { :en => 'Test', :de =>'Test', :it => '??', :fr => '??' }
-    itype_test.scope = @scope_blacklist_test
-    itype_test.save
-
     #create the information
     information_test = Information.new
     information_test.scope = @scope_blacklist_test
     information_test.value = 'Testvalue'
-
-
 
     @user1 = User.new
     @login = Login.new(:email => 'email@domain.ch',
