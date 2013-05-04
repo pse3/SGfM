@@ -36,7 +36,7 @@ de:
   application:
     menu:
       profile: 'Profil'
-      actors: 'Ihre Akteure'
+      home: 'Home'
       settings: 'Einstellungen'
       search: 'Suche'
 
@@ -44,9 +44,15 @@ de:
 # Translations for all actor-pages, sorted by page structure
   actor:
     list:
-      title: 'Ihre Akteure'
+      title: 'Meine Akteure'
       new_actor: 'Neuen Akteur erstellen'
       name_table: 'Wer'
+      title_search: 'Suche'
+      name_table: 'Treffer'
+      search: 'Suchen'
+      no_results: 'Ihre Suche ergab keine Treffer.'
+      too_short: 'Der Suchbegriff war zu kurz. Er muss mindestens 3 Zeichen enthalten.'
+      found: 'Ihre Suche ergab %{amount} Treffer!'
 
     show:
       title: '%{actor}'
@@ -61,6 +67,7 @@ de:
       actions_table: 'Aktionen'
       details: 'Angaben'
       relationships: 'Beziehungen'
+      none_declared: 'Keine deklariert'
       add_another_actor: 'Weiteren Akteur hinzufügen'
       more: 'Mehr...'
 
@@ -370,24 +377,6 @@ de:
               add_row: 'Information hinzufügen'
           delete_row: 'entfernen'
           success: '%{file_name} wurde erfolgreich importiert!'
-
-
-# Translations for all search pages
-  search:
-    show:
-      details: 'Angaben'
-      options: 'Optionen'
-      title: '%{actor}'
-      email: 'E-Mail senden'
-      map: 'Auf Google Maps finden'
-    list:
-      title: 'Suche'
-      name_table: 'Treffer'
-      search: 'Suchen'
-      no_results: 'Ihre Suche ergab keine Treffer.'
-      enter_query: 'Bitte geben Sie einen Suchbegriff ein.'
-      too_short: 'Der Suchbegriff war zu kurz. Er muss mindestens 3 Zeichen enthalten.'
-      found: 'Ihre Suche ergab %{amount} Treffer!'
 
 
 # Translations for date and time

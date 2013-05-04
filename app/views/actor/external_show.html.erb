@@ -1,0 +1,16 @@
+<% @page_title = t('actor.show.title', :actor => @actor.to_s) %>
+<span class="label"><%= @actor.actor_type.name %></span>
+
+<h1><small><%= t('actor.show.details') %></small></h1>
+
+<table class="table table-hover">
+  <% @informations.each do |info| %>
+      <tr>
+        <td class="span2"><strong><%= info.information_type_decorator.name %></strong></td>
+        <td class="span2"><%= info.value_to_s %></td>
+        <td class="span6"></td>
+      </tr>
+      <tr></tr>
+  <% end %>
+  <tr>
+</table>

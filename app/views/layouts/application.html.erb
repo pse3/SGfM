@@ -32,7 +32,7 @@
             <ul class="nav">
               <% if login_signed_in? %>
                 <li class="divider-vertical"></li>
-                <li><%= link_to(t('application.menu.actors'), actors_path) %></li>
+                <li><%= link_to(t('application.menu.home'), actors_path) %></li>
                 <% if current_login.is_admin? %>
                    <li class="divider-vertical"></li>
                    <li> <%= link_to(t('home.admin'), actor_types_path) %></li>

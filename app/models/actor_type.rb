@@ -7,7 +7,7 @@ class ActorType
   field :to_string_pattern, :type => String
 
   has_many :information_type_decorators, class_name: 'InformationTypeDecorator', inverse_of: :actor_type
-  has_many :predefined_questions, class_name: 'RelationshipType', inverse_of: :actor_type
+  has_and_belongs_to_many :predefined_questions, class_name: 'RelationshipType', inverse_of: :actor_types
 
   after_save :update_corresponding_actors
 
