@@ -9,7 +9,7 @@
       <div id="actor-type" class="accordion-body collapse in">
         <div class="accordion-inner">
           <%= render :partial => 'actor/actor_type'%>
-          <%= link_to_function(t('actor.new.next_button'), 'transition1()', :type => :btn, :class => 'btn btn-info') %>
+          <%= link_to_function(t('actor.new.next_button'), 'transition(\'actor-type\', \'information\')', :type => :btn, :class => 'btn btn-info') %>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
       <div id="information" class="accordion-body collapse in">
         <div class="accordion-inner">
           <div id="information-types-form"></div>
-          <%= link_to_function(t('actor.new.back_button'), 'transition1back()', :type => :btn, :class => 'btn btn-info') %>
+          <%= link_to_function(t('actor.new.back_button'), 'transition(\'information\', \'actor-type\')', :type => :btn, :class => 'btn btn-info') %>
           <%= link_to_function(t('actor.new.next_button'), 'transition("information", "rel0")', :type => :btn, :class => 'btn btn-info') %>
         </div>
       </div>
@@ -36,17 +36,34 @@
     SGfM.insert_form(<%= raw("\"#{predefined_questions_path}\"") %>, '#predefined-questions-form', {actor_type: val});
   }
   function transition(old_one, new_one) {
+    if(validate($('#' + old_one))) {
+      do_transition(old_one, new_one);
+    } else {
+
+    }
+  }
+
+  function do_transition(old_one, new_one) {
     $('#' + old_one).collapse('hide');
     $('#title-' + old_one).removeClass('lead');
     $('#title-' + new_one).addClass('lead');
     $('#' + new_one).collapse('show').goTo();
   }
-  function transition1() {
-    transition('actor-type', 'information');
-  }
 
-  function transition1back() {
-    transition('information', 'actor-type');
+  function validate(selector) {
+    if(selector.is("input")) {
+      if(selector.val() == "") {
+        return false;
+      } else {
+        return true;
+      }
+    }
+    for (child in selector.children()) {
+      if(!validate(child)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   $('document').ready(function() {
