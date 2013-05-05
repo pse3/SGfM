@@ -111,62 +111,80 @@ describe Actor do
   end
 
   subject{@actor}
-
-  it{should be_valid}
-  it{should_not be_nil}
   it{should respond_to(:actor_type)}
   it{should respond_to (:informations)}
-
-  let(:save){@actor.save}
-  specify {save.should be_true}
-
-  let(:actor_type) { @actor.actor_type }
-  specify {actor_type.should eq(@atype_doctor)}
 
   let(:informations) {@actor.informations}
   specify {informations.should include(@actor_name)}
   specify {informations.should include(@actor_phone)}
 
-  let(:info_found) {@actor.find_information_by_key(:phone_test)}
-  specify {info_found.should eql(@actor_phone)}
-
   let(:relationship) {@actor.relationships }
   specify {relationship.should include(@relationship1)}
 
-  let(:relationship_found) {@actor.find_relationship_by_key(:works_with_test)}
-  specify {relationship_found.should eq(@relationship1)}
-
-  let(:actor_to_string) {@actor.to_s}
-  specify{actor_to_string.should eq('Name of our test actor//033 666 77 88')}
-
-  it "should update to_string_field when an information changes" do
-    @actor_phone.value = '011 111 11 11'
-    @actor_phone.save
-    @actor.save   #TODO: WATCH OUT! Do we really save our actor after an information of this actor has been changed? ...I hope so...
-    expect(@actor.to_s).to eq('Name of our test actor//011 111 11 11')
-  end
-
-  it "should update to_string_field when the string pattern changes" do
-    @atype_doctor.to_string_pattern = "|:name_test|"
-    @atype_doctor.save
-    @actor.save   #TODO: WATCH OUT! Do we really save our actor after an information of this actor has been changed? ...I hope so...
-    expect(@actor.to_s).to eq('Name of our test actor')
+  context "after it is saved" do
+    it{should be_valid}
+    it{should_not be_nil}
   end
 
   it "sets correct time of creation when initializing" do
     @actor.created_at.should be_within(10).of(DateTime.now)
   end
 
-  let(:found_actors_when_matching2) {Actor.full_text_search("Name", match: :all)}
-  specify{found_actors_when_matching2.length.should eq(2)}
-  specify{found_actors_when_matching2.should include(@actor)}
-  specify{found_actors_when_matching2.should include(@actor2)}
-  let(:found_actors_when_matching1) {Actor.full_text_search("sec", match: :all)}
-  specify{found_actors_when_matching1.length.should eq(1)}
-  specify{found_actors_when_matching1.should include(@actor2)}
-  specify{found_actors_when_matching1.should_not include(@actor)}
-  let(:found_actors_when_no_matching) {Actor.full_text_search("Schurch", match: :all)}
-  specify{found_actors_when_no_matching.empty?.should be_true}
+  describe '.find_information_by_key' do
+    let(:info_found) {@actor.find_information_by_key(:phone_test)}
+    specify {info_found.should eql(@actor_phone)}
+  end
+
+  describe '.find_relationship_by_key' do
+    let(:relationship_found) {@actor.find_relationship_by_key(:works_with_test)}
+    specify {relationship_found.should eq(@relationship1)}
+  end
+
+  describe '#to_s' do
+    let(:actor_to_string) {@actor.to_s}
+    specify{actor_to_string.should eq('Name of our test actor//033 666 77 88')}
+  end
+
+  describe '#save' do
+    context "after information change" do
+      it "updates the to_string_field" do
+        @actor_phone.value = '011 111 11 11'
+        @actor_phone.save
+        @actor.save   #TODO: WATCH OUT! Do we really save our actor after an information of this actor has been changed? ...I hope so...
+        expect(@actor.to_s).to eq('Name of our test actor//011 111 11 11')
+      end
+    end
+
+    context "after the string pattern changes" do
+      it "updates the to_string_field" do
+        @atype_doctor.to_string_pattern = "|:name_test|"
+        @atype_doctor.save
+        @actor.save   #TODO: WATCH OUT! Do we really save our actor after an information of this actor has been changed? ...I hope so...
+        expect(@actor.to_s).to eq('Name of our test actor')
+      end
+    end
+  end
+
+  describe '.full_text_search' do
+    context 'with two matching actors' do
+      let(:found_actors_when_matching2) {Actor.full_text_search("Name", match: :all)}
+      specify{found_actors_when_matching2.length.should eq(2)}
+      specify{found_actors_when_matching2.should include(@actor)}
+      specify{found_actors_when_matching2.should include(@actor2)}
+    end
+    context 'with one matching actor' do
+      let(:found_actors_when_matching1) {Actor.full_text_search("sec", match: :all)}
+      specify{found_actors_when_matching1.length.should eq(1)}
+      specify{found_actors_when_matching1.should include(@actor2)}
+      specify{found_actors_when_matching1.should_not include(@actor)}
+    end
+    context 'with no matching actors' do
+      let(:found_actors_when_matching0) {Actor.full_text_search("urch", match: :all)}
+      specify{found_actors_when_matching0.length.should eq(0)}
+      specify{found_actors_when_matching0.should_not include(@actor2)}
+      specify{found_actors_when_matching0.should_not include(@actor)}
+    end
+  end
 
   it ""
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Information do
-  before {
+  before do
     #create an actor_type
     @atype = ActorType.new
     @atype.key = :doctor_test
@@ -19,12 +19,11 @@ describe Information do
 
     #create an information
     @information = Information.new
-  }
-
-  it "creates an information" do
-    @information.should_not be_nil
   end
 
+  subject{@information}
+
+  it{should_not be_nil}
   it "adds an information type decorator to an information" do
     @information.information_type_decorator = @itypedec
     @information.information_type_decorator.should_not be_nil
@@ -45,4 +44,7 @@ describe Information do
     info.scope.should == info_type.scope
     info.information_type_decorator.should == info_type
   end
+
+
+
 end

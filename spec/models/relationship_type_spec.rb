@@ -20,7 +20,13 @@ describe RelationshipType do
   it {should respond_to(:name_translations)}
   it {should respond_to(:question)}
 
-  let(:found_user) { RelationshipType.find_by_key(:works_with_test) }
-  specify { found_user.should eq(@relation_works_with)}
+  describe ".find_by_key" do
+    let(:found_user) { RelationshipType.find_by_key(:works_with_test) }
+    specify { found_user.should eq(@relation_works_with)}
+  end
+
+
+
+
 
 end
