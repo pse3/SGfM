@@ -10,6 +10,12 @@ describe Actor do
     scope_public.list = []
     scope_public.save
 
+    @scope_private = WhitelistScope.new
+    @scope_private.key = :private_test
+    @scope_private.name_translations = { :en => 'private', :de => 'privat', :it => 'privato', :fr => 'prive' }
+    @scope_private.list = [:Self]
+    @scope_private.save
+
     #create an information_field_type
     information_field_text = InformationFieldText.new
     information_field_text.key = :text
@@ -150,7 +156,7 @@ describe Actor do
       it "updates the to_string_field" do
         @actor_phone.value = '011 111 11 11'
         @actor_phone.save
-        @actor.save   #TODO: WATCH OUT! Do we really save our actor after an information of this actor has been changed? ...I hope so...
+        @actor.sav
         expect(@actor.to_s).to eq('Name of our test actor//011 111 11 11')
       end
     end
@@ -159,7 +165,7 @@ describe Actor do
       it "updates the to_string_field" do
         @atype_doctor.to_string_pattern = "|:name_test|"
         @atype_doctor.save
-        @actor.save   #TODO: WATCH OUT! Do we really save our actor after an information of this actor has been changed? ...I hope so...
+        @actor.save
         expect(@actor.to_s).to eq('Name of our test actor')
       end
     end
@@ -184,11 +190,14 @@ describe Actor do
       specify{found_actors_when_matching0.should_not include(@actor2)}
       specify{found_actors_when_matching0.should_not include(@actor)}
     end
+
+    context 'with one matching actor because the information of the other is private' do
+      @actor_name.scope = @scope_private
+      let(:found_actors_when_matching1_and_1_public) {Actor.full_text_search("Name", match: :all)}
+      specify{found_actors_when_matching1.length.should eq(1)}
+      specify{found_actors_when_matching1.should include(@actor2)}
+      specify{found_actors_when_matching1.should_not include(@actor)}
+   end
   end
-
-  it ""
-
-  #TODO: Additional tests: What happens, when the scope of an information changes, or when the information type changes, etc.
-
 
 end
