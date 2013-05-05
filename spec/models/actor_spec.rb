@@ -156,7 +156,7 @@ describe Actor do
       it "updates the to_string_field" do
         @actor_phone.value = '011 111 11 11'
         @actor_phone.save
-        @actor.sav
+        @actor.save
         expect(@actor.to_s).to eq('Name of our test actor//011 111 11 11')
       end
     end
@@ -173,31 +173,35 @@ describe Actor do
 
   describe '.full_text_search' do
     context 'with two matching actors' do
-      let(:found_actors_when_matching2) {Actor.full_text_search("Name", match: :all)}
-      specify{found_actors_when_matching2.length.should eq(2)}
-      specify{found_actors_when_matching2.should include(@actor)}
-      specify{found_actors_when_matching2.should include(@actor2)}
+        let(:found_actors_when_matching2) {Actor.full_text_search("Name", match: :all)}
+        specify{found_actors_when_matching2.length.should eq(2)}
+        specify{found_actors_when_matching2.should include(@actor)}
+        specify{found_actors_when_matching2.should include(@actor2)}
     end
     context 'with one matching actor' do
-      let(:found_actors_when_matching1) {Actor.full_text_search("sec", match: :all)}
-      specify{found_actors_when_matching1.length.should eq(1)}
-      specify{found_actors_when_matching1.should include(@actor2)}
-      specify{found_actors_when_matching1.should_not include(@actor)}
+        let(:found_actors_when_matching1) {Actor.full_text_search("sec", match: :all)}
+        specify{found_actors_when_matching1.length.should eq(1)}
+        specify{found_actors_when_matching1.should include(@actor2)}
+        specify{found_actors_when_matching1.should_not include(@actor)}
     end
     context 'with no matching actors' do
-      let(:found_actors_when_matching0) {Actor.full_text_search("urch", match: :all)}
-      specify{found_actors_when_matching0.length.should eq(0)}
-      specify{found_actors_when_matching0.should_not include(@actor2)}
-      specify{found_actors_when_matching0.should_not include(@actor)}
+        let(:found_actors_when_matching0) {Actor.full_text_search("urch", match: :all)}
+        specify{found_actors_when_matching0.length.should eq(0)}
+        specify{found_actors_when_matching0.should_not include(@actor2)}
+        specify{found_actors_when_matching0.should_not include(@actor)}
     end
 
     context 'with one matching actor because the information of the other is private' do
-      @actor_name.scope = @scope_private
-      let(:found_actors_when_matching1_and_1_public) {Actor.full_text_search("Name", match: :all)}
-      specify{found_actors_when_matching1.length.should eq(1)}
-      specify{found_actors_when_matching1.should include(@actor2)}
-      specify{found_actors_when_matching1.should_not include(@actor)}
+      it "finds only one actor" do
+        @actor_name.scope = @scope_private
+        @actor_name.save
+        @actor.save
+        expect(@actor_name).to be_valid
+
+        @found_actors_when_matching1_and_1_private = Actor.full_text_search("Name", match: :all)
+        expect(@found_actors_when_matching1_and_1_private.length).to eq(1)
+        expect(@found_actors_when_matching1_and_1_private).to include(@actor2)
+      end
    end
   end
-
 end
