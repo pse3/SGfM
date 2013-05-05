@@ -197,7 +197,7 @@ describe Actor do
         @actor_name.save
         @actor.save
         expect(@actor_name).to be_valid
-
+        expect(@actor).to be_valid
         @found_actors_when_matching1_and_1_private = Actor.full_text_search("Name", match: :all)
         expect(@found_actors_when_matching1_and_1_private.length).to eq(1)
         expect(@found_actors_when_matching1_and_1_private).to include(@actor2)
