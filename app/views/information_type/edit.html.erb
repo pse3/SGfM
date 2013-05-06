@@ -55,7 +55,7 @@
     <%= f.label(t('information_type.edit.predefined_scope'), class: 'control-label')%>
     <div class="controls">
       <% if @information_type.scope %>
-        <%= f.collection_select(:scope, list_scopes, :key, :name, {:selected => @information_type.scope.key}) %>
+        <%= f.collection_select(:scope, list_scopes, :key, :name, {:prompt => t('information_type.edit.predefined_scope_prompt'), :selected => @information_type.scope.key}) %> <!-- prompt doesn't work -.- -->
       <% else %>
         <%= f.collection_select(:scope, list_scopes, :key, :name, {:prompt => t('information_type.edit.predefined_scope_prompt')}) %>
       <% end %>

@@ -12,6 +12,7 @@ class ActorTypeController < ApplicationController
       keys = params[:information_type_decorator][:information_type]
       required = params[:information_type_decorator][:required]
       searchable = params[:information_type_decorator][:searchable]
+
       keys.each_with_index do |key, i|
         info_type = InformationType.find_by_key(key.to_sym)
         InformationTypeDecorator.create(info_type, actor_type, required[i], searchable[i])
