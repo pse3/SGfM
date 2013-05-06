@@ -15,15 +15,14 @@ SGfM::Application.routes.draw do
 
 
     # Actor routes
-    get   'actors'          => 'actor#list',    as: 'actors'
-		get   'actors/all'      => 'actor#list', as: 'list'
-    get   'search'          => 'actor#search',    as: 'search'
-    post  'search'          => 'actor#search'
-    get   'actors/create'   => 'actor#new',     as: 'create_actor'
-    post  'actors/create'   => 'actor#create'
-    get   'actors/:id'      => 'actor#show',    as: 'show_actor'
-    get   'actors/edit/:id' => 'actor#edit',    as: 'edit_actor'
-    post  'actors/edit/:id' => 'actor#update',  as: 'update_actor'
+    get     'actors'              => 'actor#list',     as: 'actors'
+    get     'actors/search'       => 'actor#search',   as: 'search'
+    post    'actors/search'       => 'actor#search'
+    get     'actors/create'       => 'actor#new',      as: 'create_actor'
+    post    'actors/create'       => 'actor#create'
+    get     'actors/:id'          => 'actor#show',     as: 'show_actor'
+    get     'actors/edit/:id'     => 'actor#edit',     as: 'edit_actor'
+    post    'actors/edit/:id'     => 'actor#update',   as: 'update_actor'
     delete  'actors/destroy/:id'  => 'actor#destroy',  as: 'delete_actor'
 
     # Relationship routes
@@ -58,16 +57,16 @@ SGfM::Application.routes.draw do
     get     'relationship_types/:id'          => 'relationship_type#show',      as: 'show_relationship_type'
     get     'relationship_types/edit/:id'     => 'relationship_type#edit',      as: 'edit_relationship_type'
     post    'relationship_types/edit/:id'     => 'relationship_type#update',    as: 'update_relationship_type'
-    delete  'relationship_types/destroy/:id'  => 'relationship_type#destroy',  as: 'delete_relationship_type'
+    delete  'relationship_types/destroy/:id'  => 'relationship_type#destroy',   as: 'delete_relationship_type'
 
 
 		#Scopes Routes
-		get 'scopes' => 'scopes#list', as: 'scopes'
-		get 'scopes/create' => 'scopes#new', as: 'create_scope'
-		post 'scopes/create' => 'scopes#create'
-		get 'scopes/edit/:id' => 'scopes#edit', as: 'edit_scope'
-		post 'scopes/edit/:id' => 'scopes#update'
-		delete 'scopes/destroy/:id' => 'scopes#destroy', as: 'delete_scope'
+		get     'scopes'              => 'scopes#list',     as: 'scopes'
+		get     'scopes/create'       => 'scopes#new',      as: 'create_scope'
+		post    'scopes/create'       => 'scopes#create'
+		get     'scopes/edit/:id'     => 'scopes#edit',     as: 'edit_scope'
+		post    'scopes/edit/:id'     => 'scopes#update'
+		delete  'scopes/destroy/:id'  => 'scopes#destroy',  as: 'delete_scope'
 
 
 
@@ -94,7 +93,7 @@ SGfM::Application.routes.draw do
     get   '/information_type_data_form'       => 'ajax#information_type_data_form',        as: 'information_type_data_form'
     get   '/information_type_option_form'     => 'ajax#information_type_option_form',      as: 'information_type_option_form'
     get   '/predefined_questions'             => 'ajax#predefined_questions',              as: 'predefined_questions'
-    get   '/referenced_actor'                => 'ajax#referenced_actor',                   as: 'referenced_actor'
+    get   '/referenced_actor'                 => 'ajax#referenced_actor',                  as: 'referenced_actor'
     # Root
     root :to => 'home#index', as: 'home'
 

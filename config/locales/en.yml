@@ -36,7 +36,7 @@ en:
   application:
     menu:
       profile: 'Profile'
-      actors: 'Your Actors'
+      home: 'Home'
       settings: 'Settings'
       search: 'Search'
 
@@ -44,7 +44,7 @@ en:
 # Translations for all actor-pages, sorted by page structure
   actor:
     list:
-      title: 'Your actors'
+      title: 'My actors'
       new_actor: 'Create new actor'
       name_table: 'Who'
       sure_to_delete: 'Are you sure to delete this actor?'
@@ -52,7 +52,6 @@ en:
       name_table: 'Results'
       search: 'Search'
       no_results: "Your search query didn't match any actors."
-      enter_query: 'Please enter a search query.'
       too_short: 'The query was too short. It must contain at least 3 characters.'
       found: 'Your search returned %{amount} result(s)!'
 
