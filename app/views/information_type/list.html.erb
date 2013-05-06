@@ -24,6 +24,7 @@
       <td><%= information_type.information_field_type.name %></td>
       <td>
         <%= link_to raw('<i class="icon-edit"></i>'), edit_information_type_path(information_type) %>
+        <%= link_to(raw('<i class="icon-trash"></i>'), delete_information_type_path(information_type), :confirm => t('information_type.list.sure_to_delete'), :method => :delete) %>
       </td>
     </tr>
   <% end %>

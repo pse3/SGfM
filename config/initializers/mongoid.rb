@@ -171,6 +171,40 @@ unless Rails.env == :production
   info_email.scope = scope_public
   info_email.save
 
+  # Create some RelationshipTypes
+  relation_works_with = RelationshipType.new
+  relation_works_with.key = :works_with
+  relation_works_with.name_translations = { :en => 'works with', :de =>'arbeitet mit', :it => '??', :fr => '??' }
+  relation_works_with.question_translations = {
+      :en => 'With whom do you work?',
+      :de => 'Mit wem arbeitet Ihr?',
+      :it => '??',
+      :fr => '??'
+  }
+  relation_works_with.save
+
+  relation_assigns = RelationshipType.new
+  relation_assigns.key = :assign_to
+  relation_assigns.name_translations = { :en => 'assign to', :de =>'Überweisung an', :it => '??', :fr => '??' }
+  relation_assigns.question_translations = {
+      :en => 'To whom do you assign patients?',
+      :de => 'An wen überweist Ihr Patienten?',
+      :it => '??',
+      :fr => '??'
+  }
+  relation_assigns.save
+
+  relation_other = RelationshipType.new
+  relation_other.key = :other
+  relation_other.name_translations = { :en => 'other', :de =>'Andere', :it => '??', :fr => '??' }
+  relation_other.question_translations = {
+      :en => 'Do you have other relations you want to mention?',
+      :de => 'Haben Sie andere Beziehungen, die Sie angeben möchten?',
+      :it => '??',
+      :fr => '??'
+  }
+  relation_other.save
+
 
   # Create some ActorTypes
   actor_doctor = ActorType.new
@@ -216,21 +250,19 @@ unless Rails.env == :production
   actor_import_test.to_string_pattern = '|:last_name|'
   actor_import_test.save
 
-  # Create some RelationshipTypes
-  relation_works_with = RelationshipType.new
-  relation_works_with.key = :works_with
-  relation_works_with.name_translations = { :en => 'works with', :de =>'arbeitet mit', :it => '??', :fr => '??' }
-  relation_works_with.save
+  actor_wizard_test = ActorType.new
+  actor_wizard_test.key = :wizard_test
+  InformationTypeDecorator.create(info_first_name, actor_wizard_test, true, true)
+  actor_wizard_test.name_translations = {
+      :en => 'Wizard Test',
+      :de => 'Wizard Test',
+      :it => 'Wizard Test',
+      :fr => 'Wizard Test'
+  }
+  actor_wizard_test.to_string_pattern = '|:first_name|'
+  actor_wizard_test.predefined_questions.push(relation_works_with)
+  actor_wizard_test.save
 
-  relation_other = RelationshipType.new
-  relation_other.key = :assign_to
-  relation_other.name_translations = { :en => 'assign to', :de =>'Überweisung an', :it => '??', :fr => '??' }
-  relation_other.save
-
-  relation_other = RelationshipType.new
-  relation_other.key = :other
-  relation_other.name_translations = { :en => 'other', :de =>'Andere', :it => '??', :fr => '??' }
-  relation_other.save
 
 
   # Create some Users and an Admin
