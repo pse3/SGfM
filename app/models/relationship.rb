@@ -3,6 +3,7 @@
 # Every relationship must belong to a relationship_type and contain a comment(can be empty)
 class Relationship
 
+  include Scoped
   include Mongoid::Document
 
   field :comment, :type => String
