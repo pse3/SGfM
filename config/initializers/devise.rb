@@ -8,6 +8,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   config.mailer = "DeviseMailer"
+  Devise.mailer = "DeviseMailer"
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and

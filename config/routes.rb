@@ -3,10 +3,13 @@ SGfM::Application.routes.draw do
   scope '/:locale' do
 
     # Devise routes
-    devise_for :logins, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => {:sign_up => 'signup',
-                                                                                                          :sign_in => 'login',
-                                                                                                          :sign_out => 'logout',
-                                                                                                          :confirmations => 'confirmations'}
+    devise_for :logins,
+               :controllers =>
+                  {:registrations => 'registrations'},
+               :path => '',
+               :path_names => {:sign_up => 'signup',
+                               :sign_in => 'login',
+                               :sign_out => 'logout'}
 
     get   'logins/show' => 'logins#show'
 

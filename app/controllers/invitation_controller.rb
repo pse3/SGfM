@@ -11,6 +11,11 @@ class InvitationController < ApplicationController
   end
 
   def invite
+
+    logins = Array.new
+
+    failed = Array.new
+
     params[:invitations].each_key do |actor_id_to_invite|
       actor = Actor.find(actor_id_to_invite)
       user = User.new
@@ -22,14 +27,16 @@ class InvitationController < ApplicationController
       user.login = login
       user.actors.push actor
 
-      # Send change notification (Ensure you have created #{model}Mailer e.g. UserMailer)
-      #model_mailer = DeviseMailer.new
-      #model_mailer.invitation(login).deliver
+      # confirmation email is sent automatically by saving
 
-      login.save!
-      actor.save!
-      user.save!
-
+      if login.valid?
+        login.save!
+        actor.save!
+        user.save!
+        logins.push login
+      else
+        failed.push login
+      end
     end
   end
 
