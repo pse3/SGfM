@@ -52,15 +52,16 @@
   }
 
   function validate(selector) {
-    var to_check = $(selector).find('input');
-    console.log(to_check);
-    for(el in to_check) {
-      console.log(el);
-      if(el.data('required') && el.val() === val) {
-        return el;
+    var el = null;
+    $(selector).find(':input[required]').each(function(index, element) {
+      if(!$(element).val()) {
+        console.log(element);
+        el = element;
+        return false; //abort the loop here
       }
-    }
-    return null;
+      return true;
+    });
+    return el;
   }
 
   function hl(selector){
