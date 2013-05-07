@@ -36,10 +36,11 @@
     SGfM.insert_form(<%= raw("\"#{predefined_questions_path}\"") %>, '#predefined-questions-form', {actor_type: val});
   }
   function transition(old_one, new_one) {
-    if(validate($('#' + old_one))) {
+    var ret = validate('#' + old_one);
+    if(!ret) {
       do_transition(old_one, new_one);
     } else {
-
+      hl(ret);
     }
   }
 
@@ -51,19 +52,19 @@
   }
 
   function validate(selector) {
-    if(selector.is("input")) {
-      if(selector.val() == "") {
-        return false;
-      } else {
-        return true;
+    var to_check = $(selector).find('input');
+    console.log(to_check);
+    for(el in to_check) {
+      console.log(el);
+      if(el.data('required') && el.val() === val) {
+        return el;
       }
     }
-    for (child in selector.children()) {
-      if(!validate(child)) {
-        return false;
-      }
-    }
-    return true;
+    return null;
+  }
+
+  function hl(selector){
+
   }
 
   $('document').ready(function() {
