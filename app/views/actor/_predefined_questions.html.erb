@@ -27,12 +27,17 @@
     </div>
     <%=content_tag(:div, class: 'accordion-body collapse in', id: "rel#{relationship_types.length}") do %>
       <div class="accordion-inner">
-        <% if relationship_types.empty? %>
-          <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{relationship_types.length}\", \"information\")", :type => :btn, :class => 'btn btn-info') %>
-        <% else %>
-          <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{relationship_types.length}\", \"rel#{relationship_types.length - 1}\")", :type => :btn, :class => 'btn btn-info') %>
-        <% end %>
-        <%= link_to_function(t('actor.new.beginning_button'), "transition(\"rel#{relationship_types.length}\", \"actor-type\")", :type => :btn, :class => 'btn btn-info') %>
+        <p>
+          <% if relationship_types.empty? %>
+            <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{relationship_types.length}\", \"information\")", :type => :btn, :class => 'btn btn-info') %>
+          <% else %>
+            <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{relationship_types.length}\", \"rel#{relationship_types.length - 1}\")", :type => :btn, :class => 'btn btn-info') %>
+          <% end %>
+          <%= link_to_function(t('actor.new.beginning_button'), "transition(\"rel#{relationship_types.length}\", \"actor-type\")", :type => :btn, :class => 'btn btn-info') %>
+        </p>
+        <p>
+          <%= t('actor.new.finish') %>
+        </p>
         <br>
         <%= f.submit(t('actor.new.create_actor'), class: 'btn btn-large btn-primary') %>
       </div>
