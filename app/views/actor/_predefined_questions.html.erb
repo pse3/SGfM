@@ -12,11 +12,11 @@
           </div>
           <%= content_tag(:div, '', id: "rel_#{relationship_type.key}") %>
           <% if index == 0 %>
-            <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{index}\", \"information\")", :type => :btn, :class => 'btn btn-info') %>
+            <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{index}\", \"information\", false)", :type => :btn, :class => 'btn btn-info') %>
           <% else %>
-            <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{index}\", \"rel#{index - 1}\")", :type => :btn, :class => 'btn btn-info') %>
+            <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{index}\", \"rel#{index - 1}\", false)", :type => :btn, :class => 'btn btn-info') %>
           <% end %>
-          <%= link_to_function(t('actor.new.next_button'), "transition(\"rel#{index}\", \"rel#{index + 1}\")", :type => :btn, :class => 'btn btn-info') %>
+          <%= link_to_function(t('actor.new.next_button'), "transition(\"rel#{index}\", \"rel#{index + 1}\", true)", :type => :btn, :class => 'btn btn-info') %>
         </div>
       <% end %>
     </div>
@@ -29,11 +29,11 @@
       <div class="accordion-inner">
         <p>
           <% if relationship_types.empty? %>
-            <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{relationship_types.length}\", \"information\")", :type => :btn, :class => 'btn btn-info') %>
+            <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{relationship_types.length}\", \"information\", false)", :type => :btn, :class => 'btn btn-info') %>
           <% else %>
-            <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{relationship_types.length}\", \"rel#{relationship_types.length - 1}\")", :type => :btn, :class => 'btn btn-info') %>
+            <%= link_to_function(t('actor.new.back_button'), "transition(\"rel#{relationship_types.length}\", \"rel#{relationship_types.length - 1}\", false)", :type => :btn, :class => 'btn btn-info') %>
           <% end %>
-          <%= link_to_function(t('actor.new.beginning_button'), "transition(\"rel#{relationship_types.length}\", \"actor-type\")", :type => :btn, :class => 'btn btn-info') %>
+          <%= link_to_function(t('actor.new.beginning_button'), "transition(\"rel#{relationship_types.length}\", \"actor-type\", false)", :type => :btn, :class => 'btn btn-info') %>
         </p>
         <p>
           <%= t('actor.new.finish') %>
@@ -59,7 +59,7 @@
     for(i = 0; i < <%= relationship_types.length%>; i++) {
       $("#sel" + i).select2({
         minimumInputLength: 3,
-        width: '500',
+        width: '50%',
         data:{ results: data },
         formatSelection: format,
         formatResult: format

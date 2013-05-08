@@ -93,6 +93,7 @@ en:
       back_button: 'Back'
       beginning_button: 'First Step'
       finish: 'When pressing create you complete the creation of your profile'
+      alert: 'You can not proceed to the next step, before you filled out all required information'
 
     edit:
       title: 'Edit actor'
