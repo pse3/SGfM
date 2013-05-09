@@ -290,7 +290,6 @@ unless Rails.env == :production
   dummy_actor_type = dummy_actor_insel.actor_type
 
   insel_name = Information.new
-  insel_name.scope = scope_public
   insel_name.information_type_decorator = dummy_actor_type.decorator_by_key(:company)
   insel_name.value = 'Insel'
   insel_name.actor = dummy_actor_insel
@@ -332,7 +331,6 @@ unless Rails.env == :production
   insel_city.actor = dummy_actor_insel
 
   insel_canton = Information.new
-  insel_canton.scope = scope_public
   insel_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
   insel_canton.value = 'BE'
   insel_canton.actor = dummy_actor_insel
@@ -348,25 +346,22 @@ unless Rails.env == :production
 
   karl_medical_specialisations = Information.new
   karl_medical_specialisations.information_type_decorator = dummy_actor_type.decorator_by_key(:medical_specialisations)
-  karl_medical_specialisations.scope = scope_public
   karl_medical_specialisations.value = ['Childdoctor']
   karl_medical_specialisations.actor = dummy_actor_karl
 
   karl_gender = Information.new
   karl_gender.information_type_decorator = dummy_actor_type.decorator_by_key(:gender)
-  karl_gender.scope = scope_public
-  karl_gender.value = 'Male'
+	karl_gender.scope = scope_public
+	karl_gender.value = 'Male'
   karl_gender.actor = dummy_actor_karl
 
   karl_fname = Information.new
   karl_fname.information_type_decorator = dummy_actor_type.decorator_by_key(:first_name)
-  karl_fname.scope = scope_public
   karl_fname.value = 'Karl'
   karl_fname.actor = dummy_actor_karl
 
   karl_lname = Information.new
   karl_lname.information_type_decorator = dummy_actor_type.decorator_by_key(:last_name)
-  karl_lname.scope = scope_public
   karl_lname.value = 'Schürch'
   karl_lname.actor = dummy_actor_karl
 
