@@ -10,9 +10,9 @@
     <table class="table table-condensed">
       <% @informations.each do |info| %>
           <tr>
-            <td class="span2"><strong><%= info.information_type_decorator.name %></strong></td>
-            <td class="span2"><%= info.value_to_s %></td>
-            <td class="span5"></td>
+            <td class="span3"><strong><%= info.information_type_decorator.name %></strong></td>
+            <td class="span3"><%= info.value_to_s %></td>
+            <td class="span4"></td>
             <td class="span1"></td>
           </tr>
           <tr></tr>
@@ -30,9 +30,9 @@
     <table class="table table-condensed">
       <% @actor.relationships.each do |relationship| %>
           <tr>
-            <td class="span2"><%= relationship.relationship_type.to_s %></td>
-            <td class="span2"><%= link_to(relationship.reference.to_s, show_actor_path(relationship.reference)) %></td>
-            <td class="span5"><%= relationship.comment.to_s %></td>
+            <td class="span3"><%= relationship.relationship_type.to_s %></td>
+            <td class="span3"><%= link_to(relationship.reference.to_s, show_actor_path(relationship.reference)) %></td>
+            <td class="span4"><%= relationship.comment.to_s %></td>
             <td class="span1">
               <%= link_to(raw('<i class="icon-edit"></i>'), edit_relationship_path(relationship)) %>
               <%= link_to(raw('<i class="icon-trash"></i>'), delete_relationship_path(relationship), :method => :delete) %>
