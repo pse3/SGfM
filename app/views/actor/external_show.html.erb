@@ -16,21 +16,12 @@
     <% end %>
   </table>
 
-  <div class="lead">
-    <small><%= t('actor.show.relationships') %></small>
-  </div>
-
   <table class="table table-condensed">
     <% @actor.relationships.each do |relationship| %>
         <tr>
             <td class="span3"><%= relationship.relationship_type.to_s %></td>
             <td class="span3"><%= link_to(relationship.reference.to_s, show_actor_path(relationship.reference)) %></td>
             <td class="span5"><%= relationship.comment.to_s %></td>
-        </tr>
-    <% end %>
-    <% if @actor.relationships.empty? %>
-        <tr>
-          <td><%= t('actor.show.none_declared') %></td>
         </tr>
     <% end %>
   </table>

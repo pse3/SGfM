@@ -1,7 +1,7 @@
 <% @page_title = t('actor.list.title_search') %>
 
 <%= form_tag(search_path, :method => 'post') do %>
-    <%= text_field_tag(:query, params[:query], :class => "input-medium search-query") %>
+    <%= text_field_tag(:query, params[:query], :class => "span4 search-query") %>
     <%= submit_tag(t('actor.list.search'), :class => "btn btn-primary") %>
 <% end %>
 
