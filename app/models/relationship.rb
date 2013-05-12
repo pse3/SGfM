@@ -3,10 +3,10 @@
 # Every relationship must belong to a relationship_type and contain a comment(can be empty)
 class Relationship
 
-  include Scoped
   include Mongoid::Document
+	include Scoped
 
-  field :comment, :type => String
+	field :comment, :type => String
   field :created_at, :type => DateTime
   field :changed_a, :type => DateTime
 
