@@ -32,9 +32,9 @@ class InvitationController < ApplicationController
 
       if login.valid?
         login.save!
-        login.send_invitation
         actor.save!
         user.save!
+        login.send_invitation
         logins.push login
       else
         failed.push login
