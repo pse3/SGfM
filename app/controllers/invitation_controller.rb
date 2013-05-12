@@ -21,8 +21,9 @@ class InvitationController < ApplicationController
       user = User.new
       login = Login.new
       login.email = actor.find_information_by_key(:email).value
-      random_password = Login.send(:generate_token, 'encrypted_password').slice(0, 8)
-      login.password = random_password
+      login.password = Login.reset_password_token
+      login.reset_password_token= Login.reset_password_token
+      login.reset_password_sent_at = Time.now
       login.account = user
       user.login = login
       user.actors.push actor
@@ -31,12 +32,18 @@ class InvitationController < ApplicationController
 
       if login.valid?
         login.save!
+        login.send_invitation
         actor.save!
         user.save!
         logins.push login
       else
         failed.push login
       end
+    end
+
+    flash[:success] = "#{logins.length} new logins created."
+    if failed.length > 0
+      flash[:error] = "failed to create #{failed.length} logins."
     end
   end
 

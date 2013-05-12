@@ -10,7 +10,7 @@ class Login
   # :token_authenticatable, ,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :async
+         :recoverable, :rememberable, :trackable, :validatable #, :async
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -66,6 +66,12 @@ class Login
 	# Returns all account types in a list
 	def self.account_types
 		Login.all.distinct("account_type")
-	end
+  end
+
+  # Resets reset password token and send reset password instructions by email
+  def send_invitation
+    generate_reset_password_token! if should_generate_reset_token?
+    send_devise_notification(:invitation)
+  end
 
 end

@@ -1,14 +1,7 @@
 class DeviseMailer < Devise::Mailer
-  protected
 
-
-  def devise_mail(*args)
-    super
-  end
-
-  def invitation(user)
-    @user = user
-    mail(:to => user.email, :subject => "Welcome!")
+  def invitation(record, opts={})
+    devise_mail(record, :invitation, opts)
   end
 
 end

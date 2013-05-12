@@ -1,9 +1,6 @@
-<h1>Welcome to moku, <%= @user.name %>!</h1>
-<p>
-  You have successfully signed up,
-  your username is: <%= @user.email %>.<br/>
-</p>
-<p>
-  You need to confirm your email first: <%= link_to 'confirm my account', confirmation_url(@user, :confirmation_token => @user.confirmation_token) %>.
-</p>
-<p>Thanks for joining and have a great day!</p>
+<p>An Account has been created for you.</p>
+
+<p><%= link_to 'Access my Account', edit_password_url(@resource, :reset_password_token => @resource.reset_password_token) + '&initial=true' %></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
