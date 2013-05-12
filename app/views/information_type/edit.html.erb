@@ -6,7 +6,7 @@
 <% @page_title = t('information_type.edit.title') %>
 
 
-<%= form_for(@information_type, :url => update_information_type_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
+<%= form_for(:information_type_edited, :url => update_information_type_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
   <div class="control-group">
     <%= f.label(:'name[en]', "#{t('information_type.edit.name')} (#{t('lang.en')})", class: 'control-label') %>
     <div class="controls">
@@ -38,7 +38,7 @@
   <div class="control-group">
     <%= f.label(:key, t('information_type.edit.key'), :class => 'control-label') %>
     <div class="controls">
-      <%= f.text_field(:key, :placeholder => t('information_type.edit.key')) %>
+      <%= f.text_field(:key, :value => @information_type.key, :placeholder => t('information_type.edit.key')) %>
     </div>
   </div>
 
@@ -55,7 +55,7 @@
     <%= f.label(t('information_type.edit.predefined_scope'), class: 'control-label')%>
     <div class="controls">
       <% if @information_type.scope %>
-        <%= f.collection_select(:scope, list_scopes, :key, :name, {:selected => @information_type.scope.key}) %>
+        <%= f.collection_select(:scope, list_scopes, :key, :name, {:prompt => t('information_type.edit.predefined_scope_prompt'), :selected => @information_type.scope.key}) %> <!-- prompt doesn't work -.- -->
       <% else %>
         <%= f.collection_select(:scope, list_scopes, :key, :name, {:prompt => t('information_type.edit.predefined_scope_prompt')}) %>
       <% end %>
