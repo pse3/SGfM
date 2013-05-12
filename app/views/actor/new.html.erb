@@ -4,24 +4,24 @@
   <div class="accordion" id="new-actor">
     <div class="accordion-group">
       <div class="accordion-heading">
-        <%= content_tag(:p, t('actor.new.type_title'), :class => 'lead', :id => 'title-actor-type') %>
+        <%= content_tag(:p, t('actor.new.type_title'), :class => 'lead left-margin', :id => 'title-actor-type') %>
       </div>
       <div id="actor-type" class="accordion-body collapse in">
         <div class="accordion-inner">
           <%= render :partial => 'actor/actor_type'%>
-          <%= link_to_function(t('actor.new.next_button'), 'transition(\'actor-type\', \'information\')', :type => :btn, :class => 'btn btn-info') %>
+          <%= link_to_function(t('actor.new.next_button'), 'transition(\'actor-type\', \'information\')', :type => :btn, :class => 'btn') %>
         </div>
       </div>
     </div>
     <div class="accordion-group">
       <div class="accordion-heading">
-        <%= content_tag(:p, t('actor.new.information_title'), :id => 'title-information') %>
+        <%= content_tag(:p, t('actor.new.information_title'), :class => 'left-margin', :id => 'title-information') %>
       </div>
       <div id="information" class="accordion-body collapse in">
         <div class="accordion-inner">
           <div id="information-types-form"></div>
-          <%= link_to_function(t('actor.new.back_button'), 'transition(\'information\', \'actor-type\', false)', :type => :btn, :class => 'btn btn-info') %>
-          <%= link_to_function(t('actor.new.next_button'), 'transition("information", "rel0", true)', :type => :btn, :class => 'btn btn-info') %>
+          <%= link_to_function(t('actor.new.back_button'), 'transition(\'information\', \'actor-type\', false)', :type => :btn, :class => 'btn') %>
+          <%= link_to_function(t('actor.new.next_button'), 'transition("information", "rel0", true)', :type => :btn, :class => 'btn') %>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
     if(!validation || !ret) {
       do_transition(old_one, new_one);
     } else {
-      hl(old_one);
+      hl(ret);
     }
   }
 
@@ -66,6 +66,7 @@
   }
 
   function hl(selector){
+    $(selector).focus();
   }
 
   $('document').ready(function() {
