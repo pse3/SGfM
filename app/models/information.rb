@@ -22,6 +22,7 @@ class Information
     self.created_at = DateTime.now
   end
 
+
   def value
     self.information_type_decorator.information_field_type.get_value(self.value_of_this_information)
   end

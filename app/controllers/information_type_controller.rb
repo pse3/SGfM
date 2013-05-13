@@ -36,15 +36,16 @@ class InformationTypeController < ApplicationController
 
   def edit
     @information_type = InformationType.find_by(id: params[:id])
+
   end
 
   def update
     information_type = InformationType.find_by(id: params[:id])
-    params[:information_type][:information_field_type] = InformationFieldType.find_by_key params[:information_type][:information_field_type]
-    params[:information_type][:scope] = Scope.find_by key: params[:information_type][:scope] if params[:information_type][:scope].size > 0  # dont check empty string
-    information_type.update_attributes(params[:information_type])
-    information_type.name_translations = params[:information_type][:name]
-    information_type.data_translations = InformationTypeHelper.parse_data(params[:information_type][:information_field_type_data], information_type.information_field_type)
+    params[:information_type_edited][:information_field_type] = InformationFieldType.find_by_key params[:information_type_edited][:information_field_type]
+    params[:information_type_edited][:scope] = Scope.find_by key: params[:information_type_edited][:scope] if params[:information_type_edited][:scope].size > 0  # dont check empty string
+    information_type.update_attributes(params[:information_type_edited])
+    information_type.name_translations = params[:information_type_edited][:name]
+    information_type.data_translations = InformationTypeHelper.parse_data(params[:information_type_edited][:information_field_type_data], information_type.information_field_type)
     if information_type.save
       flash[:success] = t('information_type.update.success')
       redirect_to information_types_path

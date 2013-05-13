@@ -122,8 +122,7 @@ class ActorController < ApplicationController
 
     if query.nil?
       @actors_hash = Hash.new
-      flash.now[:notice] = t('actor.list.enter_query')
-    elsif query.size < 3
+    elsif query.size < 3     #todo this shouldn't be hardcoded. where do we declare
       @actors_hash = Hash.new
       flash.now[:error] = t('actor.list.too_short')
     else
@@ -167,7 +166,7 @@ class ActorController < ApplicationController
     actor.destroy
 
     flash[:success] = t('actor.destroy.success')
-    redirect_to(list_path)
+    redirect_to(actors_path)
   end
 
 end
