@@ -48,11 +48,6 @@ describe "actor spec" do
     information_field_text.name_translations = { :en => 'Text field', :de => 'Textfeld', :it => '???', :fr => '???' }
     information_field_text.save
 
-    information_field_email = InformationFieldEmail.new
-    information_field_email.key = :email
-    information_field_email.name_translations = { :en => 'Email field', :de => 'Emailfeld', :it => '???', :fr => '???' }
-    information_field_email.save
-
     information_field_multiple_select = InformationFieldMultipleSelect.new
     information_field_multiple_select.key = :multiple_select
     information_field_multiple_select.name_translations = { :en => 'multiple selection', :de => 'Mehrauswahl', :it => '???', :fr => '???' }
@@ -104,12 +99,6 @@ describe "actor spec" do
     info_canton.name_translations = { :en => 'Canton', :de =>'Kanton', :it => '??', :fr => '??' }
     info_canton.scope = scope_public
     info_canton.save
-
-    info_email = InformationType.new
-    info_email.key = :email
-    info_email.information_field_type = information_field_text
-    info_email.name_translations = { :en => 'Email', :de =>'E-Mail', :it => 'Smalto', :fr => 'Email' }
-    info_email.save
 
     # Create some RelationshipTypes
     relation_works_with = RelationshipType.new
