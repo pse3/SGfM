@@ -19,8 +19,10 @@ describe "actor spec" do
         click_button 'Sign up'
       end
 
-      #page.should have_content('Doctor')
+
       page.should have_css('#actor-type-select')
+      #page.should_not have_content("Create")
+      #page.should have_content('Doctor')
       #page.should have_css('#actor-type')
       #page.should have_css('#new-actor')
 
@@ -53,8 +55,10 @@ describe "actor spec" do
         click_button 'Sign up'
       end
 
-      #page.should have_content('Doctor')
+
       page.should have_css('#actor-type-select')
+      #page.should_not have_content("Create")
+      #page.should have_content('Doctor')
       #page.should have_css('#actor-type')
       #page.should have_css('#new-actor')
 
@@ -73,15 +77,6 @@ describe "actor spec" do
       page.should_not have_content("Doctor")
       click_link 'Sign out'
     end
-  end
-
-  context "with full information" do
-     it "is updated", :js => true do
-       click_on 'Sign in'
-       fill_in "login_email", :with => 'test_13@test.de'
-       fill_in "login_password", :with => '1234test'
-       click_button 'Sign in'
-     end
   end
 
 
