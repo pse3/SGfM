@@ -4,24 +4,24 @@
   <div class="accordion" id="new-actor">
     <div class="accordion-group">
       <div class="accordion-heading">
-        <%= content_tag(:p, t('actor.new.type_title'), :class => 'lead', :id => 'title-actor-type') %>
+        <%= content_tag(:p, t('actor.new.type_title'), :class => 'lead left-margin', :id => 'title-actor-type') %>
       </div>
       <div id="actor-type" class="accordion-body collapse in">
         <div class="accordion-inner">
           <%= render :partial => 'actor/actor_type'%>
-          <%= link_to_function(t('actor.new.next_button'), 'transition1()', :type => :btn, :class => 'btn btn-info') %>
+          <%= link_to_function(t('actor.new.next_button'), 'transition(\'actor-type\', \'information\')', :type => :btn, :class => 'btn') %>
         </div>
       </div>
     </div>
     <div class="accordion-group">
       <div class="accordion-heading">
-        <%= content_tag(:p, t('actor.new.information_title'), :id => 'title-information') %>
+        <%= content_tag(:p, t('actor.new.information_title'), :class => 'left-margin', :id => 'title-information') %>
       </div>
       <div id="information" class="accordion-body collapse in">
         <div class="accordion-inner">
           <div id="information-types-form"></div>
-          <%= link_to_function(t('actor.new.back_button'), 'transition1back()', :type => :btn, :class => 'btn btn-info') %>
-          <%= link_to_function(t('actor.new.next_button'), 'transition("information", "rel0")', :type => :btn, :class => 'btn btn-info') %>
+          <%= link_to_function(t('actor.new.back_button'), 'transition(\'information\', \'actor-type\', false)', :type => :btn, :class => 'btn') %>
+          <%= link_to_function(t('actor.new.next_button'), 'transition("information", "rel0", true)', :type => :btn, :class => 'btn') %>
         </div>
       </div>
     </div>
@@ -35,18 +35,38 @@
     SGfM.actor.render_matching_form(<%= raw "\"#{information_types_for_actor_type_path}\"" %>, val);
     SGfM.insert_form(<%= raw("\"#{predefined_questions_path}\"") %>, '#predefined-questions-form', {actor_type: val});
   }
-  function transition(old_one, new_one) {
+
+  function transition(old_one, new_one, validation) {
+    var ret = validate('#' + old_one);
+    if(!validation || !ret) {
+      do_transition(old_one, new_one);
+    } else {
+      hl(ret);
+    }
+  }
+
+  function do_transition(old_one, new_one) {
     $('#' + old_one).collapse('hide');
     $('#title-' + old_one).removeClass('lead');
     $('#title-' + new_one).addClass('lead');
     $('#' + new_one).collapse('show').goTo();
   }
-  function transition1() {
-    transition('actor-type', 'information');
+
+  function validate(selector) {
+    var el = null;
+    $(selector).find(':input[required]').each(function(index, element) {
+      if(!$(element).val()) {
+        console.log(element);
+        el = element;
+        return false; //abort the loop here
+      }
+      return true;
+    });
+    return el;
   }
 
-  function transition1back() {
-    transition('information', 'actor-type');
+  function hl(selector){
+    $(selector).focus();
   }
 
   $('document').ready(function() {
