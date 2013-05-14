@@ -25,4 +25,14 @@ describe "Log in" do
       page.should have_selector('a', text: 'Sign out')
     end
   end
+
+  context "with non-existing login" do
+    it "does not sign in" do
+      click_on 'Sign in'
+      fill_in "login_email", :with => 'test15@test.de'
+      fill_in "login_password", :with => '1234test'
+      click_button 'Sign in'
+      page.should_not have_selector('a', text: 'Sign out')
+    end
+  end
 end
