@@ -84,7 +84,6 @@ unless Rails.env == :production
                                     :fr => ['??', '??'],
                                     :it => ['??', '??'] }
   info_gender.name_translations = { :en => 'Gender', :de =>'Geschlecht', :it => '??', :fr => '??' }
-  info_gender.scope = scope_public
   info_gender.save
 
   info_company = InformationType.new
@@ -112,49 +111,42 @@ unless Rails.env == :production
   info_phone.key = :phone
   info_phone.information_field_type = information_field_text
   info_phone.name_translations = { :en => 'Phone', :de =>'Telefon', :it => 'Telefono', :fr => 'Téléphone' }
-  info_phone.scope = scope_public
   info_phone.save
 
   info_mobile = InformationType.new
   info_mobile.key = :mobile
   info_mobile.information_field_type = information_field_text
   info_mobile.name_translations = { :en => 'Mobile', :de =>'Mobil', :it => '??', :fr => '??' }
-  info_mobile.scope = scope_public
   info_mobile.save
 
   info_fax = InformationType.new
   info_fax.key = :fax
   info_fax.information_field_type = information_field_text
   info_fax.name_translations = { :en => 'Fax', :de =>'Fax', :it => '??', :fr => '??' }
-  info_fax.scope = scope_public
   info_fax.save
 
   info_street = InformationType.new
   info_street.key = :street
   info_street.information_field_type = information_field_text
   info_street.name_translations = { :en => 'Street', :de =>'Strasse', :it => '??', :fr => '??' }
-  info_street.scope = scope_public
   info_street.save
 
   info_street_number = InformationType.new
   info_street_number.key = :street_number
   info_street_number.information_field_type = information_field_text
   info_street_number.name_translations = { :en => 'Street number', :de =>'Strassennummer', :it => '??', :fr => '??' }
-  info_street_number.scope = scope_public
   info_street_number.save
 
   info_zip_code = InformationType.new
   info_zip_code.key = :zip_code
   info_zip_code.information_field_type = information_field_text
   info_zip_code.name_translations = { :en => 'ZIP', :de =>'PLZ', :it => '??', :fr => '??' }
-  info_zip_code.scope = scope_public
   info_zip_code.save
 
   info_city = InformationType.new
   info_city.key = :city
   info_city.information_field_type = information_field_text
   info_city.name_translations = { :en => 'City', :de =>'Stadt', :it => '??', :fr => '??' }
-  info_city.scope = scope_public
   info_city.save
 
   info_canton = InformationType.new
@@ -168,8 +160,41 @@ unless Rails.env == :production
   info_email.key = :email
   info_email.information_field_type = information_field_text
   info_email.name_translations = { :en => 'Email', :de =>'E-Mail', :it => 'Smalto', :fr => 'Émail' }
-  info_email.scope = scope_public
   info_email.save
+
+  # Create some RelationshipTypes
+  relation_works_with = RelationshipType.new
+  relation_works_with.key = :works_with
+  relation_works_with.name_translations = { :en => 'works with', :de =>'arbeitet mit', :it => '??', :fr => '??' }
+  relation_works_with.question_translations = {
+      :en => 'With whom do you work?',
+      :de => 'Mit wem arbeitet Ihr?',
+      :it => '??',
+      :fr => '??'
+  }
+  relation_works_with.save
+
+  relation_assigns = RelationshipType.new
+  relation_assigns.key = :assign_to
+  relation_assigns.name_translations = { :en => 'assign to', :de =>'Überweisung an', :it => '??', :fr => '??' }
+  relation_assigns.question_translations = {
+      :en => 'To whom do you assign patients?',
+      :de => 'An wen überweist Ihr Patienten?',
+      :it => '??',
+      :fr => '??'
+  }
+  relation_assigns.save
+
+  relation_other = RelationshipType.new
+  relation_other.key = :other
+  relation_other.name_translations = { :en => 'other', :de =>'Andere', :it => '??', :fr => '??' }
+  relation_other.question_translations = {
+      :en => 'Do you have other relations you want to mention?',
+      :de => 'Haben Sie andere Beziehungen, die Sie angeben möchten?',
+      :it => '??',
+      :fr => '??'
+  }
+  relation_other.save
 
 
   # Create some ActorTypes
@@ -216,21 +241,19 @@ unless Rails.env == :production
   actor_import_test.to_string_pattern = '|:last_name|'
   actor_import_test.save
 
-  # Create some RelationshipTypes
-  relation_works_with = RelationshipType.new
-  relation_works_with.key = :works_with
-  relation_works_with.name_translations = { :en => 'works with', :de =>'arbeitet mit', :it => '??', :fr => '??' }
-  relation_works_with.save
+  actor_wizard_test = ActorType.new
+  actor_wizard_test.key = :wizard_test
+  InformationTypeDecorator.create(info_first_name, actor_wizard_test, true, true)
+  actor_wizard_test.name_translations = {
+      :en => 'Wizard Test',
+      :de => 'Wizard Test',
+      :it => 'Wizard Test',
+      :fr => 'Wizard Test'
+  }
+  actor_wizard_test.to_string_pattern = '|:first_name|'
+  actor_wizard_test.predefined_questions.push(relation_works_with)
+  actor_wizard_test.save
 
-  relation_other = RelationshipType.new
-  relation_other.key = :assign_to
-  relation_other.name_translations = { :en => 'assign to', :de =>'Überweisung an', :it => '??', :fr => '??' }
-  relation_other.save
-
-  relation_other = RelationshipType.new
-  relation_other.key = :other
-  relation_other.name_translations = { :en => 'other', :de =>'Andere', :it => '??', :fr => '??' }
-  relation_other.save
 
 
   # Create some Users and an Admin
@@ -270,7 +293,6 @@ unless Rails.env == :production
   dummy_actor_type = dummy_actor_insel.actor_type
 
   insel_name = Information.new
-  insel_name.scope = scope_public
   insel_name.information_type_decorator = dummy_actor_type.decorator_by_key(:company)
   insel_name.value = 'Insel'
   insel_name.actor = dummy_actor_insel
@@ -312,7 +334,6 @@ unless Rails.env == :production
   insel_city.actor = dummy_actor_insel
 
   insel_canton = Information.new
-  insel_canton.scope = scope_public
   insel_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
   insel_canton.value = 'BE'
   insel_canton.actor = dummy_actor_insel
@@ -328,25 +349,22 @@ unless Rails.env == :production
 
   karl_medical_specialisations = Information.new
   karl_medical_specialisations.information_type_decorator = dummy_actor_type.decorator_by_key(:medical_specialisations)
-  karl_medical_specialisations.scope = scope_public
   karl_medical_specialisations.value = ['Childdoctor']
   karl_medical_specialisations.actor = dummy_actor_karl
 
   karl_gender = Information.new
   karl_gender.information_type_decorator = dummy_actor_type.decorator_by_key(:gender)
-  karl_gender.scope = scope_public
-  karl_gender.value = 'Male'
+	karl_gender.scope = scope_public
+	karl_gender.value = 'Male'
   karl_gender.actor = dummy_actor_karl
 
   karl_fname = Information.new
   karl_fname.information_type_decorator = dummy_actor_type.decorator_by_key(:first_name)
-  karl_fname.scope = scope_public
   karl_fname.value = 'Karl'
   karl_fname.actor = dummy_actor_karl
 
   karl_lname = Information.new
   karl_lname.information_type_decorator = dummy_actor_type.decorator_by_key(:last_name)
-  karl_lname.scope = scope_public
   karl_lname.value = 'Schürch'
   karl_lname.actor = dummy_actor_karl
 

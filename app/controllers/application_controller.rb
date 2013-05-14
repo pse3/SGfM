@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(login)
-    '/' + I18n.locale.to_s + '/logins/show'
+    '/' + I18n.locale.to_s + '/'
   end
 
   def reset_all
@@ -58,11 +58,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # returns true if login owns actor, false if login doesn't own actor or if login is nil
   def login_owns_actor(login, actor)
-    if login.is_user?
+    if login.nil?
+      false
+    elsif login.is_user?
       login.account.actors.include?(actor)
     else
       false
+    end
+  end
+
+  # returns true if login is admin, false if login is not admin or if login is nil
+  def is_admin(login)
+    if login.nil?
+      false
+    else
+      login.is_admin?
     end
   end
 

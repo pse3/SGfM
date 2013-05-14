@@ -1,45 +1,78 @@
 <% @page_title = t('actor.new.title') %>
 
-<%= form_for(:actor, :url => create_actor_path, :method => :post, :html => { :class => 'form-horizontal' }) do |f| %>
-
-  <div class="page-header">
-    <h1><small><%= t('actor.new.actor_type_data') %></small></h1>
-  </div>
-
-  <div class="control-group">
-    <%= f.label(:actor_type, t('actor.new.select_type'), class: 'control-label') %>
-      <div class="controls">
-        <%= f.collection_select(:actor_type, list_actor_types, :key, :name, {}, {:id => 'actor-type-select',:onchange => "SGfM.actor.render_matching_form('"+information_types_for_actor_type_path+"',this.value)"}) %>
+<%= form_for(:actor, :url => create_actor_path, :method => :post, :html => { :class => 'form-horizontal', :onsubmit => 'on_submit()'}) do |f| %>
+  <div class="accordion" id="new-actor">
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <%= content_tag(:p, t('actor.new.type_title'), :class => 'lead left-margin', :id => 'title-actor-type') %>
       </div>
+      <div id="actor-type" class="accordion-body collapse in">
+        <div class="accordion-inner">
+          <%= render :partial => 'actor/actor_type'%>
+          <%= link_to_function(t('actor.new.next_button'), 'transition(\'actor-type\', \'information\')', :type => :btn, :class => 'btn') %>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <%= content_tag(:p, t('actor.new.information_title'), :class => 'left-margin', :id => 'title-information') %>
+      </div>
+      <div id="information" class="accordion-body collapse in">
+        <div class="accordion-inner">
+          <div id="information-types-form"></div>
+          <%= link_to_function(t('actor.new.back_button'), 'transition(\'information\', \'actor-type\', false)', :type => :btn, :class => 'btn') %>
+          <%= link_to_function(t('actor.new.next_button'), 'transition("information", "rel0", true)', :type => :btn, :class => 'btn') %>
+        </div>
+      </div>
+    </div>
+    <div id="predefined-questions-form"></div>
   </div>
-
-  <div id="information-types-form"></div>
-
-
-  <div class="page-header">
-    <h1><small><%= t('actor.new.relationship_data') %></small></h1>
-  </div>
-
-  <div id="relationship-form"></div>
-
-  <div class="control-group">
-    <p>
-      <%= button_to_function(t('actor.new.add_relationship'),
-                             "SGfM.form.add_form(\"#{add_relationship_form_path}\",'relationship-form')",
-                             :type => :button, :class => 'btn btn-medium') %>
-    </p>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit(t('actor.new.create_actor'), class: 'btn btn-large btn-primary') %>
-  </div>
-
 <% end %>
 
-
 <script>
-  $('document').ready(function() {
-    SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path%>',$('#actor-type-select').val());
-  });
-</script>
+  function actor_type_selected() {
+    var val = $('#actor-type-select option:selected').val();
+    SGfM.actor.render_matching_form(<%= raw "\"#{information_types_for_actor_type_path}\"" %>, val);
+    SGfM.insert_form(<%= raw("\"#{predefined_questions_path}\"") %>, '#predefined-questions-form', {actor_type: val});
+  }
 
+  function transition(old_one, new_one, validation) {
+    var ret = validate('#' + old_one);
+    if(!validation || !ret) {
+      do_transition(old_one, new_one);
+    } else {
+      hl(ret);
+    }
+  }
+
+  function do_transition(old_one, new_one) {
+    $('#' + old_one).collapse('hide');
+    $('#title-' + old_one).removeClass('lead');
+    $('#title-' + new_one).addClass('lead');
+    $('#' + new_one).collapse('show').goTo();
+  }
+
+  function validate(selector) {
+    var el = null;
+    $(selector).find(':input[required]').each(function(index, element) {
+      if(!$(element).val()) {
+        console.log(element);
+        el = element;
+        return false; //abort the loop here
+      }
+      return true;
+    });
+    return el;
+  }
+
+  function hl(selector){
+    $(selector).focus();
+  }
+
+  $('document').ready(function() {
+    $('#information').collapse();
+    var val = $('#actor-type-select option:selected').val();
+    SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path%>', val);
+    SGfM.insert_form(<%= raw("\"#{predefined_questions_path}\"") %>, '#predefined-questions-form', {actor_type: val});
+  })
+</script>

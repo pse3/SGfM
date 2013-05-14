@@ -1,7 +1,6 @@
 class InformationTypeDecorator
 
   include Mongoid::Document
-  include Scoped
 
   field :required, :type => Boolean
   field :searchable, :type => Boolean
@@ -9,7 +8,6 @@ class InformationTypeDecorator
 
   belongs_to :actor_type, :class_name => 'ActorType'
   belongs_to :information_type, :class_name => 'InformationType', :inverse_of => nil
-
 
 	validates_presence_of :actor_type, :information_type #, :index
 
@@ -30,7 +28,13 @@ class InformationTypeDecorator
 
   # Directs all missing methods forward to the InformationType which is the object that's being decorated
   def method_missing(method, *args)
-    args.empty? ? information_type.send(method) : information_type.send(method, args)
+		if args.empty?
+			information_type.send(method)
+		elsif args.length > 1
+			information_type.send(method, args)
+		else
+			information_type.send(method, args[0])
+		end
   end
 
 end

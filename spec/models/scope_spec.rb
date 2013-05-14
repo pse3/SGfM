@@ -1,20 +1,22 @@
 require 'spec_helper'
 
 describe Scope do
-  before {
+  before do
     #create a scope
     @scope = Scope.new
-    @scope.key = :private
-    @scope.list = [:Self, :Admin]
+    @scope.name = 'Testscope'
+    @scope.key = :test_scope
+    @scope.list = []
     @scope.save
-  }
-
-  it 'creates a scope' do
-    @scope.should_not be_nil
-    @scope.should be_an_instance_of(Scope)
-    @scope.should respond_to(:key)
-    @scope.should respond_to(:name)
-    @scope.should respond_to(:list)
   end
+
+  subject{@scope}
+
+  it{should_not be_nil}
+  it{should be_valid}
+  it{should respond_to(:key)}
+  it{should respond_to(:name)}
+  it{should respond_to(:list)}
+  it{should be_an_instance_of(Scope)}
 
 end

@@ -1,11 +1,12 @@
-<% @page_title = t('search.list.title') %>
+<% @page_title = t('actor.list.title_search') %>
 
 <%= form_tag(search_path, :method => 'post') do %>
-    <%= text_field_tag(:query, params[:query], :class => "input-medium search-query") %>
-    <%= submit_tag(t('search.list.search'), :class => "btn btn-default") %>
+    <%= text_field_tag(:query, params[:query], :class => "span4 search-query") %>
+    <%= submit_tag(t('actor.list.search'), :class => "btn btn-primary") %>
 <% end %>
 
-<div class="tabbable tabs-left">
+<div class="tabbable tabs-left" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+     xmlns="http://www.w3.org/1999/html">
   <ul class="nav nav-tabs">
     <% @actors_hash.keys.each_with_index do |actor_type, tab_count| %>
         <li <%= 'class=active' if tab_count == 0 %>>
@@ -19,14 +20,14 @@
     <% @actors_hash.keys.each_with_index do |type,tab_count| %>
         <%= content_tag(:div, :class => 'tab-pane' + ((tab_count == 0) ? ' active' : ''), :id => "tab#{tab_count.to_s}") do %>
             <table class="table table-hover">
-              <tr>
-              <th><%= t('search.list.name_table') %></th>
-              </tr>
-              <% @actors_hash[type].each do |actor| %>
-                  <tr>
-                    <td><%= link_to(actor.to_s, search_actor_path(actor)) %></td>
-                  </tr>
-              <% end %>
+                <tr>
+                    <th><%= t('actor.list.name_table') %></th>
+                </tr>
+                <% @actors_hash[type].each do |actor| %>
+                    <tr>
+                        <td><%= link_to(actor.to_s, show_actor_path(actor)) %></td>
+                    </tr>
+                <% end %>
             </table>
         <% end %>
     <% end %>

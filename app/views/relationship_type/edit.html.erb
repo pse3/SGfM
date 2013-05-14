@@ -8,33 +8,23 @@
 
 <%= form_for(@relationship_type, :url => update_relationship_type_path, :method => :post, :html => {:class => 'form-horizontal'}) do |f| %>
 
-  <div class="control-group">
-    <%= f.label(:'name[en]', "#{t('relationship_type.edit.name')} (#{t('lang.en')})", :class => 'control-label') %>
-    <div class="controls">
-      <%= f.text_field('name[en]', :value => @relationship_type.name_translations['en'], :required => true) %>
+  <% [:en, :de, :fr, :it].each do |current_locale| %>
+    <div class="control-group">
+      <%= f.label("name_translations[#{current_locale}]", "#{t('relationship_type.edit.name')} (#{t("lang.#{current_locale}")})", class: 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(:"name_translations[#{current_locale}]", :placeholder => t('relationship_type.edit.name'), :value => @relationship_type.name_translations[current_locale.to_s], :required => true) %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="control-group">
-    <%= f.label(:'name[de]', "#{t('relationship_type.edit.name')} (#{t('lang.de')})", :class => 'control-label') %>
-    <div class="controls">
-      <%= f.text_field('name[de]', :value => @relationship_type.name_translations['de'], :required => true) %>
+  <% [:en, :de, :fr, :it].each do |current_locale| %>
+    <div class="control-group">
+      <%= f.label("question_translations[#{current_locale}]", "#{t('relationship_type.edit.question')} (#{t("lang.#{current_locale}")})", class: 'control-label') %>
+      <div class="controls">
+        <%= f.text_field(:"question_translations[#{current_locale}]", :placeholder => t('relationship_type.edit.question'), :value => @relationship_type.question_translations[current_locale.to_s], :required => true, class: 'span8') %>
+      </div>
     </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label(:'name[fr]', "#{t('relationship_type.edit.name')} (#{t('lang.fr')})", :class => 'control-label') %>
-    <div class="controls">
-      <%= f.text_field('name[fr]', :value => @relationship_type.name_translations['fr'], :required => true) %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label(:'name[it]', "#{t('relationship_type.edit.name')} (#{t('lang.it')})", :class => 'control-label') %>
-    <div class="controls">
-      <%= f.text_field('name[it]', :value => @relationship_type.name_translations['it'], :required => true) %>
-    </div>
-  </div>
+  <% end %>
 
   <div class="form-actions">
     <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>

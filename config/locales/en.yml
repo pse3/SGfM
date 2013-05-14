@@ -36,7 +36,7 @@ en:
   application:
     menu:
       profile: 'Profile'
-      actors: 'Your Actors'
+      home: 'Home'
       settings: 'Settings'
       search: 'Search'
 
@@ -44,9 +44,17 @@ en:
 # Translations for all actor-pages, sorted by page structure
   actor:
     list:
-      title: 'Your actors'
+      title: 'My actors'
       new_actor: 'Create new actor'
       name_table: 'Who'
+      sure_to_delete: 'Are you sure to delete this actor?'
+      title_search: 'Search'
+      name_table: 'Results'
+      search: 'Search'
+      no_results: "Your search query didn't match any actors."
+      too_short: 'The query was too short. It must contain at least 3 characters.'
+      found: 'Your search returned %{amount} result(s)!'
+
 
     show:
       title: '%{actor}'
@@ -59,10 +67,18 @@ en:
       relationship_reference: 'Referenced Actor'
       relationship_comment: 'Comment'
       actions_table: 'Actions'
+      details: 'Details'
+      relationships: 'Relationships'
+      none_declared: 'None declared'
+      add_another_actor: 'Add another actor'
+      more: 'More...'
 
     new:
       title: 'Create new actor'
       select_type: 'Select a type'
+      type_title: 'Select a type'
+      choose_type: 'Choose a type'
+      information_title: 'Add information about yourself'
       create_actor: 'Create'
       add_relationship: 'Add relationship'
       remove_relationship: 'Remove'
@@ -72,6 +88,12 @@ en:
       relationship_comment: 'Comment'
       relationship_type: 'Type'
       admin_can_not_create_actors: "Admins can\'t create actors!"
+      submit_title: 'Submit'
+      next_button: 'Next'
+      back_button: 'Back'
+      beginning_button: 'First Step'
+      finish: 'When pressing create you complete the creation of your profile'
+      alert: 'You can not proceed to the next step, before you filled out all required information'
 
     edit:
       title: 'Edit actor'
@@ -80,9 +102,13 @@ en:
     create:
       title: 'Created Actor'
       success: 'You have successfully created an actor!'
+      failure: 'An unknown error occured!'
 
     update:
       success: 'Actor successfully updated!'
+
+    destroy:
+      success: 'Successfully deleted actor'
 
 
 # Translations for all actor_type-pages, sorted by page structure
@@ -93,6 +119,7 @@ en:
       name_table: 'Name'
       key_table: 'Key'
       actions_table: 'Actions'
+      sure_to_delete: 'Are you sure to delete this entry? All existing actors with this type will be deleted!'
 
     show:
       title: '%{actor_type}'
@@ -118,6 +145,7 @@ en:
       to_string_pattern: 'ToString representation'
       to_string_pattern_explanation: 'Use |:infotypekey| to display a information'
       name: 'Name'
+      relationship_types: 'Add predefined questions'
 
     edit:
       title: 'Edit actor type'
@@ -136,6 +164,9 @@ en:
       success: 'Actor type successfully updated!'
       failure: 'An unknown error ocurred!'
 
+    destroy:
+     success: 'Successfully deleted actor type'
+
 
 # Translations for all information_type-pages, sorted by page structure
   information_type:
@@ -146,6 +177,7 @@ en:
       key_table: 'Key'
       field_type_table: 'Field Type'
       actions_table: 'Actions'
+      sure_to_delete: 'Are you sure to delete this entry? All existing Informations with this type will be deleted!'
 
     show:
       title: '%{information_type}'
@@ -187,6 +219,9 @@ en:
     update:
       success: 'Edited informaton successfully!'
       failure: 'There was an unknown error!'
+
+    destroy:
+      success: 'Successfully deleted information type'
 
 
 #Translation for all Scope-Pages
@@ -274,6 +309,7 @@ en:
     new:
       title: 'Create new RelationshipType'
       name: 'Name'
+      question: 'Question'
       key: 'Key'
       create_relationship_type: 'Create'
 
@@ -281,6 +317,7 @@ en:
       title: 'Edit relationship type'
       type: 'Type'
       name: 'Name'
+      question: 'Question'
 
     create:
       success: 'RelationshipType successfully created!'
@@ -291,7 +328,7 @@ en:
       failure: 'An unknown error ocurred!'
 
     destroy:
-      success: 'Successfully deleted relationship'
+      success: 'Successfully deleted relationship type'
 
 
 # Translations for all login-pages, sorted by page structure
@@ -365,26 +402,6 @@ en:
           add_row: 'Add Information'
       delete_row: 'remove'
       success: '%{file_name} was successfully imported!'
-
-
-# Translations for all search pages
-  search:
-    show:
-      details: 'Details'
-      relationships: 'Relationships'
-      options: 'Options'
-      title: '%{actor} (%{actor_type})'
-      none_declared: 'None declared'
-      email: 'Send Email'
-      map: 'Find on Google Maps'
-    list:
-      title: 'Search'
-      name_table: 'Results'
-      search: 'Search'
-      no_results: "Your search query didn't match any actors."
-      enter_query: 'Please enter a search query.'
-      too_short: 'The query was too short. It must contain at least 3 characters.'
-      found: 'Your search returned %{amount} result(s)!'
 
 
 # Translations for Date and Time
