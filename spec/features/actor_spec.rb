@@ -153,71 +153,71 @@ describe "actor spec" do
     visit '/'
   end
 
-  context "with full information" do
-    it "creates a new actor",:js => true do
-
-      click_link("Sign up")
-      within('#new_login') do
-        fill_in 'login_email', :with => 'test_1@test.de'
-        fill_in 'login_password', :with => '1234test'
-        fill_in 'login_password_confirmation', :with => '1234test'
-        click_button 'Sign up'
-      end
-      sleep(1)
-      within('#actor-type') do
-        click_link 'Next'
-      end
-      select('gynecologist', :from => 'actor_information_medical_specialisations')
-      fill_in "actor_information_name_test", :with => 'TestFirstname'
-      fill_in "actor_information_phone_test", :with => '033 333 333 333'
-      click_link 'Next'
-      click_button 'Create'
-      page.should have_content("successfully")
-      click_link 'Sign out'
-    end
-  end
-  context "with only the required  information" do
-    it "creates a new actor",:js => true do
-
-      click_link("Sign up")
-      within('#new_login') do
-        fill_in 'login_email', :with => 'test_2@test.de'
-        fill_in 'login_password', :with => '1234test'
-        fill_in 'login_password_confirmation', :with => '1234test'
-        click_button 'Sign up'
-      end
-      sleep(1)
-      within('#actor-type') do
-        click_link 'Next'
-      end
-      select('gynecologist', :from => 'actor_information_medical_specialisations')
-      fill_in "actor_information_phone_test", :with => '033 333 333 333'
-      click_link 'Next'
-      click_button 'Create'
-      page.should have_content("successfully")
-      click_link 'Sign out'
-    end
-  end
-  context "with incomplete information" do
-    it "creates a new actor",:js => true do
-
-      click_link("Sign up")
-      within('#new_login') do
-        fill_in 'login_email', :with => 'test_2@test.de'
-        fill_in 'login_password', :with => '1234test'
-        fill_in 'login_password_confirmation', :with => '1234test'
-        click_button 'Sign up'
-      end
-      sleep(1)
-      within('#actor-type') do
-        click_link 'Next'
-      end
-      select('gynecologist', :from => 'actor_information_medical_specialisations')
-      click_link 'Next'
-      page.should_not have_button("Create")
-      click_link 'Sign out'
-    end
-  end
+  #context "with full information" do
+  #  it "creates a new actor",:js => true do
+  #
+  #    click_link("Sign up")
+  #    within('#new_login') do
+  #      fill_in 'login_email', :with => 'test_1@test.de'
+  #      fill_in 'login_password', :with => '1234test'
+  #      fill_in 'login_password_confirmation', :with => '1234test'
+  #      click_button 'Sign up'
+  #    end
+  #    sleep(1)
+  #    within('#actor-type') do
+  #     click_link 'Next'
+  #    end
+  #    select('gynecologist', :from => 'actor_information_medical_specialisations')
+  #    fill_in "actor_information_name_test", :with => 'TestFirstname'
+  #    fill_in "actor_information_phone_test", :with => '033 333 333 333'
+  #    click_link 'Next'
+  #    click_button 'Create'
+  #    page.should have_content("successfully")
+  #    click_link 'Sign out'
+  #  end
+  #end
+  #context "with only the required  information" do
+  #  it "creates a new actor",:js => true do
+  #
+  #    click_link("Sign up")
+  #    within('#new_login') do
+  #      fill_in 'login_email', :with => 'test_2@test.de'
+  #      fill_in 'login_password', :with => '1234test'
+  #      fill_in 'login_password_confirmation', :with => '1234test'
+  #      click_button 'Sign up'
+  #    end
+  #    sleep(1)
+  #    within('#actor-type') do
+  #      click_link 'Next'
+  #    end
+  #    select('gynecologist', :from => 'actor_information_medical_specialisations')
+  #    fill_in "actor_information_phone_test", :with => '033 333 333 333'
+  #    click_link 'Next'
+  #    click_button 'Create'
+  #    page.should have_content("successfully")
+  #    click_link 'Sign out'
+  #  end
+  #end
+  #context "with incomplete information" do
+  #  it "creates a new actor",:js => true do
+  #
+  #    click_link("Sign up")
+  #    within('#new_login') do
+  #      fill_in 'login_email', :with => 'test_2@test.de'
+  #      fill_in 'login_password', :with => '1234test'
+  #      fill_in 'login_password_confirmation', :with => '1234test'
+  #      click_button 'Sign up'
+  #    end
+  #    sleep(1)
+  #    within('#actor-type') do
+  #      click_link 'Next'
+  #    end
+  #    select('gynecologist', :from => 'actor_information_medical_specialisations')
+  #    click_link 'Next'
+  #    page.should_not have_button("Create")
+  #    click_link 'Sign out'
+  # end
+  #end
 
   context "with all required information" do
     it "updates an actor",:js => true do
@@ -227,7 +227,7 @@ describe "actor spec" do
       fill_in "login_password", :with => 'test1234'
       click_button 'Sign in'
       click_link 'Name of our test actor//033 666 77 88'
-
+      sleep(100000)
 
       click_on "Edit actor"
       fill_in 'actor_information_name_test', :with => 'Changed Name'
@@ -238,24 +238,24 @@ describe "actor spec" do
     end
   end
 
-  context "with incomplete information" do
-    it "should not update an actor",:js => true do
-
-      click_on 'Sign in'
-      fill_in "login_email", :with => 'email5@domain.ch'
-      fill_in "login_password", :with => 'test1234'
-      click_button 'Sign in'
-      click_link 'Name of our test actor//033 666 77 88'
-
-
-      click_on "Edit actor"
-      fill_in 'actor_information_name_test', :with => ''
-      click_on "update"
-      sleep(5)
-      page.should_not have_content("successfully")
-      sleep(5)
-    end
-  end
+  #context "with incomplete information" do
+  #  it "should not update an actor",:js => true do
+  #
+  #    click_on 'Sign in'
+  #    fill_in "login_email", :with => 'email5@domain.ch'
+  #    fill_in "login_password", :with => 'test1234'
+  #    click_button 'Sign in'
+  #    click_link 'Name of our test actor//033 666 77 88'
+  #
+  #
+  #    click_on "Edit actor"
+  #    fill_in 'actor_information_name_test', :with => ''
+  #    click_on "update"
+  #    sleep(5)
+  #    page.should_not have_content("successfully")
+  #    sleep(5)
+  #  end
+  #end
 
 
 
