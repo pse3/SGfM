@@ -309,7 +309,7 @@ describe "actor spec" do
     end
   end
   context "with incomplete information" do
-    it "creates a new actor",:js => true do
+    it "does not create a new actor",:js => true do
 
       click_link("Sign up")
       within('#new_login') do
@@ -347,7 +347,7 @@ describe "actor spec" do
   end
 
   context "with incomplete informatino" do
-    it "does not update",:js => true do
+    it "does not update an actor",:js => true do
 
       click_on 'Sign in'
       fill_in "login_email", :with => 'email@domain.ch'
@@ -360,6 +360,35 @@ describe "actor spec" do
       click_on "update"
       page.should_not have_content("successfully")
     end
+  end
+
+  it "adds a relationship",:js => true do
+
+    click_link("Sign up")
+    within('#new_login') do
+      fill_in 'login_email', :with => 'test_1@test.de'
+      fill_in 'login_password', :with => '1234test'
+      fill_in 'login_password_confirmation', :with => '1234test'
+      click_button 'Sign up'
+    end
+    sleep(1)
+    within('#actor-type') do
+      click_link 'Next'
+    end
+    select('gynecologist', :from => 'actor_information_medical_specialisations')
+    fill_in "actor_information_first_name", :with => 'TestDoctorFirstname'
+    fill_in "actor_information_last_name", :with => 'TestDoctorLastname'
+    click_link 'Next'
+    click_button 'Create'
+
+    click_on 'Add relationship'
+    #fill_in "select2-offscreen", :with => 'TestHospitalName//BE'
+    find(".select2-offscreen").set("T")
+    sleep(1)
+    find(".select2-input").set("TestHospitalName//BE")
+    click_on "create"
+    sleep(10)
+    page.should have_content("uccessfully")
   end
 
 
