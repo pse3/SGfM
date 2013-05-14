@@ -98,42 +98,6 @@ describe "actor spec" do
     info_phone.name_translations = { :en => 'Phone', :de =>'Telefon', :it => 'Telefono', :fr => 'Telephone' }
     info_phone.save
 
-    info_mobile = InformationType.new
-    info_mobile.key = :mobile
-    info_mobile.information_field_type = information_field_text
-    info_mobile.name_translations = { :en => 'Mobile', :de =>'Mobil', :it => '??', :fr => '??' }
-    info_mobile.save
-
-    info_fax = InformationType.new
-    info_fax.key = :fax
-    info_fax.information_field_type = information_field_text
-    info_fax.name_translations = { :en => 'Fax', :de =>'Fax', :it => '??', :fr => '??' }
-    info_fax.save
-
-    info_street = InformationType.new
-    info_street.key = :street
-    info_street.information_field_type = information_field_text
-    info_street.name_translations = { :en => 'Street', :de =>'Strasse', :it => '??', :fr => '??' }
-    info_street.save
-
-    info_street_number = InformationType.new
-    info_street_number.key = :street_number
-    info_street_number.information_field_type = information_field_text
-    info_street_number.name_translations = { :en => 'Street number', :de =>'Strassennummer', :it => '??', :fr => '??' }
-    info_street_number.save
-
-    info_zip_code = InformationType.new
-    info_zip_code.key = :zip_code
-    info_zip_code.information_field_type = information_field_text
-    info_zip_code.name_translations = { :en => 'ZIP', :de =>'PLZ', :it => '??', :fr => '??' }
-    info_zip_code.save
-
-    info_city = InformationType.new
-    info_city.key = :city
-    info_city.information_field_type = information_field_text
-    info_city.name_translations = { :en => 'City', :de =>'Stadt', :it => '??', :fr => '??' }
-    info_city.save
-
     info_canton = InformationType.new
     info_canton.key = :canton
     info_canton.information_field_type = information_field_text
