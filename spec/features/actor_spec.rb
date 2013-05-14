@@ -5,6 +5,22 @@ require 'spec_helper'
 describe "actor spec" do
 
   before do
+    # Reset all objects and types
+    Actor.delete_all
+    Information.delete_all
+    InformationType.delete_all
+    InformationTypeDecorator.delete_all
+    InformationFieldType.delete_all
+    ActorType.delete_all
+    Information.delete_all
+    InformationType.delete_all
+    Relationship.delete_all
+    RelationshipType.delete_all
+    Login.delete_all
+    User.delete_all
+    Admin.delete_all
+    Scope.delete_all
+
     #create a scope
     scope_public = BlacklistScope.new
     scope_public.key = :public_test
@@ -179,6 +195,26 @@ describe "actor spec" do
       click_link 'Next'
       click_button 'Create'
       page.should have_content("successfully")
+      click_link 'Sign out'
+    end
+  end
+  context "with incomplete information" do
+    it "creates a new actor",:js => true do
+
+      click_link("Sign up")
+      within('#new_login') do
+        fill_in 'login_email', :with => 'test_2@test.de'
+        fill_in 'login_password', :with => '1234test'
+        fill_in 'login_password_confirmation', :with => '1234test'
+        click_button 'Sign up'
+      end
+      sleep(1)
+      within('#actor-type') do
+        click_link 'Next'
+      end
+      select('gynecologist', :from => 'actor_information_medical_specialisations')
+      click_link 'Next'
+      page.should_not have_button("Create")
       click_link 'Sign out'
     end
   end
