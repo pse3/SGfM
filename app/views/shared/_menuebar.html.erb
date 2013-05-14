@@ -6,10 +6,10 @@
             <ul class="nav nav-tabs">
               <%= content_tag(:li, link_to('ActorTypes', actor_types_path), :class => actor_type) %>
               <%= content_tag(:li, link_to('InformationTypes', information_types_path), :class => info_type) %>
-              <%= content_tag(:li, link_to('CSV Import', list_csv_files_path), :class => import) %>
-              <%= content_tag(:li, link_to('Invitation', invitation_list_uninvited_path), :class => 'invitation') %>
               <%= content_tag(:li, link_to('Scopes', scopes_path), :class => scope) %>
               <%= content_tag(:li, link_to('RelationshipTypes', relationship_types_path), :class => relationship_type) %>
+              <%= content_tag(:li, link_to('CSV Import', list_csv_files_path), :class => import) %>
+              <%= content_tag(:li, link_to('Invitation', invitation_list_uninvited_path), :class => 'invitation') %>
             </ul>
           </div>
         </div>
