@@ -84,6 +84,7 @@ de:
       relationship_comment: 'Kommentar'
       relationship_type: 'Typ'
       admin_can_not_create_actors: "Admins können keine Atkeure hinzufügen!"
+      relationship_add: 'Add a new relationship'
 
     edit:
       title: 'Bearbeiten'
