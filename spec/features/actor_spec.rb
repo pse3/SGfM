@@ -191,7 +191,7 @@ describe "actor spec" do
 
     test_hospital_name = Information.new
     test_hospital_name.information_type_decorator = dummy_actor_type.decorator_by_key(:company)
-    test_hospital_name.value = 'Insel'
+    test_hospital_name.value = 'TestHospitalName'
     test_hospital_name.actor = dummy_actor_test_hospital
 
     test_hospital_phone = Information.new
@@ -352,7 +352,7 @@ describe "actor spec" do
       fill_in "login_password", :with => 'test1234'
       click_button 'Sign in'
 
-      click_link 'Insel//BE'
+      click_link 'TestHospitalName//BE'
       click_on "Edit actor"
       fill_in 'actor_information_canton', :with => ''
       click_on "update"
