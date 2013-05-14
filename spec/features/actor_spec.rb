@@ -18,7 +18,7 @@ describe "actor spec" do
         fill_in 'login_password_confirmation', :with => '1234test'
         click_button 'Sign up'
       end
-
+      sleep(1)
       within('#actor-type') do
         click_link 'Next'
       end
