@@ -24,7 +24,24 @@ describe "actor spec" do
     information_field_text.name_translations = { :en => 'Text field', :de => 'Textfeld', :it => '???', :fr => '???' }
     information_field_text.save
 
+    information_field_multiple_select = InformationFieldMultipleSelect.new
+    information_field_multiple_select.key = :multiple_select
+    information_field_multiple_select.name_translations = { :en => 'multiple selection', :de => 'Mehrauswahl', :it => '???', :fr => '???' }
+    information_field_multiple_select.save
+
+
     #create some information_types
+    info_medical_specialisations = InformationType.new
+    info_medical_specialisations.key = :medical_specialisations
+    info_medical_specialisations.information_field_type = information_field_multiple_select
+    info_medical_specialisations.data_translations = { :de => ['Gynokologe', 'Kinderarzt', 'Urologoe' ],
+                                                       :en => ['gynecologist', 'pediatrist', 'urologist'],
+                                                       :fr => ['??', '??', '??'],
+                                                       :it => ['??', '??', '??'] }
+    info_medical_specialisations.name_translations = {:en => 'Medical specialisations', :de => 'Fachgebiete', :it => '??', :fr => '??' }
+    info_medical_specialisations.scope = scope_public
+    info_medical_specialisations.save
+
     itype_name = InformationType.new
     itype_name.key = :name_test
     itype_name.information_field_type = information_field_text
@@ -134,41 +151,12 @@ describe "actor spec" do
         click_link 'Next'
       end
 
-      select('gynecologist', :from => 'actor_information_medical_specialisations')
-      fill_in "actor_information_first_name", :with => 'TestFirstname'
-      fill_in "actor_information_last_name", :with => 'TestLastname'
-      fill_in "actor_information_street", :with => 'TestStreet'
-      fill_in "actor_information_street_number", :with => '666'
-      fill_in "actor_information_zip_code", :with => '9032'
+      #select('gynecologist', :from => 'actor_information_medical_specialisations')
+      fill_in "actor_itype_name", :with => 'TestFirstname'
+      fill_in "actor_itype_phone", :with => '033 333 333 333'
       click_link 'Next'
       click_button 'Create'
       page.should have_content("successfully")
-      click_link 'Sign out'
-    end
-  end
-
-  context "with incomplete information" do
-    it "does not create a new doctor",:js => true do
-
-      click_link("Sign up")
-      within('#new_login') do
-        fill_in 'login_email', :with => 'test_13@test.de'
-        fill_in 'login_password', :with => '1234test'
-        fill_in 'login_password_confirmation', :with => '1234test'
-        click_button 'Sign up'
-      end
-      sleep(1)
-      within('#actor-type') do
-        click_link 'Next'
-      end
-
-      select('gynecologist', :from => 'actor_information_medical_specialisations')
-      fill_in "actor_information_first_name", :with => 'TestFirstname'
-      fill_in "actor_information_street", :with => 'TestStreet'
-      fill_in "actor_information_street_number", :with => '666'
-      fill_in "actor_information_zip_code", :with => '9032'
-      click_link 'Next'
-      page.should_not have_button("Create")
       click_link 'Sign out'
     end
   end
