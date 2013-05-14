@@ -210,39 +210,39 @@ describe "actor spec" do
     user.save
 
     # Dummy doctor 'Karl Schürch'
-    dummy_actor_karl = Actor.new
-    dummy_actor_karl.actor_type = ActorType.find_by_key(:doctor)
-    dummy_actor_type = dummy_actor_karl.actor_type
+    dummy_actor_test_doctor = Actor.new
+    dummy_actor_test_doctor.actor_type = ActorType.find_by_key(:doctor)
+    dummy_actor_type = dummy_actor_test_doctor.actor_type
 
-    karl_medical_specialisations = Information.new
-    karl_medical_specialisations.information_type_decorator = dummy_actor_type.decorator_by_key(:medical_specialisations)
-    karl_medical_specialisations.value = ['Childdoctor']
-    karl_medical_specialisations.actor = dummy_actor_karl
+    test_doctor_medical_specialisations = Information.new
+    test_doctor_medical_specialisations.information_type_decorator = dummy_actor_type.decorator_by_key(:medical_specialisations)
+    test_doctor_medical_specialisations.value = ['Childdoctor']
+    test_doctor_medical_specialisations.actor = dummy_actor_test_doctor
 
-    karl_fname = Information.new
-    karl_fname.information_type_decorator = dummy_actor_type.decorator_by_key(:first_name)
-    karl_fname.value = 'Karl'
-    karl_fname.actor = dummy_actor_karl
+    test_doctor_fname = Information.new
+    test_doctor_fname.information_type_decorator = dummy_actor_type.decorator_by_key(:first_name)
+    test_doctor_fname.value = 'TestDoctorFirstName'
+    test_doctor_fname.actor = dummy_actor_test_doctor
 
-    karl_lname = Information.new
-    karl_lname.information_type_decorator = dummy_actor_type.decorator_by_key(:last_name)
-    karl_lname.value = 'Schuerch'
-    karl_lname.actor = dummy_actor_karl
+    test_doctor_lname = Information.new
+    test_doctor_lname.information_type_decorator = dummy_actor_type.decorator_by_key(:last_name)
+    test_doctor_lname.value = 'TestDoctorSecondName'
+    test_doctor_lname.actor = dummy_actor_test_doctor
 
-    karl_phone = Information.new
-    karl_phone.information_type_decorator = dummy_actor_type.decorator_by_key(:phone)
-    karl_phone.scope = scope_private
-    karl_phone.value = '078 888 77 66'
-    karl_phone.actor = dummy_actor_karl
+    test_doctor_phone = Information.new
+    test_doctor_phone.information_type_decorator = dummy_actor_type.decorator_by_key(:phone)
+    test_doctor_phone.scope = scope_private
+    test_doctor_phone.value = '078 888 77 66'
+    test_doctor_phone.actor = dummy_actor_test_doctor
 
-    karl_canton = Information.new
-    karl_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
-    karl_canton.scope = scope_private
-    karl_canton.value = 'FR'
-    karl_canton.actor = dummy_actor_karl
+    test_doctor_canton = Information.new
+    test_doctor_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
+    test_doctor_canton.scope = scope_private
+    test_doctor_canton.value = 'FR'
+    test_doctor_canton.actor = dummy_actor_test_doctor
 
-    user.actors.push(dummy_actor_karl)
-    dummy_actor_karl.save
+    user.actors.push(dummy_actor_test_doctor)
+    dummy_actor_test_doctor.save
     user.save
 
 
@@ -251,7 +251,7 @@ describe "actor spec" do
     relationship_test_hospital.relationship_type = RelationshipType.find_by_key(:works_with)
     relationship_test_hospital.comment = 'This is a comment. Made by god!'
     relationship_test_hospital.actor = dummy_actor_test_hospital
-    relationship_test_hospital.reference = dummy_actor_karl
+    relationship_test_hospital.reference = dummy_actor_test_doctor
     relationship_test_hospital.save
 
     visit '/'
@@ -336,7 +336,7 @@ describe "actor spec" do
       fill_in "login_password", :with => 'test1234'
       click_button 'Sign in'
 
-      click_link 'Insel//BE'
+      click_link 'TestHospitalName//BE'
       click_on "Edit actor"
       fill_in 'actor_information_canton', :with => 'SG'
       click_on "update"
