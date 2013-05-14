@@ -59,7 +59,8 @@ describe "actor spec" do
     #create some actor_types
     @atype_doctor = ActorType.new
     @atype_doctor.key = :doctor_test
-    InformationTypeDecorator.create(itype_name, @atype_doctor, true, true)
+    InformationTypeDecorator.create(info_medical_specialisations, @atype_doctor, true, true)
+    InformationTypeDecorator.create(itype_name, @atype_doctor, false, true)
     InformationTypeDecorator.create(itype_phone, @atype_doctor, true, true)
     @atype_doctor.name_translations = { :en => 'Doctor', :de =>'Arzt', :it => 'Dottore', :fr => 'Mdecin' }
     @atype_doctor.to_string_pattern = "|:name_test|//|:phone_test|"
@@ -137,11 +138,11 @@ describe "actor spec" do
   end
 
   context "with full information" do
-    it "creates a new doctor",:js => true do
+    it "creates a new actor",:js => true do
 
       click_link("Sign up")
       within('#new_login') do
-        fill_in 'login_email', :with => 'test_12@test.de'
+        fill_in 'login_email', :with => 'test_1@test.de'
         fill_in 'login_password', :with => '1234test'
         fill_in 'login_password_confirmation', :with => '1234test'
         click_button 'Sign up'
@@ -150,15 +151,37 @@ describe "actor spec" do
       within('#actor-type') do
         click_link 'Next'
       end
-
-      #select('gynecologist', :from => 'actor_information_medical_specialisations')
-      fill_in "actor_itype_name", :with => 'TestFirstname'
-      fill_in "actor_itype_phone", :with => '033 333 333 333'
+      select('gynecologist', :from => 'actor_information_medical_specialisations')
+      fill_in "actor_information_name_test", :with => 'TestFirstname'
+      fill_in "actor_information_phone_test", :with => '033 333 333 333'
       click_link 'Next'
       click_button 'Create'
       page.should have_content("successfully")
       click_link 'Sign out'
     end
   end
+  context "with only the required  information" do
+    it "creates a new actor",:js => true do
+
+      click_link("Sign up")
+      within('#new_login') do
+        fill_in 'login_email', :with => 'test_2@test.de'
+        fill_in 'login_password', :with => '1234test'
+        fill_in 'login_password_confirmation', :with => '1234test'
+        click_button 'Sign up'
+      end
+      sleep(1)
+      within('#actor-type') do
+        click_link 'Next'
+      end
+      select('gynecologist', :from => 'actor_information_medical_specialisations')
+      fill_in "actor_information_phone_test", :with => '033 333 333 333'
+      click_link 'Next'
+      click_button 'Create'
+      page.should have_content("successfully")
+      click_link 'Sign out'
+    end
+  end
+
 
 end
