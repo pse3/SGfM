@@ -115,6 +115,7 @@ describe "actor spec" do
     @relationship1.actor = @actor
     @relationship1.reference = @actor2
     @relationship1.save
+
     visit '/'
   end
 
@@ -145,12 +146,13 @@ describe "actor spec" do
       click_link 'Sign out'
     end
   end
+
   context "with incomplete information" do
     it "does not create a new doctor",:js => true do
 
       click_link("Sign up")
       within('#new_login') do
-        fill_in 'login_email', :with => 'test_12@test.de'
+        fill_in 'login_email', :with => 'test_13@test.de'
         fill_in 'login_password', :with => '1234test'
         fill_in 'login_password_confirmation', :with => '1234test'
         click_button 'Sign up'
@@ -166,14 +168,9 @@ describe "actor spec" do
       fill_in "actor_information_street_number", :with => '666'
       fill_in "actor_information_zip_code", :with => '9032'
       click_link 'Next'
-      click_button 'Create'
-      page.should_not have_content("successfully")
+      page.should_not have_button("Create")
       click_link 'Sign out'
     end
   end
-  context "with full information" do
-
-  end
-
 
 end
