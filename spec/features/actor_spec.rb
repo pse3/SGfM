@@ -219,5 +219,45 @@ describe "actor spec" do
     end
   end
 
+  context "with all required information" do
+    it "updates an actor",:js => true do
+
+      click_on 'Sign in'
+      fill_in "login_email", :with => 'email5@domain.ch'
+      fill_in "login_password", :with => 'test1234'
+      click_button 'Sign in'
+      click_link 'Name of our test actor//033 666 77 88'
+
+
+      click_on "Edit actor"
+      fill_in 'actor_information_name_test', :with => 'Changed Name'
+      click_on "update"
+      sleep(5)
+      page.should have_content("successfully")
+      sleep(5)
+    end
+  end
+
+  context "with incomplete information" do
+    it "should not update an actor",:js => true do
+
+      click_on 'Sign in'
+      fill_in "login_email", :with => 'email5@domain.ch'
+      fill_in "login_password", :with => 'test1234'
+      click_button 'Sign in'
+      click_link 'Name of our test actor//033 666 77 88'
+
+
+      click_on "Edit actor"
+      fill_in 'actor_information_name_test', :with => ''
+      click_on "update"
+      sleep(5)
+      page.should_not have_content("successfully")
+      sleep(5)
+    end
+  end
+
+
+
 
 end
