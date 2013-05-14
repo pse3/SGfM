@@ -185,28 +185,28 @@ describe "actor spec" do
     # Create some Actors
 
     # Dummy actor 'Insel'
-    dummy_actor_insel = Actor.new
-    dummy_actor_insel.actor_type = ActorType.find_by_key(:hospital)
-    dummy_actor_type = dummy_actor_insel.actor_type
+    dummy_actor_test_hospital = Actor.new
+    dummy_actor_test_hospital.actor_type = ActorType.find_by_key(:hospital)
+    dummy_actor_type = dummy_actor_test_hospital.actor_type
 
-    insel_name = Information.new
-    insel_name.information_type_decorator = dummy_actor_type.decorator_by_key(:company)
-    insel_name.value = 'Insel'
-    insel_name.actor = dummy_actor_insel
+    test_hospital_name = Information.new
+    test_hospital_name.information_type_decorator = dummy_actor_type.decorator_by_key(:company)
+    test_hospital_name.value = 'Insel'
+    test_hospital_name.actor = dummy_actor_test_hospital
 
-    insel_phone = Information.new
-    insel_phone.scope = scope_public
-    insel_phone.information_type_decorator = dummy_actor_type.decorator_by_key(:phone)
-    insel_phone.value = '033 777 88 11'
-    insel_phone.actor = dummy_actor_insel
+    test_hospital_phone = Information.new
+    test_hospital_phone.scope = scope_public
+    test_hospital_phone.information_type_decorator = dummy_actor_type.decorator_by_key(:phone)
+    test_hospital_phone.value = '033 777 88 11'
+    test_hospital_phone.actor = dummy_actor_test_hospital
 
-    insel_canton = Information.new
-    insel_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
-    insel_canton.value = 'BE'
-    insel_canton.actor = dummy_actor_insel
+    test_hospital_canton = Information.new
+    test_hospital_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
+    test_hospital_canton.value = 'BE'
+    test_hospital_canton.actor = dummy_actor_test_hospital
 
-    user.actors.push(dummy_actor_insel)
-    dummy_actor_insel.save
+    user.actors.push(dummy_actor_test_hospital)
+    dummy_actor_test_hospital.save
     user.save
 
     # Dummy doctor 'Karl Schürch'
@@ -247,12 +247,12 @@ describe "actor spec" do
 
 
     # Create some Relations
-    relationship_insel = Relationship.new
-    relationship_insel.relationship_type = RelationshipType.find_by_key(:works_with)
-    relationship_insel.comment = 'This is a comment. Made by god!'
-    relationship_insel.actor = dummy_actor_insel
-    relationship_insel.reference = dummy_actor_karl
-    relationship_insel.save
+    relationship_test_hospital = Relationship.new
+    relationship_test_hospital.relationship_type = RelationshipType.find_by_key(:works_with)
+    relationship_test_hospital.comment = 'This is a comment. Made by god!'
+    relationship_test_hospital.actor = dummy_actor_test_hospital
+    relationship_test_hospital.reference = dummy_actor_karl
+    relationship_test_hospital.save
 
     visit '/'
   end
