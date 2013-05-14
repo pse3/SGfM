@@ -1,16 +1,23 @@
-<h2> You're almost done! Now create a password to securely access your account. </h2>
+<%  @page_title = t('devise.confirmations.setPW') %>
 
-<%= semantic_form_for(resource, :as => resource_name, :url => confirm_path) do |form| %>
+<%= semantic_form_for(resource, :as => resource_name, :url => confirm_path, :html => {:class => 'form-horizontal'}) do |form| %>
+
     <%= devise_error_messages! %>
-    <div>
-      <% form.inputs do %>
-          <%= form.input :password, :input_html => {:autofocus => true} %>
-          <%= form.input :password_confirmation %>
-          <%= form.input :confirmation_token, :as => :hidden %>
-          <%= form.actions do %>
-              <%= form.action :submit, :label => 'Confirm Account' %>
 
-          <% end %>
+    <div class="control-group">
+      <% form.inputs do %>
+          <div class="controls">
+            <%= form.input :password, :input_html => {:autofocus => true} %>
+            <%= form.input :password_confirmation %>
+            <%= form.input :confirmation_token, :as => :hidden %>
+          </div>
+
+          <div class="form-actions">
+            <%= form.actions do %>
+              <%= form.action :submit, :label => t('devise.confirmations.send'), class: 'btn btn-large btn-primary' %>
+            <% end %>
+          </div>
+
       <% end %>
     </div>
 <% end %>

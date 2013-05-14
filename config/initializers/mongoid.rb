@@ -414,6 +414,32 @@ unless Rails.env == :production
   dummy_actor_karl.save
   user.save
 
+  # Dummy doctor 'Karl Schürch'
+  dummy_suti = Actor.new
+  dummy_suti.actor_type = ActorType.find_by_key(:doctor)
+  dummy_actor_type = dummy_suti.actor_type
+
+  suti_fname = Information.new
+  suti_fname.information_type_decorator = dummy_actor_type.decorator_by_key(:first_name)
+  suti_fname.scope = scope_public
+  suti_fname.value = 'Patrick'
+  suti_fname.actor = dummy_suti
+
+  suti_lname = Information.new
+  suti_lname.information_type_decorator = dummy_actor_type.decorator_by_key(:last_name)
+  suti_lname.scope = scope_public
+  suti_lname.value = 'Suter'
+  suti_lname.actor = dummy_suti
+
+  suti_email = Information.new
+  suti_email.information_type_decorator = dummy_actor_type.decorator_by_key(:email)
+  suti_email.scope = scope_public
+  suti_email.value = 'patrick.suter@students.unibe.ch'
+  suti_email.actor = dummy_suti
+
+
+  dummy_suti.save
+
 
   # Create some Relations
   relationship_insel = Relationship.new

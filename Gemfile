@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'mongoid', '~> 3.0.0'
 gem 'devise'
+gem 'devise-async'
+gem 'resque'
 gem 'bootstrap-sass'
 gem 'database_cleaner'
 gem 'mocha', :require => false
