@@ -6,6 +6,7 @@ describe "actor spec" do
 
   before do
     # Reset all objects and types
+    # Reset all objects and types
     Actor.delete_all
     Information.delete_all
     InformationType.delete_all
@@ -21,24 +22,36 @@ describe "actor spec" do
     Admin.delete_all
     Scope.delete_all
 
-    #create a scope
+    #create some scopes
+
+    scope_stats = WhitelistScope.new
+    scope_stats.key = :statistics
+    scope_stats.name_translations = { :en => 'private + statistics', :de => 'privat + statistik', :it => 'privato + statistiche', :fr => 'prive + statistique' }
+    scope_stats.list = [:Self, :Admin]
+    scope_stats.save
+
     scope_public = BlacklistScope.new
-    scope_public.key = :public_test
-    scope_public.name_translations = { :en => 'public', :de => 'entlich', :it => 'pubblico', :frc=> 'public' }
+    scope_public.key = :public
+    scope_public.name_translations = { :en => 'public', :de => 'oeffentlich', :it => 'pubblico', :frc=> 'public' }
     scope_public.list = []
     scope_public.save
 
-    @scope_private = WhitelistScope.new
-    @scope_private.key = :private_test
-    @scope_private.name_translations = { :en => 'private', :de => 'privat', :it => 'privato', :fr => 'prive' }
-    @scope_private.list = [:Self]
-    @scope_private.save
+    scope_private = WhitelistScope.new
+    scope_private.key = :private
+    scope_private.name_translations = { :en => 'private', :de => 'privat', :it => 'privato', :fr => 'prive' }
+    scope_private.list = [:Self]
+    scope_private.save
 
-    #create an information_field_type
+    #create the information field types
     information_field_text = InformationFieldText.new
     information_field_text.key = :text
     information_field_text.name_translations = { :en => 'Text field', :de => 'Textfeld', :it => '???', :fr => '???' }
     information_field_text.save
+
+    information_field_email = InformationFieldEmail.new
+    information_field_email.key = :email
+    information_field_email.name_translations = { :en => 'Email field', :de => 'Emailfeld', :it => '???', :fr => '???' }
+    information_field_email.save
 
     information_field_multiple_select = InformationFieldMultipleSelect.new
     information_field_multiple_select.key = :multiple_select
@@ -58,97 +71,235 @@ describe "actor spec" do
     info_medical_specialisations.scope = scope_public
     info_medical_specialisations.save
 
-    itype_name = InformationType.new
-    itype_name.key = :name_test
-    itype_name.information_field_type = information_field_text
-    itype_name.name_translations = { :en => 'First name', :de =>'Vorname', :it => '??', :fr => '??' }
-    itype_name.scope = scope_public
-    itype_name.save
+    info_company = InformationType.new
+    info_company.key = :company
+    info_company.information_field_type = information_field_text
+    info_company.name_translations = { :en => 'Company', :de =>'Firma', :it => '??', :fr => '??' }
+    info_company.scope = scope_public
+    info_company.save
 
-    itype_phone = InformationType.new
-    itype_phone.key = :phone_test
-    itype_phone.information_field_type = information_field_text
-    itype_phone.name = "Telefon"
-    itype_phone.scope = scope_public
-    itype_phone.save
+    info_first_name = InformationType.new
+    info_first_name.key = :first_name
+    info_first_name.information_field_type = information_field_text
+    info_first_name.name_translations = { :en => 'First name', :de =>'Vorname', :it => '??', :fr => '??' }
+    info_first_name.scope = scope_public
+    info_first_name.save
 
-    #create some actor_types
-    @atype_doctor = ActorType.new
-    @atype_doctor.key = :doctor_test
-    InformationTypeDecorator.create(info_medical_specialisations, @atype_doctor, true, true)
-    InformationTypeDecorator.create(itype_name, @atype_doctor, false, true)
-    InformationTypeDecorator.create(itype_phone, @atype_doctor, true, true)
-    @atype_doctor.name_translations = { :en => 'Doctor', :de =>'Arzt', :it => 'Dottore', :fr => 'Mdecin' }
-    @atype_doctor.to_string_pattern = "|:name_test|//|:phone_test|"
-    @atype_doctor.save
+    info_last_name = InformationType.new
+    info_last_name.key = :last_name
+    info_last_name.information_field_type = information_field_text
+    info_last_name.name_translations = { :en => 'Last name', :de =>'Name', :it => '??', :fr => '??' }
+    info_last_name.scope = scope_public
+    info_last_name.save
 
-    #create a user
-    @user = User.new
-    login = Login.new(:email => 'email5@domain.ch',
-                      :password => 'test1234',
-                      :password_confirmation => 'test1234')
-    login.account = @user
-    @user.save
+    info_phone = InformationType.new
+    info_phone.key = :phone
+    info_phone.information_field_type = information_field_text
+    info_phone.name_translations = { :en => 'Phone', :de =>'Telefon', :it => 'Telefono', :fr => 'Telephone' }
+    info_phone.save
 
-    #create actor
-    @actor = Actor.new
-    @actor.actor_type = @atype_doctor
+    info_mobile = InformationType.new
+    info_mobile.key = :mobile
+    info_mobile.information_field_type = information_field_text
+    info_mobile.name_translations = { :en => 'Mobile', :de =>'Mobil', :it => '??', :fr => '??' }
+    info_mobile.save
 
-    @actor_name = Information.new
-    @actor_name.scope = scope_public
-    @actor_name.information_type_decorator = @actor.actor_type.decorator_by_key(:name_test)
-    @actor_name.value = 'Name of our test actor'
-    @actor_name.actor = @actor
+    info_fax = InformationType.new
+    info_fax.key = :fax
+    info_fax.information_field_type = information_field_text
+    info_fax.name_translations = { :en => 'Fax', :de =>'Fax', :it => '??', :fr => '??' }
+    info_fax.save
 
-    @actor_phone = Information.new
-    @actor_phone.scope = scope_public
-    @actor_phone.information_type_decorator = @actor.actor_type.decorator_by_key(:phone_test)
-    @actor_phone.value = '033 666 77 88'
-    @actor_phone.actor = @actor
+    info_street = InformationType.new
+    info_street.key = :street
+    info_street.information_field_type = information_field_text
+    info_street.name_translations = { :en => 'Street', :de =>'Strasse', :it => '??', :fr => '??' }
+    info_street.save
 
-    @user.actors.push(@actor)
-    @actor.save
-    @user.save
+    info_street_number = InformationType.new
+    info_street_number.key = :street_number
+    info_street_number.information_field_type = information_field_text
+    info_street_number.name_translations = { :en => 'Street number', :de =>'Strassennummer', :it => '??', :fr => '??' }
+    info_street_number.save
 
-    #create actor2
+    info_zip_code = InformationType.new
+    info_zip_code.key = :zip_code
+    info_zip_code.information_field_type = information_field_text
+    info_zip_code.name_translations = { :en => 'ZIP', :de =>'PLZ', :it => '??', :fr => '??' }
+    info_zip_code.save
 
-    @actor2 = Actor.new
-    @actor2.actor_type = @atype_doctor
+    info_city = InformationType.new
+    info_city.key = :city
+    info_city.information_field_type = information_field_text
+    info_city.name_translations = { :en => 'City', :de =>'Stadt', :it => '??', :fr => '??' }
+    info_city.save
 
-    @actor_name2 = Information.new
-    @actor_name2.scope = scope_public
-    @actor_name2.information_type_decorator = @actor.actor_type.decorator_by_key(:name_test)
-    @actor_name2.value = 'Name of our second test actor'
-    @actor_name2.actor = @actor2
+    info_canton = InformationType.new
+    info_canton.key = :canton
+    info_canton.information_field_type = information_field_text
+    info_canton.name_translations = { :en => 'Canton', :de =>'Kanton', :it => '??', :fr => '??' }
+    info_canton.scope = scope_public
+    info_canton.save
 
-    @actor_phone2 = Information.new
-    @actor_phone2.scope = scope_public
-    @actor_phone2.information_type_decorator = @actor.actor_type.decorator_by_key(:phone_test)
-    @actor_phone2.value = '345 434 49 95'
-    @actor_phone2.actor = @actor2
+    info_email = InformationType.new
+    info_email.key = :email
+    info_email.information_field_type = information_field_text
+    info_email.name_translations = { :en => 'Email', :de =>'E-Mail', :it => 'Smalto', :fr => 'Email' }
+    info_email.save
 
-    @user.actors.push(@actor2)
-    @actor2.save
-    @user.save
-
-    #create relationship between actor and actor2
-    @relation_works_with = RelationshipType.new
-    @relation_works_with.key = :works_with_test
-    @relation_works_with.name_translations = { :en => 'works with', :de =>'arbeitet mit', :it => '??', :fr => '??' }
-    @relation_works_with.question_translations = {
+    # Create some RelationshipTypes
+    relation_works_with = RelationshipType.new
+    relation_works_with.key = :works_with
+    relation_works_with.name_translations = { :en => 'works with', :de =>'arbeitet mit', :it => '??', :fr => '??' }
+    relation_works_with.question_translations = {
         :en => 'With whom do you work?',
         :de => 'Mit wem arbeitet Ihr?',
         :it => '??',
         :fr => '??'
     }
-    @relation_works_with.save
+    relation_works_with.save
 
-    @relationship1 = Relationship.new
-    @relationship1.relationship_type = RelationshipType.find_by_key(:works_with_test)
-    @relationship1.comment = 'This is another comment. Made by god! Creepy!'
-    @relationship1.actor = @actor
-    @relationship1.reference = @actor2
-    @relationship1.save
+    relation_assigns = RelationshipType.new
+    relation_assigns.key = :assign_to
+    relation_assigns.name_translations = { :en => 'assign to', :de =>'Ueberweisung an', :it => '??', :fr => '??' }
+    relation_assigns.question_translations = {
+        :en => 'To whom do you assign patients?',
+        :de => 'An wen ueberweist Ihr Patienten?',
+        :it => '??',
+        :fr => '??'
+    }
+    relation_assigns.save
+
+    relation_other = RelationshipType.new
+    relation_other.key = :other
+    relation_other.name_translations = { :en => 'other', :de =>'Andere', :it => '??', :fr => '??' }
+    relation_other.question_translations = {
+        :en => 'Do you have other relations you want to mention?',
+        :de => 'Haben Sie andere Beziehungen, die Sie angeben moechten?',
+        :it => '??',
+        :fr => '??'
+    }
+    relation_other.save
+
+
+    # Create some ActorTypes
+    actor_doctor = ActorType.new
+    actor_doctor.key = :doctor
+    InformationTypeDecorator.create(info_medical_specialisations, actor_doctor, true, true)
+    InformationTypeDecorator.create(info_first_name, actor_doctor,  true, true)
+    InformationTypeDecorator.create(info_last_name, actor_doctor, true, true)
+    InformationTypeDecorator.create(info_phone, actor_doctor, false, true)
+    InformationTypeDecorator.create(info_canton, actor_doctor, false, true)
+    actor_doctor.name_translations = { :en => 'Doctor', :de =>'Arzt', :it => 'Dottore', :fr => 'Medecin' }
+    actor_doctor.to_string_pattern = '|:last_name| |:first_name|'
+    actor_doctor.save
+
+
+    actor_hospital = ActorType.new
+    actor_hospital.key = :hospital
+    InformationTypeDecorator.create(info_company, actor_hospital, true, true)
+    InformationTypeDecorator.create(info_phone, actor_hospital, false, true)
+    InformationTypeDecorator.create(info_canton, actor_hospital, true, true)
+    actor_hospital.name_translations = { :en => 'Hospital', :de =>'Spital', :it => 'Ospedale', :fr => 'Hopital' }
+    actor_hospital.to_string_pattern = '|:company|//|:canton|'
+    actor_hospital.save
+
+
+    user = User.new
+    login = Login.new(:email => 'email@domain.ch',
+                      :password => 'test1234',
+                      :password_confirmation => 'test1234')
+    login.account = user
+    user.save
+
+    user2 = User.new
+    login = Login.new(:email => 'user@domain.ch',
+                      :password => 'test1234',
+                      :password_confirmation => 'test1234')
+    login.account = user2
+    user2.save
+
+    login.save
+    admin = Admin.new
+    login = Login.new(:email => 'admin@domain.ch',
+                      :password => 'test1234',
+                      :password_confirmation => 'test1234')
+    login.account = admin
+    admin.save
+    login.save
+
+
+    # Create some Actors
+
+    # Dummy actor 'Insel'
+    dummy_actor_insel = Actor.new
+    dummy_actor_insel.actor_type = ActorType.find_by_key(:hospital)
+    dummy_actor_type = dummy_actor_insel.actor_type
+
+    insel_name = Information.new
+    insel_name.information_type_decorator = dummy_actor_type.decorator_by_key(:company)
+    insel_name.value = 'Insel'
+    insel_name.actor = dummy_actor_insel
+
+    insel_phone = Information.new
+    insel_phone.scope = scope_public
+    insel_phone.information_type_decorator = dummy_actor_type.decorator_by_key(:phone)
+    insel_phone.value = '033 777 88 11'
+    insel_phone.actor = dummy_actor_insel
+
+    insel_canton = Information.new
+    insel_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
+    insel_canton.value = 'BE'
+    insel_canton.actor = dummy_actor_insel
+
+    user.actors.push(dummy_actor_insel)
+    dummy_actor_insel.save
+    user.save
+
+    # Dummy doctor 'Karl Schürch'
+    dummy_actor_karl = Actor.new
+    dummy_actor_karl.actor_type = ActorType.find_by_key(:doctor)
+    dummy_actor_type = dummy_actor_karl.actor_type
+
+    karl_medical_specialisations = Information.new
+    karl_medical_specialisations.information_type_decorator = dummy_actor_type.decorator_by_key(:medical_specialisations)
+    karl_medical_specialisations.value = ['Childdoctor']
+    karl_medical_specialisations.actor = dummy_actor_karl
+
+    karl_fname = Information.new
+    karl_fname.information_type_decorator = dummy_actor_type.decorator_by_key(:first_name)
+    karl_fname.value = 'Karl'
+    karl_fname.actor = dummy_actor_karl
+
+    karl_lname = Information.new
+    karl_lname.information_type_decorator = dummy_actor_type.decorator_by_key(:last_name)
+    karl_lname.value = 'Schuerch'
+    karl_lname.actor = dummy_actor_karl
+
+    karl_phone = Information.new
+    karl_phone.information_type_decorator = dummy_actor_type.decorator_by_key(:phone)
+    karl_phone.scope = scope_private
+    karl_phone.value = '078 888 77 66'
+    karl_phone.actor = dummy_actor_karl
+
+    karl_canton = Information.new
+    karl_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
+    karl_canton.scope = scope_private
+    karl_canton.value = 'FR'
+    karl_canton.actor = dummy_actor_karl
+
+    user.actors.push(dummy_actor_karl)
+    dummy_actor_karl.save
+    user.save
+
+
+    # Create some Relations
+    relationship_insel = Relationship.new
+    relationship_insel.relationship_type = RelationshipType.find_by_key(:works_with)
+    relationship_insel.comment = 'This is a comment. Made by god!'
+    relationship_insel.actor = dummy_actor_insel
+    relationship_insel.reference = dummy_actor_karl
+    relationship_insel.save
 
     visit '/'
   end
@@ -223,39 +374,33 @@ describe "actor spec" do
     it "updates an actor",:js => true do
 
       click_on 'Sign in'
-      fill_in "login_email", :with => 'email5@domain.ch'
+      fill_in "login_email", :with => 'email@domain.ch'
       fill_in "login_password", :with => 'test1234'
       click_button 'Sign in'
-      click_link 'Name of our test actor//033 666 77 88'
-      sleep(100000)
 
+      click_link 'Insel//BE'
       click_on "Edit actor"
-      fill_in 'actor_information_name_test', :with => 'Changed Name'
+      fill_in 'actor_information_canton', :with => 'SG'
       click_on "update"
-      sleep(5)
       page.should have_content("successfully")
-      sleep(5)
     end
   end
 
-  #context "with incomplete information" do
-  #  it "should not update an actor",:js => true do
-  #
-  #    click_on 'Sign in'
-  #    fill_in "login_email", :with => 'email5@domain.ch'
-  #    fill_in "login_password", :with => 'test1234'
-  #    click_button 'Sign in'
-  #    click_link 'Name of our test actor//033 666 77 88'
-  #
-  #
-  #    click_on "Edit actor"
-  #    fill_in 'actor_information_name_test', :with => ''
-  #    click_on "update"
-  #    sleep(5)
-  #    page.should_not have_content("successfully")
-  #    sleep(5)
-  #  end
-  #end
+  context "with incomplete informatino" do
+    it "does not update",:js => true do
+
+      click_on 'Sign in'
+      fill_in "login_email", :with => 'email@domain.ch'
+      fill_in "login_password", :with => 'test1234'
+      click_button 'Sign in'
+
+      click_link 'Insel//BE'
+      click_on "Edit actor"
+      fill_in 'actor_information_canton', :with => ''
+      click_on "update"
+      page.should_not have_content("successfully")
+    end
+  end
 
 
 
