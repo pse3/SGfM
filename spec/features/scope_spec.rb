@@ -52,7 +52,14 @@ describe "actor spec" do
     page.should have_content('uccessfully')
   end
 
-  it 'updates a scope'
+  it 'updates a scope', :js => true do
+    click_on 'Sign in'
+    fill_in "login_email", :with => 'admin@domain.ch'
+    fill_in "login_password", :with => 'test1234'
+    click_button 'Sign in'
+    click_on 'Scopes'
+
+  end
   it 'destroys a scope'
 
 end

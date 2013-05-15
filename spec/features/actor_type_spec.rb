@@ -183,13 +183,13 @@ describe "actor spec" do
      select('Medical specialisations', :from => 'information_type_decorator_information_type')
      select('Yes', :from => 'information_type_decorator_required')
      select('Yes', :from => 'information_type_decorator_searchable')
-     sleep(1)
      click_on 'Add Information Type'
+     sleep(0.5)
      page.all("#information_type_decorator_information_type")[1].select("First name")
      page.all("#information_type_decorator_required")[1].select("Yes")
      page.all("#information_type_decorator_searchable")[1].select("Yes")
-     sleep(1)
      click_on 'Add Information Type'
+     sleep(0.5)
      page.all("#information_type_decorator_information_type")[2].select("Company")
      page.all("#information_type_decorator_required")[2].select("No")
      page.all("#information_type_decorator_searchable")[2].select("Yes")
