@@ -73,10 +73,9 @@ describe "Scope" do
     fill_in "login_password", :with => 'test1234'
     click_button 'Sign in'
     click_on 'Scopes'
-    sleep(20)
     page.all("a")[16].click #clicks on the 16th link on the page
     fill_in 'scope_name[en]', :with => 'UpdatedTestScopeName'
-    click_on 'update'
+    click_on 'Save'
     page.should have_content("uccessfully")
     page.should have_content("UpdatedTestScopeName")
     page.should_not have_content("TestScopeEnglish")
