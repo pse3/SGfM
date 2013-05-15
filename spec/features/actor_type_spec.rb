@@ -168,30 +168,20 @@ describe "actor spec" do
     visit '/'
   end
 
-  it 'creates an actor type'
   it 'creates an information type decorator and adds it to actor type if in params of create'
   it 'updates an actor type'
   it 'creates an information type decorator and adds it to actor type if in params of updates'
 
-   it "has the right info types", :js => true do
-     click_link "Sign up"
-     within('#new_login') do
-       fill_in 'login_email', :with => 'test_1@test.de'
-       fill_in 'login_password', :with => '1234test'
-       fill_in 'login_password_confirmation', :with => '1234test'
-       click_button 'Sign up'
-     end
+   it "creates an actor type", :js => true do
+     click_on 'Sign in'
+     fill_in "login_email", :with => 'admin@domain.ch'
+     fill_in "login_password", :with => 'test1234'
+     click_button 'Sign in'
      sleep(0.5)
-     within('#actor-type') do
-       select('Hospital')
-       click_link 'Next'
-     end
-     page.should have_content("Company")
-     page.should have_content("Phone")
-     page.should have_content("Canton")
-     page.should_not have_content("First name")
-     page.should_not have_content("Last name")
-        click_on('Sign out')
+     click_on "Create new actor"
+
+     #TODO
+
    end
 
 end
