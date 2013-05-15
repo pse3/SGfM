@@ -290,7 +290,7 @@ describe "actor spec" do
         fill_in 'login_password_confirmation', :with => '1234test'
         click_button 'Sign up'
       end
-      sleep(1)
+      sleep(0.5)
       within('#actor-type') do
         select('Hospital')
         click_link 'Next'
@@ -315,7 +315,7 @@ describe "actor spec" do
         fill_in 'login_password_confirmation', :with => '1234test'
         click_button 'Sign up'
       end
-      sleep(1)
+      sleep(0.5)
       within('#actor-type') do
        click_link 'Next'
       end
@@ -340,7 +340,7 @@ describe "actor spec" do
         fill_in 'login_password_confirmation', :with => '1234test'
         click_button 'Sign up'
       end
-      sleep(1)
+      sleep(0.5)
       within('#actor-type') do
         click_link 'Next'
       end
@@ -363,7 +363,7 @@ describe "actor spec" do
         fill_in 'login_password_confirmation', :with => '1234test'
         click_button 'Sign up'
       end
-      sleep(1)
+      sleep(0.5)
       within('#actor-type') do
         click_link 'Next'
       end
@@ -416,7 +416,7 @@ describe "actor spec" do
       fill_in 'login_password_confirmation', :with => '1234test'
       click_button 'Sign up'
     end
-    sleep(1)
+    sleep(0.5)
     within('#actor-type') do
       click_link 'Next'
     end
@@ -429,7 +429,7 @@ describe "actor spec" do
     click_on 'Add relationship'
     #fill_in "select2-offscreen", :with => 'TestHospitalName//BE'
     find(".select2-offscreen").set("T")
-    sleep(1)
+    sleep(0.5)
     find(".select2-input").set("TestHospitalName//BE")
     find(".select2-input").native.send_keys(:return)
     click_button 'create'
