@@ -278,29 +278,31 @@ describe "actor spec" do
       page.should have_content("Canton")
 
       click_on('Sign out')
+    end
   end
 
   context "when it is of actor type doctor" do
-    click_link "Sign up"
-    within('#new_login') do
-      fill_in 'login_email', :with => 'test_1@test.de'
-      fill_in 'login_password', :with => '1234test'
-      fill_in 'login_password_confirmation', :with => '1234test'
-      click_button 'Sign up'
-    end
-    sleep(1)
-    within('#actor-type') do
-      select('Hospital')
-      click_link 'Next'
-    end
-    page.should have_content("Company")
-    page.should have_content("Phone")
-    page.should have_content("Canton")
-    page.should_not have_content("First name")
-    page.should_not have_content("Last name")
+    it "has the right info types", :js => true do
+      click_link "Sign up"
+      within('#new_login') do
+        fill_in 'login_email', :with => 'test_1@test.de'
+        fill_in 'login_password', :with => '1234test'
+        fill_in 'login_password_confirmation', :with => '1234test'
+        click_button 'Sign up'
+      end
+      sleep(1)
+      within('#actor-type') do
+        select('Hospital')
+        click_link 'Next'
+      end
+      page.should have_content("Company")
+      page.should have_content("Phone")
+      page.should have_content("Canton")
+      page.should_not have_content("First name")
+      page.should_not have_content("Last name")
 
-    click_on('Sign out')
-
+      click_on('Sign out')
+    end
   end
 
   context "with full information" do
