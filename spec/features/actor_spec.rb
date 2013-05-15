@@ -281,7 +281,7 @@ describe "actor spec" do
       fill_in "actor_information_canton", :with => 'SG'
       click_link 'Next'
       click_button 'Create'
-      page.should have_content("successfully")
+      page.should have_content("uccessfully")
       click_link 'Sign out'
     end
   end
@@ -304,7 +304,7 @@ describe "actor spec" do
       fill_in "actor_information_last_name", :with => 'TestDoctorLastname'
       click_link 'Next'
       click_button 'Create'
-      page.should have_content("successfully")
+      page.should have_content("uccessfully")
       click_link 'Sign out'
     end
   end
@@ -342,7 +342,7 @@ describe "actor spec" do
       click_on "Edit actor"
       fill_in 'actor_information_canton', :with => 'SG'
       click_on "update"
-      page.should have_content("successfully")
+      page.should have_content("uccessfully")
     end
   end
 
@@ -358,7 +358,7 @@ describe "actor spec" do
       click_on "Edit actor"
       fill_in 'actor_information_canton', :with => ''
       click_on "update"
-      page.should_not have_content("successfully")
+      page.should_not have_content("uccessfully")
     end
   end
 
@@ -386,8 +386,8 @@ describe "actor spec" do
     find(".select2-offscreen").set("T")
     sleep(1)
     find(".select2-input").set("TestHospitalName//BE")
-    click_on "create"
-    sleep(10)
+    find(".select2-input").native.send_keys(:return)
+    click_button 'create'
     page.should have_content("uccessfully")
   end
 
