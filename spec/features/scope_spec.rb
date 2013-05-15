@@ -67,7 +67,7 @@ describe "Scope" do
     click_button 'Sign in'
     click_on 'Scopes'
     page.all("a")[16].click #clicks on the 16th link on the page
-    fill_in 'scope_name[en]', :with => 'UpdatedTestScopeName'
+    fill_in 'edited_scope_name[en]', :with => 'UpdatedTestScopeName'
     click_on 'Save'
     page.should have_content("uccessfully")
     page.should have_content("UpdatedTestScopeName")
@@ -75,6 +75,8 @@ describe "Scope" do
     click_on 'Sign out'
   end
 
-  it 'destroys a scope'
+  it 'destroys a scope', :js => true do
+
+  end
 
 end
