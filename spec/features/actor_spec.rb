@@ -6,7 +6,6 @@ describe "actor spec" do
 
   before do
     # Reset all objects and types
-    # Reset all objects and types
     Actor.delete_all
     Information.delete_all
     InformationType.delete_all
