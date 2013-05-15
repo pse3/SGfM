@@ -187,19 +187,23 @@ describe "actor spec" do
      select('Medical specialisations', :from => 'information_type_decorator_information_type')
      select('Yes', :from => 'information_type_decorator_required')
      select('Yes', :from => 'information_type_decorator_searchable')
-
+     sleep(1)
      click_on 'Add Information Type'
-     page.all("#information_type_decorator_information_type")[0].select("First name")
-     page.all("information_type_decorator_required")[0].select("Yes")
-     page.all("information_type_decorator_searchable")[0].select("Yes")
-
+     page.all("#information_type_decorator_information_type")[1].select("First name")
+     page.all("#information_type_decorator_required")[1].select("Yes")
+     page.all("#information_type_decorator_searchable")[1].select("Yes")
+     sleep(1)
      click_on 'Add Information Type'
-     page.all("#information_type_decorator_information_type")[1].select("Company")
-     page.all("information_type_decorator_required")[1].select("No")
-     page.all("information_type_decorator_searchable")[1].select("Yes")
+     page.all("#information_type_decorator_information_type")[2].select("Company")
+     page.all("#information_type_decorator_required")[2].select("No")
+     page.all("#information_type_decorator_searchable")[2].select("Yes")
 
-     sleep(1000)
+     fill_in 'actor_type_to_string_pattern', :with => 'TestStringRepresentation'
+
      click_on 'Create'
+
+     page.should have_content('TestActorTypeEnglish')
+     page.should have_content('uccessfully')
      click_on 'Sign out'
      click_link "Sign up"
      within('#new_login') do
@@ -209,9 +213,8 @@ describe "actor spec" do
        click_button 'Sign up'
      end
      sleep(0.5)
-     sleep(1000)
      within('#actor-type') do
-       find('#actor-type-select').should have_content('something')
+       find('#actor-type-select').should have_content('TestActorTypeEnglish')
      end
    end
 
