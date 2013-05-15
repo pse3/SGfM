@@ -168,7 +168,7 @@ describe "actor spec" do
     visit '/'
   end
 
-  it 'creates an information type decorator and adds it to actor type if in params of create'
+
   it 'updates an actor type'
   it 'creates an information type decorator and adds it to actor type if in params of updates'
 
@@ -217,5 +217,26 @@ describe "actor spec" do
        find('#actor-type-select').should have_content('TestActorTypeEnglish')
      end
    end
+
+  it 'is added an information type decorator to' do
+    click_on 'Sign in'
+    fill_in "login_email", :with => 'admin@domain.ch'
+    fill_in "login_password", :with => 'test1234'
+    click_button 'Sign in'
+    sleep(0.5)
+    click_on "InformationTypes"
+    click_on "Create new information type"
+    fill_in 'information_type_name[en]', with "TestInformationTypeEnglish"
+    fill_in 'information_type_name[de]', with "TestInformationTypeGerman"
+    fill_in 'information_type_name[it]', with "TestInformationTypeItalian"
+    fill_in 'information_type_name[fr]', with "TestInformationTypeFrench"
+    fill_in 'information_type_key', with "test_itk"
+    select('Text field', :from => 'data-select')
+    select('public', :from => 'information_type_scope')
+    click_on 'Create'
+    page.should have_content('TestActorTypeEnglish')
+    page.should have_content('uccessfully')
+
+  end
 
 end
