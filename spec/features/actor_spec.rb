@@ -258,26 +258,29 @@ describe "actor spec" do
   end
 
 
-  it "has the right info types", :js => true do
-    click_link "Sign up"
-    within('#new_login') do
-      fill_in 'login_email', :with => 'test_1@test.de'
-      fill_in 'login_password', :with => '1234test'
-      fill_in 'login_password_confirmation', :with => '1234test'
-      click_button 'Sign up'
-    end
-    sleep(1)
-    within('#actor-type') do
-      click_link 'Next'
-    end
-    page.should have_content("specialisations")
-    page.should have_content("First name")
-    page.should have_content("Last name")
-    page.should have_content("Phone")
-    page.should have_content("Canton")
+  context "when it is of actor type doctor" do
+    it "has the right info types", :js => true do
+      click_link "Sign up"
+      within('#new_login') do
+        fill_in 'login_email', :with => 'test_1@test.de'
+        fill_in 'login_password', :with => '1234test'
+        fill_in 'login_password_confirmation', :with => '1234test'
+        click_button 'Sign up'
+      end
+      sleep(1)
+      within('#actor-type') do
+        click_link 'Next'
+      end
+      page.should have_content("specialisations")
+      page.should have_content("First name")
+      page.should have_content("Last name")
+      page.should have_content("Phone")
+      page.should have_content("Canton")
 
-    click_on('Sign out')
+      click_on('Sign out')
+  end
 
+  context "when it is of actor type doctor" do
     click_link "Sign up"
     within('#new_login') do
       fill_in 'login_email', :with => 'test_1@test.de'
