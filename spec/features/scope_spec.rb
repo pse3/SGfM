@@ -23,6 +23,14 @@ describe "Scope" do
 
     #create some scopes
 
+    scope_public = BlacklistScope.new
+    scope_public.key = :public
+    scope_public.name_translations = { :en => 'public', :de => 'oeffentlich', :it => 'pubblico', :frc=> 'public' }
+    scope_public.list = []
+    scope_public.save
+
+    #creates an admin
+
     admin = Admin.new
     login = Login.new(:email => 'admin@domain.ch',
                       :password => 'test1234',
@@ -53,21 +61,6 @@ describe "Scope" do
   end
 
   it 'updates a scope', :js => true do
-    click_on 'Sign in'
-    fill_in "login_email", :with => 'admin@domain.ch'
-    fill_in "login_password", :with => 'test1234'
-    click_button 'Sign in'
-    click_on 'Scopes'
-    click_on 'Create new Scope'
-    select 'WhitelistScope', :from => 'scope__type'
-    fill_in 'scope_name[en]', :with => 'TestScopeEnglish'
-    fill_in 'scope_name[de]', :with => 'TestScopeGerman'
-    fill_in 'scope_name[fr]', :with => 'TestScopeFrench'
-    fill_in 'scope_name[it]', :with => 'TestScopeItalian'
-    fill_in 'scope_key', :with => 'TestScopeKey'
-    click_on 'Create'
-    click_on 'Sign out'
-
     click_on 'Sign in'
     fill_in "login_email", :with => 'admin@domain.ch'
     fill_in "login_password", :with => 'test1234'
