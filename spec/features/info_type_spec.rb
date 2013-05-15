@@ -2,7 +2,7 @@ require 'spec_helper'
 
 #Capybara.match = :first
 
-describe "Scope" do
+describe "Info type" do
 
   before do
     # Reset all objects and types
@@ -41,6 +41,9 @@ describe "Scope" do
 
     visit '/'
   end
+
+  it 'is created '
+  it 'is updated'
 
   it 'is created', :js => true do
     click_on 'Sign in'
