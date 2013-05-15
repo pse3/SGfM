@@ -258,12 +258,52 @@ describe "actor spec" do
   end
 
 
+  it "has the right info types", :js => true do
+    click_link "Sign up"
+    within('#new_login') do
+      fill_in 'login_email', :with => 'test_1@test.de'
+      fill_in 'login_password', :with => '1234test'
+      fill_in 'login_password_confirmation', :with => '1234test'
+      click_button 'Sign up'
+    end
+    sleep(1)
+    within('#actor-type') do
+      click_link 'Next'
+    end
+    page.should have_content("specialisations")
+    page.should have_content("First name")
+    page.should have_content("Last name")
+    page.should have_content("Phone")
+    page.should have_content("Canton")
 
+    click_on('Sign out')
+
+    click_link "Sign up"
+    within('#new_login') do
+      fill_in 'login_email', :with => 'test_1@test.de'
+      fill_in 'login_password', :with => '1234test'
+      fill_in 'login_password_confirmation', :with => '1234test'
+      click_button 'Sign up'
+    end
+    sleep(1)
+    within('#actor-type') do
+      select('Hospital')
+      click_link 'Next'
+    end
+    page.should have_content("Company")
+    page.should have_content("Phone")
+    page.should have_content("Canton")
+    page.should_not have_content("First name")
+    page.should_not have_content("Last name")
+
+    click_on('Sign out')
+
+  end
 
   context "with full information" do
     it "creates a new actor",:js => true do
 
-      click_link("Sign up")
+      click_link "Sign up"
       within('#new_login') do
         fill_in 'login_email', :with => 'test_1@test.de'
         fill_in 'login_password', :with => '1234test'
@@ -282,13 +322,13 @@ describe "actor spec" do
       click_link 'Next'
       click_button 'Create'
       page.should have_content("uccessfully")
-      click_link 'Sign out'
+      click_link'Sign out'
     end
   end
   context "with only the required  information" do
     it "creates a new actor",:js => true do
 
-      click_link("Sign up")
+      click_link "Sign up"
       within('#new_login') do
         fill_in 'login_email', :with => 'test_1@test.de'
         fill_in 'login_password', :with => '1234test'
@@ -311,7 +351,7 @@ describe "actor spec" do
   context "with incomplete information" do
     it "does not create a new actor",:js => true do
 
-      click_link("Sign up")
+      click_link "Sign up"
       within('#new_login') do
         fill_in 'login_email', :with => 'test_1@test.de'
         fill_in 'login_password', :with => '1234test'
@@ -364,7 +404,7 @@ describe "actor spec" do
 
   it "adds a relationship",:js => true do
 
-    click_link("Sign up")
+    click_link "Sign up"
     within('#new_login') do
       fill_in 'login_email', :with => 'test_1@test.de'
       fill_in 'login_password', :with => '1234test'
