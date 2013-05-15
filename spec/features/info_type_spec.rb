@@ -29,6 +29,26 @@ describe "Info type" do
     scope_public.list = []
     scope_public.save
 
+    #create the information field types
+    information_field_text = InformationFieldText.new
+    information_field_text.key = :text
+    information_field_text.name_translations = { :en => 'Text field', :de => 'Textfeld', :it => '???', :fr => '???' }
+    information_field_text.save
+
+    information_field_multiple_select = InformationFieldMultipleSelect.new
+    information_field_multiple_select.key = :multiple_select
+    information_field_multiple_select.name_translations = { :en => 'multiple selection', :de => 'Mehrauswahl', :it => '???', :fr => '???' }
+    information_field_multiple_select.save
+
+    #creates information type company
+    info_company = InformationType.new
+    info_company.key = :company
+    info_company.information_field_type = information_field_text
+    info_company.name_translations = { :en => 'Company', :de =>'Firma', :it => '??', :fr => '??' }
+    info_company.scope = scope_public
+    info_company.save
+
+
     #creates an admin
 
     admin = Admin.new
@@ -42,55 +62,53 @@ describe "Info type" do
     visit '/'
   end
 
-  it 'is created '
-  it 'is updated'
 
   it 'is created', :js => true do
     click_on 'Sign in'
     fill_in "login_email", :with => 'admin@domain.ch'
     fill_in "login_password", :with => 'test1234'
     click_button 'Sign in'
-    click_on 'Scopes'
-    click_on 'Create new Scope'
-    select 'WhitelistScope', :from => 'scope__type'
-    fill_in 'scope_name[en]', :with => 'TestScopeEnglish'
-    fill_in 'scope_name[de]', :with => 'TestScopeGerman'
-    fill_in 'scope_name[fr]', :with => 'TestScopeFrench'
-    fill_in 'scope_name[it]', :with => 'TestScopeItalian'
-    fill_in 'scope_key', :with => 'TestScopeKey'
+    click_on 'InformationTypes'
+    click_on 'Create new information type'
+    fill_in 'information_type_name[en]', :with => 'TestInformationTypeEnglish'
+    fill_in 'information_type_name[de]', :with => 'TestInformationTypeGerman'
+    fill_in 'information_type_name[fr]', :with => 'TestInformationTypeFrench'
+    fill_in 'information_type_name[it]', :with => 'TestInformationTypeItalian'
+    fill_in 'information_type_key', :with => 'TestInfoTypeKey'
+    select('Text field', :from => 'data-select')
     click_on 'Create'
-    page.should have_content('TestScopeEnglish')
+    page.should have_content('TestInformationTypeEnglish')
     page.should have_content('uccessfully')
   end
 
-  it 'updates a scope', :js => true do
+  it 'is updated', :js => true do
     click_on 'Sign in'
     fill_in "login_email", :with => 'admin@domain.ch'
     fill_in "login_password", :with => 'test1234'
     click_button 'Sign in'
-    click_on 'Scopes'
-    page.all("a")[16].click #clicks on the 16th link on the page
-    fill_in 'edited_scope_name[en]', :with => 'UpdatedTestScopeName'
-    click_on 'Save'
+    click_on 'InformationTypes'
+    page.should have_content('Company')
+    page.all("a")[17].click #clicks on the 17th link on the page
+    fill_in 'information_type_edited_name[en]', :with => 'UpdatedTestInformationTypeName'
+    click_on 'Edit'
     page.should have_content("uccessfully")
-    page.should have_content("UpdatedTestScopeName")
-    page.should_not have_content("TestScopeEnglish")
+    page.should have_content("UpdatedTestInformationTypeName")
+    page.should_not have_content("Company")
     click_on 'Sign out'
   end
 
-  it 'destroys a scope', :js => true do
+  it 'is destroyed', :js => true do
     click_on 'Sign in'
     fill_in "login_email", :with => 'admin@domain.ch'
     fill_in "login_password", :with => 'test1234'
     click_button 'Sign in'
-    click_on 'Scopes'
-
-    page.should have_content('public')
-    page.all("a")[17].click #clicks on the 17th link on the page
+    click_on 'InformationTypes'
+    page.should have_content('Company')
+    page.all("a")[18].click #clicks on the 18th link on the page
     page.driver.browser.switch_to.alert.accept
     page.should have_content("uccessfully")
     page.should have_content("deleted")
-    page.should_not have_content("public")
+    page.should_not have_content("Company")
     click_on 'Sign out'
   end
 

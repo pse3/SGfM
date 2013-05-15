@@ -60,7 +60,7 @@ describe "Scope" do
     page.should have_content('uccessfully')
   end
 
-  it 'updates a scope', :js => true do
+  it 'is updated', :js => true do
     click_on 'Sign in'
     fill_in "login_email", :with => 'admin@domain.ch'
     fill_in "login_password", :with => 'test1234'
@@ -72,10 +72,11 @@ describe "Scope" do
     page.should have_content("uccessfully")
     page.should have_content("UpdatedTestScopeName")
     page.should_not have_content("TestScopeEnglish")
+    page.should_not have_content("public")
     click_on 'Sign out'
   end
 
-  it 'destroys a scope', :js => true do
+  it 'is destroyed', :js => true do
     click_on 'Sign in'
     fill_in "login_email", :with => 'admin@domain.ch'
     fill_in "login_password", :with => 'test1234'
