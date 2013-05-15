@@ -212,14 +212,21 @@ describe "actor spec" do
      within('#actor-type') do
        find('#actor-type-select').should have_content('TestActorTypeEnglish')
      end
+    click_on 'Sign out'
   end
 
-  it 'is updated' do
+  it 'is updated', :js => true do
     click_on 'Sign in'
     fill_in "login_email", :with => 'admin@domain.ch'
     fill_in "login_password", :with => 'test1234'
     click_button 'Sign in'
-    sleep(100)
+    page.all("a")[17].click #clicks on the 17th link on the page
+    fill_in 'actor_type_name[en]', :with => 'NewNameOfTestActorType'
+    click_on 'update'
+    page.should have_content("uccessfully")
+    page.should have_content("NewNameOfTestActorType")
+    page.should_not have_content("Doctor")
+    click_on 'Sign out'
 
   end
 
