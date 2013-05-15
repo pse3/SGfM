@@ -34,58 +34,13 @@ describe "actor spec" do
     visit '/'
   end
 
-  it "is created", :js => true do
-     click_on 'Sign in'
-     fill_in "login_email", :with => 'admin@domain.ch'
-     fill_in "login_password", :with => 'test1234'
-     click_button 'Sign in'
-     sleep(0.5)
-     click_on "Create new actor type"
-     fill_in 'actor_type_name_translations[en]', :with => 'TestActorTypeEnglish'
-     fill_in 'actor_type_name_translations[de]', :with => 'TestActorTypeGerman'
-     fill_in 'actor_type_name_translations[it]', :with => 'TestActorTypeItalian'
-     fill_in 'actor_type_name_translations[fr]', :with => 'TestActorTypeFrench'
-     click_on 'Add Information Type'
-     select('Medical specialisations', :from => 'information_type_decorator_information_type')
-     select('Yes', :from => 'information_type_decorator_required')
-     select('Yes', :from => 'information_type_decorator_searchable')
-     sleep(1)
-     click_on 'Add Information Type'
-     page.all("#information_type_decorator_information_type")[1].select("First name")
-     page.all("#information_type_decorator_required")[1].select("Yes")
-     page.all("#information_type_decorator_searchable")[1].select("Yes")
-     sleep(1)
-     click_on 'Add Information Type'
-     page.all("#information_type_decorator_information_type")[2].select("Company")
-     page.all("#information_type_decorator_required")[2].select("No")
-     page.all("#information_type_decorator_searchable")[2].select("Yes")
-
-     fill_in 'actor_type_to_string_pattern', :with => 'TestStringRepresentation'
-
-     click_on 'Create'
-
-     page.should have_content('TestActorTypeEnglish')
-     page.should have_content('uccessfully')
-     click_on 'Sign out'
-     click_link "Sign up"
-     within('#new_login') do
-       fill_in 'login_email', :with => 'test_1@test.de'
-       fill_in 'login_password', :with => '1234test'
-       fill_in 'login_password_confirmation', :with => '1234test'
-       click_button 'Sign up'
-     end
-     sleep(0.5)
-     within('#actor-type') do
-       find('#actor-type-select').should have_content('TestActorTypeEnglish')
-     end
-    click_on 'Sign out'
-  end
-
-  it 'is updated', :js => true do
+  it 'is created', :js => true do
     click_on 'Sign in'
     fill_in "login_email", :with => 'admin@domain.ch'
     fill_in "login_password", :with => 'test1234'
     click_button 'Sign in'
+    click_on 'Scopes'
+    click_on 'Create new Scope'
     page.all("a")[17].click #clicks on the 17th link on the page
     fill_in 'actor_type_name[en]', :with => 'NewNameOfTestActorType'
     click_on 'update'
