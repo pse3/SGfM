@@ -41,14 +41,18 @@ describe "actor spec" do
     click_button 'Sign in'
     click_on 'Scopes'
     click_on 'Create new Scope'
-    page.all("a")[17].click #clicks on the 17th link on the page
-    fill_in 'actor_type_name[en]', :with => 'NewNameOfTestActorType'
-    click_on 'update'
-    page.should have_content("uccessfully")
-    page.should have_content("NewNameOfTestActorType")
-    page.should_not have_content("Doctor")
-    click_on 'Sign out'
-
+    select 'WhitelistScope', :from => 'scope__type'
+    fill_in 'scope_name[en]', :with => 'TestScopeEnglish'
+    fill_in 'scope_name[de]', :with => 'TestScopeGerman'
+    fill_in 'scope_name[fr]', :with => 'TestScopeFrench'
+    fill_in 'scope_name[it]', :with => 'TestScopeItalian'
+    fill_in 'scope_key', :with => 'TestScopeKey'
+    click_on 'Create'
+    page.should have_content('TestScopeEnglish')
+    page.should have_content('uccessfully')
   end
+
+  it 'updates a scope'
+  it 'destroys a scope'
 
 end
