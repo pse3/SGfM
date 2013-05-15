@@ -187,15 +187,18 @@ describe "actor spec" do
      select('Medical specialisations', :from => 'information_type_decorator_information_type')
      select('Yes', :from => 'information_type_decorator_required')
      select('Yes', :from => 'information_type_decorator_searchable')
+
      click_on 'Add Information Type'
-     select('First Name', :from => 'information_type_decorator_information_type')
-     select('Yes', :from => 'information_type_decorator_required')
-     select('Yes', :from => 'information_type_decorator_searchable')
+     page.all("#information_type_decorator_information_type")[0].select("First name")
+     page.all("information_type_decorator_required")[0].select("Yes")
+     page.all("information_type_decorator_searchable")[0].select("Yes")
+
      click_on 'Add Information Type'
-     select('Company', :from => 'information_type_decorator_information_type')
-     select('No', :from => 'information_type_decorator_required')
-     select('Yes', :from => 'information_type_decorator_searchable')
-     fill_in "actor_type_to_string_pattern", :with => "String Rep or TestActorType"
+     page.all("#information_type_decorator_information_type")[1].select("Company")
+     page.all("information_type_decorator_required")[1].select("No")
+     page.all("information_type_decorator_searchable")[1].select("Yes")
+
+     sleep(1000)
      click_on 'Create'
      click_on 'Sign out'
      click_link "Sign up"
