@@ -2,7 +2,7 @@ require 'spec_helper'
 
 #Capybara.match = :first
 
-describe "actor spec" do
+describe "Scope" do
 
   before do
     # Reset all objects and types
@@ -58,8 +58,31 @@ describe "actor spec" do
     fill_in "login_password", :with => 'test1234'
     click_button 'Sign in'
     click_on 'Scopes'
+    click_on 'Create new Scope'
+    select 'WhitelistScope', :from => 'scope__type'
+    fill_in 'scope_name[en]', :with => 'TestScopeEnglish'
+    fill_in 'scope_name[de]', :with => 'TestScopeGerman'
+    fill_in 'scope_name[fr]', :with => 'TestScopeFrench'
+    fill_in 'scope_name[it]', :with => 'TestScopeItalian'
+    fill_in 'scope_key', :with => 'TestScopeKey'
+    click_on 'Create'
+    click_on 'Sign out'
 
+    click_on 'Sign in'
+    fill_in "login_email", :with => 'admin@domain.ch'
+    fill_in "login_password", :with => 'test1234'
+    click_button 'Sign in'
+    click_on 'Scopes'
+    sleep(20)
+    page.all("a")[16].click #clicks on the 16th link on the page
+    fill_in 'scope_name[en]', :with => 'UpdatedTestScopeName'
+    click_on 'update'
+    page.should have_content("uccessfully")
+    page.should have_content("UpdatedTestScopeName")
+    page.should_not have_content("TestScopeEnglish")
+    click_on 'Sign out'
   end
+
   it 'destroys a scope'
 
 end

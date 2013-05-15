@@ -2,7 +2,7 @@ require 'spec_helper'
 
 #Capybara.match = :first
 
-describe "actor spec" do
+describe "Actor type" do
 
   before do
     # Reset all objects and types
