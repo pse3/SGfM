@@ -178,10 +178,38 @@ describe "actor spec" do
      fill_in "login_password", :with => 'test1234'
      click_button 'Sign in'
      sleep(0.5)
-     click_on "Create new actor"
-
-     #TODO
-
+     click_on "Create new actor type"
+     fill_in 'actor_type_name_translations[en]', :with => 'TestActorTypeEnglish'
+     fill_in 'actor_type_name_translations[de]', :with => 'TestActorTypeGerman'
+     fill_in 'actor_type_name_translations[it]', :with => 'TestActorTypeItalian'
+     fill_in 'actor_type_name_translations[fr]', :with => 'TestActorTypeFrench'
+     click_on 'Add Information Type'
+     select('Medical specialisations', :from => 'information_type_decorator_information_type')
+     select('Yes', :from => 'information_type_decorator_required')
+     select('Yes', :from => 'information_type_decorator_searchable')
+     click_on 'Add Information Type'
+     select('First Name', :from => 'information_type_decorator_information_type')
+     select('Yes', :from => 'information_type_decorator_required')
+     select('Yes', :from => 'information_type_decorator_searchable')
+     click_on 'Add Information Type'
+     select('Company', :from => 'information_type_decorator_information_type')
+     select('No', :from => 'information_type_decorator_required')
+     select('Yes', :from => 'information_type_decorator_searchable')
+     fill_in "actor_type_to_string_pattern", :with => "String Rep or TestActorType"
+     click_on 'Create'
+     click_on 'Sign out'
+     click_link "Sign up"
+     within('#new_login') do
+       fill_in 'login_email', :with => 'test_1@test.de'
+       fill_in 'login_password', :with => '1234test'
+       fill_in 'login_password_confirmation', :with => '1234test'
+       click_button 'Sign up'
+     end
+     sleep(0.5)
+     sleep(1000)
+     within('#actor-type') do
+       find('#actor-type-select').should have_content('something')
+     end
    end
 
 end
