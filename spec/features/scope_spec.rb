@@ -66,13 +66,13 @@ describe "Scope" do
     fill_in "login_password", :with => 'test1234'
     click_button 'Sign in'
     click_on 'Scopes'
-    page.all("a")[16].click #clicks on the 16th link on the page
+    page.should have_content("public")
+    page.first(".icon-edit").click
     fill_in 'edited_scope_name[en]', :with => 'UpdatedTestScopeName'
     click_on 'Save'
     page.should have_content("uccessfully")
     page.should have_content("UpdatedTestScopeName")
     page.should_not have_content("TestScopeEnglish")
-    page.should_not have_content("public")
     click_on 'Sign out'
   end
 
@@ -82,9 +82,8 @@ describe "Scope" do
     fill_in "login_password", :with => 'test1234'
     click_button 'Sign in'
     click_on 'Scopes'
-
     page.should have_content('public')
-    page.all("a")[17].click #clicks on the 17th link on the page
+    page.first(".icon-trash").click
     page.driver.browser.switch_to.alert.accept
     page.should have_content("uccessfully")
     page.should have_content("deleted")
