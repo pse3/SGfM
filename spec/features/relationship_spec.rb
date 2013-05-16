@@ -2,7 +2,7 @@ require 'spec_helper'
 
 #Capybara.match = :first
 
-describe "Actor" do
+describe "Relationship" do
 
   before do
     # Reset all objects and types
@@ -113,28 +113,49 @@ describe "Actor" do
 
     # Create some Actors
 
-    # Dummy doctor 'Karl Schürch'
+    # Dummy doctor1
     dummy_actor_test_doctor = Actor.new
     dummy_actor_test_doctor.actor_type = ActorType.find_by_key(:doctor)
     dummy_actor_type = dummy_actor_test_doctor.actor_type
 
     test_doctor_fname = Information.new
     test_doctor_fname.information_type_decorator = dummy_actor_type.decorator_by_key(:first_name)
-    test_doctor_fname.value = 'TestDoctorFirstName'
+    test_doctor_fname.value = 'TestDoctor1FirstName'
     test_doctor_fname.actor = dummy_actor_test_doctor
 
     user.actors.push(dummy_actor_test_doctor)
     dummy_actor_test_doctor.save
     user.save
 
+    # Dummy doctor1
+    dummy_actor_test_doctor2 = Actor.new
+    dummy_actor_test_doctor2.actor_type = ActorType.find_by_key(:doctor)
+    dummy_actor_type = dummy_actor_test_doctor2.actor_type
+
+    test_doctor_fname = Information.new
+    test_doctor_fname.information_type_decorator = dummy_actor_type.decorator_by_key(:first_name)
+    test_doctor_fname.value = 'TestDoctor2FirstName'
+    test_doctor_fname.actor = dummy_actor_test_doctor2
+
+    user.actors.push(dummy_actor_test_doctor2)
+    dummy_actor_test_doctor2.save
+    user.save
+
+    # Create some Relations
+    relationship_test_hospital = Relationship.new
+    relationship_test_hospital.relationship_type = RelationshipType.find_by_key(:works_with)
+    relationship_test_hospital.comment = 'This is a comment. Made by god!'
+    relationship_test_hospital.actor = dummy_actor_test_hospital
+    relationship_test_hospital.reference = dummy_actor_test_doctor
+    relationship_test_hospital.save
+
     visit '/'
   end
 
-  it 'creates a relationship'
   it 'updates a relationship'
   it 'destroys a relationship'
 
-  it "adds a relationship",:js => true do
+  it "is created",:js => true do
 
     click_link "Sign up"
     within('#new_login') do
@@ -147,7 +168,7 @@ describe "Actor" do
     within('#actor-type') do
       click_link 'Next'
     end
-    fill_in "actor_information_first_name", :with => 'SecondDoctorTestFirstname'
+    fill_in "actor_information_first_name", :with => 'NewTestDoctorFirstName'
     click_link 'Next'
     click_button 'Create'
 
@@ -155,11 +176,12 @@ describe "Actor" do
     sleep(100)
     find(".select2-offscreen").set("T")
     sleep(0.5)
-    find(".select2-input").set("TestDoctorFirstName")
+    find(".select2-input").set("TestDoctor1FirstName")
     find(".select2-input").native.send_keys(:return)
     click_button 'create'
     page.should have_content("uccessfully")
-    page.should have_content("TestDoctorFirstname")
+    page.should have_content("NewTestDoctorFirstName")
+    sleep(10000)
   end
 
 
