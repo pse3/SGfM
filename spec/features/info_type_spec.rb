@@ -88,7 +88,7 @@ describe "Info type" do
     click_button 'Sign in'
     click_on 'InformationTypes'
     page.should have_content('Company')
-    page.all("a")[17].click #clicks on the 17th link on the page
+    page.first(".icon-edit").click
     fill_in 'information_type_edited_name[en]', :with => 'UpdatedTestInformationTypeName'
     click_on 'Edit'
     page.should have_content("uccessfully")
@@ -104,7 +104,7 @@ describe "Info type" do
     click_button 'Sign in'
     click_on 'InformationTypes'
     page.should have_content('Company')
-    page.all("a")[18].click #clicks on the 18th link on the page
+    page.first(".icon-trash").click
     page.driver.browser.switch_to.alert.accept
     page.should have_content("uccessfully")
     page.should have_content("deleted")

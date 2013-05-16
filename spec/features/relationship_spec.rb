@@ -189,7 +189,7 @@ describe "Relationship" do
     page.should have_content('works with')
     page.should have_content('Made by god')
     sleep(3)
-    page.all("a")[12].click #clicks on the 12th link on the page
+    page.first(".icon-edit").click
     select('assign to', :from => 'relationship_relationship_type')
     fill_in 'relationship_comment', :with => 'This is a NEW comment; made by Rafael'
     click_on 'update'
@@ -208,7 +208,7 @@ describe "Relationship" do
     click_button 'Sign in'
     click_on 'TestDoctor1FirstName'
     page.should have_content('works with')
-    page.all("a")[13].click #clicks on the 13th link on the page
+    page.first(".icon-trash").click
     page.should have_content("uccessfully")
     page.should have_content("deleted")
     page.should_not have_content("works with")

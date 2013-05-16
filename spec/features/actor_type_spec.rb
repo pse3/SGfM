@@ -220,7 +220,7 @@ describe "Actor type" do
     fill_in "login_email", :with => 'admin@domain.ch'
     fill_in "login_password", :with => 'test1234'
     click_button 'Sign in'
-    page.all("a")[17].click #clicks on the 17th link on the page
+    page.first(".icon-edit").click
     fill_in 'actor_type_name[en]', :with => 'NewNameOfTestActorType'
     click_on 'update'
     page.should have_content("uccessfully")
