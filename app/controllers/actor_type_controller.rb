@@ -78,6 +78,14 @@ class ActorTypeController < ApplicationController
       end
     end
 
+    if params[:predefined_questions][:relationship_types]
+      params[:predefined_questions][:relationship_types].each do |relationship_type|
+        if relationship_type.length > 0
+          @actor_type.predefined_questions.push(RelationshipType.find_by :key => relationship_type)
+        end
+      end
+    end
+
     @actor_type.save
 
     flash[:success] = t('actor_type.update.success')
