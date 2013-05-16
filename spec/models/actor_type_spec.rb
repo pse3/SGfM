@@ -83,8 +83,6 @@ describe ActorType do
       @atype_doctor.information_types.should include(@itype_phone)
     end
 
-    it "updates corresponding actors"
-
   end
 
 
