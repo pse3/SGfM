@@ -142,17 +142,16 @@ describe "Relationship" do
     user.save
 
     # Create some Relations
-    relationship_test_hospital = Relationship.new
-    relationship_test_hospital.relationship_type = RelationshipType.find_by_key(:works_with)
-    relationship_test_hospital.comment = 'This is a comment. Made by god!'
-    relationship_test_hospital.actor = dummy_actor_test_hospital
-    relationship_test_hospital.reference = dummy_actor_test_doctor
-    relationship_test_hospital.save
+    relationship_test = Relationship.new
+    relationship_test.relationship_type = RelationshipType.find_by_key(:works_with)
+    relationship_test.comment = 'This is a comment. Made by god!'
+    relationship_test.actor = dummy_actor_test_doctor
+    relationship_test.reference = dummy_actor_test_doctor2
+    relationship_test.save
 
     visit '/'
   end
 
-  it 'updates a relationship'
   it 'destroys a relationship'
 
   it "is created",:js => true do
@@ -173,7 +172,6 @@ describe "Relationship" do
     click_button 'Create'
 
     click_on 'Add relationship'
-    sleep(100)
     find(".select2-offscreen").set("T")
     sleep(0.5)
     find(".select2-input").set("TestDoctor1FirstName")
@@ -181,7 +179,25 @@ describe "Relationship" do
     click_button 'create'
     page.should have_content("uccessfully")
     page.should have_content("NewTestDoctorFirstName")
-    sleep(10000)
+    click_on 'Sign out'
+  end
+
+  it 'is updated', :js => true do
+    click_on 'Sign in'
+    fill_in "login_email", :with => 'email@domain.ch'
+    fill_in "login_password", :with => 'test1234'
+    click_button 'Sign in'
+    click_on 'TestDoctor1FirstName'
+    page.all("a")[12].click #clicks on the 12th link on the page
+    select('assign to', :from => 'relationship_relationship_type')
+    fill_in 'relationship_comment', :with => 'This is a NEW comment; made by Rafael'
+    click_on 'update'
+    page.should have_content('assign to')
+    page.should have_content('made by Rafael')
+    page.should have_content('uccessfully')
+    page.should_not have_content('works with')
+    page.should_not have_content('made by God')
+    click_on 'Sign out'
   end
 
 
