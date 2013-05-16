@@ -27,12 +27,13 @@ class ActorController < ApplicationController
     if params[:relationships]
       params[:relationships].each_key do |key|
         relationship_type = RelationshipType.find_by key: key
-        params[:relationships][key].each_value do |value|
-          reference = Actor.find_by id: value
+        params[:relationships][key].each_key do |key2|
+          reference = Actor.find_by id: params[:relationships][key][key2][:reference]
           relationship = Relationship.new
           relationship.relationship_type = relationship_type
           relationship.actor = actor
           relationship.reference = reference
+          relationship.comment = params[:relationships][key][key2][:comment]
           relationship.save
         end
       end
