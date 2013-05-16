@@ -213,7 +213,7 @@ unless Rails.env == :production
   InformationTypeDecorator.create(info_canton, actor_doctor, false, true)
   actor_doctor.name_translations = { :en => 'Doctor', :de =>'Arzt', :it => 'Dottore', :fr => 'Médecin' }
   actor_doctor.to_string_pattern = '|:last_name| |:first_name|'
-  actor_wizard_test.predefined_questions.push(relation_works_with, relation_assigns, relation_other)
+  actor_doctor.predefined_questions.push(relation_works_with, relation_assigns, relation_other)
   actor_doctor.save
 
 
