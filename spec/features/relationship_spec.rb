@@ -188,7 +188,6 @@ describe "Relationship" do
     click_on 'TestDoctor1FirstName'
     page.should have_content('works with')
     page.should have_content('Made by god')
-    sleep(3)
     page.first(".icon-edit").click
     select('assign to', :from => 'relationship_relationship_type')
     fill_in 'relationship_comment', :with => 'This is a NEW comment; made by Rafael'
