@@ -1,0 +1,6 @@
+<p>An Account has been created for you.</p>
+
+<p><%= link_to 'Access my Account', edit_password_url(@resource, :reset_password_token => @resource.reset_password_token) + '&initial=true' %></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>

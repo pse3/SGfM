@@ -3,9 +3,13 @@ SGfM::Application.routes.draw do
   scope '/:locale' do
 
     # Devise routes
-    devise_for :logins, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => {:sign_up => 'signup',
-                                                                                                          :sign_in => 'login',
-                                                                                                          :sign_out => 'logout'}
+    devise_for :logins,
+               :controllers =>
+                  {:registrations => 'registrations'},
+               :path => '',
+               :path_names => {:sign_up => 'signup',
+                               :sign_in => 'login',
+                               :sign_out => 'logout'}
 
     get   'logins/show' => 'logins#show'
 
@@ -77,6 +81,10 @@ SGfM::Application.routes.draw do
     put     'csv_import/import/execute/:id'   => 'csv_import#import',           as: 'import_csv_file'
     get     'csv_import/import/new/:id'       => 'csv_import#new_import',       as: 'new_import'
     get     'csv_import/import/add_row/:id'   => 'csv_import#add_row',          as: 'add_row'
+
+    # User Initation Routes
+    get     'invitation/uninvited' => 'invitation#list_uninvited',   as: 'invitation_list_uninvited'
+    post    'invitation/invite'    => 'invitation#invite',           as: 'invitation_invite'
 
     # AJAX routes
     get   '/information_types_for_actor_type' => 'actor#information_types_for_actor_type', as: 'information_types_for_actor_type'
