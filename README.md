@@ -27,17 +27,13 @@ edited by hand. But, you can use any editor you like instead.
 
 Install the required packages:
 
-    sudo apt-get install -y git-core redis-server rake
+    sudo apt-get install -y git-core redis-server rake libxml2-dev libxslt1-dev openssl
 
 
 # 2. Ruby
 
 **Important Note:**
-Ruby version must be 1.9.x or higher
-
-If you use `Ubuntu`, you can install Ruby with:
-
-    sudo apt-get install ruby1.9.1 ruby1.9.1-dev
+Ruby version must be 1.9.3 or higher
 
 Download and compile it according to [`Official Ruby Website`](http://ruby-lang.org).
 
