@@ -21,8 +21,8 @@ gem 'multi_json'
 
 
 # for Server (if no JS-compiler is preinstalled)
-# gem 'execjs'
-# gem 'therubyracer'
+ gem 'execjs'
+ gem 'therubyracer'
 # end
 
 # Gems used only for assets and not required
