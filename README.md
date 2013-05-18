@@ -1,69 +1,130 @@
-SGfM project by PSE-Team 3
-=============
+# Overview
 
-Install (local)
--------
+The installation consists of setting up the following components:
 
-__Windows__
-* Install Ruby (Version 1.9.3 or later)
-* Install MongoDB (http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/)
-* Install the Devkit (https://github.com/oneclick/rubyinstaller/wiki/Development-Kit)
-* Enter <code>gem install bundler</code> in console
-* Navigate to project folder and enter <code>bundle install</code> in console
-
-__Mac OS X__
-* Install Ruby (Version 1.9.3 or later)
-* Install MongoDB (http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/)
-* Enter <code>sudo gem install bundler</code> in terminal
-* Navigate to project folder and enter <code>sudo bundle install</code> in terminal
-
-__Linux__
-* Install Ruby (Version 1.9.3 or later)
-* Install MongoDB (http://docs.mongodb.org/manual/tutorial/install-mongodb-on-linux/)
-* Enter <code>sudo gem install bundler</code> in terminal
-* Navigate to project folder and enter <code>sudo bundle install</code> in terminal
+1. Packages / Dependencies
+2. Ruby
+3. Database
+4. Software
 
 
-Run
----
+# 1. Packages / Dependencies
 
-__Windows__
-* Enter <code>C:\mongodb\bin\mongod.exe</code> in console to start MongoDB
-* Navigate to project folder in console
-* Enter <code>rails s</code> in console to start server
+`sudo` is not installed on Debian by default. Make sure your system is
+up-to-date and install it.
 
-__Mac OS X, Linux__
-* Enter <code>mongod</code> in terminal to start MongoDB 
-* Navigate to project folder in terminal
-* Enter <code>rails s</code> in terminal to start server
+    # run as root
+    apt-get update
+    apt-get upgrade
+    apt-get install sudo
 
-Login
-----
+**Note:**
+Vim is an editor that is used here whenever there are files that need to be
+edited by hand. But, you can use any editor you like instead.
 
-Go to <code>http://localhost:3000</code> in browser and use the following data to login:
+    # Install vim
+    sudo apt-get install -y vim
 
-__User__
-* Username: <code>email@domain.ch</code>
-* Password: <code>test1234</code>
+Install the required packages:
 
-__Admin__
-* Username: <code>admin@domain.ch</code>
-* Password: <code>test1234</code>
+    sudo apt-get install -y libyaml-dev libssl-dev libgdbm-dev git-core openssh-server redis-server  
 
-Test
-----
 
-__Windows__
-* Enter <code>C:\mongodb\bin\mongod.exe</code> in console to start MongoDB
-* Navigate to project folder in console
-* Enter <code>bundle exec rspec spec</code> in console to run RSpec tests
 
-__Mac OS X, Linux__
-* Enter <code>mongod</code> in terminal to start MongoDB 
-* Navigate to project folder in terminal
-* Enter <code>bundle exec rspec spec</code> in terminal to run RSpec tests
+# 2. Ruby
 
-Install (server)
-----
+Download and compile it according to [`Official Ruby Website`](http://ruby-lang.org).
 
-Instructions on how to install everything on a server will follow.
+    
+
+Install the Bundler Gem:
+
+    sudo gem install bundler
+
+
+
+
+# 3. Database
+
+To setup the MongoDB database and dependencies please see [`Official MongoDB Website`](http://www.mongodb.org/).
+
+
+# 4. Softwarre
+
+
+## Clone the Source
+
+    # Clone repository
+    git clone https://github.com/pse3/SGfM.gitb
+
+    # Go into dir
+    cd ./SGfM
+
+    # Checkout to stable release
+    git checkout stable
+
+
+## Configure it
+
+    cd ./SGfM/config/environments/production.rb
+
+    # enter your server deteils in the section
+      config.action_mailer.default_url_options = { 
+      :host => 'YOUR_DOMAIN',  # Enter the domain the software is running on
+      :locale =>I18n.locale 
+      }
+
+    # SMTP settings
+    config.action_mailer.smtp_settings = {
+      :enable_starttls_auto => true,
+      :address => "smtp.gmail.com", # SMTP Server
+      :port => 587, # SMTP Port
+      :domain => "gmail.com", # SMTP Domain
+      :authentication => :login,
+      :user_name => "xx@gmail.com", # SMTP Username
+      :password => "pw", # SMTP Password
+    }
+
+
+
+## Install Gems
+
+    cd ./SGfM
+
+    # update core gems
+    sudo gem update System
+
+    # install dependent gems
+    sudo bundle install 
+   
+
+
+## Initialise Database and Activate Advanced Features
+
+    rake db:seed RAILS_ENV=production
+
+
+## Start Your GitLab Instance
+
+    rails s -d -e production 
+    
+    # use -p XXXX to set a port
+
+
+
+Visit YOUR_SERVER for your first login.
+The setup has created an admin account for you. You can use it to log in:
+
+    admin@domain.ch
+    test1234
+    
+The setup has created a demo user account fou you. You can use it to log in:
+
+    email@domain.ch
+    test1234
+
+**Important Note:**
+Please go over to your profile page and immediately chage the password, so
+nobody can access your GitLab by using this login information later on.
+
+**Enjoy!**

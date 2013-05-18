@@ -1,5 +1,5 @@
 # encoding: utf-8
-unless Rails.env == :production
+unless Rails.env.production?
 
   # Reset all objects and types
   Actor.delete_all
