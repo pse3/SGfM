@@ -27,11 +27,17 @@ edited by hand. But, you can use any editor you like instead.
 
 Install the required packages:
 
-    sudo apt-get install -y libyaml-dev libssl-dev libgdbm-dev git-core openssh-server redis-server  
-
+    sudo apt-get install -y git-core redis-server rake
 
 
 # 2. Ruby
+
+**Important Note:**
+Ruby version must be 1.9.x or higher
+
+If you use `Ubuntu`, you can install Ruby with:
+
+    sudo apt-get install ruby1.9.1 ruby1.9.1-dev
 
 Download and compile it according to [`Official Ruby Website`](http://ruby-lang.org).
 
@@ -45,17 +51,20 @@ Install the Bundler Gem:
 
 
 # 3. Database
+If you use `Ubuntu`, you can install Ruby with:
+
+    sudo apt-get install mongodb
 
 To setup the MongoDB database and dependencies please see [`Official MongoDB Website`](http://www.mongodb.org/).
 
 
-# 4. Softwarre
+# 4. Software
 
 
 ## Clone the Source
 
     # Clone repository
-    git clone https://github.com/pse3/SGfM.gitb
+    git clone https://github.com/pse3/SGfM.git
 
     # Go into dir
     cd ./SGfM
@@ -66,7 +75,7 @@ To setup the MongoDB database and dependencies please see [`Official MongoDB Web
 
 ## Configure it
 
-    cd ./SGfM/config/environments/production.rb
+    vim ./SGfM/config/environments/production.rb
 
     # enter your server deteils in the section
       config.action_mailer.default_url_options = { 
