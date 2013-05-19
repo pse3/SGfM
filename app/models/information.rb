@@ -1,5 +1,6 @@
 # An Information is where exactly one piece of core data is stored. An Information references its InformationType(Decorator).
 # Information objects are embedded in the Actor they belong to. All the Informations of an Actor together represent the core data of the Actor.
+# Information includes Scoped, therefore Information objects have a Scope. by default this is inherited from its InformationType.
 class Information
 
   include Mongoid::Document

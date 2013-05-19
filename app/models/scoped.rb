@@ -1,5 +1,7 @@
+# Scoped is a module that implements functionality of Scopes.
+# If a class includes Scoped, each of its objects has a Scope that
+# defines which other objects are allowed to see this object.
 module Scoped
-  #todo comment methods that aren't clear
 
   def self.included(base)
     base.extend ClassMethods

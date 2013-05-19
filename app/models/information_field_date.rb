@@ -1,3 +1,4 @@
+# Primitive class for date information field types. Not yet implemented.
 class InformationFieldDate < InformationFieldType
 
   def get_value(value)

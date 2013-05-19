@@ -1,6 +1,6 @@
-# A relationship represents a relation between to actors, with one active actor :actor that owns the relationship and
+# A Relationship represents a relation between two Actors, with one active Actor :actor that created the Relationship and
 # a second actor that is only one-way referred in the relationship as :reference.
-# Every relationship must belong to a relationship_type and contain a comment(can be empty)
+# Every Relationship must reference a RelationshipType and contain a comment(can be empty)
 class Relationship
 
   include Mongoid::Document

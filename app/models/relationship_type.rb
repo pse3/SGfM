@@ -1,3 +1,6 @@
+# RelationshipTypes are referenced by Relationships.
+# A RelationshipType consists of a :name and :key.
+# Each RelationshipType also has a predefined :question that is asked specifically when a Relationship of this RelationshipType is created.
 class RelationshipType
 
   include Mongoid::Document

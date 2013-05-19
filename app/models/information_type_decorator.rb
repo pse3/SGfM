@@ -1,4 +1,4 @@
-# Decorator class for InformationType. Contains further data an ActorType object needs from its InformationType objects.
+# Decorator class for InformationType. Contains further data an ActorType needs from its InformationType.
 # This class behaves like InformationType, it directs all unknown methods to its InformationType object.
 class InformationTypeDecorator
 

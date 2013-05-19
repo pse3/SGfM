@@ -1,3 +1,4 @@
+# Primitive class for email information field types. Not yet implemented.
 class InformationFieldEmail < InformationFieldType
 
   def get_value(value)

@@ -1,4 +1,4 @@
-# ActorTypes define which Informations of which InformationTypes an Actor with this type need to contain.
+# ActorTypes define which Informations of which InformationTypes an Actor with this ActorType needs to contain.
 # InformationTypeDecorators of these InformationTypes are referenced in ActorType.
 # The only core data an ActorType contains is its name.
 class ActorType

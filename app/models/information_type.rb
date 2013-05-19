@@ -1,3 +1,5 @@
+# An InformationType is like an attribute. ActorTypes reference InformationTypes to declare which Informations an Actor of an ActorType must have.
+# InformationType includes Scoped not because an InformationType itself makes use of the Scope functions, but because Information by default inherit the Scope of their InformationType.
 class InformationType
 
   include Mongoid::Document
