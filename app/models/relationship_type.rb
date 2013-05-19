@@ -1,4 +1,4 @@
-# RelationshipTypes are referenced by Relationships.
+# RelationshipType objects are referenced by Relationship objects.
 # A RelationshipType consists of a :name and :key.
 # Each RelationshipType also has a predefined :question that is asked specifically when a Relationship of this RelationshipType is created.
 class RelationshipType
@@ -9,7 +9,7 @@ class RelationshipType
   field :key, :type => Symbol
   field :question, :type => String, :localize => true
 
-  has_and_belongs_to_many :actor_types, class_name: 'ActorType', inverse_of: :predefined_questions
+  has_and_belongs_to_many :actor_types, class_name: 'ActorType', inverse_of: :predefined_questions  #referenced
 
   validates_uniqueness_of :key
 	validates_presence_of :name, :question

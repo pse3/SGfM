@@ -1,4 +1,4 @@
-# Primitive class for multiple select information field types.
+# Concrete class for multiple select InformationFieldType objects.
 class InformationFieldMultipleSelect < InformationFieldType
 
   def get_value(value)

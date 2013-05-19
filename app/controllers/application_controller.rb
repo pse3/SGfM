@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # returns true if login owns actor, false if login doesn't own actor or if login is nil
+  # Returns true if login owns actor, false if login doesn't own actor or if login is nil.
   def login_owns_actor(login, actor)
     if login.nil?
       false
@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # returns true if login is admin, false if login is not admin or if login is nil
+  # Returns true if login is admin, false if login is not admin or if login is nil.
   def is_admin(login)
     if login.nil?
       false

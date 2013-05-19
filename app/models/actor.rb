@@ -1,5 +1,5 @@
-# An Actor consists of a list of references to Informations and a reference to one specific ActorType.
-# Actors are the main objects in the data model.
+# An Actor consists of a list of references to Information objects and a reference to one specific ActorType.
+# Actor objects are the main objects in the data model.
 # The only core data an Actor contains is its name.
 class Actor
 
@@ -14,10 +14,10 @@ class Actor
   field :search_field, :type => String
   field :to_string_field, :type => String
 
-	belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced
+	belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced /one-way
   embeds_many :informations, class_name: 'Information'                                  #embedded
-  has_many :relationships, class_name: 'Relationship'                                  	#embedded
-  belongs_to :owner, class_name: 'User'                                                 #embedded
+  has_many :relationships, class_name: 'Relationship'                                  	#referenced
+  belongs_to :owner, class_name: 'User'                                                 #referenced
 
   before_save :update_search_field, :update_to_string_field
   search_in :search_field

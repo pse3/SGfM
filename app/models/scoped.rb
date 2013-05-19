@@ -1,4 +1,4 @@
-# Scoped is a module that implements functionality of Scopes.
+# Scoped is a module that implements functionality of Scope.
 # If a class includes Scoped, each of its objects has a Scope that
 # defines which other objects are allowed to see this object.
 module Scoped

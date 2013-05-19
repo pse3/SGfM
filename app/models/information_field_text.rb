@@ -1,4 +1,4 @@
-# Primitive class for text input information field types.
+# Concrete class for text input InformationFieldType objects.
 class InformationFieldText < InformationFieldType
 
   def get_value(value)

@@ -6,7 +6,7 @@ class ActorController < ApplicationController
   before_filter :authenticate_login!, :except => [:show, :search]
   before_filter  :owns_actor_or_is_admin!, :only => [:edit, :update]
 
-  # Creates an Actor of chosen ActorType and with params as Informations
+  # Creates an Actor of chosen ActorType and with params as Information objects.
   def create
     user = current_account
     actor = Actor.new
@@ -54,8 +54,8 @@ class ActorController < ApplicationController
 		end
 	end
 
-	# Gets all Actors of the current logged in User hashed by their ActorType
-	# If the current Login is an Admin, show all Actors
+	# Gets all Actor objects of the current logged in User hashed by their ActorType.
+	# If the current Login is an Admin, show all Actor objects.
 	def list
 		if current_login.is_admin?
 			actors = Actor.all
@@ -119,7 +119,7 @@ class ActorController < ApplicationController
 																																				:information_types => information_types})
   end
 
-  # Search for Actors that match the search query and display them
+  # Search for Actor objects that match the search query and display them.
   def search
     query = params[:query]
 

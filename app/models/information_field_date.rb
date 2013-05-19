@@ -1,4 +1,4 @@
-# Primitive class for date information field types. Not yet implemented.
+# Concrete class for date InformationFieldType objects. Not yet implemented.
 class InformationFieldDate < InformationFieldType
 
   def get_value(value)

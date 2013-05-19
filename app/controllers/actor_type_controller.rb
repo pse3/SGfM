@@ -4,7 +4,7 @@ class ActorTypeController < ApplicationController
 
 	before_filter :authenticate_login!, :authenticate_admin!
 
-	# Creates an ActorType with chosen name and InformationTypes
+	# Creates an ActorType with chosen name and InformationType objects.
   def create
 
     params[:actor_type][:key] = params[:actor_type][:name_translations][:en].downcase.tr(' ', '_')
@@ -38,8 +38,8 @@ class ActorTypeController < ApplicationController
     end
   end
 
-  # Gets all ActorTypes
-  # If there are none, return an empty array
+  # Gets all ActorType objects.
+  # If there are none, return an empty array.
   def list
     @actor_types = ActorType.all
     @actor_type = Array.new unless @actor_type

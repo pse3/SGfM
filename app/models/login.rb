@@ -1,7 +1,5 @@
-# The Login model represents an abstract login. This is a container
-# for devise specific data. It is connected to an account which can either be
-# a User or an Admin.
-# Author::    Kenneth Radunz  (kenneth.radunz@gmail.com)
+# The Login model represents an abstract login. This is a container for devise specific data.
+# It is connected to an account which can either be a User or an Admin.
 class Login
 
   include Mongoid::Document

@@ -1,7 +1,7 @@
 require 'csv'
 require_relative '../models/csv_import/csv_file'
 
-# Controller for importing CsvFiles by the admin.
+# Controller for importing CsvFiles by an Admin.
 class CsvImportController < ApplicationController
 
   before_filter :authenticate_login!, :authenticate_admin!
@@ -37,7 +37,7 @@ class CsvImportController < ApplicationController
     end
   end
 
-  #lists all uploaded files
+  # Lists all uploaded CsvFiles.
   def list_csv_files
     @csv_files = CsvImport::CsvFile.all
   end
@@ -89,7 +89,7 @@ class CsvImportController < ApplicationController
     info
   end
 
-  # displays the form to create a new import
+  # Displays the form to create a new import.
   def new_import
     @csv_file = CsvImport::CsvFile.find(params[:id])
     @actor_types = ActorType.all
