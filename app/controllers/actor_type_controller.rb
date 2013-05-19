@@ -12,6 +12,7 @@ class ActorTypeController < ApplicationController
       keys = params[:information_type_decorator][:information_type]
       required = params[:information_type_decorator][:required]
       searchable = params[:information_type_decorator][:searchable]
+
       keys.each_with_index do |key, i|
         info_type = InformationType.find_by_key(key.to_sym)
         InformationTypeDecorator.create(info_type, actor_type, required[i], searchable[i])
@@ -74,6 +75,14 @@ class ActorTypeController < ApplicationController
       keys.each_with_index do |key, i|
         information_type = InformationType.find_by_key(key.to_sym)
         InformationTypeDecorator.create(information_type, @actor_type, required[i], searchable[i])
+      end
+    end
+
+    if params[:predefined_questions][:relationship_types]
+      params[:predefined_questions][:relationship_types].each do |relationship_type|
+        if relationship_type.length > 0
+          @actor_type.predefined_questions.push(RelationshipType.find_by :key => relationship_type)
+        end
       end
     end
 

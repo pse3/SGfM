@@ -11,6 +11,7 @@ gem 'rspec-rails', :require => false
 gem 'capybara'
 gem 'select2-rails' # Added by urs, needed to allow easy dropdown autocomplete box for relationship references
 gem 'mongoid_search'
+gem 'selenium-webdriver'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

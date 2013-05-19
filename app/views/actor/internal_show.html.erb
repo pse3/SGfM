@@ -1,49 +1,43 @@
 <% @page_title = t('actor.show.title', :actor => @actor.to_s) %>
-<span class="label"><%= @actor.actor_type.name %></span>
+<div class="well">
+  <div class="lead">
+    <small><%= @actor.actor_type.name %></small>
 
-<p class="pull-right">
-  <%= link_to(t('actor.show.edit_actor'), edit_actor_path(@actor), :class => 'btn btn-small') %>
-</p>
-
-<h1><small><%= t('actor.show.details') %></small></h1>
-
-<table class="table table-hover">
-  <% @informations.each do |info| %>
+    <p class="pull-right">
+      <%= link_to(t('actor.show.edit_actor'), edit_actor_path(@actor), :class => 'btn btn-small') %>
+    </p>
+  </div>
+  <table class="table table-condensed">
+    <% @informations.each do |info| %>
       <tr>
-        <td class="span2"><strong><%= info.information_type_decorator.name %></strong></td>
-        <td class="span2"><%= info.value_to_s %></td>
-        <td class="span5"></td>
+        <td class="span3"><strong><%= info.information_type_decorator.name %></strong></td>
+        <td class="span3"><%= info.value_to_s %></td>
+        <td class="span4"></td>
         <td class="span1"></td>
       </tr>
       <tr></tr>
-  <% end %>
-  <tr>
-</table>
+    <% end %>
+    <tr>
+    </table>
 
-<p class="pull-right">
-  <%= link_to(t('actor.show.add_relationship'), create_relationship_path(@actor), :class => 'btn btn-small pull-right') %>
-</p>
+    <p class="pull-right">
+    <%= link_to(t('actor.show.add_relationship'), create_relationship_path(@actor), :class => 'btn btn-small pull-right') %>
+    </p>
 
-<h1><small><%= t('actor.show.relationships') %></small></h1>
-
-<table class="table table-hover">
-  <% @actor.relationships.each do |relationship| %>
+    <table class="table table-condensed">
+    <% @actor.relationships.each do |relationship| %>
       <tr>
-        <td class="span2"><%= relationship.relationship_type.to_s %></td>
-        <td class="span2"><%= link_to(relationship.reference.to_s, show_actor_path(relationship.reference)) %></td>
-        <td class="span5"><%= relationship.comment.to_s %></td>
+        <td class="span3"><%= relationship.relationship_type.to_s %></td>
+        <td class="span3"><%= link_to(relationship.reference.to_s, show_actor_path(relationship.reference)) %></td>
+        <td class="span4"><%= relationship.comment.to_s %></td>
         <td class="span1">
           <%= link_to(raw('<i class="icon-edit"></i>'), edit_relationship_path(relationship)) %>
           <%= link_to(raw('<i class="icon-trash"></i>'), delete_relationship_path(relationship), :method => :delete) %>
         </td>
       </tr>
-  <% end %>
-  <% if @actor.relationships.empty? %>
-      <tr>
-        <td><%= t('actor.show.none_declared') %></td>
-      </tr>
-  <% end %>
-</table>
+    <% end %>
+  </table>
+</div>
 <% if current_account.actors.size == 1 %>
     <div>   <!-- Not actually a dropdown. Just for styling !-->
       <a href="#options"  data-toggle="collapse" data-target="#options"><small><%= t('actor.show.more')%></small></a>
@@ -53,3 +47,4 @@
       <a href=" <%=create_actor_path%>" class="btn btn-mini"><%= t('actor.show.add_another_actor') %></a>
     </div>
 <% end %>
+
