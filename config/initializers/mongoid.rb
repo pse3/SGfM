@@ -415,6 +415,7 @@ unless Rails.env == :production
   # Create some Relations
   relationship_insel = Relationship.new
   relationship_insel.relationship_type = RelationshipType.find_by_key(:works_with)
+	relationship_insel.scope = scope_public
   relationship_insel.comment = 'This is a comment. Made by god!'
   relationship_insel.actor = dummy_actor_insel
   relationship_insel.reference = dummy_actor_karl
