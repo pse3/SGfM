@@ -1,3 +1,4 @@
+# Primitive class for single select information field types.
 class InformationFieldSingleSelect < InformationFieldType
 
   def get_value(value)

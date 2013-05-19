@@ -1,3 +1,5 @@
+# Decorator class for InformationType. Contains further data an ActorType object needs from its InformationType objects.
+# This class behaves like InformationType, it directs all unknown methods to its InformationType object.
 class InformationTypeDecorator
 
   include Mongoid::Document

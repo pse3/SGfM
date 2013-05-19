@@ -1,3 +1,4 @@
+# See class Login for documentation.
 class User
 
     include Mongoid::Document

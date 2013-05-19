@@ -1,9 +1,10 @@
+# An Information is where exactly one piece of core data is stored. An Information references its InformationType(Decorator).
+# Information objects are embedded in the Actor they belong to. All the Informations of an Actor together represent the core data of the Actor.
 class Information
 
   include Mongoid::Document
   include Scoped
 
-  # todo needed to name this different otherwise its not clear what self.value is aiming for, do you know how to solve that?
   field :value_of_this_information
   field :created_at, :type => DateTime
   field :changed_at, :type => DateTime
@@ -21,7 +22,6 @@ class Information
     super
     self.created_at = DateTime.now
   end
-
 
   def value
     self.information_type_decorator.information_field_type.get_value(self.value_of_this_information)

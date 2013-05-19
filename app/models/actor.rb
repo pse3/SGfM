@@ -1,4 +1,6 @@
-# Base class for hospitals, doctors etc.
+# An Actor consists of a list of references to Informations and a reference to one specific ActorType.
+# Actors are the main objects in the data model.
+# The only core data an Actor contains is its name.
 class Actor
 
   include Mongoid::Document
