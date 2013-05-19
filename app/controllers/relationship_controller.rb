@@ -35,7 +35,8 @@ class RelationshipController < ApplicationController
     relationship = Relationship.find(params[:id])
     @actor = relationship.actor
     relationship.relationship_type = RelationshipType.find_by_key(params[:relationship][:relationship_type])
-    relationship.comment = params[:relationship][:comment]
+		relationship.scope =  Scope.find_by(key: params[:relationship][:scope].to_sym)
+		relationship.comment = params[:relationship][:comment]
     if relationship.save
       flash[:success] = t('relationship.update.success')
       redirect_to(show_actor_path(@actor))
