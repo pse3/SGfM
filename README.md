@@ -97,7 +97,7 @@ To setup the MongoDB database and dependencies please see [`Official MongoDB Web
     cd ./SGfM
 
     # update core gems
-    sudo gem update System
+    sudo gem update --system
 
     # install dependent gems
     sudo bundle install 
