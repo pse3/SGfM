@@ -17,7 +17,7 @@
   </table>
 
   <table class="table table-condensed">
-    <% @actor.relationships.each do |relationship| %>
+    <% @relationships.each do |relationship| %>
         <tr>
             <td class="span3"><%= relationship.relationship_type.to_s %></td>
             <td class="span3"><%= link_to(relationship.reference.to_s, show_actor_path(relationship.reference)) %></td>

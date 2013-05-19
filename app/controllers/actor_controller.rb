@@ -148,11 +148,13 @@ class ActorController < ApplicationController
     @actor = Actor.find(params[:id])
     if login_owns_actor(current_login, @actor) or is_admin(current_login)
       @informations = scope_array(@actor.informations, current_account)
+			@relationships = scope_array(@actor.relationships, current_account)
       render('actor/internal_show')
     else
       @viewer = current_account || :guest
       @informations = scope_array(@actor.informations, @viewer)
-      render('actor/external_show')
+			@relationships = scope_array(@actor.relationships, @viewer)
+			render('actor/external_show')
     end
 
   end
