@@ -1,3 +1,4 @@
+# Controller that directs client to correct view when trying to access index page of web application.
 class HomeController < ApplicationController
 
   def index

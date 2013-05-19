@@ -1,10 +1,12 @@
+# Controller for objects of class Actor.
+# Mediates inputs and converts them to commands for the model-class and the view.
 class ActorController < ApplicationController
 	include ScopesHelper
 
   before_filter :authenticate_login!, :except => [:show, :search]
   before_filter  :owns_actor_or_is_admin!, :only => [:edit, :update]
 
-  # Creates a Actor with chosen name and type
+  # Creates an Actor of chosen ActorType and with params as Informations
   def create
     user = current_account
     actor = Actor.new
@@ -52,8 +54,8 @@ class ActorController < ApplicationController
 		end
 	end
 
-	# Gets all actors of the current logged in user hashed by their actor type
-	# If the current user is a admin, show all
+	# Gets all Actors of the current logged in User hashed by their ActorType
+	# If the current Login is an Admin, show all Actors
 	def list
 		if current_login.is_admin?
 			actors = Actor.all
@@ -117,7 +119,7 @@ class ActorController < ApplicationController
 																																				:information_types => information_types})
   end
 
-  # Search
+  # Search for Actors that match the search query and display them
   def search
     query = params[:query]
 
@@ -143,7 +145,6 @@ class ActorController < ApplicationController
 
   end
 
-	# Find actor with given id
 	def show
     @actor = Actor.find(params[:id])
     if login_owns_actor(current_login, @actor) or is_admin(current_login)

@@ -1,3 +1,5 @@
+# Controller that takes care of inviting Users that own Actors which have been imported..
+# Mediates inputs and converts them to commands for the model-class and the view.
 class InvitationController < ApplicationController
 
   before_filter :authenticate_login!, :authenticate_admin!

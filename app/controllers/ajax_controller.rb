@@ -1,3 +1,5 @@
+# Controller for Ajax usages.
+# Used to render partials that are needed when filling in forms that change depending on selections made in views.
 class AjaxController < ApplicationController
 
   def add_relationship_form

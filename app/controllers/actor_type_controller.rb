@@ -1,3 +1,5 @@
+# Controller for objects of class ActorType.
+# Mediates inputs and converts them to commands for the model-class and the view.
 class ActorTypeController < ApplicationController
 
 	before_filter :authenticate_login!, :authenticate_admin!
@@ -36,19 +38,17 @@ class ActorTypeController < ApplicationController
     end
   end
 
-  # Gets all actor_types
+  # Gets all ActorTypes
   # If there are none, return an empty array
   def list
     @actor_types = ActorType.all
     @actor_type = Array.new unless @actor_type
   end
 
-  # Find information_type with given id
   def show
     @actor_type = ActorType.find(params[:id])
   end
 
-  # Passes all information types in a list, that the user will be able to choose from
   def new
     @information_types = InformationType.all
   end
@@ -65,7 +65,7 @@ class ActorTypeController < ApplicationController
 
 
     #the code above removes all the info_type_decs of an actor_type.doesn't delete the decorators. they are needed because
-    #informations of existing actors of this actor_type still reference and need their data!!!
+    #informations of existing actors of this actor_type still reference and need their data
     #the code below adds all the info_type_decs back to the actor_type based on if they were selected in the edit view
 
     if params[:information_type_decorator]

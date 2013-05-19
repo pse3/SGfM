@@ -1,7 +1,7 @@
 require 'csv'
 require_relative '../models/csv_import/csv_file'
 
-# controller for CSV file import by admins
+# Controller for importing CsvFiles by the admin.
 class CsvImportController < ApplicationController
 
   before_filter :authenticate_login!, :authenticate_admin!

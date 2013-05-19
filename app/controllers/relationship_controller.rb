@@ -1,3 +1,5 @@
+# Controller for objects of class Relationship.
+# Mediates inputs and converts them to commands for the model-class and the view.
 class RelationshipController < ApplicationController
 
   before_filter :owns_actor_or_is_admin!, :only => [:new, :create]

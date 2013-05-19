@@ -1,3 +1,5 @@
+# Controller that takes care of register process for new Users.
+# Mediates inputs and converts them to commands for the model-class and the view.
 class RegistrationsController < Devise::RegistrationsController
 
 
