@@ -123,13 +123,13 @@ The setup has created an admin account for you. You can use it to log in:
     admin@domain.ch
     test1234
     
-The setup has created a demo user account fou you. You can use it to log in:
+The setup has created a demo user account for you. You can use it to log in:
 
     email@domain.ch
     test1234
 
 **Important Note:**
-Please go over to your profile page and immediately chage the password, so
+Please go over to your profile page and immediately change the password, so
 nobody can access your GitLab by using this login information later on.
 
 **Enjoy!**
