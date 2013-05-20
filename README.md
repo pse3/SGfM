@@ -23,26 +23,12 @@ about the authors of this application.
 
 For installation on a server, please see INSTALL.md file for further instructions.
 
-If you want to install this application locally, make sure you have Ruby (version 1.9.3), 
-MongoDB (version 3.2 or later) and Bundler installed on your machine. Download the source
-code of this application and navigate to the top directory. Then open a terminal/console 
-and run 
-
-       bundle install 
-
-This should install all the required gems. Now start MongoDB with
-
-       mongod
-       
-and finally the application with
-
-       rails s
        
 # Testing
 
 To run the provided tests, make sure you have Ruby (version 1.9.3), 
 MongoDB (version 3.2 or later) and Bundler installed on your machine. Download the source
-code of this application and navigate to the top directory. Then open a terminal/console 
+code of this application and navigate to the top directory. Then open the terminal or console 
 and run 
 
        bundle install 
