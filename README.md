@@ -53,4 +53,4 @@ This should install all the required gems. Now start MongoDB with
        
 and finally run the spec tests with
 
-       bundle exec rspec spec'
+       bundle exec rspec spec
