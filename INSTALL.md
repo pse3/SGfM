@@ -109,7 +109,7 @@ To setup the MongoDB database and dependencies please see [`Official MongoDB Web
     rake db:seed RAILS_ENV=production
 
 
-## Start Your GitLab Instance
+## Start Your Instance
 
     rails s -d -e production 
     
