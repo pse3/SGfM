@@ -130,6 +130,8 @@ The setup has created a demo user account for you. You can use it to log in:
 
 **Important Note:**
 Please go over to your profile page and immediately change the password, so
-nobody can access your GitLab by using this login information later on.
+nobody can access your site using this login information later on.
+
+If you occur any problems during installation, please let us know by contacting us via github issue tracker
 
 **Enjoy!**
