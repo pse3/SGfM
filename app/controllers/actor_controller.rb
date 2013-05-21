@@ -98,9 +98,17 @@ class ActorController < ApplicationController
 
 		params[:actor][:information].each do |key,value|
 			info = @actor.find_information_by_key(key.to_sym)
+			info_type_decorator = @actor.actor_type.decorator_by_key(key.to_sym)
+
+			if info.nil?
+				info = Information.new
+				info.information_type_decorator = info_type_decorator
+				info.actor = @actor
+			end
+
 			info.value = value
-			unless params[:actor][:scope][key.to_sym].nil?
-				info.scope = Scope.find_by(key: params[:actor][:scope][key.to_sym])
+			unless info_type_decorator.scope
+				info.scope = Scope.find_by(key: params[:actor][:scope][info_type_decorator.key].to_sym)
 			end
 		end
 		@actor.save
