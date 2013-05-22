@@ -8,7 +8,6 @@ class RelationshipController < ApplicationController
   def new
     @locals = { :all_actors => Actor.all,
                 :actor => Actor.find(params[:actor]) }
-    # todo either use this way or make all to @-variables
   end
 
   def create

@@ -32,7 +32,8 @@ class AjaxController < ApplicationController
 
   private
   def render_partial(file, locals = {})
-    #TODO remove random
+    #NOTE a random number as a temporary fieldnumber may not the cleanest solution but for sure the
+    # easiest, fastest and needs no other variables (=no dependency)
     locals[:field_number] = Random.new.rand(100...1000000)
     render(:partial => file, :locals => locals)
   end
