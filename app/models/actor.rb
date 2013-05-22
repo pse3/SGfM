@@ -49,7 +49,6 @@ class Actor
     self.to_string_field = final_parsed
   end
 
-  # todo maybe it not updated correctly when called via actor_type's after_save, maybe
   def update_search_field
     self.search_field = ''
     self.informations.each do |information|
