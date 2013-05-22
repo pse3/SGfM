@@ -1,6 +1,6 @@
-# A relationship represents a relation between to actors, with one active actor :actor that owns the relationship and
-# a second actor that is only one-way referred in the relationship as :reference.
-# Every relationship must belong to a relationship_type and contain a comment(can be empty)
+# A Relationship represents a relation between two Actor objects, with one active Actor :actor that created the Relationship and
+# a second Actor that is only one-way referred in the Relationship as :reference.
+# Every Relationship must reference a RelationshipType and contain a comment(can be empty).
 class Relationship
 
   include Mongoid::Document
@@ -9,11 +9,11 @@ class Relationship
   field :created_at, :type => DateTime
   field :changed_a, :type => DateTime
 
-  belongs_to :creator, :class_name => 'User', :inverse_of => nil                                #referenced / one way relationship                                                                                                                                                                                                                                              #embedded
-  belongs_to :relationship_type, :class_name => 'RelationshipType', :inverse_of => nil          #referenced / one way relationship
-  belongs_to :scope, :class_name => 'Scope', :inverse_of => nil                                 #referenced
-  belongs_to :actor, :class_name => 'Actor', :inverse_of => :relationships                      #embedded
-  belongs_to :reference, :class_name => 'Actor', :inverse_of => nil                             #referenced / one way relationship
+  belongs_to :creator, :class_name => 'User', :inverse_of => nil                                #referenced / one-way                                                                                                                                                                                                                                              #embedded
+  belongs_to :relationship_type, :class_name => 'RelationshipType', :inverse_of => nil          #referenced / one-way
+  belongs_to :scope, :class_name => 'Scope', :inverse_of => nil                                 #referenced / one-way
+  belongs_to :actor, :class_name => 'Actor', :inverse_of => :relationships                      #referenced
+  belongs_to :reference, :class_name => 'Actor', :inverse_of => nil                             #referenced / one-way
 
 	validates_presence_of :relationship_type, :actor, :reference #, :creator  TODO: @urs: creator isn't set in controller? wanted to validate it, but it fails.
 

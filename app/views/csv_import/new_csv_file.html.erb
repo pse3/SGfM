@@ -1,6 +1,6 @@
 <%= content_for :admin_tab_bar do %>
     <% render :partial => 'shared/menuebar', :locals => {:actor_type => "", :info_type => "", :import => "active",
-                                                         :scope => "", :relationship_type => ""} %>
+                                                         :scope => "", :relationship_type => "", :invitation => ""} %>
 <% end %>
 
 <% @page_title = t('csv_import.file.new.title') %>

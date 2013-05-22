@@ -1,3 +1,5 @@
+# Controller for objects of class Relationship.
+# Mediates inputs and converts them to commands for the model-class and the view.
 class RelationshipController < ApplicationController
 
   before_filter :owns_actor_or_is_admin!, :only => [:new, :create]
@@ -6,7 +8,6 @@ class RelationshipController < ApplicationController
   def new
     @locals = { :all_actors => Actor.all,
                 :actor => Actor.find(params[:actor]) }
-    # todo either use this way or make all to @-variables
   end
 
   def create

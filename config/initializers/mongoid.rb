@@ -1,5 +1,5 @@
 # encoding: utf-8
-unless Rails.env == :production
+unless Rails.env.production?
 
   # Reset all objects and types
   Actor.delete_all
@@ -213,6 +213,7 @@ unless Rails.env == :production
   InformationTypeDecorator.create(info_canton, actor_doctor, false, true)
   actor_doctor.name_translations = { :en => 'Doctor', :de =>'Arzt', :it => 'Dottore', :fr => 'Médecin' }
   actor_doctor.to_string_pattern = '|:last_name| |:first_name|'
+  actor_doctor.predefined_questions.push(relation_works_with, relation_assigns, relation_other)
   actor_doctor.save
 
 
@@ -263,6 +264,7 @@ unless Rails.env == :production
                     :password => 'test1234',
                     :password_confirmation => 'test1234')
   login.account = user
+  login.confirmed_at = Time.now
   user.save
 
   user2 = User.new
@@ -270,6 +272,7 @@ unless Rails.env == :production
                     :password => 'test1234',
                     :password_confirmation => 'test1234')
   login.account = user2
+  login.confirmed_at = Time.now
   user2.save
 
   login.save
@@ -278,6 +281,7 @@ unless Rails.env == :production
                     :password => 'test1234',
                     :password_confirmation => 'test1234')
   login.account = admin
+  login.confirmed_at = Time.now
   admin.save
   login.save
 
@@ -410,6 +414,32 @@ unless Rails.env == :production
   user.actors.push(dummy_actor_karl)
   dummy_actor_karl.save
   user.save
+
+  # Dummy doctor 'Karl Schürch'
+  dummy_suti = Actor.new
+  dummy_suti.actor_type = ActorType.find_by_key(:doctor)
+  dummy_actor_type = dummy_suti.actor_type
+
+  suti_fname = Information.new
+  suti_fname.information_type_decorator = dummy_actor_type.decorator_by_key(:first_name)
+  suti_fname.scope = scope_public
+  suti_fname.value = 'Patrick'
+  suti_fname.actor = dummy_suti
+
+  suti_lname = Information.new
+  suti_lname.information_type_decorator = dummy_actor_type.decorator_by_key(:last_name)
+  suti_lname.scope = scope_public
+  suti_lname.value = 'Suter'
+  suti_lname.actor = dummy_suti
+
+  suti_email = Information.new
+  suti_email.information_type_decorator = dummy_actor_type.decorator_by_key(:email)
+  suti_email.scope = scope_public
+  suti_email.value = 'patrick.suter@students.unibe.ch'
+  suti_email.actor = dummy_suti
+
+
+  dummy_suti.save
 
 
   # Create some Relations

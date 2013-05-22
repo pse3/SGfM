@@ -1,3 +1,4 @@
+# Abstract class of what kind of input InformationType objects have. Extended by its concrete classes.
 class InformationFieldType
 
   include Mongoid::Document

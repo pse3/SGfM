@@ -1,6 +1,6 @@
 <%= content_for :admin_tab_bar do %>
     <% render :partial => 'shared/menuebar', :locals => {:actor_type => "active", :info_type => "", :import => "",
-                                                         :scope => "", :relationship_type => ""} %>
+                                                         :scope => "", :relationship_type => "", :invitation => ""} %>
 <% end %>
 
 <% @page_title = t('actor_type.edit.title') %>
@@ -104,6 +104,18 @@
                              :type => :button, :class => 'btn btn-medium') %>
     </p>
   </div>
+
+    <div class="page-header">
+      <h1><small><%= t('actor_type.new.relationship_types') %></small></h1>
+    </div>
+    <%= fields_for(:predefined_questions) do |ff| %>
+        <div class='control-group'>
+          <%= ff.label(:relationship_types, t('actor_type.new.relationship_types'), :class => 'control-label') %>
+          <div class='controls'>
+            <%= ff.collection_select(:relationship_types, RelationshipType.all(), :key, :name, {}, {:multiple => true}) %>
+          </div>
+        </div>
+    <% end %>
 
   <div class="form-actions">
     <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>

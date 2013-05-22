@@ -4,10 +4,11 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = "noReply@qualitaetsmedizin.ch"
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = "Devise::Mailer"
+  #config.mailer = "DeviseMailer"
+  Devise.mailer = DeviseMailer
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -82,7 +83,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "aaba4e579b20306c9380a434691feb1db3d774235eef70144d3c4b4861148f975e966bb9552c69e1af278b868a2827355ed75f1ff5877071184c8376dc74d689"
+ config.pepper = "aaba4e579b20306dhjfkc9380a434691feb1db3d774235eef70144d3c4b4861148f975e966bb9552c69e1af278b868a2827355ed75f1ff5877071184c8376dc74d689"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -107,7 +108,7 @@ Devise.setup do |config|
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  # config.confirmation_keys = [ :email ]
+  config.confirmation_keys = [ :email ]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.

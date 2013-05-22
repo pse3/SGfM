@@ -1,5 +1,8 @@
 require 'fileutils'
 
+# A CsvFile is a file of the format .csv that has been imported by an Admin.
+# CsvFiles are used to import a list of multiple Actors at once.
+
 module CsvImport
   class CsvFile
 

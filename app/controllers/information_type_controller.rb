@@ -1,8 +1,10 @@
+# Controller for objects of class InformationType.
+# Mediates inputs and converts them to commands for the model-class and the view.
 class InformationTypeController < ApplicationController
 
 	before_filter :authenticate_login!, :authenticate_admin!
 
-	# Creates an InformationType with chosen name
+	# Creates an InformationType with chosen name.
   def create
     information_type = InformationType.new
     information_type.name_translations = params[:information_type][:name]
@@ -25,8 +27,8 @@ class InformationTypeController < ApplicationController
 
   end
 
-  # Gets all information_types
-  # If there are none, return an empty array
+  # Gets all InformationType objects.
+  # If there are none, return an empty array.
   def list
     @information_types = InformationType.all
     if @information_types.nil?
@@ -67,13 +69,9 @@ class InformationTypeController < ApplicationController
     redirect_to(information_types_path)
   end
 
-  # Find information_type with given id
+  # Find InformationType with given id.
   def show
     @information_type = InformationType.find(params[:id])
-  end
-
-  # Does nothing
-  def new
   end
 
 end
