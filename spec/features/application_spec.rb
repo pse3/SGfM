@@ -192,6 +192,4 @@ describe ApplicationController do
     page.should_not have_content 'TestDoctorFirstname'
     page.should_not have_content 'TestDoctorLastname'
   end
-
-
 end
