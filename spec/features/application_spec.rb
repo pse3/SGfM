@@ -154,109 +154,9 @@ describe ApplicationController do
       actor_hospital.to_string_pattern = '|:company|//|:canton|'
       actor_hospital.save
 
-
-      user = User.new
-      login = Login.new(:email => 'email@domain.ch',
-                        :password => 'test1234',
-                        :password_confirmation => 'test1234')
-      login.account = user
-      user.save
-
-      user2 = User.new
-      login = Login.new(:email => 'user@domain.ch',
-                        :password => 'test1234',
-                        :password_confirmation => 'test1234')
-      login.account = user2
-      user2.save
-
-      login.save
-      admin = Admin.new
-      login = Login.new(:email => 'admin@domain.ch',
-                        :password => 'test1234',
-                        :password_confirmation => 'test1234')
-      login.account = admin
-      admin.save
-      login.save
-
-
-      # Create some Actors
-
-      # Dummy actor 'Insel'
-      dummy_actor_test_hospital = Actor.new
-      dummy_actor_test_hospital.actor_type = ActorType.find_by_key(:hospital)
-      dummy_actor_type = dummy_actor_test_hospital.actor_type
-
-      test_hospital_name = Information.new
-      test_hospital_name.information_type_decorator = dummy_actor_type.decorator_by_key(:company)
-      test_hospital_name.value = 'TestHospitalName'
-      test_hospital_name.actor = dummy_actor_test_hospital
-
-      test_hospital_phone = Information.new
-      test_hospital_phone.scope = scope_public
-      test_hospital_phone.information_type_decorator = dummy_actor_type.decorator_by_key(:phone)
-      test_hospital_phone.value = '033 777 88 11'
-      test_hospital_phone.actor = dummy_actor_test_hospital
-
-      test_hospital_canton = Information.new
-      test_hospital_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
-      test_hospital_canton.value = 'BE'
-      test_hospital_canton.actor = dummy_actor_test_hospital
-
-      user.actors.push(dummy_actor_test_hospital)
-      dummy_actor_test_hospital.save
-      user.save
-
-      # Dummy doctor 'Karl Schürch'
-      dummy_actor_test_doctor = Actor.new
-      dummy_actor_test_doctor.actor_type = ActorType.find_by_key(:doctor)
-      dummy_actor_type = dummy_actor_test_doctor.actor_type
-
-      test_doctor_medical_specialisations = Information.new
-      test_doctor_medical_specialisations.information_type_decorator = dummy_actor_type.decorator_by_key(:medical_specialisations)
-      test_doctor_medical_specialisations.value = ['Childdoctor']
-      test_doctor_medical_specialisations.actor = dummy_actor_test_doctor
-
-      test_doctor_fname = Information.new
-      test_doctor_fname.information_type_decorator = dummy_actor_type.decorator_by_key(:first_name)
-      test_doctor_fname.value = 'TestDoctorFirstName'
-      test_doctor_fname.actor = dummy_actor_test_doctor
-
-      test_doctor_lname = Information.new
-      test_doctor_lname.information_type_decorator = dummy_actor_type.decorator_by_key(:last_name)
-      test_doctor_lname.value = 'TestDoctorSecondName'
-      test_doctor_lname.actor = dummy_actor_test_doctor
-
-      test_doctor_phone = Information.new
-      test_doctor_phone.information_type_decorator = dummy_actor_type.decorator_by_key(:phone)
-      test_doctor_phone.scope = scope_private
-      test_doctor_phone.value = '078 888 77 66'
-      test_doctor_phone.actor = dummy_actor_test_doctor
-
-      test_doctor_canton = Information.new
-      test_doctor_canton.information_type_decorator = dummy_actor_type.decorator_by_key(:canton)
-      test_doctor_canton.scope = scope_private
-      test_doctor_canton.value = 'FR'
-      test_doctor_canton.actor = dummy_actor_test_doctor
-
-      user.actors.push(dummy_actor_test_doctor)
-      dummy_actor_test_doctor.save
-      user.save
-
-
-      # Create some Relations
-      relationship_test_hospital = Relationship.new
-      relationship_test_hospital.relationship_type = RelationshipType.find_by_key(:works_with)
-      relationship_test_hospital.comment = 'This is a comment. Made by god!'
-      relationship_test_hospital.actor = dummy_actor_test_hospital
-      relationship_test_hospital.reference = dummy_actor_test_doctor
-      relationship_test_hospital.save
-
       visit '/'
   end
 
-  it 'returns current account'
-  it 'authenticates admin'
-  it 'ensures user owns relationship'
   it 'does not allow editing actors of other users',:js => true do
     click_link "Sign up"
     within('#new_login') do
@@ -289,8 +189,8 @@ describe ApplicationController do
     end
 
     visit url
-    page.should_not contain'TestDoctorFirstname'
-    page.should_not contain'TestDoctorLastname'
+    page.should_not have_content 'TestDoctorFirstname'
+    page.should_not have_content 'TestDoctorLastname'
   end
 
 
