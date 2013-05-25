@@ -277,7 +277,7 @@ describe ApplicationController do
     click_link 'Next'
     click_button 'Create'
     click_on 'Edit actor'
-    url = URI.parse(current_url)
+    url = URI.parse(current_url).to_s
     click_link'Sign out'
 
     click_link "Sign up"
@@ -289,10 +289,8 @@ describe ApplicationController do
     end
 
     visit url
-    sleep(1000)
-
-
-
+    page.should_not contain'TestDoctorFirstname'
+    page.should_not contain'TestDoctorLastname'
   end
 
 
