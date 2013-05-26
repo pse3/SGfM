@@ -406,7 +406,8 @@ en:
       delete_row: 'remove'
       success: '%{file_name} was successfully imported!'
 
-#Translations for Ivitations
+
+#Translations for Invitations
   invitation:
     list:
       invite_selected: 'Invite!'
@@ -417,6 +418,7 @@ en:
         done: 'Done'
     list_uninvited:
       title: 'Uninvited Actors'
+
 
 # Translations for Date and Time
   date:

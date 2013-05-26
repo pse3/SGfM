@@ -378,6 +378,9 @@ de:
     file:
       new:
         title: 'Neue CSV Datei hochladen'
+        choose_file: 'Datei auswählen:'
+        encoding: 'Encoding:'
+        delimiter: 'Delimiter:'
       upload:
         success: '%{file_name} erfolgreich importiert!'
         failure: 'Ein unbekannter Fehler ist aufgetreten!'
@@ -387,20 +390,34 @@ de:
         column_uploaded: 'hinzugefügt am'
         column_imported: 'importiert am'
         column_import: 'importieren'
+        column_delete: 'löschen'
         link_new: 'Datei hochladen'
     import:
-          new:
-            file: 'Datei'
-            actor_type: 'Akteur Typ'
-            start: 'Import starten'
-            title: 'Neuen Import erstellen'
-            infos:
-              title: 'Informationen'
-              index: 'Index (in der CSV Datei)'
-              info: 'Information'
-              add_row: 'Information hinzufügen'
-          delete_row: 'entfernen'
-          success: '%{file_name} wurde erfolgreich importiert!'
+      new:
+        file: 'Datei'
+        actor_type: 'Akteur Typ'
+        start: 'Import starten'
+        title: 'Neuen Import erstellen'
+        infos:
+          title: 'Informationen'
+          index: 'Index (in der CSV Datei)'
+          info: 'Information'
+          add_row: 'Information hinzufügen'
+      delete_row: 'entfernen'
+      success: '%{file_name} wurde erfolgreich importiert!'
+
+
+#Translations for Invitations
+  invitation:
+    list:
+      invite_selected: 'Einladen!'
+      column:
+        name: 'Name'
+        email: 'E-Mail'
+        link: 'Bearbeiten'
+        done: 'Abgeschlossen'
+    list_uninvited:
+      title: 'Noch nicht eingeladene Akteure'
 
 
 # Translations for date and time
