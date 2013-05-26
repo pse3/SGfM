@@ -36,6 +36,7 @@ class ActorController < ApplicationController
           relationship.actor = actor
           relationship.reference = reference
           relationship.comment = params[:relationships][key][key2][:comment]
+          relationship.scope = Scope.find_by(key: params[:relationships][key][key2][:scope].to_sym)
           relationship.save
         end
       end

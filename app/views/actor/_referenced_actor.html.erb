@@ -17,6 +17,18 @@
           <%= fff.label(:comment, t('relationship.new.relationship_comment'), class: 'control-label') %>
           <div class="controls">
             <%= fff.text_area(:comment, { :rows => '3' }) %>
+            <p class='pull-right'>
+              <% first = true %>
+              <div class="btn-group" data-toggle-name="<%= "relationship[scope]" %>" data-toggle="buttons-radio" >
+                <% scopes.each do |scope| %>
+                  <% if first %>
+                    <%= fff.hidden_field :scope, :value => scope.key %>
+                  <% end %>
+                  <button type="button" value="<%= scope.key %>" class="btn  <%= 'active' if first %>" ><%=  scope.name %></button>
+                  <% first = false %>
+                <% end %>
+              </div>
+            </p>
           </div>
         </div>
       <% end %>
