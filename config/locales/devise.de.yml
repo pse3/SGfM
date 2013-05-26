@@ -48,5 +48,13 @@ de:
         subject: 'Anleitung zur Bestätigung Ihres Accounts'
       reset_password_instructions:
         subject: 'Anleitung um das Passwort zurückzusetzten'
+        intro: 'Jemand hat für Ihren Account einen Link zum ändern des Passwort angefordert. Dies können sie über folgenden Link tun:'
+        footer_one: 'Falls Sie keinen Link angefordert haben, ignorieren Sie dieses Mail.'
+        footer_two: 'Ihr Passwort wird nicht geändert bis Sie den oben genannten Link verwenden.'
+        linktext: 'Passwort ändern'
       unlock_instructions:
         subject: 'Anleitung um Ihren Account freizuschalten'
+      invitation:
+        subject: 'Einladung SGfM Account'
+        infotext: 'Sie wurden eingeladen um ihr Profil auszufüllen. Ein Account wurde für sie erstellt.'
+        linktext: 'Meinen Account ansehen'

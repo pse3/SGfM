@@ -24,8 +24,16 @@ en:
         subject: "Confirmation instructions"
       reset_password_instructions:
         subject: "Reset password instructions"
+        intro: "Someone has requested a link to change your password. You can do this through the link below."
+        footer_one: "If you didn't request this, please ignore this email."
+        footer_two: "Your password won't change until you access the link above and create a new one."
+        linktext: 'Reset your password'
       unlock_instructions:
         subject: "Unlock Instructions"
+      invitation:
+        subject: 'Invitation SGfM Account'
+        infotext: 'You have been invited to update your profile. An Account has been created for you.'
+        linktext: 'Access my Account'
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
