@@ -15,6 +15,7 @@ gem 'select2-rails' # Added by urs, needed to allow easy dropdown autocomplete b
 gem 'mongoid_search'
 gem 'selenium-webdriver'
 gem 'multi_json'
+gem 'delayed_job_mongoid'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
