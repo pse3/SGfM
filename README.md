@@ -41,7 +41,7 @@ and finally run the spec tests with
 
        bundle exec rspec spec
        
-# LICENSE
+# License
 
 Please see [LICENSE.md](https://github.com/pse3/SGfM/blob/master/LICENSE.md) file for further information 
 about the license of this application.
