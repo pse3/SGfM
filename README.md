@@ -11,7 +11,7 @@ at the University of Bern.
 
 # Authors
 
-Please see AUTHORS.md file for further (contact) information 
+Please see [AUTHORS.md](https://github.com/pse3/SGfM/blob/master/AUTHORS.md) file for further (contact) information 
 about the authors of this application.
 
 # Directories
@@ -21,7 +21,7 @@ about the authors of this application.
 
 # Install
 
-For installation on a server, please see INSTALL.md file for further instructions.
+For installation on a server, please see [INSTALL.md](https://github.com/pse3/SGfM/blob/master/INSTALL.md) file for further instructions.
 
        
 # Testing
@@ -40,3 +40,8 @@ This should install all the required gems. Now start MongoDB with
 and finally run the spec tests with
 
        bundle exec rspec spec
+       
+# License
+
+Please see [LICENSE.md](https://github.com/pse3/SGfM/blob/master/LICENSE.md) file for further information 
+about the license of this application.
