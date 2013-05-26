@@ -379,6 +379,9 @@ en:
     file:
       new:
         title: 'Upload a CSV file'
+        choose_file: 'Choose file:'
+        encoding: 'Encoding:'
+        delimiter: 'Delimiter:'
       upload:
         success: '%{file_name} was uploaded successfully!'
         failure: 'An unknown error occurred!'
@@ -388,6 +391,7 @@ en:
         column_uploaded: 'Date Added'
         column_imported: 'Date Imported'
         column_import: 'Import'
+        column_delete: 'Delete'
         link_new: 'Upload a file'
     import:
       new:
