@@ -27,7 +27,7 @@ edited by hand. But, you can use any editor you like instead.
 
 Install the required packages:
 
-    sudo apt-get install -y git-core redis-server rake libxml2-dev libxslt1-dev openssl
+    sudo apt-get install -y git-core rake libxml2-dev libxslt1-dev openssl
 
 
 # 2. Ruby
@@ -114,6 +114,10 @@ To setup the MongoDB database and dependencies please see [`Official MongoDB Web
     rails s -d -e production 
     
     # use -p XXXX to set a port
+
+    # start worker threads for asynchronous mail sending
+
+    rake jobs:work RAILS_ENV=production
 
 
 
