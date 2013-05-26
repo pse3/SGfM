@@ -55,7 +55,6 @@ en:
       too_short: 'The query was too short. It must contain at least 3 characters.'
       found: 'Your search returned %{amount} result(s)!'
 
-
     show:
       title: '%{actor}'
       type: 'Type'
@@ -228,7 +227,6 @@ en:
   scopes:
       list:
          title: 'Scopes'
-         new_information_type: 'Create new scope'
          name_table: 'Name'
          key_table: 'Key'
          type_table: 'Type'
@@ -262,6 +260,7 @@ en:
         confirmation: 'Do you really want to delete a scope?'
         success: 'You successfully deleted a scope!'
         failure: 'There was an unknown error!'
+
 
 # Translations for all relationship-pages, sorted by page structure
   relationship:

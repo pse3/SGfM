@@ -47,6 +47,7 @@ de:
       title: 'Meine Akteure'
       new_actor: 'Neuen Akteur erstellen'
       name_table: 'Wer'
+      sure_to_delete: 'Sind Sie sicher dass Sie diesen Akteur löschen wollen?'
       title_search: 'Suche'
       name_table: 'Treffer'
       search: 'Suchen'
@@ -71,11 +72,13 @@ de:
       add_another_actor: 'Weiteren Akteur hinzufügen'
       more: 'Mehr...'
 
-
     new:
       title: 'Neuen Akteur erstellen'
       select_type: 'Typ auswählen'
-      create_actor: 'erstellen'
+      type_title: 'Select a type'
+      choose_type: 'Choose a type'
+      information_title: 'Add information about yourself'
+      create_actor: 'Erstellen'
       add_relationship: 'Beziehung hinzufügen'
       remove_relationship: 'entfernten'
       actor_type_data: 'Akteurtyp Daten'
@@ -83,8 +86,13 @@ de:
       relationship_reference: 'Referenz'
       relationship_comment: 'Kommentar'
       relationship_type: 'Typ'
-      admin_can_not_create_actors: "Admins können keine Atkeure hinzufügen!"
-      relationship_add: 'Add a new relationship'
+      admin_can_not_create_actors: 'Admins können keine Akteure hinzufügen!'
+      submit_title: 'Abschicken'
+      next_button: 'weiter'
+      back_button: 'zurück'
+      beginning_button: 'Zum Anfang'
+      finish: "Klicken Sie auf 'Abschicken' um das Erstellen Ihres Akteurs abzuschliessen"
+      alert: 'Sie müssen zuerst alle benötigten Angeben eingeben bevor Sie zum nächsten Schritt gelangen können.'
 
     edit:
       title: 'Bearbeiten'
@@ -93,6 +101,10 @@ de:
     create:
       title: 'Akteur erstellt'
       success: 'Sie haben erfolgreich einen Akteur erstellt!'
+      failure: 'Ein unbekannter Fehler ist aufgetreten!'
+
+    destroy:
+      success: 'Successfully deleted actor'
 
     update:
       success: 'Akteur wurde erfolgreich aktualisiert!'
@@ -106,6 +118,7 @@ de:
       name_table: 'Name'
       key_table: 'Schlüssel'
       actions_table: 'Aktionen'
+      sure_to_delete: 'Sind Sie sicher, dass Sie diesen Akteurtyp löschen wollen? Alle Akteure dieses Typs werden ebenfalls gelöscht!'
 
     show:
       title: '%{actor_type}'
@@ -131,6 +144,7 @@ de:
       to_string_pattern: 'ToString Repräsentation'
       to_string_pattern_explanation: 'Verwende |:infotypekey| um eine Information anzuzeigen'
       name: 'Name'
+      relationship_types: 'Vordefinierte Frage hinzufügen'
 
     edit:
       title: 'Akteurtyp bearbeiten'
@@ -149,6 +163,9 @@ de:
       success: 'Akteurtyp wurde erfolgreich aktualisiert!'
       failure: 'Ein unbekannter Fehler ist aufgetreten!'
 
+    destroy:
+      success: 'AkteurTyp wurde erfolgreich gelöscht!'
+
 
 # Translations for all actor_type-pages, sorted by page structure
   information_type:
@@ -159,6 +176,7 @@ de:
       key_table: 'Schlüssel'
       field_type_table: 'Datenfeldtyp'
       actions_table: 'Aktionen'
+      sure_to_delete: 'Sind Sie sicher, dass Sie diesen Informationstyp löschen wollen? Alle Informationen dieses Typs werden ebenfalls gelöscht!'
 
     show:
       title: '%{information_type}'
@@ -200,6 +218,9 @@ de:
     update:
       success: 'Informationstyp wurde erfolgreich aktualisiert!'
       failure: 'Ein unbekannter Fehler ist aufgetreten!'
+
+    destroy:
+      success: 'Informationstyp wurde erfolgreich gelöscht.'
 
 
 #Translation for all Scope-Pages
@@ -287,6 +308,7 @@ de:
     new:
       title: 'Neuen Beziehungstyp erstellen'
       name: 'Name'
+      question: 'Frage'
       key: 'Schlüssel'
       create_relationship_type: 'Erstellen'
 
@@ -294,6 +316,7 @@ de:
       title: 'Beziehungstyp bearbeiten'
       type: 'Typ'
       name: 'Name'
+      question: 'Frage'
 
     create:
       success: 'Beziehungstyp wurde erfolgreich erstellt!'
