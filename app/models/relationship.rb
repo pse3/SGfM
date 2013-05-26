@@ -4,8 +4,9 @@
 class Relationship
 
   include Mongoid::Document
+	include Scoped
 
-  field :comment, :type => String
+	field :comment, :type => String
   field :created_at, :type => DateTime
   field :changed_a, :type => DateTime
 

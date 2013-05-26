@@ -25,17 +25,19 @@
     </p>
 
     <table class="table table-condensed">
-    <% @actor.relationships.each do |relationship| %>
-      <tr>
-        <td class="span3"><%= relationship.relationship_type.to_s %></td>
-        <td class="span3"><%= link_to(relationship.reference.to_s, show_actor_path(relationship.reference)) %></td>
-        <td class="span4"><%= relationship.comment.to_s %></td>
-        <td class="span1">
-          <%= link_to(raw('<i class="icon-edit"></i>'), edit_relationship_path(relationship)) %>
-          <%= link_to(raw('<i class="icon-trash"></i>'), delete_relationship_path(relationship), :method => :delete) %>
-        </td>
-      </tr>
-    <% end %>
+    <% unless @relationships.nil? %>
+    <% @relationships.each do |relationship| %>
+        <tr>
+          <td class="span3"><%= relationship.relationship_type.to_s %></td>
+          <td class="span3"><%= link_to(relationship.reference.to_s, show_actor_path(relationship.reference)) %></td>
+          <td class="span4"><%= relationship.comment.to_s %></td>
+          <td class="span1">
+            <%= link_to(raw('<i class="icon-edit"></i>'), edit_relationship_path(relationship)) %>
+            <%= link_to(raw('<i class="icon-trash"></i>'), delete_relationship_path(relationship), :method => :delete) %>
+          </td>
+        </tr>
+      <% end %>
+     <% end %>
   </table>
 </div>
 <% if current_account.actors.size == 1 %>
