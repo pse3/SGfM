@@ -22,8 +22,6 @@ class Actor
   before_save :update_search_field, :update_to_string_field
   search_in :search_field
 
-	#validates_presence_of :actor_type, :owner Todo: doesnt work -.-
-
   def initialize
     super
     self.created_at = DateTime.now
