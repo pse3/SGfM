@@ -411,6 +411,7 @@ en:
         name: 'Name'
         email: 'Email'
         link: 'Edit'
+        done: 'Done'
     list_uninvited:
       title: 'Uninvited Actors'
 
