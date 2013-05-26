@@ -23,7 +23,6 @@
     <div class='control-group'>
       <%= f.label(:searchable, t('actor_type.new.searchable'), class: 'control-label') %>
       <div class='controls'>
-        <!-- TODO only should be able to choose if info type is predefined public-->
         <%= f.select(:searchable, [[t('yes'), true], [t('no'), false]], {}, :name => 'information_type_decorator[searchable][]') %>
       </div>
     </div>

@@ -60,7 +60,7 @@
         <div class="control-group">
           <%= f.label("information_type_#{i}", t('actor_type.edit.information_type'), :class => 'control-label') %>
           <div class="controls">
-            <%= f.text_field("information_type_#{i}", { :value => information_type_decorator.key,        # todo display info.name and pass info.key in params
+            <%= f.text_field("information_type_#{i}", { :value => information_type_decorator.key,
                                                   :readonly => true,
                                                   :name => 'information_type_decorator[information_type][]' }) %>
             <p class='pull-right'>
@@ -74,7 +74,6 @@
         <div class='control-group'>
           <%= f.label("required_#{i}", t('actor_type.edit.required'), :class => 'control-label') %>
           <div class='controls'>
-            <!-- TODO use checkbox here instead! PLEASE NOTE: HANDLE THE PARAMS WITH CHECKBOXES AIN'T EASY!!! -->
             <%= f.select("required_#{i}", [[t('yes'), true], [t('no'), false]],
                          { :selected => information_type_decorator.required },
                          { :name => 'information_type_decorator[required][]' }) %>
@@ -84,8 +83,6 @@
         <div class='control-group'>
           <%= f.label("searchable_#{i}", t('actor_type.edit.searchable'), :class => 'control-label') %>
           <div class='controls'>
-            <!-- TODO use checkbox here instead! PLEASE NOTE: HANDLE THE PARAMS WITH CHECKBOXES AIN'T EASY!!!
-                 TODO only should be able to choose if info type is predefined public -->
             <%= f.select("searchable_#{i}", [[t('yes'), true], [t('no'), false]],
                          { :selected => information_type_decorator.searchable },
                          { :name => 'information_type_decorator[searchable][]' }) %>

@@ -1,7 +1,6 @@
 # Represents a Scope - a Scope can be attributed to Information, Relationship, etc, objects. It describes kind of a visibility filter. This class is meant to
 # be extended. Extending classes need to implement the visible? method, which decides about visibility dependent on viewer, viewee and the field "list".
 class Scope
-	#TODO: Implement validator
   include Mongoid::Document
 
 	field :key, :type => String
