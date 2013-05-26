@@ -1,9 +1,0 @@
-<% @page_title = t('actor.create.title') %>
-
-
-<%if @actor.valid? %>
-  <p>You have created an actor.</p>
-  <p><%= @actor %></p>
-<% else %>
-  <p><%=@actor.errors[:informations]%></p>
-<% end %>

@@ -19,7 +19,7 @@ class ScopesController < ApplicationController
 			flash[:success]= t('scopes.create.success')
 			redirect_to scopes_path
 		else
-			flash[:error]= t('scopes.create.error')
+			flash[:error]= t('scopes.create.failure')
 			redirect_to scopes_create_path
 		end
 	end
@@ -37,18 +37,26 @@ class ScopesController < ApplicationController
 			flash[:success]= t('scopes.update.success')
 			redirect_to scopes_path
 		else
-			flash[:error]= t('scopes.update.error')
+			flash[:error]= t('scopes.update.failure')
 			redirect_to scopes_edit_path(scope)
 		end
 	end
 
 	def destroy
-		scope = Scope.find(params[:id])
-		if scope.destroy
+		@scope = Scope.find(params[:id])
+    @informations = Information.where( :scope => @scope)
+    @informations.each do |information|
+      information.destroy
+    end
+    @relationships = Relationship.where( :scope => @scope)
+    @relationships.each do |relationship|
+      relationship.destroy
+    end
+		if @scope.destroy
 			flash[:success] = t('scopes.destroy.success')
 			redirect_to scopes_path
 		else
-			flash[:error] = t('scopes.destroy.error')
+			flash[:error] = t('scopes.destroy.failure')
 			redirect_to scopes_path
 		end
 	end

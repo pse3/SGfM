@@ -1,6 +1,8 @@
 # Sample localization file for Italian. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
+# todo: copy/paste content from en.yml or de.yml here and translate all the strings into italian.
+
 it:
   yes: 'Si'
   no: 'No'

@@ -28,7 +28,7 @@
       </td>
       <td>
         <%=  link_to(raw('<i class="icon-edit"></i>'), edit_scope_path(scope)) %>
-        <%=  link_to(raw('<i class="icon-trash"></i>'), delete_scope_path(scope), method: :delete, confirm: t('scopes.destroy.confirmation')) %>
+        <% # link_to(raw('<i class="icon-trash"></i>'), delete_scope_path(scope), method: :delete, confirm: t('scopes.destroy.confirmation')) %>
       </td>
     </tr>
   <% end %>
