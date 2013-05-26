@@ -37,7 +37,7 @@ class ScopesController < ApplicationController
 			flash[:success]= t('scopes.update.success')
 			redirect_to scopes_path
 		else
-			flash[:error]= t('scopes.update.error')
+			flash[:error]= t('scopes.update.failure')
 			redirect_to scopes_edit_path(scope)
 		end
 	end
@@ -48,7 +48,7 @@ class ScopesController < ApplicationController
 			flash[:success] = t('scopes.destroy.success')
 			redirect_to scopes_path
 		else
-			flash[:error] = t('scopes.destroy.error')
+			flash[:error] = t('scopes.destroy.failure')
 			redirect_to scopes_path
 		end
 	end

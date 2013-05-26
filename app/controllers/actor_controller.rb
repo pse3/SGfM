@@ -135,7 +135,7 @@ class ActorController < ApplicationController
 
     if query.nil?
       @actors_hash = Hash.new
-    elsif query.size < 3     #todo this shouldn't be hardcoded. where do we declare
+    elsif query.size < 3
       @actors_hash = Hash.new
       flash.now[:error] = t('actor.list.too_short')
     else
