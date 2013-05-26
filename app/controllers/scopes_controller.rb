@@ -43,8 +43,16 @@ class ScopesController < ApplicationController
 	end
 
 	def destroy
-		scope = Scope.find(params[:id])
-		if scope.destroy
+		@scope = Scope.find(params[:id])
+    @informations = Information.where( :scope => @scope)
+    @informations.each do |information|
+      information.destroy
+    end
+    @relationships = Relationship.where( :scope => @scope)
+    @relationships.each do |relationship|
+      relationship.destroy
+    end
+		if @scope.destroy
 			flash[:success] = t('scopes.destroy.success')
 			redirect_to scopes_path
 		else
