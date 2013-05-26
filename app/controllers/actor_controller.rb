@@ -69,6 +69,7 @@ class ActorController < ApplicationController
     elsif actors.size == 1
       @actor = actors.first
       @informations = scope_array(@actor.informations, current_account)
+      @relationships = scope_array(@actor.relationships, current_account)
       render('actor/internal_show')
     else
       @actors_hash = Hash.new{|h, k| h[k] = []}
