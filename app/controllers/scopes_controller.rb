@@ -19,7 +19,7 @@ class ScopesController < ApplicationController
 			flash[:success]= t('scopes.create.success')
 			redirect_to scopes_path
 		else
-			flash[:error]= t('scopes.create.error')
+			flash[:error]= t('scopes.create.failure')
 			redirect_to scopes_create_path
 		end
 	end
