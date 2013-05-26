@@ -411,6 +411,9 @@ en:
   invitation:
     list:
       invite_selected: 'Invite!'
+      done: 'Done'
+      no_email: 'No Email'
+      edit_actor: 'Edit Actor'
       column:
         name: 'Name'
         email: 'Email'
@@ -524,5 +527,3 @@ en:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: pm
-  mail:
-    invitation: invitation

@@ -411,6 +411,9 @@ de:
   invitation:
     list:
       invite_selected: 'Einladen!'
+      done: 'Abgeschlossen'
+      no_email: 'Keine E-ail'
+      edit_actor: 'Akteur bearbeiten'
       column:
         name: 'Name'
         email: 'E-Mail'
