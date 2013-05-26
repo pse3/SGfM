@@ -75,9 +75,9 @@ de:
     new:
       title: 'Neuen Akteur erstellen'
       select_type: 'Typ auswählen'
-      type_title: 'Select a type'
+      type_title: 'Typ auswählen'
       choose_type: 'Choose a type'
-      information_title: 'Add information about yourself'
+      information_title: 'Fügen Sie Ihre Angaben hinzu'
       create_actor: 'Erstellen'
       add_relationship: 'Beziehung hinzufügen'
       remove_relationship: 'entfernten'
@@ -91,7 +91,8 @@ de:
       next_button: 'weiter'
       back_button: 'zurück'
       beginning_button: 'Zum Anfang'
-      finish: "Klicken Sie auf 'Abschicken' um das Erstellen Ihres Akteurs abzuschliessen"
+      relationship_add: 'Beziehung hinzufügen'
+      finish: "Klicken Sie auf 'Erstellen' um den Vorgang abzuschliessen."
       alert: 'Sie müssen zuerst alle benötigten Angeben eingeben bevor Sie zum nächsten Schritt gelangen können.'
 
     edit:
