@@ -6,6 +6,7 @@ The installation consists of setting up the following components:
 2. Ruby
 3. Database
 4. Software
+5. FAQ
 
 
 # 1. Packages / Dependencies
@@ -66,7 +67,7 @@ To setup the MongoDB database and dependencies please see [`Official MongoDB Web
     cd ./SGfM
 
     # Checkout to stable release
-    git checkout stable
+    git checkout master
 
 
 ## Configure it
@@ -142,10 +143,10 @@ If you occur any problems during installation, please let us know by contacting 
 
 
 # 5. FAQ
-Starting the application fails because of missing javascript colpiler, what shall I do?
+Starting the application fails because of missing javascript compiler, what shall I do?
 
 Open the file `Gemfile`
 
 uncomment the two gems in the server section
 
-runn `bundle install`
+run `bundle install`
