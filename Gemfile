@@ -15,6 +15,7 @@ gem 'mongoid_search'
 gem 'selenium-webdriver'
 gem 'multi_json'
 gem 'delayed_job_mongoid'
+gem 'delayed_job'
 
 
 # Bundle edge Rails instead:
