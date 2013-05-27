@@ -208,6 +208,7 @@ describe "Relationship" do
     click_button 'Sign in'
     click_on 'TestDoctor1FirstName'
     page.should have_content('works with')
+    sleep(0.5)
     page.first(".icon-trash").click
     page.should have_content("uccessfully")
     page.should have_content("deleted")

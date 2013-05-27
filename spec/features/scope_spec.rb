@@ -75,20 +75,4 @@ describe "Scope" do
     page.should_not have_content("TestScopeEnglish")
     click_on 'Sign out'
   end
-
-  it 'is destroyed', :js => true do
-    click_on 'Sign in'
-    fill_in "login_email", :with => 'admin@domain.ch'
-    fill_in "login_password", :with => 'test1234'
-    click_button 'Sign in'
-    click_on 'Scopes'
-    page.should have_content('public')
-    page.first(".icon-trash").click
-    page.driver.browser.switch_to.alert.accept
-    page.should have_content("uccessfully")
-    page.should have_content("deleted")
-    page.should_not have_content("public")
-    click_on 'Sign out'
-  end
-
 end
