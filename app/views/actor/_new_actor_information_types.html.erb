@@ -9,7 +9,7 @@
           <%= info_form.label(information_type.key,  information_type.name, class: 'control-label') %>
         <% end %>
         <div class="controls">
-          <% value = " " %>
+          <% value = "" %>
           <% if  invited_actor %>
             <% information =  invited_actor.find_information_by_key(information_type.key) %>
             <% unless information.nil? %>
