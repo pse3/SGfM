@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'mongoid', '~> 3.0.0'
 gem 'devise'
+gem 'devise-async'
 gem 'bootstrap-sass'
 gem 'database_cleaner'
 gem 'mocha', :require => false
@@ -11,15 +12,17 @@ gem 'rspec-rails', :require => false
 gem 'capybara'
 gem 'select2-rails' # Added by urs, needed to allow easy dropdown autocomplete box for relationship references
 gem 'mongoid_search'
-
+gem 'selenium-webdriver'
+gem 'multi_json'
+gem 'delayed_job_mongoid'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
 # for Server (if no JS-compiler is preinstalled)
-# gem 'execjs'
-# gem 'therubyracer'
+ gem 'execjs'
+ gem 'therubyracer'
 # end
 
 # Gems used only for assets and not required

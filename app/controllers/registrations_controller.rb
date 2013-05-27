@@ -1,6 +1,7 @@
+# Controller that takes care of register process for new Users.
+# Mediates inputs and converts them to commands for the model-class and the view.
 class RegistrationsController < Devise::RegistrationsController
 
-  after_filter :set_account, :only => [:create]
 
 
   def new
@@ -9,20 +10,14 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     super
+    @user = User.new
+    resource.account = @user
+    @user.save
+    resource.save
   end
 
   def update
     super
-  end
-
-  private
-  def set_account
-    if login_signed_in?
-      @user = User.new
-      current_login.account = @user
-      @user.save
-      current_login.save
-    end
   end
 
 end

@@ -1,3 +1,5 @@
+# Controller for objects of class Scope.
+# Mediates inputs and converts them to commands for the model-class and the view.
 class ScopesController < ApplicationController
 	before_filter :authenticate_login!, :authenticate_admin!
 	def new
@@ -17,7 +19,7 @@ class ScopesController < ApplicationController
 			flash[:success]= t('scopes.create.success')
 			redirect_to scopes_path
 		else
-			flash[:error]= t('scopes.create.error')
+			flash[:error]= t('scopes.create.failure')
 			redirect_to scopes_create_path
 		end
 	end
@@ -29,27 +31,17 @@ class ScopesController < ApplicationController
 	def update
 		scope = Scope.find(params[:id])
 		scope.name_translations = params[:edited_scope][:name]
-		params[:edited_scope][:list].delete_at(0) #There's an empty value.. (Don't know why, seems to be the multiselect.) note by urs: it's a rails bug
+		params[:edited_scope][:list].delete_at(0)
 		scope.list = params[:edited_scope][:list].collect {|elem| elem.to_sym}
 		if scope.save
 			flash[:success]= t('scopes.update.success')
 			redirect_to scopes_path
 		else
-			flash[:error]= t('scopes.update.error')
+			flash[:error]= t('scopes.update.failure')
 			redirect_to scopes_edit_path(scope)
 		end
 	end
 
-	def destroy
-		scope = Scope.find(params[:id])
-		if scope.destroy
-			flash[:success] = t('scopes.destroy.success')
-			redirect_to scopes_path
-		else
-			flash[:error] = t('scopes.destroy.error')
-			redirect_to scopes_path
-		end
-	end
 
 	def list
 		@scopes = Scope.all

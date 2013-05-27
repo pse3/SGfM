@@ -28,10 +28,20 @@ fr:
       updated_not_active: 'Votre mot de passe a été changé avec succès.'
       send_paranoid_instructions: "Si votre e-mail existe dans notre base de données, vous allez recevoir un lien de réinitialisation par e-mail"
       no_token: "Vous ne pouvez accéder à cette page sans passer par un e-mail de réinitialisation de mot de passe. Si vous êtes passé par un e-mail de ce type, assurez-vous d'utiliser l'URL complète."
+      reset:
+        complexity: 'Password must be at least 8 characters long.'
+        title:
+          first: 'Set password for this Account'
+          other: 'Reset password for this Account'
+        submit: 'Save'
+        password: 'New password'
+        confirm: 'Confirm password'
     confirmations:
       send_instructions: 'Vous allez recevoir les instructions nécessaires à la confirmation de votre compte dans quelques minutes'
       send_paranoid_instructions: 'Si votre e-mail existe dans notre base de données, vous allez bientôt recevoir un e-mail contenant les instructions de confirmation de votre compte.'
       confirmed: 'Votre compte a été validé, vous êtes maintenant connecté'
+      resend_confirmation: "Resend confirmation instructions"
+      send: "send"
     registrations:
       signed_up: 'Bienvenu, vous êtes connecté'
       signed_up_but_unconfirmed: 'Un message contenant un lien de confirmation a été envoyé à votre adresse email. Ouvrez ce lien pour activer votre compte.'
@@ -52,5 +62,13 @@ fr:
         subject: "Instructions de confirmation"
       reset_password_instructions:
         subject: "Instructions pour changer le mot de passe"
+        intro: 'Jemand hat für Ihren Account einen Link zum ändern des Passwort angefordert. Dies können sie über folgenden Link tun:'
+        footer_one: 'Falls Sie keinen Link angefordert haben, ignorieren Sie dieses Mail.'
+        footer_two: 'Ihr Passwort wird nicht geändert bis Sie den oben genannten Link verwenden.'
+        linktext: 'Passwort ändern'
       unlock_instructions:
         subject: "Instructions pour déverrouiller le compte"
+      invitation:
+        subject: 'Einladung SGfM Account'
+        infotext: 'Sie wurden eingeladen um ihr Profil auszufüllen. Ein Account wurde für sie erstellt.'
+        linktext: 'Meinen Account ansehen'

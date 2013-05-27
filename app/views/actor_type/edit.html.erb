@@ -1,6 +1,6 @@
 <%= content_for :admin_tab_bar do %>
     <% render :partial => 'shared/menuebar', :locals => {:actor_type => "active", :info_type => "", :import => "",
-                                                         :scope => "", :relationship_type => ""} %>
+                                                         :scope => "", :relationship_type => "", :invitation => ""} %>
 <% end %>
 
 <% @page_title = t('actor_type.edit.title') %>
@@ -60,7 +60,7 @@
         <div class="control-group">
           <%= f.label("information_type_#{i}", t('actor_type.edit.information_type'), :class => 'control-label') %>
           <div class="controls">
-            <%= f.text_field("information_type_#{i}", { :value => information_type_decorator.key,        # todo display info.name and pass info.key in params
+            <%= f.text_field("information_type_#{i}", { :value => information_type_decorator.key,
                                                   :readonly => true,
                                                   :name => 'information_type_decorator[information_type][]' }) %>
             <p class='pull-right'>
@@ -74,7 +74,6 @@
         <div class='control-group'>
           <%= f.label("required_#{i}", t('actor_type.edit.required'), :class => 'control-label') %>
           <div class='controls'>
-            <!-- TODO use checkbox here instead! PLEASE NOTE: HANDLE THE PARAMS WITH CHECKBOXES AIN'T EASY!!! -->
             <%= f.select("required_#{i}", [[t('yes'), true], [t('no'), false]],
                          { :selected => information_type_decorator.required },
                          { :name => 'information_type_decorator[required][]' }) %>
@@ -84,8 +83,6 @@
         <div class='control-group'>
           <%= f.label("searchable_#{i}", t('actor_type.edit.searchable'), :class => 'control-label') %>
           <div class='controls'>
-            <!-- TODO use checkbox here instead! PLEASE NOTE: HANDLE THE PARAMS WITH CHECKBOXES AIN'T EASY!!!
-                 TODO only should be able to choose if info type is predefined public -->
             <%= f.select("searchable_#{i}", [[t('yes'), true], [t('no'), false]],
                          { :selected => information_type_decorator.searchable },
                          { :name => 'information_type_decorator[searchable][]' }) %>
@@ -104,6 +101,18 @@
                              :type => :button, :class => 'btn btn-medium') %>
     </p>
   </div>
+
+    <div class="page-header">
+      <h1><small><%= t('actor_type.new.relationship_types') %></small></h1>
+    </div>
+    <%= fields_for(:predefined_questions) do |ff| %>
+        <div class='control-group'>
+          <%= ff.label(:relationship_types, t('actor_type.new.relationship_types'), :class => 'control-label') %>
+          <div class='controls'>
+            <%= ff.collection_select(:relationship_types, RelationshipType.all(), :key, :name, {}, {:multiple => true}) %>
+          </div>
+        </div>
+    <% end %>
 
   <div class="form-actions">
     <%= f.submit(t('form.update'), :class => 'btn btn-primary') %>

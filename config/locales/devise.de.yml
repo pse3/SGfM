@@ -20,9 +20,19 @@ de:
     passwords:
       send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie ihr Passwort zurücksetzten können.' 
       updated: 'Ihr Passwort wurde geändert. Sie sind angemeldet.'
+      reset:
+        complexity: 'Passwort muss mindestens 8 Zeichen lang sein.'
+        title:
+          first: 'Setzen Sie das Passwort für diesen Account'
+          other: 'Ändern Sie das Passwort für diesen Account'
+        submit: 'Speichern'
+        password: 'Neues Passwort'
+        confirm: 'Passwort bestätigen'
     confirmations:
       send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie ihr Passwort zurücksetzten können.' 
       updated: 'Ihr Passwort wurde geändert. Sie sind angemeldet.'
+      resend_confirmation: "Bestätigungs Email erneut versenden"
+      send: "senden"
     registrations:
       signed_up: 'Sie haben sich erfolgreich registriert. Es kann sein, dass Sie eine Aktivierungs-E-Mail erhalten.'
       updated: 'Die Angaben wurden erfolgreich geändert.'
@@ -38,5 +48,13 @@ de:
         subject: 'Anleitung zur Bestätigung Ihres Accounts'
       reset_password_instructions:
         subject: 'Anleitung um das Passwort zurückzusetzten'
+        intro: 'Jemand hat für Ihren Account einen Link zum ändern des Passwort angefordert. Dies können sie über folgenden Link tun:'
+        footer_one: 'Falls Sie keinen Link angefordert haben, ignorieren Sie dieses Mail.'
+        footer_two: 'Ihr Passwort wird nicht geändert bis Sie den oben genannten Link verwenden.'
+        linktext: 'Passwort ändern'
       unlock_instructions:
         subject: 'Anleitung um Ihren Account freizuschalten'
+      invitation:
+        subject: 'Einladung SGfM Account'
+        infotext: 'Sie wurden eingeladen um ihr Profil auszufüllen. Ein Account wurde für sie erstellt.'
+        linktext: 'Meinen Account ansehen'

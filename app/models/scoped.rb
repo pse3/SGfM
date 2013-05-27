@@ -1,5 +1,7 @@
+# Scoped is a module that implements functionality of Scope.
+# If a class includes Scoped, each of its objects has a Scope that
+# defines which other objects are allowed to see this object.
 module Scoped
-  #todo comment methods that aren't clear
 
   def self.included(base)
     base.extend ClassMethods
@@ -11,7 +13,6 @@ module Scoped
   end
 
   def visible?(viewer)
-		#TODO - self.actor.owner - quick fix - don't know if this is the most beautiful solution. (Assuming every scoped has a .actor.owner - works for now)
     scope.visible?(viewer, self.actor.owner)
   end
 

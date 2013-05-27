@@ -8,7 +8,7 @@ module ScopesHelper
 		Scope.all_types
   end
 
-  # sorts out invisible elements of an array
+  # Sorts out invisible elements of an array.
   def scope_array(array, viewer)
     result = []
     array.each do |element|

@@ -1,16 +1,14 @@
-# The Login model represents an abstract login. This is a container
-# for devise specific data. It is connected to an account which can either be
-# a User or an Admin.
-# Author::    Kenneth Radunz  (kenneth.radunz@gmail.com)
+# The Login model represents an abstract login. This is a container for devise specific data.
+# It is connected to an account which can either be a User or an Admin.
 class Login
 
   include Mongoid::Document
 
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
+  # :token_authenticatable, ,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :async
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -31,10 +29,10 @@ class Login
   field :last_sign_in_ip,    :type => String
 
   ## Confirmable
-  # field :confirmation_token,   :type => String
-  # field :confirmed_at,         :type => Time
-  # field :confirmation_sent_at, :type => Time
-  # field :unconfirmed_email,    :type => String # Only if using reconfirmable
+  field :confirmation_token,   :type => String
+  field :confirmed_at,         :type => Time
+  field :confirmation_sent_at, :type => Time
+  field :unconfirmed_email,    :type => String # Only if using reconfirmable
 
   ## Lockable
   # field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
@@ -44,6 +42,8 @@ class Login
   ## Token authenticatable
   # field :authentication_token, :type => String
 
+  field :invited, :type => Boolean
+
   #validations
   validates_uniqueness_of :email, :case_sensitive => false
   validates_presence_of :email
@@ -52,7 +52,7 @@ class Login
   attr_accessible :email, :password, :password_confirmation
 
   #has an connected account
-  belongs_to :account, :polymorphic=> true
+  belongs_to :account, :polymorphic => true
 
 
   def is_user?
@@ -65,7 +65,13 @@ class Login
 
 	# Returns all account types in a list
 	def self.account_types
-		Login.all.distinct("account_type")
-	end
+		Login.all.distinct('account_type')
+  end
+
+  # Resets reset password token and send reset password instructions by email
+  def send_invitation
+    generate_reset_password_token! if should_generate_reset_token?
+    send_devise_notification(:invitation)
+  end
 
 end

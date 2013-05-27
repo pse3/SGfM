@@ -1,4 +1,6 @@
 <% @page_title = t('relationship.edit.title', :actor => @locals[:relationship].actor) %>
+<% @scopes = list_scopes %>
+
 
 <%= form_for(:relationship, :url => update_relationship_path(@locals[:relationship]), :method => :post, :html => { :class => 'form-horizontal'} ) do |f| %>
 
@@ -23,6 +25,16 @@
     </div>
   </div>
 
+  <% active_scope =   @locals[:relationship].scope%>
+  <div class="btn-group" data-toggle-name="<%= "relationship[scope]" %>" data-toggle="buttons-radio" >
+    <% @scopes.each do |scope| %>
+      <% if scope == active_scope %>
+        <input type="hidden" name="<%= "relationship[scope]" %>" value="<%= scope.key %>"/>
+      <% end %>
+      <button type="button" value="<%= scope.key %>" class="btn  <%= 'active' if scope == active_scope %>" ><%=  scope.name %></button>
+    <% end %>
+  </div>
+
   <div class="form-actions">
     <%= f.submit(t('form.update'), class: 'btn btn-large btn-primary') %>
   </div>
@@ -43,5 +55,20 @@
       formatResult: format
     });
 
+  });
+</script>
+
+<script>
+  //Helps to transfer the "state" of a radiobuttons-like button-group to a hidden input field (so it can be POSTed)
+  $('div.btn-group[data-toggle-name]').each(function () {
+    var group = $(this);
+    var form = group.parents('form').eq(0);
+    var name = group.attr('data-toggle-name');
+    var hidden = $('input[name="' + name + '"]', form);
+    $('button', group).each(function () {
+      $(this).on('click', function () {
+        hidden.val($(this).val());
+      });
+    });
   });
 </script>

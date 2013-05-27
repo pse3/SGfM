@@ -1,3 +1,5 @@
+# Controller for objects of class Relationship.
+# Mediates inputs and converts them to commands for the model-class and the view.
 class RelationshipController < ApplicationController
 
   before_filter :owns_actor_or_is_admin!, :only => [:new, :create]
@@ -6,7 +8,6 @@ class RelationshipController < ApplicationController
   def new
     @locals = { :all_actors => Actor.all,
                 :actor => Actor.find(params[:actor]) }
-    # todo either use this way or make all to @-variables
   end
 
   def create
@@ -16,6 +17,7 @@ class RelationshipController < ApplicationController
     relationship.reference = Actor.find(params[:relationship][:reference])
     relationship.comment = params[:relationship][:comment]
     relationship.relationship_type = RelationshipType.find_by_key(params[:relationship][:relationship_type])
+		relationship.scope =  Scope.find_by(key: params[:relationship][:scope].to_sym)
     if relationship.save
       flash[:success] = t('relationship.create.success')
       redirect_to(show_actor_path(@actor))
@@ -34,7 +36,8 @@ class RelationshipController < ApplicationController
     relationship = Relationship.find(params[:id])
     @actor = relationship.actor
     relationship.relationship_type = RelationshipType.find_by_key(params[:relationship][:relationship_type])
-    relationship.comment = params[:relationship][:comment]
+		relationship.scope =  Scope.find_by(key: params[:relationship][:scope].to_sym)
+		relationship.comment = params[:relationship][:comment]
     if relationship.save
       flash[:success] = t('relationship.update.success')
       redirect_to(show_actor_path(@actor))

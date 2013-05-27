@@ -1,0 +1,12 @@
+<%= content_for :admin_tab_bar do %>
+    <% render :partial => 'shared/menuebar', :locals => {:actor_type => "", :info_type => "", :import => "", :invitation => "active",
+                                                         :scope => "", :relationship_type => ""} %>
+<% end %>
+
+<%= link_to t('invitation.list_uninvited.title'), invitation_list_uninvited_path %>
+
+<% @page_title = t('invitation.list_invited.title') %>
+
+<br/><br/>
+
+<%= render('list_actors_invited', :locals => { :actors => @actors}) %>

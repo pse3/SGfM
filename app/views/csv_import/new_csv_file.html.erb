@@ -1,26 +1,26 @@
 <%= content_for :admin_tab_bar do %>
     <% render :partial => 'shared/menuebar', :locals => {:actor_type => "", :info_type => "", :import => "active",
-                                                         :scope => "", :relationship_type => ""} %>
+                                                         :scope => "", :relationship_type => "", :invitation => ""} %>
 <% end %>
 
 <% @page_title = t('csv_import.file.new.title') %>
 
 <%= form_for(:csv_file, :url => {:action => :upload_csv_file}, :multipart => true) do |f| %>
     <div class="control-group">
-        <%= f.label(:csv, 'Datei auswählen:', :class => 'control-label') %>
+        <%= f.label(:csv, t('csv_import.file.new.choose_file'), :class => 'control-label') %>
         <div class="controls">
             <%= f.file_field :csv %>
         </div>
     </div>
 
     <div class="control-group">
-        <%= f.label(:name, 'Encoding:', :class => 'control-label') %>
+        <%= f.label(:name, t('csv_import.file.new.encoding'), :class => 'control-label') %>
         <div class="controls">
             <%= f.select(:encoding, @supported_encodings) %>
         </div>
     </div>
     <div class="control-group">
-        <%= f.label(:name, 'Delimiter:', :class => 'control-label') %>
+        <%= f.label(:name, t('csv_import.file.new.delimiter'), :class => 'control-label') %>
         <div class="controls">
             <%= f.select(:delimiter, @supported_delimiters) %>
         </div>

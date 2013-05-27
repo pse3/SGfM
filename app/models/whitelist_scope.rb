@@ -1,8 +1,8 @@
 # Extends Scope - represents a Whitelist: Every account_type in the list is allowed to view.
 class WhitelistScope < Scope
 
-  # Returns true if viewed is visible to viewer, false otherwise
-  # If viewer (login or symbol) is in list (literally or as ":Self") he is allowed to view the element which this Scope is attributed to.
+  # Returns true if viewed is visible to viewer, false otherwise.
+  # If viewer (Login or symbol) is in list (literally or as ":Self") he is allowed to view the element which this Scope is attributed to.
 	def visible? (viewer, viewed)
 		visible = false
 		list = self.list

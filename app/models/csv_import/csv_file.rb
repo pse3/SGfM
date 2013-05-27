@@ -1,5 +1,8 @@
 require 'fileutils'
 
+# A CsvFile is a file of the format .csv that has been imported by an Admin.
+# CsvFiles are used to import a list of multiple Actors at once.
+
 module CsvImport
   class CsvFile
 
@@ -28,7 +31,6 @@ module CsvImport
       begin
         FileUtils.rm(self.file_path)
       rescue Errno::ENOENT
-        #todo use logger?
         puts "file #{self.file_path} doesn't exist any more"
       end
     end

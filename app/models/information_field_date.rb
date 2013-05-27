@@ -1,3 +1,4 @@
+# Concrete class for date InformationFieldType objects. Not yet implemented.
 class InformationFieldDate < InformationFieldType
 
   def get_value(value)
@@ -13,7 +14,6 @@ class InformationFieldDate < InformationFieldType
   end
 
   def form(form_helper, key, options = {})
-    #todo not yet done
     raise NotImplementedError
   end
 

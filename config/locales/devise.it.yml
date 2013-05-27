@@ -35,10 +35,20 @@ it:
       updated: "La tua password è stata cambiata. Ora sei collegato."
       updated_not_active: "La tua password è stata cambiata."
       send_paranoid_instructions: "Se la tua email esiste nel nostro database, entro qualche minuto riceverai un messaggio email contentente un link per il ripristino della password"
+      reset:
+        complexity: 'Password must be at least 8 characters long.'
+        title:
+          first: 'Set password for this Account'
+          other: 'Reset password for this Account'
+        submit: 'Save'
+        password: 'New password'
+        confirm: 'Confirm password'
     confirmations:
       send_instructions: "Riceverai un messaggio email con le istruzioni per confermare il tuo account entro qualche minuto."
       send_paranoid_instructions: "Se la tua email esiste nel nostro database, entro qualche minuto riceverai un messaggio email con le istruzioni per confermare il tuo account."
       confirmed: "Il tuo account è stato correttamente confermato. Ora sei collegato."
+      resend_confirmation: "Resend confirmation instructions"
+      send: "send"
     registrations:
       signed_up: "Benvenuto! Ti sei registrato correttamente."
       signed_up_but_unconfirmed: "Ti sei registrato correttamente. Tuttavia non puoi effettuare l'accesso perchè il tuo account è da confermare. Per favore apri il link che hai ricevuto tramite email per attivare il tuo account."
@@ -59,5 +69,13 @@ it:
         subject: "Istruzioni per la conferma"
       reset_password_instructions:
         subject: "Istruzioni per reimpostare la password"
+        intro: 'Jemand hat für Ihren Account einen Link zum ändern des Passwort angefordert. Dies können sie über folgenden Link tun:'
+        footer_one: 'Falls Sie keinen Link angefordert haben, ignorieren Sie dieses Mail.'
+        footer_two: 'Ihr Passwort wird nicht geändert bis Sie den oben genannten Link verwenden.'
+        linktext: 'Passwort ändern'
       unlock_instructions:
         subject: "Istruzioni per sbloccare l'account"
+      invitation:
+        subject: 'Einladung SGfM Account'
+        infotext: 'Sie wurden eingeladen um ihr Profil auszufüllen. Ein Account wurde für sie erstellt.'
+        linktext: 'Meinen Account ansehen'

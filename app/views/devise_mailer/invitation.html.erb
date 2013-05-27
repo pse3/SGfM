@@ -1,0 +1,3 @@
+<p><%= t('devise.mailer.invitation.infotext') %></p>
+
+<p><%= link_to t('devise.mailer.invitation.linktext') , edit_password_url(@resource, :reset_password_token => @resource.reset_password_token) + '&initial=true' %></p>

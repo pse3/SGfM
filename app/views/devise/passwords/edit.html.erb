@@ -1,16 +1,23 @@
-<h2>Change your password</h2>
+<% if params[:initial] %>
+    <h2><%= t('devise.passwords.reset.title.first') %></h2>
+<% else %>
+    <h2><%= t('devise.passwords.reset.title.other') %></h2>
+<% end %>
+
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div><%= f.label :password, "New password" %><br />
+  <p><%= t('devise.passwords.reset.complexity') %></p>
+
+  <div><%= f.label :password, t('devise.passwords.reset.password') %><br />
   <%= f.password_field :password, autofocus: true, required: true %></div>
 
-  <div><%= f.label password_confirmation: "Confirm new password" %><br />
+  <div><%= f.label :password_confirmation, t('devise.passwords.reset.confirm') %><br />
   <%= f.password_field :password_confirmation, required:true %></div>
 
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+
+  <div><%= f.submit t('devise.passwords.reset.submit') %></div>
+<% end %>

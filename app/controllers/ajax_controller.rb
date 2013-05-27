@@ -1,3 +1,5 @@
+# Controller for Ajax usages.
+# Used to render partials that are needed when filling in forms that change depending on selections made in views.
 class AjaxController < ApplicationController
 
   def add_relationship_form
@@ -25,12 +27,11 @@ class AjaxController < ApplicationController
   end
 
   def referenced_actor
-    render_partial 'actor/referenced_actor', :key => params[:key], :remove => true
+    render_partial 'actor/referenced_actor', :key => params[:key], :remove => true, :scopes => Scope.all
   end
 
   private
   def render_partial(file, locals = {})
-    #TODO remove random
     locals[:field_number] = Random.new.rand(100...1000000)
     render(:partial => file, :locals => locals)
   end
