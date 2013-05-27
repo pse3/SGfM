@@ -1,0 +1,33 @@
+<%= form_for(:actors, :url => {:action => :reinvite}) do |f| %>
+    <%= f.submit(t('invitation.list.reinvite_selected'), class: 'btn btn-primary') %>
+    <br/>
+    <br/>
+    <table class="table table-hover" id="invitation_table">
+        <tr>
+            <th></th>
+            <th><%= t('invitation.list.column.name')  %></th>
+            <th><%= t('invitation.list.column.email')  %></th>
+            <th><%= t('invitation.list.column.link')  %></th>
+            <th><%= t('invitation.list.column.invited_at')  %></th>
+        </tr>
+        <% @actors.each do |actor| %>
+            <tr>
+                <% if actor.find_information_by_key(:email).nil? %>
+                    <td class="no-email"></td>
+                <% else %>
+                    <td class="email"><%= check_box_tag("invitations[#{actor.id}]", '1', false, :class => 'invitation_checkbox') %></td>
+                <% end %>
+                <td><%= actor.to_s %></td>
+                <% if actor.find_information_by_key(:email).nil? %>
+                    <td><%= t('invitation.list.no_email') %></td>
+                <% else %>
+                    <td><%= actor.find_information_by_key(:email).value %></td>
+                <% end %>
+                <td><%= link_to(t('invitation.list.edit_actor'), edit_actor_path(actor)) %></td>
+                <td><%= l actor.owner.login.reset_password_sent_at %></td>
+            </tr>
+        <% end %>
+    </table>
+
+    <%= f.submit(t('invitation.list.reinvite_selected'), class: 'btn btn-primary') %>
+<% end %>

@@ -3,10 +3,10 @@
                                                          :scope => "", :relationship_type => ""} %>
 <% end %>
 
-<%= link_to t('invitation.list_invited.title'), invitation_list_invited_path %>
+<%= link_to t('invitation.list_uninvited.title'), invitation_list_uninvited_path %>
 
-<% @page_title = t('invitation.list_uninvited.title') %>
+<% @page_title = t('invitation.list_invited.title') %>
 
 <br/><br/>
 
-<%= render('list_actors', :locals => { :actors => @actors}) %>
+<%= render('list_actors_invited', :locals => { :actors => @actors}) %>

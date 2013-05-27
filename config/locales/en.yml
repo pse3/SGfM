@@ -411,6 +411,7 @@ en:
   invitation:
     list:
       invite_selected: 'Invite!'
+      reinvite_selected: 'Reinvite!'
       done: 'Done'
       no_email: 'No Email'
       edit_actor: 'Edit Actor'
@@ -419,8 +420,11 @@ en:
         email: 'Email'
         link: 'Edit'
         done: 'Done'
+        invited_at: 'Invited at'
     list_uninvited:
       title: 'Uninvited Actors'
+    list_invited:
+      title: 'Invited Actors'
 
 
 # Translations for Date and Time

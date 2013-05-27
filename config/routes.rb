@@ -82,9 +82,11 @@ SGfM::Application.routes.draw do
     get     'csv_import/import/new/:id'       => 'csv_import#new_import',       as: 'new_import'
     get     'csv_import/import/add_row/:id'   => 'csv_import#add_row',          as: 'add_row'
 
-    # User Initation Routes
+    # User Invitation Routes
     get     'invitation/uninvited' => 'invitation#list_uninvited',   as: 'invitation_list_uninvited'
+    get     'invitation/invited'   => 'invitation#list_invited',     as: 'invitation_list_invited'
     post    'invitation/invite'    => 'invitation#invite',           as: 'invitation_invite'
+    post    'invitation/reinvite'  => 'invitation#reinvite',         as: 'invitation_reinvite'
 
     # AJAX routes
     get   '/information_types_for_actor_type' => 'actor#information_types_for_actor_type', as: 'information_types_for_actor_type'

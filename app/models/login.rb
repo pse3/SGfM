@@ -42,6 +42,8 @@ class Login
   ## Token authenticatable
   # field :authentication_token, :type => String
 
+  field :invited, :type => Boolean
+
   #validations
   validates_uniqueness_of :email, :case_sensitive => false
   validates_presence_of :email
