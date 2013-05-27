@@ -13,7 +13,6 @@ class InformationTypeController < ApplicationController
 			information_type.scope =  Scope.find_by key: params[:information_type][:scope]
     end
     information_type.information_field_type= InformationFieldType.find_by_key params[:information_type][:information_field_type]
-    #TODO make the view receive the data form via ajax so it is only displayed when needed
     if params[:information_type][:information_field_type_data]
       information_type.data_translations= InformationTypeHelper.parse_data(params[:information_type][:information_field_type_data], information_type.information_field_type)
     end

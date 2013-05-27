@@ -119,7 +119,6 @@ class ActorController < ApplicationController
 		redirect_to actors_path
 	end
 
-  # TODO move this to ajaxController!
 	def information_types_for_actor_type
 		key = params[:actor_type_key]
 		actor_type = ActorType.find_by_key(key)

@@ -16,7 +16,7 @@ class Relationship
   belongs_to :actor, :class_name => 'Actor', :inverse_of => :relationships                      #referenced
   belongs_to :reference, :class_name => 'Actor', :inverse_of => nil                             #referenced / one-way
 
-	validates_presence_of :relationship_type, :actor, :reference #, :creator  TODO: @urs: creator isn't set in controller? wanted to validate it, but it fails.
+	validates_presence_of :relationship_type, :actor, :reference
 
   def initialize
     super

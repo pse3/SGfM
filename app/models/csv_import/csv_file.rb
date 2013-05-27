@@ -31,7 +31,6 @@ module CsvImport
       begin
         FileUtils.rm(self.file_path)
       rescue Errno::ENOENT
-        #todo use logger?
         puts "file #{self.file_path} doesn't exist any more"
       end
     end

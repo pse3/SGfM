@@ -11,7 +11,6 @@
 <% end %>
 
 <%= form_for(:edited_scope, url: edit_scope_path, html: {class: 'form-horizontal'}) do |f| %>
-  <%# TODO: There might be more elegant ways to solve the localization issue. %>
   <div class="control-group">
     <%= f.label(t('scopes.new.name'), class: 'control-label') %>
     <div class="controls">

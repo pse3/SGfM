@@ -63,7 +63,6 @@ class CsvImportController < ApplicationController
         information.information_type_decorator = info_type_decorator
         information.scope = Scope.find_by(key: :public)
         value = row[info[:index].to_i]
-        #todo: other than simple values...
         unless value.nil?
           information.value=(value)
           actor.informations.push information
