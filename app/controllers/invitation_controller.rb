@@ -20,6 +20,7 @@ class InvitationController < ApplicationController
 
     params[:invitations].each_key do |actor_id_to_invite|
       actor = Actor.find(actor_id_to_invite)
+      actor.invited = true
       user = User.new
       login = Login.new
       login.email = actor.find_information_by_key(:email).value

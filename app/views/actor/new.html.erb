@@ -1,5 +1,9 @@
 <% @page_title = t('actor.new.title') %>
 
+<% if @invited_actor %>
+   <%= @invited_actor.to_s %>
+<% end %>
+
 <%= form_for(:actor, :url => create_actor_path, :method => :post, :html => { :class => 'form-horizontal', :onsubmit => 'on_submit()'}) do |f| %>
   <div class="accordion" id="new-actor">
     <div class="accordion-group">
@@ -32,7 +36,7 @@
 <script>
   function actor_type_selected() {
     var val = $('#actor-type-select option:selected').val();
-    SGfM.actor.render_matching_form(<%= raw "\"#{information_types_for_actor_type_path}\"" %>, val);
+    SGfM.actor.render_matching_form(<%= raw "\"#{information_types_for_actor_type_path(@invited_actor)}\"" %>, val);
     SGfM.insert_form(<%= raw("\"#{predefined_questions_path}\"") %>, '#predefined-questions-form', {actor_type: val});
   }
 
@@ -72,7 +76,7 @@
   $('document').ready(function() {
     $('#information').collapse();
     var val = $('#actor-type-select option:selected').val();
-    SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path%>', val);
+    SGfM.actor.render_matching_form('<%=information_types_for_actor_type_path(@invited_actor)%>', val);
     SGfM.insert_form(<%= raw("\"#{predefined_questions_path}\"") %>, '#predefined-questions-form', {actor_type: val});
   })
 </script>
