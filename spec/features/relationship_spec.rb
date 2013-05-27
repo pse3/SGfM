@@ -168,6 +168,7 @@ describe "Relationship" do
     end
     fill_in "actor_information_first_name", :with => 'NewTestDoctorFirstName'
     click_link 'Next'
+    sleep(0.5)
     click_button 'Create'
 
     click_on 'Add relationship'

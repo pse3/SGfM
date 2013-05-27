@@ -330,50 +330,27 @@ describe "Actor" do
       click_link'Sign out'
     end
   end
-  context "with only the required  information" do
-    it "creates a new actor",:js => true do
+   it "creates a new actor",:js => true do
 
-      click_link "Sign up"
-      within('#new_login') do
-        fill_in 'login_email', :with => 'test_1@test.de'
-        fill_in 'login_password', :with => '1234test'
-        fill_in 'login_password_confirmation', :with => '1234test'
-        click_button 'Sign up'
-      end
-      sleep(0.5)
-      within('#actor-type') do
-        click_link 'Next'
-      end
-      select('gynecologist', :from => 'actor_information_medical_specialisations')
-      fill_in "actor_information_first_name", :with => 'TestDoctorFirstname'
-      fill_in "actor_information_last_name", :with => 'TestDoctorLastname'
-      click_link 'Next'
-      click_button 'Create'
-      page.should have_content("uccessfully")
-      click_link 'Sign out'
-    end
-  end
-  context "with incomplete information" do
-    it "does not create a new actor",:js => true do
-
-      click_link "Sign up"
-      within('#new_login') do
-        fill_in 'login_email', :with => 'test_1@test.de'
-        fill_in 'login_password', :with => '1234test'
-        fill_in 'login_password_confirmation', :with => '1234test'
-        click_button 'Sign up'
-      end
-      sleep(0.5)
-      within('#actor-type') do
-        click_link 'Next'
-      end
-      select('gynecologist', :from => 'actor_information_medical_specialisations')
-      fill_in "actor_information_first_name", :with => 'TestDoctorFirstname'
-
-      click_link 'Next'
-      page.should_not have_button('Create')
-    end
-  end
+     click_link "Sign up"
+     within('#new_login') do
+       fill_in 'login_email', :with => 'test_1@test.de'
+       fill_in 'login_password', :with => '1234test'
+       fill_in 'login_password_confirmation', :with => '1234test'
+       click_button 'Sign up'
+     end
+     sleep(0.5)
+     within('#actor-type') do
+       click_link 'Next'
+     end
+     select('gynecologist', :from => 'actor_information_medical_specialisations')
+     fill_in "actor_information_first_name", :with => 'TestDoctorFirstname'
+     fill_in "actor_information_last_name", :with => 'TestDoctorLastname'
+     click_link 'Next'
+     click_button 'Create'
+     page.should have_content("uccessfully")
+     click_link 'Sign out'
+   end
 
   context "with all required information" do
     it "updates an actor",:js => true do
@@ -391,14 +368,13 @@ describe "Actor" do
     end
   end
 
-  context "with incomplete informatino" do
+  context "with incomplete information" do
     it "does not update an actor",:js => true do
 
       click_on 'Sign in'
       fill_in "login_email", :with => 'email@domain.ch'
       fill_in "login_password", :with => 'test1234'
       click_button 'Sign in'
-
       click_link 'TestHospitalName//BE'
       click_on "Edit actor"
       fill_in 'actor_information_canton', :with => ''
