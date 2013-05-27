@@ -248,6 +248,7 @@ describe "Actor" do
     # Create some Relations
     relationship_test_hospital = Relationship.new
     relationship_test_hospital.relationship_type = RelationshipType.find_by_key(:works_with)
+    relationship_test_hospital.scope = scope_public
     relationship_test_hospital.comment = 'This is a comment. Made by god!'
     relationship_test_hospital.actor = dummy_actor_test_hospital
     relationship_test_hospital.reference = dummy_actor_test_doctor

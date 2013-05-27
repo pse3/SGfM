@@ -144,6 +144,7 @@ describe "Relationship" do
     # Create some Relations
     relationship_test = Relationship.new
     relationship_test.relationship_type = RelationshipType.find_by_key(:works_with)
+    relationship_test.scope = scope_public
     relationship_test.comment = 'This is a comment. Made by god!'
     relationship_test.actor = dummy_actor_test_doctor
     relationship_test.reference = dummy_actor_test_doctor2
