@@ -42,24 +42,6 @@ class ScopesController < ApplicationController
 		end
 	end
 
-	def destroy
-		@scope = Scope.find(params[:id])
-    @informations = Information.where( :scope => @scope)
-    @informations.each do |information|
-      information.destroy
-    end
-    @relationships = Relationship.where( :scope => @scope)
-    @relationships.each do |relationship|
-      relationship.destroy
-    end
-		if @scope.destroy
-			flash[:success] = t('scopes.destroy.success')
-			redirect_to scopes_path
-		else
-			flash[:error] = t('scopes.destroy.failure')
-			redirect_to scopes_path
-		end
-	end
 
 	def list
 		@scopes = Scope.all
