@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class CsvImportController - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/csv_import_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-add_row">#add_row</a>
+    
+    <li><a href="#method-i-delete_csv_file">#delete_csv_file</a>
+    
+    <li><a href="#method-i-import">#import</a>
+    
+    <li><a href="#method-i-information">#information</a>
+    
+    <li><a href="#method-i-list_csv_files">#list_csv_files</a>
+    
+    <li><a href="#method-i-new_csv_file">#new_csv_file</a>
+    
+    <li><a href="#method-i-new_import">#new_import</a>
+    
+    <li><a href="#method-i-upload_csv_file">#upload_csv_file</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./AUTHORS_rdoc.html">AUTHORS</a>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./INSTALL_rdoc.html">INSTALL</a>
+  
+    <li class="file"><a href="./LICENSE_rdoc.html">LICENSE</a>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="./public/robots_txt.html">robots</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./CsvImport.html">CsvImport</a>
+  
+    <li><a href="./CsvImport/CsvFile.html">CsvImport::CsvFile</a>
+  
+    <li><a href="./SGfM.html">SGfM</a>
+  
+    <li><a href="./SGfM/Application.html">SGfM::Application</a>
+  
+    <li><a href="./Scoped.html">Scoped</a>
+  
+    <li><a href="./Scoped/ClassMethods.html">Scoped::ClassMethods</a>
+  
+    <li><a href="./Actor.html">Actor</a>
+  
+    <li><a href="./ActorController.html">ActorController</a>
+  
+    <li><a href="./ActorHelper.html">ActorHelper</a>
+  
+    <li><a href="./ActorType.html">ActorType</a>
+  
+    <li><a href="./ActorTypeController.html">ActorTypeController</a>
+  
+    <li><a href="./ActorTypeHelper.html">ActorTypeHelper</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./AjaxController.html">AjaxController</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./BlacklistScope.html">BlacklistScope</a>
+  
+    <li><a href="./CsvImportController.html">CsvImportController</a>
+  
+    <li><a href="./DeviseMailer.html">DeviseMailer</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Information.html">Information</a>
+  
+    <li><a href="./InformationFieldDate.html">InformationFieldDate</a>
+  
+    <li><a href="./InformationFieldEmail.html">InformationFieldEmail</a>
+  
+    <li><a href="./InformationFieldMultipleSelect.html">InformationFieldMultipleSelect</a>
+  
+    <li><a href="./InformationFieldSingleSelect.html">InformationFieldSingleSelect</a>
+  
+    <li><a href="./InformationFieldText.html">InformationFieldText</a>
+  
+    <li><a href="./InformationFieldType.html">InformationFieldType</a>
+  
+    <li><a href="./InformationType.html">InformationType</a>
+  
+    <li><a href="./InformationTypeController.html">InformationTypeController</a>
+  
+    <li><a href="./InformationTypeDecorator.html">InformationTypeDecorator</a>
+  
+    <li><a href="./InformationTypeHelper.html">InformationTypeHelper</a>
+  
+    <li><a href="./InvitationController.html">InvitationController</a>
+  
+    <li><a href="./Login.html">Login</a>
+  
+    <li><a href="./LoginsHelper.html">LoginsHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./RegistrationsController.html">RegistrationsController</a>
+  
+    <li><a href="./Relationship.html">Relationship</a>
+  
+    <li><a href="./RelationshipController.html">RelationshipController</a>
+  
+    <li><a href="./RelationshipHelper.html">RelationshipHelper</a>
+  
+    <li><a href="./RelationshipType.html">RelationshipType</a>
+  
+    <li><a href="./RelationshipTypeController.html">RelationshipTypeController</a>
+  
+    <li><a href="./Scope.html">Scope</a>
+  
+    <li><a href="./ScopesController.html">ScopesController</a>
+  
+    <li><a href="./ScopesHelper.html">ScopesHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./WhitelistScope.html">WhitelistScope</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class CsvImportController</h1>
+
+  <div id="description" class="description">
+    
+<p>Controller for importing CsvFiles by an <a href="Admin.html">Admin</a>.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-add_row" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_row</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="add_row-source">
+            <pre><span class="ruby-comment"># File app/controllers/csv_import_controller.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_row</span>
+  <span class="ruby-ivar">@information_types</span> = <span class="ruby-constant">InformationType</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-identifier">render</span>(<span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'csv_import/add_row'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add_row-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add_row-method -->
+
+    
+      <div id="method-i-delete_csv_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete_csv_file</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete_csv_file-source">
+            <pre><span class="ruby-comment"># File app/controllers/csv_import_controller.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_csv_file</span>
+  <span class="ruby-identifier">csv_file</span> = <span class="ruby-constant">CsvImport</span><span class="ruby-operator">::</span><span class="ruby-constant">CsvFile</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">destroy</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- delete_csv_file-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- delete_csv_file-method -->
+
+    
+      <div id="method-i-import" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">import</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="import-source">
+            <pre><span class="ruby-comment"># File app/controllers/csv_import_controller.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">import</span>
+  <span class="ruby-identifier">csv_file</span> = <span class="ruby-constant">CsvImport</span><span class="ruby-operator">::</span><span class="ruby-constant">CsvFile</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+
+  <span class="ruby-constant">CSV</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">file_path</span>, {<span class="ruby-value">:col_sep</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">delimiter</span>, <span class="ruby-value">:encoding</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">encoding</span>}) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+
+    <span class="ruby-identifier">actor</span> = <span class="ruby-constant">Actor</span>.<span class="ruby-identifier">new</span>()
+    <span class="ruby-identifier">actor_type</span> = <span class="ruby-constant">ActorType</span>.<span class="ruby-identifier">find_by_key</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:csv_import_csv_file</span>][<span class="ruby-value">:actor_type</span>])
+    <span class="ruby-identifier">actor</span>.<span class="ruby-identifier">actor_type</span> = <span class="ruby-identifier">actor_type</span>
+
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:infos</span>].<span class="ruby-identifier">each_value</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">info</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">info_type_decorator</span> = <span class="ruby-identifier">actor_type</span>.<span class="ruby-identifier">decorator_by_key</span>(<span class="ruby-identifier">info</span>[<span class="ruby-value">:key</span>].<span class="ruby-identifier">to_sym</span>)
+      <span class="ruby-identifier">information</span> = <span class="ruby-constant">Information</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-identifier">information</span>.<span class="ruby-identifier">information_type_decorator</span> = <span class="ruby-identifier">info_type_decorator</span>
+      <span class="ruby-identifier">information</span>.<span class="ruby-identifier">scope</span> = <span class="ruby-constant">Scope</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">key</span><span class="ruby-operator">:</span> <span class="ruby-value">:public</span>)
+      <span class="ruby-identifier">value</span> = <span class="ruby-identifier">row</span>[<span class="ruby-identifier">info</span>[<span class="ruby-value">:index</span>].<span class="ruby-identifier">to_i</span>]
+      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">information</span>.<span class="ruby-identifier">value</span>=(<span class="ruby-identifier">value</span>)
+        <span class="ruby-identifier">actor</span>.<span class="ruby-identifier">informations</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">information</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># don't check for valid inputs!</span>
+    <span class="ruby-identifier">actor</span>.<span class="ruby-identifier">save</span>(<span class="ruby-value">:validate</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">imported</span> = <span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">now</span>
+  <span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">save</span>
+
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-identifier">t</span>(<span class="ruby-string">'csv_import.import.success'</span>, <span class="ruby-value">:file_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">file_name</span>)
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">list_csv_files_path</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- import-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- import-method -->
+
+    
+      <div id="method-i-information" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">information</span><span
+            class="method-args">(key,value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="information-source">
+            <pre><span class="ruby-comment"># File app/controllers/csv_import_controller.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">information</span>(<span class="ruby-identifier">key</span>,<span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">info</span> = <span class="ruby-constant">Information</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">info</span>.<span class="ruby-identifier">information_type</span> = <span class="ruby-constant">InformationType</span>.<span class="ruby-identifier">find_by_key</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-identifier">info</span>.<span class="ruby-identifier">scope</span> = <span class="ruby-constant">Scope</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-value">:key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:public</span>)
+  <span class="ruby-identifier">info</span>.<span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>
+  <span class="ruby-identifier">info</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- information-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- information-method -->
+
+    
+      <div id="method-i-list_csv_files" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">list_csv_files</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Lists all uploaded CsvFiles.</p>
+          
+
+          
+          <div class="method-source-code" id="list_csv_files-source">
+            <pre><span class="ruby-comment"># File app/controllers/csv_import_controller.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">list_csv_files</span>
+  <span class="ruby-ivar">@csv_files</span> = <span class="ruby-constant">CsvImport</span><span class="ruby-operator">::</span><span class="ruby-constant">CsvFile</span>.<span class="ruby-identifier">all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- list_csv_files-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- list_csv_files-method -->
+
+    
+      <div id="method-i-new_csv_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new_csv_file</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new_csv_file-source">
+            <pre><span class="ruby-comment"># File app/controllers/csv_import_controller.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new_csv_file</span>
+   <span class="ruby-ivar">@supported_encodings</span> = [<span class="ruby-string">'UTF-8'</span>,<span class="ruby-string">'ISO-8859-1'</span>]
+   <span class="ruby-ivar">@supported_delimiters</span> = [<span class="ruby-string">'|'</span>,<span class="ruby-string">','</span>,<span class="ruby-string">';'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new_csv_file-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new_csv_file-method -->
+
+    
+      <div id="method-i-new_import" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new_import</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Displays the form to create a new import.</p>
+          
+
+          
+          <div class="method-source-code" id="new_import-source">
+            <pre><span class="ruby-comment"># File app/controllers/csv_import_controller.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new_import</span>
+  <span class="ruby-ivar">@csv_file</span> = <span class="ruby-constant">CsvImport</span><span class="ruby-operator">::</span><span class="ruby-constant">CsvFile</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@actor_types</span> = <span class="ruby-constant">ActorType</span>.<span class="ruby-identifier">all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new_import-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new_import-method -->
+
+    
+      <div id="method-i-upload_csv_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">upload_csv_file</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="upload_csv_file-source">
+            <pre><span class="ruby-comment"># File app/controllers/csv_import_controller.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">upload_csv_file</span>
+  <span class="ruby-identifier">csv_file_io</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:csv_file</span>][<span class="ruby-value">:csv</span>]
+  <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">csv_file_io</span>.<span class="ruby-identifier">original_filename</span>
+  <span class="ruby-identifier">file_path</span> = <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">'data'</span>, <span class="ruby-string">'csv_import'</span>, <span class="ruby-identifier">filename</span>)
+
+  <span class="ruby-comment"># save the file on filesystem</span>
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file_path</span>, <span class="ruby-string">'wb'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">csv_file_io</span>.<span class="ruby-identifier">read</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># create csv file object</span>
+  <span class="ruby-identifier">csv_file</span> = <span class="ruby-constant">CsvImport</span><span class="ruby-operator">::</span><span class="ruby-constant">CsvFile</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">file_name</span> = <span class="ruby-identifier">filename</span>
+  <span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">file_path</span> = <span class="ruby-identifier">file_path</span>
+  <span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">encoding</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:csv_file</span>][<span class="ruby-value">:encoding</span>]
+  <span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">delimiter</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:csv_file</span>][<span class="ruby-value">:delimiter</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-identifier">t</span>(<span class="ruby-string">'csv_import.file.upload.success'</span>, <span class="ruby-value">:file_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">filename</span>)
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">list_csv_files_path</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-identifier">t</span>(<span class="ruby-string">'csv_import.file.upload.failure'</span>)
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">list_csv_files_path</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- upload_csv_file-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- upload_csv_file-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

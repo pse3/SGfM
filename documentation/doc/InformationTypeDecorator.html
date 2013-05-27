@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class InformationTypeDecorator - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/information_type_decorator.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">Mongoid::Document</span>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-create">::create</a>
+    
+    <li><a href="#method-i-method_missing">#method_missing</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./AUTHORS_rdoc.html">AUTHORS</a>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./INSTALL_rdoc.html">INSTALL</a>
+  
+    <li class="file"><a href="./LICENSE_rdoc.html">LICENSE</a>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="./public/robots_txt.html">robots</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./CsvImport.html">CsvImport</a>
+  
+    <li><a href="./CsvImport/CsvFile.html">CsvImport::CsvFile</a>
+  
+    <li><a href="./SGfM.html">SGfM</a>
+  
+    <li><a href="./SGfM/Application.html">SGfM::Application</a>
+  
+    <li><a href="./Scoped.html">Scoped</a>
+  
+    <li><a href="./Scoped/ClassMethods.html">Scoped::ClassMethods</a>
+  
+    <li><a href="./Actor.html">Actor</a>
+  
+    <li><a href="./ActorController.html">ActorController</a>
+  
+    <li><a href="./ActorHelper.html">ActorHelper</a>
+  
+    <li><a href="./ActorType.html">ActorType</a>
+  
+    <li><a href="./ActorTypeController.html">ActorTypeController</a>
+  
+    <li><a href="./ActorTypeHelper.html">ActorTypeHelper</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./AjaxController.html">AjaxController</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./BlacklistScope.html">BlacklistScope</a>
+  
+    <li><a href="./CsvImportController.html">CsvImportController</a>
+  
+    <li><a href="./DeviseMailer.html">DeviseMailer</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Information.html">Information</a>
+  
+    <li><a href="./InformationFieldDate.html">InformationFieldDate</a>
+  
+    <li><a href="./InformationFieldEmail.html">InformationFieldEmail</a>
+  
+    <li><a href="./InformationFieldMultipleSelect.html">InformationFieldMultipleSelect</a>
+  
+    <li><a href="./InformationFieldSingleSelect.html">InformationFieldSingleSelect</a>
+  
+    <li><a href="./InformationFieldText.html">InformationFieldText</a>
+  
+    <li><a href="./InformationFieldType.html">InformationFieldType</a>
+  
+    <li><a href="./InformationType.html">InformationType</a>
+  
+    <li><a href="./InformationTypeController.html">InformationTypeController</a>
+  
+    <li><a href="./InformationTypeDecorator.html">InformationTypeDecorator</a>
+  
+    <li><a href="./InformationTypeHelper.html">InformationTypeHelper</a>
+  
+    <li><a href="./InvitationController.html">InvitationController</a>
+  
+    <li><a href="./Login.html">Login</a>
+  
+    <li><a href="./LoginsHelper.html">LoginsHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./RegistrationsController.html">RegistrationsController</a>
+  
+    <li><a href="./Relationship.html">Relationship</a>
+  
+    <li><a href="./RelationshipController.html">RelationshipController</a>
+  
+    <li><a href="./RelationshipHelper.html">RelationshipHelper</a>
+  
+    <li><a href="./RelationshipType.html">RelationshipType</a>
+  
+    <li><a href="./RelationshipTypeController.html">RelationshipTypeController</a>
+  
+    <li><a href="./Scope.html">Scope</a>
+  
+    <li><a href="./ScopesController.html">ScopesController</a>
+  
+    <li><a href="./ScopesHelper.html">ScopesHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./WhitelistScope.html">WhitelistScope</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class InformationTypeDecorator</h1>
+
+  <div id="description" class="description">
+    
+<p>Decorator class for <a href="InformationType.html">InformationType</a>.
+Contains further data an <a href="ActorType.html">ActorType</a> needs from
+its <a href="InformationType.html">InformationType</a>. This class behaves
+like <a href="InformationType.html">InformationType</a>, it directs all
+unknown methods to its <a href="InformationType.html">InformationType</a>
+object.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-create" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create</span><span
+            class="method-args">(info_type, actor_type, required, searchable)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new <a
+href="InformationTypeDecorator.html">InformationTypeDecorator</a> object
+with arguments. param :info_type <a
+href="InformationType.html">InformationType</a> that need decorating. param
+:actor_type <a href="ActorType.html">ActorType</a> that the decorator
+belongs to. param :required Boolean true if <a
+href="Information.html">Information</a> objects of <a
+href="InformationType.html">InformationType</a> are required, false if
+optional. param :searchable Boolean true if <a
+href="Information.html">Information</a> objects of <a
+href="InformationType.html">InformationType</a> are searchable, false if
+not.</p>
+          
+
+          
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File app/models/information_type_decorator.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">info_type</span>, <span class="ruby-identifier">actor_type</span>, <span class="ruby-identifier">required</span>, <span class="ruby-identifier">searchable</span>)
+  <span class="ruby-identifier">info_type_dec</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">info_type_dec</span>.<span class="ruby-identifier">information_type</span> = <span class="ruby-identifier">info_type</span>
+  <span class="ruby-identifier">info_type_dec</span>.<span class="ruby-identifier">required</span> = <span class="ruby-identifier">required</span>
+  <span class="ruby-identifier">info_type_dec</span>.<span class="ruby-identifier">searchable</span> = <span class="ruby-identifier">searchable</span>
+  <span class="ruby-identifier">info_type_dec</span>.<span class="ruby-identifier">actor_type</span> = <span class="ruby-identifier">actor_type</span>
+  <span class="ruby-identifier">info_type_dec</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-identifier">info_type_dec</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-method_missing" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">method_missing</span><span
+            class="method-args">(method, *args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Directs all missing methods forward to the <a
+href="InformationType.html">InformationType</a> which is the object that’s
+being decorated.</p>
+          
+
+          
+          <div class="method-source-code" id="method_missing-source">
+            <pre><span class="ruby-comment"># File app/models/information_type_decorator.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method</span>, *<span class="ruby-identifier">args</span>)
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
+                      <span class="ruby-identifier">information_type</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>)
+              <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+                      <span class="ruby-identifier">information_type</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">args</span>)
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-identifier">information_type</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>])
+              <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- method_missing-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- method_missing-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -33,7 +33,6 @@ data/csv_import/*
 # YARD artifacts
 .yardoc
 _yardoc
-doc/
 
 # By Kenneth
 .idea/*

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class ActorType - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/actor_type.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">Mongoid::Document</span>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-find_by_key">::find_by_key</a>
+    
+    <li><a href="#method-i-decorator_by_key">#decorator_by_key</a>
+    
+    <li><a href="#method-i-information_types">#information_types</a>
+    
+    <li><a href="#method-i-to_s">#to_s</a>
+    
+    <li><a href="#method-i-update_corresponding_actors">#update_corresponding_actors</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./AUTHORS_rdoc.html">AUTHORS</a>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./INSTALL_rdoc.html">INSTALL</a>
+  
+    <li class="file"><a href="./LICENSE_rdoc.html">LICENSE</a>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="./public/robots_txt.html">robots</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./CsvImport.html">CsvImport</a>
+  
+    <li><a href="./CsvImport/CsvFile.html">CsvImport::CsvFile</a>
+  
+    <li><a href="./SGfM.html">SGfM</a>
+  
+    <li><a href="./SGfM/Application.html">SGfM::Application</a>
+  
+    <li><a href="./Scoped.html">Scoped</a>
+  
+    <li><a href="./Scoped/ClassMethods.html">Scoped::ClassMethods</a>
+  
+    <li><a href="./Actor.html">Actor</a>
+  
+    <li><a href="./ActorController.html">ActorController</a>
+  
+    <li><a href="./ActorHelper.html">ActorHelper</a>
+  
+    <li><a href="./ActorType.html">ActorType</a>
+  
+    <li><a href="./ActorTypeController.html">ActorTypeController</a>
+  
+    <li><a href="./ActorTypeHelper.html">ActorTypeHelper</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./AjaxController.html">AjaxController</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./BlacklistScope.html">BlacklistScope</a>
+  
+    <li><a href="./CsvImportController.html">CsvImportController</a>
+  
+    <li><a href="./DeviseMailer.html">DeviseMailer</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Information.html">Information</a>
+  
+    <li><a href="./InformationFieldDate.html">InformationFieldDate</a>
+  
+    <li><a href="./InformationFieldEmail.html">InformationFieldEmail</a>
+  
+    <li><a href="./InformationFieldMultipleSelect.html">InformationFieldMultipleSelect</a>
+  
+    <li><a href="./InformationFieldSingleSelect.html">InformationFieldSingleSelect</a>
+  
+    <li><a href="./InformationFieldText.html">InformationFieldText</a>
+  
+    <li><a href="./InformationFieldType.html">InformationFieldType</a>
+  
+    <li><a href="./InformationType.html">InformationType</a>
+  
+    <li><a href="./InformationTypeController.html">InformationTypeController</a>
+  
+    <li><a href="./InformationTypeDecorator.html">InformationTypeDecorator</a>
+  
+    <li><a href="./InformationTypeHelper.html">InformationTypeHelper</a>
+  
+    <li><a href="./InvitationController.html">InvitationController</a>
+  
+    <li><a href="./Login.html">Login</a>
+  
+    <li><a href="./LoginsHelper.html">LoginsHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./RegistrationsController.html">RegistrationsController</a>
+  
+    <li><a href="./Relationship.html">Relationship</a>
+  
+    <li><a href="./RelationshipController.html">RelationshipController</a>
+  
+    <li><a href="./RelationshipHelper.html">RelationshipHelper</a>
+  
+    <li><a href="./RelationshipType.html">RelationshipType</a>
+  
+    <li><a href="./RelationshipTypeController.html">RelationshipTypeController</a>
+  
+    <li><a href="./Scope.html">Scope</a>
+  
+    <li><a href="./ScopesController.html">ScopesController</a>
+  
+    <li><a href="./ScopesHelper.html">ScopesHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./WhitelistScope.html">WhitelistScope</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class ActorType</h1>
+
+  <div id="description" class="description">
+    
+<p>ActorTypes define which <a href="Information.html">Information</a> objects
+of which <a href="InformationType.html">InformationType</a> objects an <a
+href="Actor.html">Actor</a> with this <a
+href="ActorType.html">ActorType</a> needs to contain. <a
+href="InformationTypeDecorator.html">InformationTypeDecorator</a> objects
+of these InformationTypes are referenced in <a
+href="ActorType.html">ActorType</a>. The only core data an <a
+href="ActorType.html">ActorType</a> contains is its name.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-find_by_key" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_by_key</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>validates_format_of :to_string_pattern, :with =&gt; /(|:.+|( )*)*/ Doesn’t
+seem to work. No idea why.</p>
+          
+
+          
+          <div class="method-source-code" id="find_by_key-source">
+            <pre><span class="ruby-comment"># File app/models/actor_type.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_key</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-constant">ActorType</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">key</span><span class="ruby-operator">:</span> <span class="ruby-identifier">key</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- find_by_key-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- find_by_key-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-decorator_by_key" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">decorator_by_key</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the <a
+href="InformationTypeDecorator.html">InformationTypeDecorator</a> that
+decorates the <a href="InformationType.html">InformationType</a> with given
+key.</p>
+          
+
+          
+          <div class="method-source-code" id="decorator_by_key-source">
+            <pre><span class="ruby-comment"># File app/models/actor_type.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">decorator_by_key</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-identifier">information_type_decorators</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">info_type_decorator</span><span class="ruby-operator">|</span> <span class="ruby-identifier">info_type_decorator</span>.<span class="ruby-identifier">information_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">InformationType</span>.<span class="ruby-identifier">find_by_key</span>(<span class="ruby-identifier">key</span>) }.<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- decorator_by_key-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- decorator_by_key-method -->
+
+    
+      <div id="method-i-information_types" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">information_types</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns list with all <a href="InformationType.html">InformationType</a>
+objects of this <a href="Actor.html">Actor</a> type without the decorator.</p>
+          
+
+          
+          <div class="method-source-code" id="information_types-source">
+            <pre><span class="ruby-comment"># File app/models/actor_type.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">information_types</span>
+  <span class="ruby-identifier">information_types</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">information_type_decorators</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">decorator</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">information_types</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">decorator</span>.<span class="ruby-identifier">information_type</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">information_types</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- information_types-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- information_types-method -->
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File app/models/actor_type.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_s-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_s-method -->
+
+    
+      <div id="method-i-update_corresponding_actors" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_corresponding_actors</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Saves each <a href="Actor.html">Actor</a> that uses this <a
+href="ActorType.html">ActorType</a> to activate update methods of <a
+href="Actor.html">Actor</a> (e.g. before_save).</p>
+          
+
+          
+          <div class="method-source-code" id="update_corresponding_actors-source">
+            <pre><span class="ruby-comment"># File app/models/actor_type.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_corresponding_actors</span>
+  <span class="ruby-identifier">corresponding_actors</span> = <span class="ruby-constant">Actor</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:actor_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>)
+  <span class="ruby-identifier">corresponding_actors</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">actor</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">actor</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_corresponding_actors-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_corresponding_actors-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
