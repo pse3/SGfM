@@ -9,7 +9,14 @@
           <%= info_form.label(information_type.key,  information_type.name, class: 'control-label') %>
         <% end %>
         <div class="controls">
-          <%= information_type.information_field_type.form(info_form, information_type.key, { :placeholder => information_type.name, :data => information_type.data, :required => information_type.required }) %>
+          <% value = " " %>
+          <% if  invited_actor %>
+            <% information =  invited_actor.find_information_by_key(information_type.key) %>
+            <% unless information.nil? %>
+                <%  value = information.value %>
+            <% end %>
+          <% end %>
+          <%= information_type.information_field_type.form(info_form, information_type.key, { :value => value, :placeholder => information_type.name, :data => information_type.data, :required => information_type.required }) %>
           <% if information_type.scope %>
             <div class="btn-group" data-toggle-name="<%= "actor[scope][#{information_type.key}]" %>" data-toggle="buttons-radio" >                      <option><%= information_type.scope.name %></option>
               <button type="button" value="<%= information_type.scope.key %>" class="btn active" disabled><%=  information_type.scope.name %></button>
