@@ -16,13 +16,14 @@ gem 'selenium-webdriver'
 gem 'multi_json'
 gem 'delayed_job_mongoid'
 
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
-# for Server (if no JS-compiler is preinstalled)
- gem 'execjs'
- gem 'therubyracer'
+# *important*
+# for Server (uncomment if no JS-compiler is preinstalled)
+# gem 'execjs'
+# gem 'therubyracer'
 # end
 
 # Gems used only for assets and not required

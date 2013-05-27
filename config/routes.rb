@@ -18,7 +18,7 @@ SGfM::Application.routes.draw do
     get     'actors'              => 'actor#list',     as: 'actors'
     get     'actors/search'       => 'actor#search',   as: 'search'
     post    'actors/search'       => 'actor#search'
-    get     'actors/create'       => 'actor#new',      as: 'create_actor'
+    get     'actors/create(/invited/:invited)'       => 'actor#new',      as: 'create_actor'
     post    'actors/create'       => 'actor#create'
     get     'actors/:id'          => 'actor#show',     as: 'show_actor'
     get     'actors/edit/:id'     => 'actor#edit',     as: 'edit_actor'
@@ -89,7 +89,7 @@ SGfM::Application.routes.draw do
     post    'invitation/reinvite'  => 'invitation#reinvite',         as: 'invitation_reinvite'
 
     # AJAX routes
-    get   '/information_types_for_actor_type' => 'actor#information_types_for_actor_type', as: 'information_types_for_actor_type'
+    get   '/information_types_for_actor_type(/invited/:invited)' => 'actor#information_types_for_actor_type', as: 'information_types_for_actor_type'
     get   '/add_relationship_form'            => 'ajax#add_relationship_form',             as: 'add_relationship_form'
     get   '/add_information_type_form'        => 'ajax#add_information_type_form',         as: 'add_information_type_form'
     get   '/information_type_data_form'       => 'ajax#information_type_data_form',        as: 'information_type_data_form'

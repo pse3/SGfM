@@ -139,3 +139,13 @@ nobody can access your site using this login information later on.
 If you occur any problems during installation, please let us know by contacting us via github issue tracker
 
 **Enjoy!**
+
+
+# 5. FAQ
+Starting the application fails because of missing javascript colpiler, what shall I do?
+
+Open the file `Gemfile`
+
+uncomment the two gems in the server section
+
+runn `bundle install`

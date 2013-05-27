@@ -9,7 +9,16 @@ class ActorController < ApplicationController
   # Creates an Actor of chosen ActorType and with params as Information objects.
   def create
     user = current_account
+
     actor = Actor.new
+
+    user.actors.each do |existing_actor|
+      if existing_actor.invited
+        actor = existing_actor
+        actor.informations.clear
+      end
+    end
+
     actor_type = ActorType.find_by_key(params[:actor][:actor_type].to_sym)
     actor.actor_type = actor_type
 
@@ -43,6 +52,7 @@ class ActorController < ApplicationController
     end
 
 		user.actors.push(actor)
+    actor.invited = false
 		actor.save
 		user.save
 
@@ -67,10 +77,15 @@ class ActorController < ApplicationController
     if actors.size == 0
       redirect_to create_actor_path
     elsif actors.size == 1
-      @actor = actors.first
-      @informations = scope_array(@actor.informations, current_account)
-      @relationships = scope_array(@actor.relationships, current_account)
-      render('actor/internal_show')
+      if actors.first.invited
+        #add id of invited actor
+        redirect_to create_actor_path(actors.first.id)
+      else
+        @actor = actors.first
+        @informations = scope_array(@actor.informations, current_account)
+        @relationships = scope_array(@actor.relationships, current_account)
+        render('actor/internal_show')
+      end
     else
       @actors_hash = Hash.new{|h, k| h[k] = []}
       actors.each do |actor|
@@ -92,6 +107,10 @@ class ActorController < ApplicationController
     unless current_login.is_user?
       flash[:error] = t('actor.new.admin_can_not_create_actors')
       redirect_to actors_path
+    end
+    # the invited actor is used to prefill the form with existing information
+    if params[:invited]
+      @invited_actor = Actor.find(params[:invited])
     end
 	end
 
@@ -120,10 +139,15 @@ class ActorController < ApplicationController
 	end
 
 	def information_types_for_actor_type
+    if params[:invited]
+      invited_actor = Actor.find(params[:invited])
+      puts invited_actor.to_s
+    end
 		key = params[:actor_type_key]
 		actor_type = ActorType.find_by_key(key)
 		information_types = actor_type.information_type_decorators
 		render(:partial => 'actor/new_actor_information_types', :locals => {:actor_type_key => key,
+                                                                        :invited_actor => invited_actor,
 																																				:actor_type => actor_type,
 																																				:information_types => information_types})
   end

@@ -14,6 +14,9 @@ class Actor
   field :search_field, :type => String
   field :to_string_field, :type => String
 
+  # true if this actor was invited
+  field :invited, :type => Boolean
+
 	belongs_to :actor_type, class_name: 'ActorType', inverse_of: nil                      #referenced /one-way
   embeds_many :informations, class_name: 'Information'                                  #embedded
   has_many :relationships, class_name: 'Relationship'                                  	#referenced
